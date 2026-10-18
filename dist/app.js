@@ -6,11 +6,19 @@
   const config = window.TARA_CONFIG;
 
   const navItems = [
-    { to: '/', label: '首頁' },
-    { to: '/about', label: '認識佛堂' },
-    { to: '/offerings', label: '結緣品' },
-    { to: '/activities', label: '法會活動' },
-    { to: '/visit', label: '交通聯絡' },
+    { to: '/', label: '首頁', en: 'Home' },
+    { to: '/about', label: '認識佛堂', en: 'About' },
+    { to: '/offerings', label: '結緣品', en: 'Offerings' },
+    { to: '/activities', label: '法會活動', en: 'Events' },
+    { to: '/visit', label: '交通聯絡', en: 'Visit' },
+  ];
+
+  const smokeOfferingItems = [
+    { name: '除障香粉／煙供除障粉（大）', images: [
+      { src: './images/tara-p03-01.jpg', alt: '除障香粉／煙供除障粉' },
+      { src: './images/tara-p03-01-ingredients.jpg', alt: '除障香粉／煙供除障粉成份照' },
+    ], description: '煙供香粉大款；佛堂舊站介紹其作為煙供與供養用香粉。' },
+    { name: '除障香粉／煙供除障粉（小）', description: '煙供香粉小款；佛堂舊站介紹其作為煙供與供養用香粉。' },
   ];
 
   const SiteHeader = {
@@ -18,12 +26,12 @@
     data: () => ({ config, navItems }),
     template: `
       <header class="site-header">
-        <RouterLink class="brand" to="/" aria-label="達拉 TARA 首頁">
+        <RouterLink class="brand" to="/" aria-label="TARA達拉 首頁">
           <img src="./images/tara-logo.png" alt="TARA 標誌">
-          <span>達拉 <strong>TARA</strong></span>
+          <span><strong>TARA</strong>達拉</span>
         </RouterLink>
         <nav class="main-nav" aria-label="主要導覽">
-          <RouterLink v-for="item in navItems" :key="item.to" :to="item.to" exact-active-class="is-active">{{ item.label }}</RouterLink>
+          <RouterLink v-for="item in navItems" :key="item.to" :to="item.to" exact-active-class="is-active"><span class="main-nav-zh">{{ item.label }}</span><span class="main-nav-en">{{ item.en }}</span></RouterLink>
         </nav>
         <a class="header-contact" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問 <span aria-hidden="true">↗</span></a>
       </header>
@@ -39,9 +47,9 @@
           <div><strong>{{ config.siteName }}</strong><span>佛堂介紹與結緣資訊</span></div>
         </div>
         <nav class="footer-socials" aria-label="官方社群">
-          <a :href="config.links.facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE</a>
-          <a :href="config.links.instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a :href="config.links.facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8h3.4z"/></svg></a>
+          <a :href="config.links.line" target="_blank" rel="noopener noreferrer" aria-label="LINE"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.7 3 2.5 6.4 2.5 10.6c0 3.7 3.3 6.7 7.8 7.4.3.1.7.2.8.5.1.2 0 .6 0 .8l-.1.8c0 .2-.2.8.7.4s5.1-3 7-5.2c1.3-1.4 2.3-3.1 2.3-4.7C21 6.4 17.1 3 12 3z"/><path class="social-icon-cutout" d="M7.2 9h1v3.4h-1zm2.1 0h1l1.5 2v-2h1v3.4h-.9l-1.6-2.1v2.1h-1zm4.4 0h2.8v.9h-1.8v.4h1.6v.8h-1.6v.5h1.8v.8h-2.8z"/></svg></a>
+          <a :href="config.links.instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.7" cy="6.7" r="1.2"/></svg></a>
         </nav>
         <span class="footer-note">網站內容由佛堂提供</span>
       </footer>
@@ -57,8 +65,7 @@
           <div class="hero-shade"></div>
           <div class="hero-content">
             <span class="eyebrow light-eyebrow">達拉 TARA</span>
-            <h1>歡迎來到<br>達拉 TARA</h1>
-            <p>認識佛堂、瀏覽結緣品，或查詢近期法會活動與參訪方式。</p>
+          <h1>WELCOME TO<br>TARA</h1>
             <div class="hero-actions">
               <RouterLink class="button button-gold" to="/about">認識佛堂 <span aria-hidden="true">↗</span></RouterLink>
               <a class="button button-ghost" :href="config.links.facebook" target="_blank" rel="noopener noreferrer">查看 Facebook 活動</a>
@@ -68,9 +75,9 @@
         </section>
 
         <section class="welcome section-wrap">
-          <div class="welcome-mark" aria-hidden="true">T</div>
+          <img class="welcome-mark" src="./images/tara-logo.png" alt="TARA 標誌">
           <div class="welcome-copy">
-            <span class="eyebrow">認識我們</span>
+            <span class="eyebrow">認識佛堂</span>
             <h2>一處可以慢慢認識的佛堂</h2>
             <p>佛堂沿革、理念與參訪資訊，將依佛堂提供的資料整理刊載。</p>
             <RouterLink class="text-link" to="/about">閱讀佛堂介紹 <span aria-hidden="true">→</span></RouterLink>
@@ -81,15 +88,23 @@
           </figure>
         </section>
 
-        <section class="offerings-band">
-          <div class="section-wrap offerings-band-inner">
-            <div>
-              <span class="eyebrow">結緣品</span>
-              <h2>與佛堂結一份善緣</h2>
-              <p>結緣品項目與介紹將依佛堂提供的資料整理刊載。</p>
-              <RouterLink class="button button-blue" to="/offerings">瀏覽結緣品 <span aria-hidden="true">→</span></RouterLink>
+        <section class="home-teacher section-wrap">
+          <div class="home-teacher-photo"><img src="./images/jiacha-rinpoche.jpg" alt="白玉祖古嘉察仁波切"></div>
+          <div class="home-teacher-copy"><span class="eyebrow">VAJRAYANA MASTER</span><h2>尊貴上師</h2><p>白玉祖古嘉察徹滇多傑仁波切，白玉傳承第二任法座持有者貝瑪倫珠嘉措之轉世。</p><RouterLink class="text-link" to="/teachers/jiacha-rinpoche">認識上師 <span aria-hidden="true">→</span></RouterLink></div>
+        </section>
+
+        <section class="home-teacher home-teacher-reverse section-wrap">
+          <div class="home-teacher-photo"><img src="./images/chen-min-teacher.jpg" alt="神諭度母陳敏老師"></div>
+          <div class="home-teacher-copy"><span class="eyebrow">ORACLE TARA</span><h2>神諭度母</h2><p>陳敏老師成立達拉度母佛堂，帶領法會共修並定期安排心靈成長課程。</p><RouterLink class="text-link" to="/teachers/oracle-tara">認識神諭度母 <span aria-hidden="true">→</span></RouterLink></div>
+        </section>
+
+        <section class="home-centers">
+          <div class="section-wrap"><div class="home-section-heading"><span class="eyebrow">OUR CENTERS</span><h2>北中南中心</h2></div>
+            <div class="center-grid">
+              <article class="center-card"><div class="center-logo-placeholder" aria-hidden="true"></div><h3>Taipei Center</h3></article>
+              <article class="center-card"><div class="center-logo-placeholder" aria-hidden="true"></div><h3>Taichung Center</h3></article>
+              <article class="center-card"><div class="center-logo-placeholder" aria-hidden="true"></div><h3>Kaohsiung Center</h3></article>
             </div>
-            <div class="lotus-ornament" aria-hidden="true">✺</div>
           </div>
         </section>
 
@@ -101,6 +116,24 @@
             <a class="button button-blue" :href="config.links.facebook" target="_blank" rel="noopener noreferrer">前往 Facebook 查看活動 <span aria-hidden="true">↗</span></a>
           </div>
           <div class="activity-art" aria-hidden="true"><span class="activity-sun"></span><span class="activity-orbit orbit-one"></span><span class="activity-orbit orbit-two"></span><span class="activity-letter">TARA</span></div>
+        </section>
+
+        <section class="home-advertising section-wrap" aria-label="廣告版位">
+          <div class="home-ad-placeholder">廣告版位 1</div>
+          <div class="home-ad-placeholder">廣告版位 2</div>
+          <div class="home-ad-placeholder">廣告版位 3</div>
+        </section>
+
+        <section class="offerings-band">
+          <div class="section-wrap offerings-band-inner">
+            <div>
+              <span class="eyebrow">結緣品</span>
+              <h2>加持結緣品</h2>
+              <p>依主題瀏覽佛堂提供的法寶與結緣品介紹。</p>
+              <RouterLink class="button button-blue" to="/offerings">瀏覽結緣品 <span aria-hidden="true">→</span></RouterLink>
+            </div>
+            <div class="lotus-ornament" aria-hidden="true">✺</div>
+          </div>
         </section>
 
         <section class="home-visit">
@@ -126,7 +159,11 @@
         <section class="page-intro"><span class="eyebrow">ABOUT TARA</span><h1>認識達拉 TARA</h1><p>佛堂沿革、理念與主尊介紹，將依佛堂提供的資料整理刊載。</p></section>
         <section class="about-feature section-wrap">
           <figure class="about-image"><img src="./images/guanyin-shrine.jpg" alt="佛堂主尊觀世音菩薩"><figcaption>佛堂主尊觀世音菩薩</figcaption></figure>
-          <div class="about-note"><span class="eyebrow">佛堂介紹</span><h2>關於達拉 TARA</h2><p>佛堂沿革、理念與平日活動，將依佛堂提供的資料整理刊載。</p><div class="content-note"><span aria-hidden="true">✦</span> 沿革與理念資料待補</div></div>
+          <div class="about-note"><span class="eyebrow">佛堂介紹</span><h2>關於達拉 TARA</h2><p>「達拉」是梵文 Tara 的音譯，意為度母。佛堂沿革與平日活動資訊，將依佛堂提供的資料整理刊載。</p><div class="content-note"><span aria-hidden="true">✦</span> 佛堂沿革資料待補</div></div>
+        </section>
+        <section class="mandala-intro section-wrap">
+          <div class="mandala-copy"><span class="eyebrow">THE MANDALA</span><h2>壇城配置與色彩</h2><p>佛堂壇城依五行木、火、土、金、水相生的原理，並按東、南、西、北、中方位規劃；壇城周圍以白、黃、紅、藍、綠五色區隔。</p><div class="mandala-colors" aria-label="壇城使用的五種顏色"><span><i class="color-white"></i>白</span><span><i class="color-yellow"></i>黃</span><span><i class="color-red"></i>紅</span><span><i class="color-blue"></i>藍</span><span><i class="color-green"></i>綠</span></div></div>
+          <div class="mandala-main-deities"><span class="eyebrow">主壇城供奉</span><h3>觀音度母三尊</h3><p>主尊為觀世音菩薩，左右兩側分別為綠度母與白度母。</p></div>
         </section>
         <section class="about-banner">
           <div class="section-wrap about-banner-inner"><div><span class="eyebrow">壇城主尊</span><h2>觀音度母三尊</h2><p>主尊為觀世音菩薩，左右兩側分別為綠度母與白度母。</p></div><img src="./images/guanyin-detail.jpg" alt="觀世音菩薩聖像細節"></div>
@@ -135,13 +172,376 @@
     `,
   };
 
-  const OfferingsPage = {
-    data: () => ({ config }),
+  const TeacherDetailPage = {
+    props: ['slug'],
+    data: () => ({
+      profiles: {
+        'jiacha-rinpoche': {
+          eyebrow: 'VAJRAYANA MASTER', title: '尊貴上師', name: '白玉祖古嘉察仁波切', lineage: '白玉傳承', image: './images/jiacha-rinpoche.jpg', alt: '白玉祖古嘉察仁波切照片',
+          paragraphs: [
+            '尊貴的祖古嘉察徹滇多傑仁波切，出身於昆氏血脈、瓦述土司世系的巴納阿涅家族。尊貴的依怙主圖松法王認定仁波切為蓮花生大士二十五位親傳弟子之一「索波拉巴」的殊勝化身，亦為白玉傳承第二任法座持有者貝瑪倫珠嘉措之轉世。',
+            '仁波切自幼接受佛法啟蒙，後前往印度南卓林寺研習佛法，並依止貝諾法王為根本上師，領受寧瑪派教傳與伏藏法門的灌頂、口傳、教授及大圓滿甚深教法。貝諾法王並派遣仁波切來臺弘揚佛法。',
+            '仁波切長期精進實修，曾多次閉關，以寧瑪派三根本為核心持續修持；並隨順弟子的根器與意樂開展佛法事業，同時投入社會服務與慈善利生工作。',
+          ],
+        },
+        'oracle-tara': {
+          eyebrow: 'ORACLE TARA', title: '神諭度母', name: '陳敏老師', lineage: '達拉度母佛堂', image: './images/chen-min-teacher.jpg', alt: '神諭度母陳敏老師照片',
+          paragraphs: [
+            '陳敏老師自幼接觸佛法，秉持慈悲利他的心，投入志工服務與慈善工作，追隨嘉察仁波切的弘法事業。',
+            '老師於 2012 年成立「達拉度母佛堂」，主尊為觀音度母三尊，以「達拉度母、滿願眾生」為理念，希望引導有緣大眾親近度母。',
+            '目前除每週帶領法會共修，也定期安排心靈成長課程。',
+          ],
+        },
+      },
+    }),
+    computed: { teacher() { return this.profiles[this.slug] || this.profiles['jiacha-rinpoche']; } },
     template: `
       <div>
-        <section class="page-intro"><span class="eyebrow">OFFERINGS</span><h1>結緣品</h1><p>結緣品名稱、照片與請供方式，會依佛堂提供的資料整理刊載。</p></section>
-        <section class="section-wrap offerings-empty"><div class="empty-symbol" aria-hidden="true">✺</div><span class="eyebrow">敬請期待</span><h2>結緣品資料整理中</h2><p>想先詢問結緣品，歡迎透過官方 LINE 聯絡佛堂。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">前往 LINE 詢問 <span aria-hidden="true">↗</span></a></section>
-        <section class="offering-footnote section-wrap"><p>網站不提供線上付款或表單；實際請供方式請洽官方 LINE。</p></section>
+        <section class="page-intro"><span class="eyebrow">{{ teacher.eyebrow }}</span><h1>{{ teacher.title }}</h1></section>
+        <section class="section-wrap teacher-detail"><div class="teacher-detail-photo"><img :src="teacher.image" :alt="teacher.alt"></div><article class="teacher-detail-copy"><span class="eyebrow">{{ teacher.lineage }}</span><h2>{{ teacher.name }}</h2><p v-for="(paragraph, index) in teacher.paragraphs" :key="index">{{ paragraph }}</p></article></section>
+        <nav class="section-wrap teacher-page-nav"><RouterLink class="text-link" to="/about">← 認識佛堂</RouterLink><RouterLink class="text-link" :to="slug === 'jiacha-rinpoche' ? '/teachers/oracle-tara' : '/teachers/jiacha-rinpoche'">{{ slug === 'jiacha-rinpoche' ? '神諭度母 →' : '尊貴上師 →' }}</RouterLink></nav>
+      </div>
+    `,
+  };
+
+  const OfferingsPage = {
+    data: () => ({
+      config,
+      activeImages: {},
+      pausedCarousels: {},
+      carouselTimer: null,
+      categories: [
+        { name: '嘎屋', description: '嘎屋（Ghau）是藏式隨身佛龕，可裝藏本尊相關咒輪、佛像或聖物；以下依本尊款式列出。', items: [
+          { name: '藥師佛嘎屋', image: './images/ghau-medicine-buddha.jpg', description: '藥師琉璃光如來簡稱藥師佛，乃為大醫王佛。', more: [
+            '在多劫前發十二誓願救度一切眾生除去貧苦及無明所造之惡因及身心一切惡疾病源，特別對因果業障纏身所引發之病痛、無明痼疾，都有很大的助益。眾生若逢病苦危難或遭逢橫禍或夜被魔魑所壓健康受損、精神錯亂等，無懷疑誠心的向本尊祈請、持誦心咒或名號、禮敬供養讚誦本尊，並常行利生善行，只要不是業力之元壽竭盡，定能滅除所有突發的惡緣，以及疾病的障礙，得佛悲願力救助。',
+          ] },
+          { name: '蓮師嘎屋', image: './images/ghau-guru-rinpoche.jpg', description: '在多劫前，蓮花生大士是藏傳佛教的開基祖師。', more: [
+            '蓮花生大士是阿彌陀佛之化身、觀世音的法語、諸佛之心意，是諸佛菩薩身口意之化身，具有無量無邊不可思議的功德，能了知世出世間一切諸法，顯密圓通。',
+            '蓮師為方便度眾生示現不可思議神通，以慈悲大威德降伏魔眾外道，具足熄滅一切地、水、火、風、空所生諸難，及難調伏的障礙逆境，所求如意、心想事成。',
+          ] },
+          { name: '綠度母嘎屋', image: './images/ghau-green-tara.jpg', description: '綠度母是觀音菩薩慈悲示現，集諸佛菩薩事業功德。', more: [
+            '綠度母是觀音菩薩因慈悲天下眾生流下眼淚的變化身，是集諸佛菩薩事業、功德之本尊，總攝其餘二十尊化身之所有功德。',
+            '【度母】為救度無量眾生急切有力之意，特別是對事業、權勢及運勢的增廣，能息眾生種種苦惱，滿足一切眾生願求，並賜予眾生所盼的成就，滿足眾生祈願而令其心想事成，修持度母法門，能獲得世間種種力量、權勢、財富、增長現世富貴、消除病苦等惡業，如滿願寶、諸事順遂、得福報子息增長，求子得子，所求如意自在。',
+          ] },
+          { name: '四臂觀音嘎屋', image: './images/ghau-avalokiteshvara-4arm.jpg', description: '四臂觀音是諸佛大悲心的化現。', more: [
+            '為救度不同眾生而示現不同相，於六道中救度一切眾生，世人稱為大慈大悲觀世音菩薩，與娑婆世界眾生有甚深因緣，聞聲救苦，諸多行者皆以其為依怙主。',
+            '修誦六字大明咒～能除滅身中百千萬億劫生死重罪，身口意業皆得清淨，速得息災、增益、懷愛、降伏四法成就，抵達解脫的道路，能度六道眾生，能成大菩提，能救苦救難，利益一切有情，功德無量無邊。',
+          ] },
+          { name: '金剛薩埵嘎屋', image: './images/ghau-vajrasattva.jpg', description: '金剛薩埵為五方佛、寂忿百尊的總集身。', more: [
+            '其具有斷、證的一切功德，同時也是除去障礙之大力尊。可令疾病、魑魅魍魎、障礙、罪過等等一切惡事得以止息，如能發大懺悔心能懺除一切罪障，令眾生自無始以來所累積的墮罪、習氣悉得消除，令得清淨。',
+          ] },
+          { name: '黃財神嘎屋', image: './images/ghau-yellow-jambhala.jpg', description: '黃財神是寶身佛所化現的大菩薩，主司財富。', more: [
+            '掌管無盡的財庫，是諸財神的領袖。若如法誠心恭奉、一心持誦財神心咒，能得財神聖眾護法隨身庇祐、開啟財運，令財源廣進、免除窮困，更能增長福德、壽命、智慧，具足世間、出世間一切資糧，法財圓滿，求財富得財富，食祿衣物無缺、所求滿願、受用自在富饒。',
+            '若能更發無上菩提心，救度一切貧苦眾生、廣結善緣、勤行佈施，所獲福德滿盈，不可限量。',
+          ] },
+          { name: '咕嚕咕咧嘎屋', image: './images/ghau-kurukulle.jpg', description: '咕嚕咕咧佛母能增長福慧、權勢與財富。', more: [
+            '咕嚕咕咧佛母專為有情眾生增長福、慧、權勢、財富廣大增長，能掃除人與非人等諸障礙，並將眾生衰損的運氣重新恢復並增強起來，迅速圓滿二資糧。',
+            '修持咕嚕咕咧，可勾招一切事業、權勢所求圓滿，增加福報與運氣、心想事成。人緣增上、魅力無限、所到之處受人歡迎受人愛戴、令其威權具足，廣得善緣得貴人助、在工作升遷上或想轉職者皆能如願，已婚者感情順利、夫妻恩愛、婚姻美滿、家庭和睦，單身者能增強桃花人緣、早日覓得良緣。',
+          ] },
+          { name: '普巴金剛嘎屋', image: './images/ghau-vajrakilaya.jpg', description: '普巴金剛總集一切諸佛菩薩事業。', more: [
+            '因持用威猛誅滅等調伏方式，是故稱之為【降伏事業】大威力普巴金剛。末法時期群魔飛舞，對修行佛法福薄業重之眾生是極為重要之法門。舉凡任何世間法和佛法修行之一切障礙，若能勤修祈請本尊加持庇護，一切障礙惡緣危難無不淨除，能迅速去除惡業疾病、惡神精鬼魔障、惡符邪咒，以及世間事業諸般不順衰敗，均得大力庇護眷顧。',
+          ] },
+          { name: '文殊菩薩嘎屋', image: './images/ghau-manjushri.jpg', description: '文殊菩薩是諸佛智慧總集，手持智慧燄劍。', more: [
+            '代表諸佛菩薩智慧功德。',
+            '能摧破愚痴，罪障消滅，令眾生智慧成就，若能依法持咒念誦，是時行者能開啟智慧，得宿命智、辯才無礙，透過文殊菩薩的智慧觀照，能清除一切無明愚痴、昏暗的蓋障，令行者聰明伶俐、思路靈敏、堅固記憶、消除語業上所造作的罪障，得到與諸佛菩薩之般若智慧。',
+          ] },
+        ] },
+        { name: '護身法寶', description: '各款依本尊、經咒與法器造型區分；下方簡介整理自佛堂舊站，詳細內容可透過官方 LINE 詢問。', items: [
+          { name: '福壽安康寶瓶', images: [
+            { src: './images/tara-p02-01.jpg', alt: '福壽安康寶瓶吊飾' },
+            { src: './images/offerings-longlife-vase.jpg', alt: '福壽安康寶瓶與隨附法物' },
+          ], description: '內含長壽佛、藥師佛經咒卷及總集甘露。', more: ['特別恭請上師依照經典製作，如法裝臟，內含長壽佛經咒卷及藥師佛經咒卷、長壽佛總集甘露與藥師佛總集甘露，更經上師修持長壽佛本尊及藥師佛本尊儀軌，清淨修法開光加持圓滿。'] },
+          { name: '福緣聚財摩尼寶', images: [
+            { src: './images/tara-p02-02.jpg', alt: '福緣聚財摩尼寶吊飾' },
+            { src: './images/offerings-mani-jewel.jpg', alt: '福緣聚財摩尼寶與隨附法物' },
+          ], description: '內含黃財神與咕嚕咕咧經咒卷及總集甘露。', more: ['特別恭請上師依照經典製作，如法裝臟，內含黃財神經咒卷及咕嚕咕咧經咒卷、黃財神總集甘露與咕嚕咕咧總集甘露，更經上師修持黃財神本尊及咕嚕咕咧本尊儀軌，清淨修法開光加持圓滿。'] },
+          { name: '息災如意金剛杵', images: [
+            { src: './images/tara-p02-03.jpg', alt: '息災如意金剛杵吊飾' },
+            { src: './images/offerings-vajra-peace.jpg', alt: '息災如意金剛杵與隨附法物' },
+          ], description: '內含金剛薩埵與觀音菩薩經咒卷及總集甘露。', more: ['特別恭請上師依照經典製作，如法裝臟，內含金剛薩埵經咒卷及觀音菩薩心經咒卷、總集甘露，更經上師修持金剛薩埵本尊及觀音菩薩本尊儀軌，清淨修法開光加持圓滿。'] },
+          { name: '福慧吉祥文殊劍', images: [
+            { src: './images/tara-p02-04.jpg', alt: '福慧吉祥文殊劍吊飾' },
+            { src: './images/offerings-manjushri-sword.jpg', alt: '福慧吉祥文殊劍與隨附法物' },
+          ], description: '內含文殊菩薩與綠度母經咒卷及總集甘露。', more: ['特別恭請上師依照經典製作，如法裝臟，內含文殊菩薩經咒卷及綠度母經咒卷、文殊菩薩總集甘露與綠度母總集甘露，更經上師修持文殊菩薩本尊及綠度母本尊儀軌，清淨修法開光加持圓滿。'] },
+          { name: '八大黑嚕嘎普巴杵', images: [
+            { src: './images/tara-p02-05.jpg', alt: '八大黑嚕嘎普巴杵吊飾' },
+            { src: './images/offerings-ghau-eight-herukas.jpg', alt: '八大黑嚕嘎普巴杵與隨附法物' },
+          ], description: '內含八大黑嚕嘎心咒卷與修法甘露。', more: ['特別恭請上師依照經典製作，如法裝臟，內含八大黑嚕嘎心咒卷及貝諾法王修法八大黑嚕嘎甘露、紐續寺廟修法八大黑嚕嘎甘露，更經上師修持八大黑嚕嘎本尊儀軌，清淨修法開光加持圓滿。'] },
+          { name: '普巴金剛普巴杵', images: [
+            { src: './images/tara-p02-06.jpg', alt: '普巴金剛普巴杵吊飾' },
+            { src: './images/offerings-vajrakilaya.jpg', alt: '普巴金剛普巴杵與隨附法物' },
+          ], description: '恭請上師修持普巴金剛本尊儀軌。', more: ['特別恭請上師修持普巴金剛本尊儀軌，清淨修法開光加持圓滿。'] },
+          { name: '摧破息災金剛杵', image: './images/tara-p02-08.jpg', description: '恭請上師修持摧破金剛及金剛手菩薩本尊儀軌。', more: ['特別恭請上師修持摧破金剛本尊及金剛手菩薩本尊儀軌，清淨修法開光加持圓滿。'] },
+          { name: '金剛盔甲羯摩杵', image: './images/tara-p02-09.jpg', description: '恭請上師修持忿怒蓮師金剛盔甲本尊儀軌。', more: ['特別恭請上師修持忿怒蓮師金剛盔甲本尊儀軌，清淨修法開光加持圓滿。'] },
+          { name: '威猛降魔金剛斧', image: './images/tara-p02-10.jpg', description: '恭請上師修持三位本尊儀軌。', more: ['特別恭請上師修持獅面空行母本尊、金剛亥母本尊及黑忿怒空行母本尊儀軌，清淨修法開光加持圓滿。'] },
+          { name: '大鵬金翅鳥護身項鍊', images: [
+            { src: './images/tara-p02-11.jpg', alt: '大鵬金翅鳥護身項鍊正面' },
+            { src: './images/offerings-garuda-pendant.jpg', alt: '大鵬金翅鳥護身項鍊背面' },
+          ], description: '恭請上師修持大鵬金翅鳥本尊儀軌，背面書寫種子字。', more: ['特別恭請上師修持大鵬金翅鳥本尊儀軌，清淨修法開光加持圓滿。背面由仁波切親自書寫種子字。'] },
+          { name: '九宮八卦護身墜飾', images: [
+            { src: './images/tara-p02-12.jpg', alt: '九宮八卦護身墜飾正面' },
+            { src: './images/offerings-nine-palace-pendant.jpg', alt: '九宮八卦護身墜飾背面' },
+          ], description: '九宮八卦護身墜飾，背面由仁波切親自書寫種子字。', more: ['將九宮八卦懸掛於公司、住家大門上或屋內、辦公室、佛堂及屋角等處，可作為回遮與祈願家宅平安之用。背面由仁波切親自書寫「嗡 啊 吽」種子字。'] },
+          { name: '九宮八卦小護身墜飾', description: '九宮八卦咒輪小款隨身墜飾。', more: ['將九宮八卦懸掛於公司、住家大門上或屋內、辦公室、佛堂及屋角等處，可作為回遮與祈願家宅平安之用。背面由仁波切親自書寫「嗡 啊 吽」種子字。詳細尺寸與請供資訊請洽官方 LINE。'] },
+        ] },
+        { name: '手環與項鍊', description: '多款日常配戴的本尊主題手環與項鍊，部分款式附有佛卡。', items: [
+          { name: '息 金剛薩埵運動手環', image: './images/tara-p04-01.jpg', description: '以金剛薩埵為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
+          { name: '增 黃財神運動手環', image: './images/tara-p04-02.jpg', description: '以黃財神為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
+          { name: '懷 咕嚕咕咧佛母運動手環', image: './images/tara-p04-03.jpg', description: '以咕嚕咕咧佛母為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
+          { name: '誅 金剛手菩薩運動手環', image: './images/tara-p04-04.jpg', description: '以金剛手菩薩為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
+          { name: '圓滿 綠度母運動手環', image: './images/tara-p04-05.jpg', description: '以綠度母為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
+          { name: '長壽佛運動手環', image: './images/tara-p04-06.jpg', description: '以長壽佛為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
+          { name: '度母五色圓滿手環及佛卡', image: './images/tara-p05-01.jpg', description: '五色度母主題手環與佛卡組合。' },
+          { name: '度母七色手環', description: '七色度母主題手環。' },
+          { name: '度母七色項鏈', description: '七色度母主題項鍊。' },
+        ] },
+        { name: '加持咒輪圖', description: '包含勾松咒輪圖與九宮八卦圖等款式，部分圖卡依尺寸區分。', items: [
+          { name: '勾松咒輪圖（大）', description: '蓮師伏藏咒輪圖；佛堂舊站介紹可懸掛於門楣或放置於家中、辦公空間。' },
+          { name: '勾松咒輪圖（中）', description: '蓮師伏藏咒輪圖；佛堂舊站介紹可懸掛於門楣或放置於家中、辦公空間。' },
+          { name: '鎮宅化煞九宮八卦圖立牌（文殊九宮八卦立牌）', description: '文殊九宮八卦圖立牌；商品名稱與規格請以佛堂提供資訊為準。' },
+          { name: '九宮八卦圖（中）', description: '九宮八卦咒輪圖中款；佛堂舊站介紹可隨身攜帶或懸掛於空間中。' },
+        ] },
+        { name: '其他結緣品', description: '目前包含西藏手工八吉祥臥香爐與聚財滿願杯；臥香爐有不同尺寸。', items: [
+          { name: '西藏手工八吉祥臥香爐', images: [
+            { src: './images/offering-incense-burner-front.png', alt: '西藏手工八吉祥臥香爐正面' },
+            { src: './images/offering-incense-burner-detail.png', alt: '西藏手工八吉祥臥香爐使用情境' },
+          ], description: '西藏手工製八吉祥臥香爐，提供不同尺寸。' },
+          { name: '聚財滿願杯', image: './images/offering-mug-cropped.jpg', description: '達拉 TARA 主題隨行杯。' },
+        ] },
+      ],
+      topics: [
+        { to: '/offerings/ghau', eyebrow: 'GHau', title: '心想事成嘎屋', image: './images/ghau-banner.png', description: '認識隨身佛龕的意義、裝臟聖物與嘎屋款式。' },
+        { to: '/offerings/protective', eyebrow: 'PROTECTIVE CHARMS', title: '護身法寶', image: './images/protective-banner.png', description: '依本尊、經咒與法器造型瀏覽各款護身法寶。' },
+        { to: '/offerings/mantra-diagrams', eyebrow: 'MANTRA DIAGRAMS', title: '加持咒輪圖', image: './images/mantra-banner.png', description: '認識勾松咒輪圖與九宮八卦圖等品項。' },
+        { to: '/offerings/smoke-offering', eyebrow: 'SMOKE OFFERING', title: '煙供除障粉', image: './images/smoke-offering-banner.png', description: '瀏覽煙供除障粉品項與相關介紹。' },
+      ],
+    }),
+    mounted() {
+      const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reducedMotion) {
+        this.carouselTimer = window.setInterval(() => {
+          this.overviewCategories.forEach(category => category.items.forEach(item => {
+            if (item.images && item.images.length > 1 && !this.pausedCarousels[item.name]) this.changeImage(item, 1);
+          }));
+        }, 5000);
+      }
+    },
+    beforeUnmount() {
+      window.clearInterval(this.carouselTimer);
+    },
+    computed: {
+      overviewCategories() {
+        return this.categories
+          .filter(category => ['手環與項鍊', '其他結緣品'].includes(category.name));
+      },
+    },
+    methods: {
+      carouselIndex(item) {
+        return this.activeImages[item.name] || 0;
+      },
+      changeImage(item, amount) {
+        const count = item.images.length;
+        this.activeImages[item.name] = (this.carouselIndex(item) + amount + count) % count;
+      },
+      pauseCarousel(item, paused) {
+        this.pausedCarousels[item.name] = paused;
+      },
+    },
+    template: `
+      <div>
+        <section class="page-intro"><span class="eyebrow">OFFERINGS</span><h1>加持結緣品</h1><p>達拉佛堂殊勝法寶及聖物</p></section>
+        <section class="section-wrap offering-topics" aria-label="結緣品專題介紹">
+          <div class="offering-topic-grid">
+            <RouterLink v-for="topic in topics" :key="topic.to" :to="topic.to" class="offering-topic-card">
+              <img :src="topic.image" :alt="topic.title + '主題圖片'" loading="lazy">
+              <div class="offering-topic-copy"><span class="eyebrow">{{ topic.eyebrow }}</span><h3>{{ topic.title }}</h3><p>{{ topic.description }}</p><span class="text-link">了解更多 <b aria-hidden="true">→</b></span></div>
+            </RouterLink>
+          </div>
+        </section>
+        <section class="section-wrap offerings-list" aria-label="結緣品項介紹">
+          <section v-for="category in overviewCategories" :key="category.name" class="offering-category">
+            <div class="offering-category-heading"><div><span class="eyebrow">TARA OFFERINGS</span><h2>{{ category.name }}</h2></div><p class="offering-category-description">{{ category.description }}</p></div>
+            <ul class="offering-grid">
+              <li v-for="item in category.items" :key="item.name" class="offering-item" :class="{ 'offering-item--no-image': !item.image && !(item.images && item.images.length) }">
+                <div class="offering-image" :class="{ 'offering-image-gallery': item.images && item.images.length > 1 }">
+                  <img v-if="item.image" :src="item.image" :alt="item.name">
+                  <div v-else-if="item.images && item.images.length" class="offering-carousel" @mouseenter="pauseCarousel(item, true)" @mouseleave="pauseCarousel(item, false)" :aria-label="item.name + '照片輪播'">
+                    <img :src="item.images[carouselIndex(item)].src" :alt="item.images[carouselIndex(item)].alt || item.name" loading="lazy">
+                  </div>
+                  <div v-else class="offering-image-empty" aria-hidden="true"></div>
+                </div>
+                <div class="offering-item-copy"><h3 class="offering-name">{{ item.name }}</h3><p v-if="item.description" class="offering-item-description">{{ item.description }}</p><p v-if="item.note" class="offering-note">{{ item.note }}</p></div>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section class="offering-footnote section-wrap"><p>品項與庫存狀態可能變動，請供前請透過官方 LINE 確認。本網站不提供線上付款或請供表單。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問請供方式 <span aria-hidden="true">↗</span></a></section>
+      </div>
+    `,
+  };
+
+  const OfferingDetailPage = {
+    props: ['slug'],
+    data: () => ({
+      config,
+      activeImages: {},
+      pausedCarousels: {},
+      expandedDetails: {},
+      carouselTimer: null,
+      categories: OfferingsPage.data().categories,
+      smokeOfferingItems,
+      pages: {
+        ghau: {
+          title: '心想事成嘎屋', category: '嘎屋', eyebrow: 'GHau', image: './images/ghau-banner.png',
+          lead: '',
+          sections: [
+            { id: 'meaning', title: '隨身的廟宇', paragraphs: [
+              '嘎屋（ghau）是藏語的音譯，意指小型佛龕、護身佛的盒子，又稱為「隨身的廟宇」。嘎屋是將佛教三寶聖物佩掛於自身上，其內可裝臟各傳承的守護咒輪、小佛像、舍利子、甘露及各種的加持聖物。',
+              '有特殊裝臟開光的嘎屋，亦代表某依本尊的壇城，是極為殊勝的護身加持物。可阻擋邪穢魔鬼、非人之傷害，並得到善神護法護佑，消除一切障礙。',
+            ] },
+            { id: 'deities', title: '十尊佛與法徽', paragraphs: [
+              '每個嘎屋正面為十尊佛，背面為無量壽佛學會法徽。',
+              '十位本尊之嘎屋各有其特殊功德與加持力，如此殊勝難得的嘎屋若能隨身配帶，從外在而言，可以免除八難十六畏怖等違緣逆境。從內在而言，可以增廣個人福壽、權勢，俾令順緣增上，諸事吉祥，圓滿所希求之願。',
+            ] },
+            { id: 'contents', title: '嘎屋裝臟物', bullets: [
+              '所依每位本尊咒語',
+              '所依聖物總聚丸 (Tendu Rilbu，藏音「滇堆日布」，請參見下方說明)',
+              '尊貴的上師 貝諾法王賜予之甘露及特別修法加持的米',
+              '尊貴的上師 貝諾法王賜予之白玉不斷傳承下來的金剛砂',
+              '西康德格印經墨汁甘露丸：德格印經院的說部、注疏部中具足八萬四千法 的內容，用模版墨汁製印時流出的墨汁，收集製成甘露丸。(此墨汁為植物性墨汁)',
+            ], subheading: '所依聖物總聚丸', subparagraphs: [
+              '乃是由來源超過400樣、種類多達275種經過加持之神聖所依誓言物所集合在一起而製成的藥丸，其中包括有如：佛陀、蓮花生大士、耶謝措嘉佛母、龍欽巴尊者、吉美林巴尊者、湯東嘉波尊者、噶瑪洽美仁波切、岡波巴大師、大寶法王噶瑪巴、薩千．貢噶寧波尊者、米滂仁波切、宗薩蔣揚欽哲仁波切、蔣貢工珠仁波切、前世白玉貝諾法王、前世白玉噶瑪古千法王、前世敦珠法王、前世頂果欽哲法王等各大教派的殊勝成就者、伏藏大師們的聖骨、頭髮、血、肉、衣物、甘露，以及包括白玉寺、敏卓林寺、雪謙寺、噶陀寺等寧瑪主寺修法的甘露法藥。',
+              '此次南卓林寺將這些種類眾多、殊勝不可言的加持聖物匯集在一起，製作成了此一藥丸－「所依聖物總聚丸」，可謂極為希有珍貴、應當如理珍重。',
+            ] },
+            { id: 'wear', title: '日常配戴提醒', paragraphs: [
+              '所有「嘎屋」皆由學會住持恭請眾仁波切，喇嘛共同如法裝臟，開光加持。數量有限，請事先詢問登記。',
+              '嘎屋日常生活中配戴在身上勿取下(除沐浴時)尤其是睡覺時更要配戴在身上。',
+            ] },
+          ], previous: null, next: { title: '護身法寶', to: '/offerings/protective' },
+        },
+        protective: {
+          title: '護身法寶', category: '護身法寶', eyebrow: 'PROTECTIVE CHARMS', image: './images/protective-banner.png',
+          lead: '',
+          sections: [
+            { id: 'protective-intro', title: '殊勝護身法寶', paragraphs: [
+              '達拉護身法寶內含珍貴的裝臟物甘露與各本尊經咒，特別恭請尊貴的嘉察仁波切與僧眾如法製作裝臟、開光修法、灑淨加持圓滿，及多位尊貴的法王親臨佛堂修法開光加持。佛堂平日舉辦法會、不斷修法，匯聚殊勝加持力。現開放與有緣大眾請供，實屬難得的緣分。',
+              '請供佩戴者如具信心、恭敬心與虔誠心相應，可得諸佛菩薩護佑。隨身配戴或攜帶身上，有如佛菩薩的金剛護身般，可得極大保護力，任何魔障邪氣不能近身；若能搭配煙供粉常常淨化，更能常保清淨，得好運勢不斷增長，一切順心如意。',
+            ] },
+            { id: 'protective-care', title: '配戴護身法寶注意事項', bullets: [
+              '日常生活中隨身配戴，尤其出入磁場不佳的場所（如醫院、喪事）可以保護平安勿取下，回家後立即以煙供粉薰燒，睡覺時更需配戴。',
+              '沐浴時請取下，避免沾水，以免法寶內的加持物受損。',
+              '可不定期帶到佛堂，恭請仁波切加持灑淨。',
+              '平時不配戴時，可置於家中乾淨桌面或佛堂，並定期以除障粉薰燒淨化。',
+              '若有損壞，請帶至佛堂處理。',
+            ] },
+          ], previous: { title: '嘎屋', to: '/offerings/ghau' }, next: { title: '加持咒輪圖', to: '/offerings/mantra-diagrams' },
+        },
+        'mantra-diagrams': {
+          title: '加持咒輪圖', category: '加持咒輪圖', eyebrow: 'MANTRA DIAGRAMS', image: './images/mantra-banner.png',
+          lead: '',
+          sections: [
+            { id: 'gosung', title: '勾松咒輪圖', image: './images/mantra-gosung.jpg', subsections: [
+              { title: '由來', paragraphs: [
+                '蓮師巖藏大威力 驅魔鎮宅護守家宅大門咒輪，藏名譯音為（勾松松扣），是取伏藏大師敦都林巴尊者，由巖藏寶庫中取出蓮師所畫留傳後世弟子。',
+                '藏密祖師蓮花生大士，為救度末法眾生僻脫一切邪魔凶鬼、及傷害眾生各種病魔精鬼的侵害，蓮師化現大護法九足蝎子，噴出熾烈火焰，噉食催伏傷害眾生一切邪魔凶神、羅剎、山精鬼怪。',
+                '此護門鎮宅咒輪「勾松」必須展開明顯，勿折疊捲曲，掛在任何門楣上，可以保護鎮宅平安，使所有好鬥的邪魔、怨鬼、男鬼、活鬼（多為女性）、厲鬼、邪靈之類等，都不敢來損害擾亂，並且將它們的路徑中斷，使之無門路可循！因此九足頭黑色鐵蠍護法，即是「給共」魔王的刺星和終結者！',
+              ] },
+              { title: '功德利益', paragraphs: [
+                '將此蓮師巖藏大威力咒護輪懸掛於自宅大門上，一切邪魔凶神惡鬼精靈見者心驚膽顫懼怕，更能將其抵擋於遠處無法靠近，此門咒護輪有此特別之力量，更能保護行者不受一切外來邪魔精鬼及外道惡符咒之侵害與障礙，而強行侵入傷害眾生精鬼邪魔自心將碎裂，遠離逃命。',
+              ] },
+              { title: '注意事項', paragraphs: [
+                '鎮宅咒輪「勾松」圖，由上師加持開光。勾松咒輪圖卡可隨身攜帶，或掛在大門門楣上保護家宅平安；也可以掛立在客廳、辦公室、商店、公司行號、寺院道場、關房。',
+                '護輪需常保持潔淨，而且必須謙虔誠恭敬，千萬不可起輕蔑毀謗，亦不可隨便印製發送。慎重。',
+              ] },
+            ] },
+            { id: 'nine-palace', title: '九宮八卦', image: './images/mantra-nine-palace.jpg', subsections: [
+              { title: '由來', paragraphs: [
+                '此九宮八卦咒輪牌，是由西藏密宗開山祖師─蓮花生大士，為眾生於世間因受時空、方位不吉祥所生障難，特聚集梵、藏、漢三地破除各種兇煞之鎮宅安居妙寶而成。',
+              ] },
+              { title: '功德利益', paragraphs: [
+                '吉祥九宮八卦咒輪牌，藉由上師開光的力量，隨身佩戴於身上或繫於包包上可以趨吉避凶，可以有效避開、迴遮一切災煞、歲煞、劫煞、伏兵、大禍、太歲、歲破等諸年月日時分秒時辰煞星的無明侵害，增善緣、滅惡緣，息災破禍，息疾病而添福壽，化凶煞為清涼，提昇吉祥能量，百事皆順，無禁無忌、吉祥如意。將此咒牌懸掛於公司門口或辦公室後方、住家大門上、屋內佛堂，可防範因人、事、物、門向、地理、時空之沖剋所生兇煞，阻擋一切不祥災禍，轉禍為福，百無禁忌，於宅內安居者，不論錢財、婚姻、子嗣、人緣、名位、迴遮一切太歲、歲破、劫煞、災煞、歲煞、伏兵、大禍等諸年月日時煞星。',
+                '對於阻擋路沖、灶、廁、門、床等不利方位所衍生的噩運、凶煞，在化解風水煞氣，將有趨吉避凶，令人意想不到的神奇功效得諸佛菩薩之加庇而善緣生生不息，滅惡緣而無災禍，息疾病而添福壽，家安宅吉。',
+              ] },
+              { title: '注意事項', paragraphs: [
+                '可隨身攜帶或掛貼自宅大門門帽上保護家宅平安，需常保持潔淨，而且必須謙虔誠恭敬，千萬不可起輕蔑毀謗，亦不可隨便印製發送。',
+              ] },
+            ] },
+          ], previous: { title: '護身法寶', to: '/offerings/protective' }, next: { title: '煙供除障粉', to: '/offerings/smoke-offering' },
+        },
+        'smoke-offering': {
+          title: '煙供除障粉', eyebrow: 'SMOKE OFFERING', image: './images/smoke-offering-banner.png',
+          lead: '煙供除障粉品項與介紹；佛堂舊站介紹其作為煙供與供養用香粉。詳細請供資訊請洽官方 LINE。',
+          sections: [],
+          previous: { title: '加持咒輪圖', to: '/offerings/mantra-diagrams' }, next: null,
+        },
+      },
+    }),
+    computed: {
+      detail() {
+        return this.pages[this.slug] || this.pages.ghau;
+      },
+      displayItems() {
+        if (this.slug === 'smoke-offering') return this.smokeOfferingItems;
+        const category = this.categories.find(item => item.name === this.detail.category);
+        if (!category) return [];
+        return category.items;
+      },
+    },
+    mounted() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      this.carouselTimer = window.setInterval(() => {
+        this.displayItems.forEach(item => {
+          if (item.images && item.images.length > 1 && !this.pausedCarousels[item.name]) this.changeImage(item, 1);
+        });
+      }, 5000);
+    },
+    beforeUnmount() {
+      window.clearInterval(this.carouselTimer);
+    },
+    methods: {
+      carouselIndex(item) {
+        return this.activeImages[item.name] || 0;
+      },
+      changeImage(item, amount) {
+        const count = item.images.length;
+        this.activeImages[item.name] = (this.carouselIndex(item) + amount + count) % count;
+      },
+      pauseCarousel(item, paused) {
+        this.pausedCarousels[item.name] = paused;
+      },
+      toggleItemDetails(name) {
+        this.expandedDetails[name] = !this.expandedDetails[name];
+      },
+    },
+    template: `
+      <div class="offering-detail-page" :class="{ 'offering-detail-page--ghau': slug === 'ghau' }">
+        <div class="section-wrap offering-breadcrumb"><RouterLink to="/offerings">結緣品總覽</RouterLink><span aria-hidden="true">／</span><span>{{ detail.title }}</span></div>
+        <section class="offering-detail-hero"><img :src="detail.image" :alt="detail.title + '主題圖片'"></section>
+          <header class="section-wrap offering-detail-heading"><span class="eyebrow">{{ detail.eyebrow }}</span><h1>{{ detail.title }}</h1><p v-if="detail.lead">{{ detail.lead }}</p></header>
+        <article class="section-wrap offering-detail-content">
+          <nav v-if="detail.sections.length > 1 && detail.category !== '嘎屋'" class="offering-detail-toc" aria-label="本頁章節導覽"><a v-for="section in detail.sections" :key="section.id" :href="'#' + section.id">{{ section.title }}</a></nav>
+          <section v-for="section in detail.sections" :id="section.id" :key="section.id" class="offering-detail-section">
+            <h2>{{ section.title }}</h2>
+            <img v-if="section.image" class="offering-detail-section-image" :src="section.image" :alt="section.title" loading="lazy">
+            <p v-for="(paragraph, index) in section.paragraphs || []" :key="'p' + index">{{ paragraph }}</p>
+            <ul v-if="section.bullets"><li v-for="bullet in section.bullets" :key="bullet">{{ bullet }}</li></ul>
+            <div v-if="section.subheading" class="offering-detail-subsection"><h3>{{ section.subheading }}</h3><p v-for="(paragraph, index) in section.subparagraphs" :key="'sub' + index">{{ paragraph }}</p></div>
+            <div v-for="subsection in section.subsections || []" :key="subsection.title" class="offering-detail-subsection"><h3>{{ subsection.title }}</h3><p v-for="(paragraph, index) in subsection.paragraphs" :key="'sub-' + index">{{ paragraph }}</p></div>
+          </section>
+          <section v-if="slug !== 'mantra-diagrams'" class="offering-detail-products"><div class="offering-detail-section-heading"><span class="eyebrow">BROWSE ITEMS</span><h2>{{ detail.category === '嘎屋' ? '本尊嘎嗚' : detail.title + '品項' }}</h2></div>
+            <ul class="offering-grid">
+              <li v-for="item in displayItems" :key="item.name" class="offering-item" :class="{ 'offering-item--no-image': !item.image && !(item.images && item.images.length) }">
+                <div class="offering-image" :class="{ 'offering-image-gallery': item.images && item.images.length > 1 }">
+                  <img v-if="item.image" :src="item.image" :alt="item.name" loading="lazy">
+                  <div v-else-if="item.images && item.images.length" class="offering-carousel" @mouseenter="pauseCarousel(item, true)" @mouseleave="pauseCarousel(item, false)" :aria-label="item.name + '照片輪播'"><img :src="item.images[carouselIndex(item)].src" :alt="item.images[carouselIndex(item)].alt || item.name" loading="lazy"></div>
+                </div>
+                <div class="offering-item-copy"><h3 class="offering-name">{{ item.name }}</h3><p v-if="item.description" class="offering-item-description">{{ item.description }}</p><div v-if="item.more && item.more.length" class="offering-item-details"><div class="offering-item-details-panel" :class="{ 'is-open': expandedDetails[item.name] }" :aria-hidden="!expandedDetails[item.name]"><div class="offering-item-details-inner"><p v-for="(paragraph, index) in item.more" :key="'more' + index">{{ paragraph }}</p></div></div><button type="button" class="offering-item-details-toggle" :aria-expanded="!!expandedDetails[item.name]" @click="toggleItemDetails(item.name)">功德利益 <span aria-hidden="true" :class="{ 'is-open': expandedDetails[item.name] }">⌄</span></button></div></div>
+              </li>
+            </ul>
+          </section>
+        </article>
+        <nav class="section-wrap offering-detail-pager" aria-label="專題頁面導覽"><RouterLink class="button button-blue" to="/offerings">← 回到總覽頁</RouterLink><RouterLink v-if="detail.next" class="button button-blue offering-detail-next" :to="detail.next.to">{{ detail.next.title }} →</RouterLink></nav>
+        <section class="offering-detail-contact"><div class="section-wrap"><span class="eyebrow">QUESTIONS &amp; OFFERINGS</span><h2>請供與品項資訊</h2><p>品項與請供狀態可能更新，請先透過官方 LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問 <span aria-hidden="true">↗</span></a></div></section>
       </div>
     `,
   };
@@ -163,7 +563,7 @@
       <div>
         <section class="page-intro"><span class="eyebrow">VISIT &amp; CONTACT</span><h1>交通與聯絡</h1><p>參訪前可先透過官方 LINE 詢問安排。</p></section>
         <section class="section-wrap visit-layout">
-          <div class="visit-details"><span class="eyebrow">佛堂位置</span><h2>歡迎蒞臨</h2><address>{{ config.address }}</address><p>參訪安排與交通問題，歡迎先透過 LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問參訪方式 <span aria-hidden="true">↗</span></a><a class="map-open-link" :href="config.links.map" target="_blank" rel="noopener noreferrer">在 Google 地圖開啟 <span aria-hidden="true">↗</span></a></div>
+          <div class="visit-details"><span class="eyebrow">佛堂位置</span><h2>歡迎蒞臨</h2><address>{{ config.address }}</address><div class="transport-info"><h3>交通資訊</h3><p><strong>捷運：</strong>板南線「忠孝敦化站」1 號出口。</p><p><strong>公車：</strong>「捷運忠孝敦化站」步行約 1 分鐘；「忠孝敦化路口」步行約 3 分鐘。</p><p>頂呱呱忠孝店旁，羅馬大廈 8 樓。</p></div><p>參訪安排與交通問題，歡迎先透過 LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問參訪方式 <span aria-hidden="true">↗</span></a><a class="map-open-link" :href="config.links.map" target="_blank" rel="noopener noreferrer">在 Google 地圖開啟 <span aria-hidden="true">↗</span></a></div>
           <div class="map-frame"><iframe :src="config.mapEmbedUrl" title="達拉 TARA 位置地圖" width="600" height="450" style="border:0" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
         </section>
         <section class="section-wrap contact-section"><div class="contact-heading"><span class="eyebrow">OFFICIAL ACCOUNTS</span><h2>官方聯絡與社群</h2></div><nav class="social-links" aria-label="官方聯絡與社群"><a :href="config.links.line" target="_blank" rel="noopener noreferrer"><span>LINE</span> 詢問請供與參訪方式 <b aria-hidden="true">↗</b></a><a :href="config.links.facebook" target="_blank" rel="noopener noreferrer"><span>FB</span> Facebook 官方粉專 <b aria-hidden="true">↗</b></a><a :href="config.links.instagram" target="_blank" rel="noopener noreferrer"><span>IG</span> Instagram 官方帳號 <b aria-hidden="true">↗</b></a></nav></section>
@@ -176,7 +576,9 @@
     routes: [
       { path: '/', component: HomePage },
       { path: '/about', component: AboutPage },
+      { path: '/teachers/:slug', component: TeacherDetailPage, props: true },
       { path: '/offerings', component: OfferingsPage },
+      { path: '/offerings/:slug', component: OfferingDetailPage, props: true },
       { path: '/activities', component: ActivitiesPage },
       { path: '/visit', component: VisitPage },
     ],
