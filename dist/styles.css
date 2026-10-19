@@ -305,27 +305,53 @@ figure, p, h1, h2 { margin-top: 0; }
   .visit-strip { align-items: flex-start; flex-direction: column; }
 }
 @media (max-width: 620px) {
+  .site-header { padding-inline: 16px; column-gap: 12px; }
   .brand { font-size: 15px; }
   .brand img { height: 43px; width: 43px; }
-  .header-contact { padding: 10px 14px; font-size: 12px; }
-  .main-nav { justify-content: flex-start; gap: 23px; }
+  .header-contact { min-height: 44px; padding: 10px 14px; font-size: 13px; }
+  .main-nav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); justify-content: stretch; gap: 6px; overflow: visible; padding: 9px 0 4px; }
+  .main-nav a { min-width: 0; min-height: 44px; justify-content: center; font-size: 13px; text-align: center; }
+  .main-nav-zh { white-space: nowrap; }
+  .main-nav-en { font-size: 9px; letter-spacing: .07em; }
   .hero { min-height: 550px; height: 78vh; max-height: 690px; }
   .hero-image { object-position: 58% center; }
   .hero-shade { background: linear-gradient(90deg, rgba(13,39,65,.77), rgba(13,39,65,.35)), linear-gradient(0deg, rgba(13,39,65,.23), transparent); }
-  .hero-content { left: 27px; right: 22px; top: 48%; }
-  .hero h1 { font-size: 48px; }
-  .hero-content p { font-size: 14px; }
-  .hero-actions { align-items: stretch; flex-direction: column; max-width: 245px; }
-  .hero-caption { bottom: 17px; font-size: 9px; }
+  .hero-content { left: 20px; right: 20px; top: 48%; }
+  .hero h1 { font-size: clamp(38px, 11vw, 46px); letter-spacing: .04em; }
+  .hero-content p { font-size: 16px; line-height: 1.8; }
+  .hero-actions { align-items: stretch; flex-direction: column; max-width: 270px; }
+  .hero-actions .button { min-height: 50px; font-size: 15px; }
+  .hero-caption { bottom: 17px; font-size: 11px; }
   .section-wrap { width: min(100% - 40px, 520px); }
+  .eyebrow { font-size: 12px; }
+  .button { font-size: 15px; }
+  .text-link { font-size: 15px; }
+  .welcome-copy p, .activity-copy p, .visit-strip p, .about-note p, .visit-details p,
+  .intro-copy, .mandala-copy p, .mandala-main-deities p, .teacher-profile-copy p,
+  .teacher-detail-copy p, .offering-topics-heading p, .offering-topic-copy p,
+  .offering-detail-heading p, .offering-detail-section p, .offering-detail-section li,
+  .offering-item-description, .offering-item-details p, .activity-card-copy p,
+  .activity-note, .social-links a { font-size: 16px; }
+  .welcome-photo figcaption, .about-image figcaption { font-size: 12px; }
+  .mandala-colors span { font-size: 14px; }
+  .content-note { font-size: 14px; }
+  .offering-breadcrumb { font-size: 14px; }
+  .offering-detail-toc a { font-size: 14px; }
+  .offering-item-details-toggle { font-size: 16px; }
+  .offering-name { font-size: 16px; }
+  .offering-note { font-size: 13px; }
+  .offering-footnote { font-size: 15px; }
+  .transport-info h3 { font-size: 16px; }
+  .transport-info p, .map-open-link { font-size: 15px; }
+  .social-links a span { font-size: 11px; }
   .welcome { grid-template-columns: 1fr; gap: 20px; padding-block: 58px; }
   .welcome-mark { width: 52px; height: 52px; }
   .welcome-photo { grid-column: auto; margin-top: 10px; }
   .welcome-photo img { height: 245px; }
   .offerings-band-inner { min-height: 315px; }
   .lotus-ornament { right: -24px; font-size: 155px; }
-  .home-advertising { gap: 8px; padding-block: 34px; }
-  .home-ad-placeholder { font-size: 9px; letter-spacing: .04em; }
+  .home-advertising { grid-template-columns: 1fr; gap: 10px; padding-block: 34px; }
+  .home-ad-placeholder { min-height: 118px; aspect-ratio: auto; font-size: 12px; letter-spacing: .04em; }
   .activity-preview { grid-template-columns: 1fr; gap: 28px; padding-block: 56px; }
   .activity-art { height: 190px; }
   .visit-strip { padding-block: 44px; gap: 25px; }
