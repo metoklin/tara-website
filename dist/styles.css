@@ -339,11 +339,14 @@ figure, p, h1, h2 { margin-top: 0; }
   .offering-detail-toc a { font-size: 14px; }
   .offering-item-details-toggle { font-size: 16px; }
   .offering-name { font-size: 16px; }
-  .offering-note { font-size: 13px; }
+  .offering-note { font-size: 14px; }
   .offering-footnote { font-size: 15px; }
+  .offering-category-description, .offering-detail-contact p { font-size: 15px; }
   .transport-info h3 { font-size: 16px; }
   .transport-info p, .map-open-link { font-size: 15px; }
   .social-links a span { font-size: 11px; }
+  .site-footer { font-size: 13px; }
+  .footer-brand span { font-size: 13px; }
   .welcome { grid-template-columns: 1fr; gap: 20px; padding-block: 58px; }
   .welcome-mark { width: 52px; height: 52px; }
   .welcome-photo { grid-column: auto; margin-top: 10px; }
