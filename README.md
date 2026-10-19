@@ -1,5 +1,7 @@
 # 達拉 TARA 靜態網站
 
+**[開啟達拉 TARA 網站首頁](https://metoklin.github.io/tara-website/)**
+
 網站本體位於 `dist/`，直接以靜態檔案執行，不需安裝 Node.js、npm 或建置工具。可直接開啟 `dist/index.html` 預覽；導覽使用網址雜湊（例如 `#/about`）。
 
 ## 修改位置
