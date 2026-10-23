@@ -16,9 +16,7 @@
   const offeringCoverSlides = [
     { image: './images/ghau-banner.png', title: '心想事成嘎屋' },
     { image: './images/protective-banner.png', title: '護身法寶' },
-    { image: './images/mantra-banner.png', title: '加持咒輪圖' },
-    { image: './images/smoke-offering-banner.png', title: '煙供除障粉' },
-    { image: './images/offering-other-cover.png', title: '其他結緣品' },
+    { image: './images/offering-mug-home-cover.jpg', title: '達拉 TARA 杯' },
   ];
 
   const SiteHeader = {
@@ -44,12 +42,13 @@
       <footer class="site-footer">
         <div class="footer-brand">
           <img src="./images/tara-logo.png" alt="">
-          <div><strong>{{ config.siteName }}</strong><span>佛堂介紹與結緣資訊</span></div>
+          <div><strong>{{ config.siteName }}</strong><span>{{ config.address }}</span></div>
         </div>
         <nav class="footer-socials" aria-label="官方社群">
           <a :href="config.links.facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8h3.4z"/></svg></a>
           <a :href="config.links.line" target="_blank" rel="noopener noreferrer" aria-label="LINE"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.7 3 2.5 6.4 2.5 10.6c0 3.7 3.3 6.7 7.8 7.4.3.1.7.2.8.5.1.2 0 .6 0 .8l-.1.8c0 .2-.2.8.7.4s5.1-3 7-5.2c1.3-1.4 2.3-3.1 2.3-4.7C21 6.4 17.1 3 12 3z"/><path class="social-icon-cutout" d="M7.2 9h1v3.4h-1zm2.1 0h1l1.5 2v-2h1v3.4h-.9l-1.6-2.1v2.1h-1zm4.4 0h2.8v.9h-1.8v.4h1.6v.8h-1.6v.5h1.8v.8h-2.8z"/></svg></a>
           <a :href="config.links.instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.7" cy="6.7" r="1.2"/></svg></a>
+          <a :href="config.links.youtube" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path class="social-icon-cutout" d="m10 9 5 3-5 3z"/></svg></a>
         </nav>
         <span class="footer-note">網站內容由佛堂提供</span>
       </footer>
@@ -57,7 +56,7 @@
   };
 
   const HomePage = {
-    data: () => ({ config, offeringCoverSlides, activeOfferingCover: 0, offeringCoverTimer: null }),
+    data: () => ({ config, offeringCoverSlides, activeOfferingCover: 0, offeringCoverTimer: null, showConsultationNotice: false }),
     mounted() {
       if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       this.offeringCoverTimer = window.setInterval(() => this.moveOfferingCover(1), 4800);
@@ -89,7 +88,7 @@
             <span class="eyebrow">認識佛堂</span>
             <h2>一處可以慢慢認識的佛堂</h2>
             <p>佛堂沿革、理念與參訪資訊，將依佛堂提供的資料整理刊載。</p>
-            <RouterLink class="text-link" to="/about">閱讀佛堂介紹 <span aria-hidden="true">→</span></RouterLink>
+            <RouterLink class="button button-outline" to="/about">閱讀佛堂介紹 <span aria-hidden="true">→</span></RouterLink>
           </div>
           <figure class="welcome-photo">
             <img src="./images/guanyin-shrine.jpg" alt="佛堂供奉的主尊觀世音菩薩">
@@ -99,21 +98,23 @@
 
         <section class="home-teacher section-wrap">
           <div class="home-teacher-photo"><img src="./images/jiacha-rinpoche.jpg" alt="白玉祖古嘉察仁波切"></div>
-          <div class="home-teacher-copy"><span class="eyebrow">VAJRAYANA MASTER</span><h2>尊貴上師</h2><p>白玉祖古嘉察徹滇多傑仁波切，白玉傳承第二任法座持有者貝瑪倫珠嘉措之轉世。</p><RouterLink class="text-link" to="/teachers/jiacha-rinpoche">認識上師 <span aria-hidden="true">→</span></RouterLink></div>
+          <div class="home-teacher-copy"><span class="eyebrow">VAJRAYANA MASTER</span><h2>尊貴上師</h2><p>白玉祖古嘉察徹滇多傑仁波切，白玉傳承第二任法座持有者貝瑪倫珠嘉措之轉世。</p><RouterLink class="button button-outline" to="/teachers/jiacha-rinpoche">認識上師 <span aria-hidden="true">→</span></RouterLink></div>
         </section>
 
         <section class="home-teacher home-teacher-reverse section-wrap">
           <div class="home-teacher-photo"><img src="./images/chen-min-teacher.jpg" alt="神諭度母陳敏老師"></div>
-          <div class="home-teacher-copy"><span class="eyebrow">ORACLE TARA</span><h2>神諭度母</h2><p>陳敏老師成立達拉度母佛堂，帶領法會共修並定期安排心靈成長課程。</p><RouterLink class="text-link" to="/teachers/oracle-tara">認識神諭度母 <span aria-hidden="true">→</span></RouterLink></div>
+          <div class="home-teacher-copy"><span class="eyebrow">ORACLE TARA</span><h2>神諭度母</h2><p>陳敏老師成立達拉度母佛堂，帶領法會共修並定期安排心靈成長課程。</p><RouterLink class="button button-outline" to="/teachers/oracle-tara">認識神諭度母 <span aria-hidden="true">→</span></RouterLink></div>
         </section>
 
-        <section class="offerings-band home-center-promo">
+        <section class="offerings-band home-center-promo home-center-promo-with-photo home-center-promo-reverse">
           <div class="section-wrap offerings-band-inner">
             <div class="offerings-band-copy">
-              <h2>文字待定</h2>
-              <RouterLink class="button button-blue" to="/offerings">瀏覽結緣品 <span aria-hidden="true">→</span></RouterLink>
+              <span class="eyebrow">DHARMA</span>
+              <h2>法會活動</h2>
+              <p>歡迎到達拉佛堂參與盛會</p>
+              <RouterLink class="button button-blue" to="/activities">功德利益 <span aria-hidden="true">→</span></RouterLink>
             </div>
-            <div class="offerings-band-gallery" aria-hidden="true"></div>
+            <div class="offerings-band-gallery"><img class="home-center-promo-photo" src="./images/center-monks-2026.jpg" alt="上師與僧眾合影"></div>
           </div>
         </section>
 
@@ -121,37 +122,39 @@
         <section class="home-centers">
           <div class="section-wrap"><div class="home-section-heading"><span class="eyebrow">TAIWAN CENTER</span><h2>北中南中心</h2></div>
             <div class="center-grid">
-              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taipei.jpg" alt="Taipei Center 標誌"></div><h3>Taipei Center</h3></article>
-              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taichung.jpg" alt="Taichung Center 標誌"></div><h3>Taichung Center</h3></article>
-              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-kaohsiung.jpg" alt="Kaohsiung Center 標誌"></div><h3>Kaohsiung Center</h3></article>
+              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taipei.jpg" alt="Taipei Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taipei Center</span><span class="center-name-zh">台北中心</span></h3></article>
+              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taichung.jpg" alt="Taichung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taichung Center</span><span class="center-name-zh">台中中心</span></h3></article>
+              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-kaohsiung.jpg" alt="Kaohsiung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Kaohsiung Center</span><span class="center-name-zh">高雄中心</span></h3></article>
             </div>
           </div>
         </section>
 
-        <section class="offerings-band home-center-promo">
+        <section class="offerings-band home-center-promo home-center-promo-reverse">
           <div class="section-wrap offerings-band-inner">
             <div class="offerings-band-copy">
-              <h2>文字待定</h2>
-              <RouterLink class="button button-blue" to="/offerings">瀏覽結緣品 <span aria-hidden="true">→</span></RouterLink>
+              <span class="eyebrow">DEAR TARA</span>
+              <h2>神諭度母 滿願眾生</h2>
+              <p>親身的經驗，乃是一切理由最終所歸依之處，因此也足以成為眾人信任之依據。</p>
+              <RouterLink class="button button-blue" to="/testimonials">見證分享 <span aria-hidden="true">→</span></RouterLink>
             </div>
-            <div class="offerings-band-gallery" aria-hidden="true"></div>
+            <div class="offerings-band-gallery"><img class="home-center-promo-photo" src="./images/oracle-tara-blessing.jpg" alt="神諭度母與尼泊爾僧侶合影"></div>
           </div>
         </section>
 
         <section class="activity-preview section-wrap">
           <div class="activity-copy">
-            <span class="eyebrow">每週日下午</span>
-            <h2>法會活動</h2>
-            <p>每週日下午有不同的法會活動，請至 Facebook 官方粉專查看近期公告。</p>
-            <a class="button button-blue" :href="config.links.facebook" target="_blank" rel="noopener noreferrer">前往 Facebook 查看活動 <span aria-hidden="true">↗</span></a>
+            <span class="eyebrow">心靈講座</span>
+            <h2>佛化人生 <span class="activity-title-secondary">系列講座</span></h2>
+            <p>佛堂每月一次安排佛化人生講座，參加請至官方 LINE 預先報名。</p>
+            <a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">官方 LINE 預先報名 <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="activity-art" aria-hidden="true"><span class="activity-sun"></span><span class="activity-orbit orbit-one"></span><span class="activity-orbit orbit-two"></span><span class="activity-letter">TARA</span></div>
+          <div class="activity-photo"><img src="./images/buddhist-life-lecture.jpg" alt="佛堂佛化人生系列講座共修情形"></div>
         </section>
 
-        <section class="home-advertising section-wrap" aria-label="廣告版位">
-          <div class="home-ad-placeholder">廣告版位 1</div>
-          <div class="home-ad-placeholder">廣告版位 2</div>
-          <div class="home-ad-placeholder">廣告版位 3</div>
+        <section class="home-advertising section-wrap" aria-label="供養布施、朝聖與諮詢問事">
+          <div class="home-ad-placeholder"><img src="./images/offering-donation.jpg" alt=""><span>供養布施</span></div>
+          <div class="home-ad-placeholder"><img src="./images/pilgrimage.jpg" alt=""><span>朝聖</span></div>
+          <div class="home-ad-placeholder"><img src="./images/yoga-singing-bowl.jpg" alt=""><span>瑜伽、頌缽、呼吸法</span></div>
         </section>
 
         <section class="offerings-band">
@@ -163,7 +166,7 @@
               <RouterLink class="button button-blue" to="/offerings">瀏覽結緣品 <span aria-hidden="true">→</span></RouterLink>
             </div>
             <div class="offerings-band-gallery" aria-label="結緣品總覽封面輪播">
-              <RouterLink class="offerings-band-cover" to="/offerings" :aria-label="'瀏覽結緣品：' + offeringCoverSlides[activeOfferingCover].title">
+              <RouterLink class="offerings-band-cover" :class="{ 'offerings-band-cover--mug': offeringCoverSlides[activeOfferingCover].image === './images/offering-mug-home-cover.jpg' }" to="/offerings" :aria-label="'瀏覽結緣品：' + offeringCoverSlides[activeOfferingCover].title">
                 <img :key="offeringCoverSlides[activeOfferingCover].image" :src="offeringCoverSlides[activeOfferingCover].image" :alt="offeringCoverSlides[activeOfferingCover].title" loading="lazy">
               </RouterLink>
             </div>
@@ -173,16 +176,43 @@
         <section class="home-visit">
           <div class="section-wrap visit-strip">
             <div>
-              <span class="eyebrow">交通與聯絡</span>
-              <h2>歡迎先透過 LINE 詢問</h2>
-              <p>{{ config.address }}</p>
+              <h2>神諭度母諮詢問事</h2>
             </div>
             <div class="visit-actions">
-              <RouterLink class="button button-blue" to="/visit">查看交通資訊</RouterLink>
-              <a class="text-link" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問參訪方式 <span aria-hidden="true">↗</span></a>
+              <button class="button button-blue" type="button" @click="showConsultationNotice = true">諮詢者須知注意事項</button>
             </div>
           </div>
         </section>
+
+        <div v-if="showConsultationNotice" class="consultation-modal-backdrop" @click.self="showConsultationNotice = false">
+          <section class="consultation-modal" role="dialog" aria-modal="true" aria-labelledby="consultation-modal-title">
+            <div class="consultation-modal-content">
+              <span class="eyebrow">CONSULTATION NOTICE</span>
+              <h2 id="consultation-modal-title">🌺 神諭度母諮詢問事 🌺</h2>
+              <h3>諮詢者須知注意事項</h3>
+              <ol class="consultation-notice-list">
+                <li>請先加入官方 LINE。諮詢者需透過官方報名，並由介紹人引薦或中心弟子協助安排；後續將透過此窗口聯絡，確認諮詢時段。</li>
+                <li>請事先提供個人基本資料：姓名、出生年月日。</li>
+                <li>如曾更改姓名，請事先註明，並以「出生本名」為主。</li>
+                <li>每年流年諮詢時間為 30 分鐘。</li>
+                <li>問事諮詢以一次詢問一個問題為主，時間 20 分鐘。</li>
+                <li>如詢問感情，已有對象者請先提供對方資料與相片。</li>
+                <li>如無法依預約時間前來，請務必於三天前聯絡改約，以免影響諮詢安排。</li>
+              </ol>
+              <h3>現場報到注意事項</h3>
+              <ol class="consultation-notice-list">
+                <li>請準時到現場報到，請勿遲到。</li>
+                <li>請至櫃台報到、填寫基本資料，並掃描官方 QR Code。</li>
+                <li>諮詢供養金請放入紅包袋，寫上姓名、日期及問事項目後交給櫃台。</li>
+                <li>請等候志工助理帶領。</li>
+              </ol>
+              <div class="consultation-modal-actions">
+                <button class="button button-quiet" type="button" @click="showConsultationNotice = false">關閉視窗</button>
+                <a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">我已詳閱注意事項，欲前往報名 <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     `,
   };
@@ -343,7 +373,7 @@
         { to: '/offerings/mantra-diagrams', eyebrow: 'MANTRA DIAGRAMS', title: '加持咒輪圖', image: './images/mantra-banner.png', description: '認識勾松咒輪圖與九宮八卦圖等品項。' },
         { to: '/offerings/smoke-offering', eyebrow: 'SMOKE OFFERING', title: '煙供除障粉', image: './images/smoke-offering-banner.png', description: '瀏覽煙供除障粉品項與相關介紹。' },
         { to: '/offerings/other', eyebrow: 'OTHER OFFERINGS', title: '其他結緣品', image: './images/offering-other-cover.png', description: '西藏手工八吉祥臥香爐，以及多款本尊主題手環與項鍊。' },
-        { to: '/offerings/mug', eyebrow: 'TARA MUG', title: '聚財滿願杯', image: './images/offering-mug-garden.jpg', description: '查看達拉 TARA 主題隨行杯介紹。' },
+        { to: '/offerings/mug', eyebrow: 'TARA MUG', title: '聚財滿願杯', image: './images/offering-mug-home-cover.jpg', description: '查看達拉 TARA 主題隨行杯介紹。' },
       ],
     }),
     template: `
@@ -351,7 +381,7 @@
         <section class="page-intro"><span class="eyebrow">OFFERINGS</span><h1>加持結緣品</h1><p>達拉佛堂殊勝法寶及聖物</p></section>
         <section class="section-wrap offering-topics" aria-label="結緣品專題介紹">
           <div class="offering-topic-grid">
-            <RouterLink v-for="topic in topics" :key="topic.to" :to="topic.to" class="offering-topic-card">
+            <RouterLink v-for="topic in topics" :key="topic.to" :to="topic.to" class="offering-topic-card" :class="{ 'offering-topic-card-mug': topic.to === '/offerings/mug' }">
               <img :src="topic.image" :alt="topic.title + '主題圖片'" loading="lazy">
               <div class="offering-topic-copy"><span class="eyebrow">{{ topic.eyebrow }}</span><h3>{{ topic.title }}</h3><p>{{ topic.description }}</p><span class="text-link">了解更多 <b aria-hidden="true">→</b></span></div>
             </RouterLink>
@@ -489,7 +519,7 @@
               '達拉煙供粉可供養諸佛、清淨除穢、淨化除障、保護息災、增加好運勢。除障粉恭請尊貴的嘉察仁波切與僧眾共同如法裝臟、開光加持。數量有限，請事先詢問登記。',
             ] },
           ],
-          previous: { title: '加持咒輪圖', to: '/offerings/mantra-diagrams' }, next: null,
+          previous: { title: '加持咒輪圖', to: '/offerings/mantra-diagrams' }, next: { title: '其他結緣品', to: '/offerings/other' },
         },
         other: {
           title: '其他結緣品', category: '其他結緣品', eyebrow: 'OTHER OFFERINGS', image: './images/offering-other-cover.png',
@@ -622,6 +652,15 @@
     `,
   };
 
+  const TestimonialsPage = {
+    template: `
+      <div>
+        <section class="page-intro"><span class="eyebrow">TESTIMONIALS</span><h1>見證分享</h1><p>記錄與達拉度母佛堂結緣的故事與修持點滴。</p></section>
+        <section class="section-wrap testimonials-content"><div class="testimonials-empty"><span aria-hidden="true">✦</span><h2>見證分享文章</h2><p>文章內容將陸續整理刊載，敬請期待。</p></div></section>
+      </div>
+    `,
+  };
+
   const VisitPage = {
     data: () => ({ config }),
     template: `
@@ -631,7 +670,7 @@
           <div class="visit-details"><span class="eyebrow">佛堂位置</span><h2>歡迎蒞臨</h2><address>{{ config.address }}</address><div class="transport-info"><h3>交通資訊</h3><p><strong>捷運：</strong>板南線「忠孝敦化站」1 號出口。</p><p><strong>公車：</strong>「捷運忠孝敦化站」步行約 1 分鐘；「忠孝敦化路口」步行約 3 分鐘。</p><p>頂呱呱忠孝店旁，羅馬大廈 8 樓。</p></div><p>參訪安排與交通問題，歡迎先透過 LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問參訪方式 <span aria-hidden="true">↗</span></a><a class="map-open-link" :href="config.links.map" target="_blank" rel="noopener noreferrer">在 Google 地圖開啟 <span aria-hidden="true">↗</span></a></div>
           <div class="map-frame"><iframe :src="config.mapEmbedUrl" title="達拉 TARA 位置地圖" width="600" height="450" style="border:0" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
         </section>
-        <section class="section-wrap contact-section"><div class="contact-heading"><span class="eyebrow">OFFICIAL ACCOUNTS</span><h2>官方聯絡與社群</h2></div><nav class="social-links" aria-label="官方聯絡與社群"><a :href="config.links.line" target="_blank" rel="noopener noreferrer"><span>LINE</span> 詢問請供與參訪方式 <b aria-hidden="true">↗</b></a><a :href="config.links.facebook" target="_blank" rel="noopener noreferrer"><span>FB</span> Facebook 官方粉專 <b aria-hidden="true">↗</b></a><a :href="config.links.instagram" target="_blank" rel="noopener noreferrer"><span>IG</span> Instagram 官方帳號 <b aria-hidden="true">↗</b></a></nav></section>
+        <section class="section-wrap contact-section"><div class="contact-heading"><span class="eyebrow">OFFICIAL ACCOUNTS</span><h2>官方聯絡與社群</h2></div><nav class="social-links" aria-label="官方聯絡與社群"><a :href="config.links.line" target="_blank" rel="noopener noreferrer"><span>LINE</span> 詢問請供與參訪方式 <b aria-hidden="true">↗</b></a><a :href="config.links.facebook" target="_blank" rel="noopener noreferrer"><span>FB</span> Facebook 官方粉專 <b aria-hidden="true">↗</b></a><a :href="config.links.instagram" target="_blank" rel="noopener noreferrer"><span>IG</span> Instagram 官方帳號 <b aria-hidden="true">↗</b></a><a :href="config.links.youtube" target="_blank" rel="noopener noreferrer"><span>YT</span> YouTube 官方頻道 <b aria-hidden="true">↗</b></a></nav></section>
       </div>
     `,
   };
@@ -645,6 +684,7 @@
       { path: '/offerings', component: OfferingsPage },
       { path: '/offerings/:slug', component: OfferingDetailPage, props: true },
       { path: '/activities', component: ActivitiesPage },
+      { path: '/testimonials', component: TestimonialsPage },
       { path: '/visit', component: VisitPage },
     ],
     scrollBehavior: () => ({ top: 0 }),

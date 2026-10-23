@@ -7,6 +7,7 @@ window.TARA_CONFIG = Object.freeze({
     facebook: 'https://www.facebook.com/taiwan.tara/',
     line: 'https://lin.ee/mYrrZPB',
     instagram: 'https://www.instagram.com/tara.office_/',
+    youtube: 'https://youtube.com/@tara-office/',
     map: 'https://maps.app.goo.gl/2RxhpGGDo38GpTSc8',
   }),
 });
