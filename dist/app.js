@@ -78,11 +78,7 @@
           <div class="hero-shade"></div>
           <div class="hero-content">
             <span class="eyebrow light-eyebrow">達拉 TARA</span>
-          <h1>WELCOME TO<br>TARA</h1>
-            <div class="hero-actions">
-              <RouterLink class="button button-gold" to="/about">認識佛堂 <span aria-hidden="true">↗</span></RouterLink>
-              <a class="button button-ghost" :href="config.links.facebook" target="_blank" rel="noopener noreferrer">查看 Facebook 活動</a>
-            </div>
+            <h1><span>WELCOME</span><span>TO</span><span>TARA</span></h1>
           </div>
           <div class="hero-caption"><span>主尊觀世音菩薩</span><span>達拉 TARA</span></div>
         </section>
@@ -111,6 +107,16 @@
           <div class="home-teacher-copy"><span class="eyebrow">ORACLE TARA</span><h2>神諭度母</h2><p>陳敏老師成立達拉度母佛堂，帶領法會共修並定期安排心靈成長課程。</p><RouterLink class="text-link" to="/teachers/oracle-tara">認識神諭度母 <span aria-hidden="true">→</span></RouterLink></div>
         </section>
 
+        <section class="offerings-band home-center-promo">
+          <div class="section-wrap offerings-band-inner">
+            <div class="offerings-band-copy">
+              <h2>文字待定</h2>
+              <RouterLink class="button button-blue" to="/offerings">瀏覽結緣品 <span aria-hidden="true">→</span></RouterLink>
+            </div>
+            <div class="offerings-band-gallery" aria-hidden="true"></div>
+          </div>
+        </section>
+
         <svg class="center-logo-filter-defs" aria-hidden="true" focusable="false"><filter id="center-logo-blue" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 0.156863 0 0 0 0 0.356863 0 0 0 0 0.568627 -1 -1 -1 0 2.9" /></filter></svg>
         <section class="home-centers">
           <div class="section-wrap"><div class="home-section-heading"><span class="eyebrow">TAIWAN CENTER</span><h2>北中南中心</h2></div>
@@ -119,6 +125,16 @@
               <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taichung.jpg" alt="Taichung Center 標誌"></div><h3>Taichung Center</h3></article>
               <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-kaohsiung.jpg" alt="Kaohsiung Center 標誌"></div><h3>Kaohsiung Center</h3></article>
             </div>
+          </div>
+        </section>
+
+        <section class="offerings-band home-center-promo">
+          <div class="section-wrap offerings-band-inner">
+            <div class="offerings-band-copy">
+              <h2>文字待定</h2>
+              <RouterLink class="button button-blue" to="/offerings">瀏覽結緣品 <span aria-hidden="true">→</span></RouterLink>
+            </div>
+            <div class="offerings-band-gallery" aria-hidden="true"></div>
           </div>
         </section>
 
