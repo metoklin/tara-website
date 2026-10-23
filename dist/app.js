@@ -13,12 +13,12 @@
     { to: '/visit', label: '交通聯絡', en: 'Visit' },
   ];
 
-  const smokeOfferingItems = [
-    { name: '除障香粉／煙供除障粉（大）', images: [
-      { src: './images/tara-p03-01.jpg', alt: '除障香粉／煙供除障粉' },
-      { src: './images/tara-p03-01-ingredients.jpg', alt: '除障香粉／煙供除障粉成份照' },
-    ], description: '煙供香粉大款；佛堂舊站介紹其作為煙供與供養用香粉。' },
-    { name: '除障香粉／煙供除障粉（小）', description: '煙供香粉小款；佛堂舊站介紹其作為煙供與供養用香粉。' },
+  const offeringCoverSlides = [
+    { image: './images/ghau-banner.png', title: '心想事成嘎屋' },
+    { image: './images/protective-banner.png', title: '護身法寶' },
+    { image: './images/mantra-banner.png', title: '加持咒輪圖' },
+    { image: './images/smoke-offering-banner.png', title: '煙供除障粉' },
+    { image: './images/offering-other-cover.png', title: '其他結緣品' },
   ];
 
   const SiteHeader = {
@@ -57,7 +57,20 @@
   };
 
   const HomePage = {
-    data: () => ({ config }),
+    data: () => ({ config, offeringCoverSlides, activeOfferingCover: 0, offeringCoverTimer: null }),
+    mounted() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      this.offeringCoverTimer = window.setInterval(() => this.moveOfferingCover(1), 4800);
+    },
+    beforeUnmount() {
+      window.clearInterval(this.offeringCoverTimer);
+    },
+    methods: {
+      moveOfferingCover(amount) {
+        const count = this.offeringCoverSlides.length;
+        this.activeOfferingCover = (this.activeOfferingCover + amount + count) % count;
+      },
+    },
     template: `
       <div>
         <section class="hero">
@@ -98,12 +111,13 @@
           <div class="home-teacher-copy"><span class="eyebrow">ORACLE TARA</span><h2>神諭度母</h2><p>陳敏老師成立達拉度母佛堂，帶領法會共修並定期安排心靈成長課程。</p><RouterLink class="text-link" to="/teachers/oracle-tara">認識神諭度母 <span aria-hidden="true">→</span></RouterLink></div>
         </section>
 
+        <svg class="center-logo-filter-defs" aria-hidden="true" focusable="false"><filter id="center-logo-blue" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 0.156863 0 0 0 0 0.356863 0 0 0 0 0.568627 -1 -1 -1 0 2.9" /></filter></svg>
         <section class="home-centers">
-          <div class="section-wrap"><div class="home-section-heading"><span class="eyebrow">OUR CENTERS</span><h2>北中南中心</h2></div>
+          <div class="section-wrap"><div class="home-section-heading"><span class="eyebrow">TAIWAN CENTER</span><h2>北中南中心</h2></div>
             <div class="center-grid">
-              <article class="center-card"><div class="center-logo-placeholder" aria-hidden="true"></div><h3>Taipei Center</h3></article>
-              <article class="center-card"><div class="center-logo-placeholder" aria-hidden="true"></div><h3>Taichung Center</h3></article>
-              <article class="center-card"><div class="center-logo-placeholder" aria-hidden="true"></div><h3>Kaohsiung Center</h3></article>
+              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taipei.jpg" alt="Taipei Center 標誌"></div><h3>Taipei Center</h3></article>
+              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taichung.jpg" alt="Taichung Center 標誌"></div><h3>Taichung Center</h3></article>
+              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-kaohsiung.jpg" alt="Kaohsiung Center 標誌"></div><h3>Kaohsiung Center</h3></article>
             </div>
           </div>
         </section>
@@ -126,13 +140,17 @@
 
         <section class="offerings-band">
           <div class="section-wrap offerings-band-inner">
-            <div>
+            <div class="offerings-band-copy">
               <span class="eyebrow">結緣品</span>
               <h2>加持結緣品</h2>
-              <p>依主題瀏覽佛堂提供的法寶與結緣品介紹。</p>
+              <p>達拉佛堂殊勝法寶與結緣品</p>
               <RouterLink class="button button-blue" to="/offerings">瀏覽結緣品 <span aria-hidden="true">→</span></RouterLink>
             </div>
-            <div class="lotus-ornament" aria-hidden="true">✺</div>
+            <div class="offerings-band-gallery" aria-label="結緣品總覽封面輪播">
+              <RouterLink class="offerings-band-cover" to="/offerings" :aria-label="'瀏覽結緣品：' + offeringCoverSlides[activeOfferingCover].title">
+                <img :key="offeringCoverSlides[activeOfferingCover].image" :src="offeringCoverSlides[activeOfferingCover].image" :alt="offeringCoverSlides[activeOfferingCover].title" loading="lazy">
+              </RouterLink>
+            </div>
           </div>
         </section>
 
@@ -199,7 +217,7 @@
       <div>
         <section class="page-intro"><span class="eyebrow">{{ teacher.eyebrow }}</span><h1>{{ teacher.title }}</h1></section>
         <section class="section-wrap teacher-detail"><div class="teacher-detail-photo"><img :src="teacher.image" :alt="teacher.alt"></div><article class="teacher-detail-copy"><span class="eyebrow">{{ teacher.lineage }}</span><h2>{{ teacher.name }}</h2><p v-for="(paragraph, index) in teacher.paragraphs" :key="index">{{ paragraph }}</p></article></section>
-        <nav class="section-wrap teacher-page-nav"><RouterLink class="text-link" to="/about">← 認識佛堂</RouterLink><RouterLink class="text-link" :to="slug === 'jiacha-rinpoche' ? '/teachers/oracle-tara' : '/teachers/jiacha-rinpoche'">{{ slug === 'jiacha-rinpoche' ? '神諭度母 →' : '尊貴上師 →' }}</RouterLink></nav>
+        <nav class="section-wrap teacher-page-nav"><RouterLink class="button button-blue" to="/about">← 認識佛堂</RouterLink><RouterLink class="button button-blue" :to="slug === 'jiacha-rinpoche' ? '/teachers/oracle-tara' : '/teachers/jiacha-rinpoche'">{{ slug === 'jiacha-rinpoche' ? '神諭度母 →' : '尊貴上師 →' }}</RouterLink></nav>
       </div>
     `,
   };
@@ -207,9 +225,6 @@
   const OfferingsPage = {
     data: () => ({
       config,
-      activeImages: {},
-      pausedCarousels: {},
-      carouselTimer: null,
       categories: [
         { name: '嘎屋', description: '嘎屋（Ghau）是藏式隨身佛龕，可裝藏本尊相關咒輪、佛像或聖物；以下依本尊款式列出。', items: [
           { name: '藥師佛嘎屋', image: './images/ghau-medicine-buddha.jpg', description: '藥師琉璃光如來簡稱藥師佛，乃為大醫王佛。', more: [
@@ -284,7 +299,17 @@
           ], description: '九宮八卦護身墜飾，背面由仁波切親自書寫種子字。', more: ['將九宮八卦懸掛於公司、住家大門上或屋內、辦公室、佛堂及屋角等處，可作為回遮與祈願家宅平安之用。背面由仁波切親自書寫「嗡 啊 吽」種子字。'] },
           { name: '九宮八卦小護身墜飾', description: '九宮八卦咒輪小款隨身墜飾。', more: ['將九宮八卦懸掛於公司、住家大門上或屋內、辦公室、佛堂及屋角等處，可作為回遮與祈願家宅平安之用。背面由仁波切親自書寫「嗡 啊 吽」種子字。詳細尺寸與請供資訊請洽官方 LINE。'] },
         ] },
-        { name: '手環與項鍊', description: '多款日常配戴的本尊主題手環與項鍊，部分款式附有佛卡。', items: [
+        { name: '加持咒輪圖', description: '包含勾松咒輪圖與九宮八卦圖等款式，部分圖卡依尺寸區分。', items: [
+          { name: '勾松咒輪圖（大）', description: '蓮師伏藏咒輪圖；佛堂舊站介紹可懸掛於門楣或放置於家中、辦公空間。' },
+          { name: '勾松咒輪圖（中）', description: '蓮師伏藏咒輪圖；佛堂舊站介紹可懸掛於門楣或放置於家中、辦公空間。' },
+          { name: '鎮宅化煞九宮八卦圖立牌（文殊九宮八卦立牌）', description: '文殊九宮八卦圖立牌；商品名稱與規格請以佛堂提供資訊為準。' },
+          { name: '九宮八卦圖（中）', description: '九宮八卦咒輪圖中款；佛堂舊站介紹可隨身攜帶或懸掛於空間中。' },
+        ] },
+        { name: '其他結緣品', description: '包含西藏手工八吉祥臥香爐，以及多款本尊主題手環與項鍊。', items: [
+          { name: '西藏手工八吉祥臥香爐', images: [
+            { src: './images/offering-incense-burner-front.png', alt: '西藏手工八吉祥臥香爐正面' },
+            { src: './images/offering-incense-burner-detail.png', alt: '西藏手工八吉祥臥香爐使用情境' },
+          ], description: '西藏手工製八吉祥臥香爐，提供不同尺寸。' },
           { name: '息 金剛薩埵運動手環', image: './images/tara-p04-01.jpg', description: '以金剛薩埵為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
           { name: '增 黃財神運動手環', image: './images/tara-p04-02.jpg', description: '以黃財神為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
           { name: '懷 咕嚕咕咧佛母運動手環', image: './images/tara-p04-03.jpg', description: '以咕嚕咕咧佛母為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
@@ -295,58 +320,16 @@
           { name: '度母七色手環', description: '七色度母主題手環。' },
           { name: '度母七色項鏈', description: '七色度母主題項鍊。' },
         ] },
-        { name: '加持咒輪圖', description: '包含勾松咒輪圖與九宮八卦圖等款式，部分圖卡依尺寸區分。', items: [
-          { name: '勾松咒輪圖（大）', description: '蓮師伏藏咒輪圖；佛堂舊站介紹可懸掛於門楣或放置於家中、辦公空間。' },
-          { name: '勾松咒輪圖（中）', description: '蓮師伏藏咒輪圖；佛堂舊站介紹可懸掛於門楣或放置於家中、辦公空間。' },
-          { name: '鎮宅化煞九宮八卦圖立牌（文殊九宮八卦立牌）', description: '文殊九宮八卦圖立牌；商品名稱與規格請以佛堂提供資訊為準。' },
-          { name: '九宮八卦圖（中）', description: '九宮八卦咒輪圖中款；佛堂舊站介紹可隨身攜帶或懸掛於空間中。' },
-        ] },
-        { name: '其他結緣品', description: '目前包含西藏手工八吉祥臥香爐與聚財滿願杯；臥香爐有不同尺寸。', items: [
-          { name: '西藏手工八吉祥臥香爐', images: [
-            { src: './images/offering-incense-burner-front.png', alt: '西藏手工八吉祥臥香爐正面' },
-            { src: './images/offering-incense-burner-detail.png', alt: '西藏手工八吉祥臥香爐使用情境' },
-          ], description: '西藏手工製八吉祥臥香爐，提供不同尺寸。' },
-          { name: '聚財滿願杯', image: './images/offering-mug-cropped.jpg', description: '達拉 TARA 主題隨行杯。' },
-        ] },
       ],
       topics: [
         { to: '/offerings/ghau', eyebrow: 'GHau', title: '心想事成嘎屋', image: './images/ghau-banner.png', description: '認識隨身佛龕的意義、裝臟聖物與嘎屋款式。' },
         { to: '/offerings/protective', eyebrow: 'PROTECTIVE CHARMS', title: '護身法寶', image: './images/protective-banner.png', description: '依本尊、經咒與法器造型瀏覽各款護身法寶。' },
         { to: '/offerings/mantra-diagrams', eyebrow: 'MANTRA DIAGRAMS', title: '加持咒輪圖', image: './images/mantra-banner.png', description: '認識勾松咒輪圖與九宮八卦圖等品項。' },
         { to: '/offerings/smoke-offering', eyebrow: 'SMOKE OFFERING', title: '煙供除障粉', image: './images/smoke-offering-banner.png', description: '瀏覽煙供除障粉品項與相關介紹。' },
+        { to: '/offerings/other', eyebrow: 'OTHER OFFERINGS', title: '其他結緣品', image: './images/offering-other-cover.png', description: '西藏手工八吉祥臥香爐，以及多款本尊主題手環與項鍊。' },
+        { to: '/offerings/mug', eyebrow: 'TARA MUG', title: '聚財滿願杯', image: './images/offering-mug-garden.jpg', description: '查看達拉 TARA 主題隨行杯介紹。' },
       ],
     }),
-    mounted() {
-      const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!reducedMotion) {
-        this.carouselTimer = window.setInterval(() => {
-          this.overviewCategories.forEach(category => category.items.forEach(item => {
-            if (item.images && item.images.length > 1 && !this.pausedCarousels[item.name]) this.changeImage(item, 1);
-          }));
-        }, 5000);
-      }
-    },
-    beforeUnmount() {
-      window.clearInterval(this.carouselTimer);
-    },
-    computed: {
-      overviewCategories() {
-        return this.categories
-          .filter(category => ['手環與項鍊', '其他結緣品'].includes(category.name));
-      },
-    },
-    methods: {
-      carouselIndex(item) {
-        return this.activeImages[item.name] || 0;
-      },
-      changeImage(item, amount) {
-        const count = item.images.length;
-        this.activeImages[item.name] = (this.carouselIndex(item) + amount + count) % count;
-      },
-      pauseCarousel(item, paused) {
-        this.pausedCarousels[item.name] = paused;
-      },
-    },
     template: `
       <div>
         <section class="page-intro"><span class="eyebrow">OFFERINGS</span><h1>加持結緣品</h1><p>達拉佛堂殊勝法寶及聖物</p></section>
@@ -357,23 +340,6 @@
               <div class="offering-topic-copy"><span class="eyebrow">{{ topic.eyebrow }}</span><h3>{{ topic.title }}</h3><p>{{ topic.description }}</p><span class="text-link">了解更多 <b aria-hidden="true">→</b></span></div>
             </RouterLink>
           </div>
-        </section>
-        <section class="section-wrap offerings-list" aria-label="結緣品項介紹">
-          <section v-for="category in overviewCategories" :key="category.name" class="offering-category">
-            <div class="offering-category-heading"><div><span class="eyebrow">TARA OFFERINGS</span><h2>{{ category.name }}</h2></div><p class="offering-category-description">{{ category.description }}</p></div>
-            <ul class="offering-grid">
-              <li v-for="item in category.items" :key="item.name" class="offering-item" :class="{ 'offering-item--no-image': !item.image && !(item.images && item.images.length) }">
-                <div class="offering-image" :class="{ 'offering-image-gallery': item.images && item.images.length > 1 }">
-                  <img v-if="item.image" :src="item.image" :alt="item.name">
-                  <div v-else-if="item.images && item.images.length" class="offering-carousel" @mouseenter="pauseCarousel(item, true)" @mouseleave="pauseCarousel(item, false)" :aria-label="item.name + '照片輪播'">
-                    <img :src="item.images[carouselIndex(item)].src" :alt="item.images[carouselIndex(item)].alt || item.name" loading="lazy">
-                  </div>
-                  <div v-else class="offering-image-empty" aria-hidden="true"></div>
-                </div>
-                <div class="offering-item-copy"><h3 class="offering-name">{{ item.name }}</h3><p v-if="item.description" class="offering-item-description">{{ item.description }}</p><p v-if="item.note" class="offering-note">{{ item.note }}</p></div>
-              </li>
-            </ul>
-          </section>
         </section>
         <section class="offering-footnote section-wrap"><p>品項與庫存狀態可能變動，請供前請透過官方 LINE 確認。本網站不提供線上付款或請供表單。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問請供方式 <span aria-hidden="true">↗</span></a></section>
       </div>
@@ -389,7 +355,6 @@
       expandedDetails: {},
       carouselTimer: null,
       categories: OfferingsPage.data().categories,
-      smokeOfferingItems,
       pages: {
         ghau: {
           title: '心想事成嘎屋', category: '嘎屋', eyebrow: 'GHau', image: './images/ghau-banner.png',
@@ -470,9 +435,82 @@
         },
         'smoke-offering': {
           title: '煙供除障粉', eyebrow: 'SMOKE OFFERING', image: './images/smoke-offering-banner.png',
-          lead: '煙供除障粉品項與介紹；佛堂舊站介紹其作為煙供與供養用香粉。詳細請供資訊請洽官方 LINE。',
-          sections: [],
+          lead: '達拉度母除障香粉',
+          sections: [
+            { id: 'smoke-intro', title: '達拉度母除障香粉', paragraphs: [
+              '達拉煙供粉非常殊勝難得，有供養諸佛、清淨除穢、淨化除障、保護息災、增加好運勢等利益。因加入多種稀有甘露與眾多加持物，並特別恭請尊貴的嘉察仁波切與僧眾如法修法、灑淨、加持圓滿，是非常殊勝難得的法寶，其加持力亦不可思議！',
+              '薰燒煙供除障粉不僅可以清淨自身磁場、淨化空間環境，也可去除身上因接觸沾染的晦氣。保持清淨，更可以召喚好的磁場能量、增長運氣、增加善緣、消除災障及惡緣，常保平安、一切順利。',
+              '隨時點燃煙供除障粉並定期薰燒，可化解違緣障礙，使一切所求如願。隨身攜帶或以清淨動機薰燒，並以信心祈請，也可藉由香氣供養諸佛菩薩及護法空行眾，祈願賜予加持、淨除所知障與煩惱障，遠離人與非人侵害及此世來世魔難冤孽，令惡緣轉輕或熄滅，得健康、長壽、運勢提升，累積福慧資糧，所願成就。',
+            ] },
+            { id: 'smoke-contents', title: '煙供除障粉內含物', bullets: [
+              '尊貴的第三世貝諾法王修持的總集甘露丸。',
+              '白玉印度南卓林寺六千僧眾修法的加持物與煙供粉。',
+              '西康白玉祖寺所依聖物總聚丸及多種稀有甘露與加持物。',
+              '西康穆松寺甘露總集丸及加持物、西康白玉巴納寺總集甘露丸及加持物。',
+              '聖地菩提迦耶寧瑪大法會九千僧眾修法加持的煙供粉。',
+              '空隆降魔佛爺修法加持而成甘露丸與特別為中心製作的煙供粉。',
+              '多竺欽法王修持之加持物。',
+              '圖松法王修法加持物。',
+              '西藏嘎陀寺「法藥之王－萬僧法藥」。',
+              '數十位殊勝成就者及各寧瑪主寺修持的甘露丸。',
+              '西藏、印度、不丹、尼泊爾等聖地的水、土。',
+              '嘉察仁波切收藏之數千種珍稀殊勝的加持物。',
+            ], image: './images/tara-p03-01-ingredients.jpg', imageAfterList: true },
+            { id: 'smoke-for-whom', title: '哪些人需要常常薰燒煙供粉？', paragraphs: [
+              '需要常常與人接觸，或想淨化磁場、增加正能量與好運的人，例如：老師、櫃檯、直銷業、保險業、房仲業、服務業、餐飲業、百貨業、殯葬業、業務、美容美髮、醫護、按摩推拿等。',
+            ] },
+            { id: 'smoke-usage', title: '使用及注意事項', bullets: [
+              '達拉煙供粉特別恭請尊貴上師修法加持圓滿，不需另行修法即可使用。',
+              '使用時間不分時段，隨時隨地皆可薰燒淨化。',
+              '請置於乾淨的煙供爐，放適量並堆成三角錐狀，較容易燃燒。',
+              '每天可定期薰燒自身與居家環境，或公司行號，以保持清淨良好的磁場。',
+              '若前往醫院、參加喪事等磁場不佳的環境，回家後可薰燒除障粉淨化。',
+              '出差時可攜帶少許煙供粉，或在飯店放置於桌上薰燒，祈願自身與環境清淨。',
+              '若希望店面增加客源，可每天以煙供粉淨化店面。',
+              '薰燒後的煙供粉可撒於盆栽、土地或水中，以利益一切眾生。',
+            ] },
+            { id: 'smoke-note', title: '請供資訊', paragraphs: [
+              '達拉煙供粉可供養諸佛、清淨除穢、淨化除障、保護息災、增加好運勢。除障粉恭請尊貴的嘉察仁波切與僧眾共同如法裝臟、開光加持。數量有限，請事先詢問登記。',
+            ] },
+          ],
           previous: { title: '加持咒輪圖', to: '/offerings/mantra-diagrams' }, next: null,
+        },
+        other: {
+          title: '其他結緣品', category: '其他結緣品', eyebrow: 'OTHER OFFERINGS', image: './images/offering-other-cover.png',
+          lead: '西藏手工八吉祥臥香爐，以及多款本尊主題手環與項鍊。',
+          sections: [],
+          previous: null, next: { title: '聚財滿願杯', to: '/offerings/mug' },
+        },
+        mug: {
+          title: '聚財滿願杯', eyebrow: 'TARA MUG', image: './images/offering-mug-garden.jpg',
+          lead: '',
+          sections: [
+            { id: 'mug-intro', title: '達拉度母「聚財滿願杯」', image: './images/offering-mug-intro.jpg', paragraphs: [
+              '達拉度母陳敏老師為了讓大家都能在生活中與度母連結，特別為弟子們設計了「聚財滿願杯」。',
+              '陳敏老師恭請尊貴的祖古嘉察仁波切修法「財源度母法會」，灑淨加持圓滿。',
+            ] },
+            { id: 'mug-totem', title: '達拉 TARA 圖騰', image: './images/offering-mug-totem.jpg', paragraphs: [
+              '代表著諸佛菩薩的息、增、懷、誅、圓滿壇城。',
+            ], subsections: [
+              { title: '息災 ○', paragraphs: ['平息業障、消除災厄，祈願平安健康。'] },
+              { title: '增益 ■', paragraphs: ['增長智慧、福報與財富，祈願財運事業順遂。'] },
+              { title: '懷愛 ♡', paragraphs: ['善緣具足、人緣增長，祈願桃花姻緣和合。'] },
+              { title: '誅除 ▲', paragraphs: ['斷除種種違緣障礙，祈願除障淨化。'] },
+              { title: '圓滿 ◎', paragraphs: ['心想事成、所求滿願，祈願智慧圓滿。'] },
+            ] },
+            { id: 'mug-mantra', title: '度母心咒', image: './images/offering-mug-cover.jpg', paragraphs: [
+              '嗡 達咧 嘟達咧 嘟咧梭哈',
+              '聖尊度母加持力。',
+            ] },
+            { id: 'mug-use', title: '如何使用', bullets: [
+              '使用度母杯飲用時，可觀想度母賜予加持、化為甘露水，心中默念杯上的度母心咒後飲用，祈願身心健康安樂。',
+              '可以在度母杯中飲用水、咖啡或茶；以「水為財」觀想度母加持，祈願財源廣進。',
+              '在度母杯中倒入水或飲品時，可先於息增懷誅壇城前祈請心願，再念誦度母心咒七遍，祈願得度母加持、財源廣進、所求滿願。',
+              '可在度母杯中放置五色寶石，象徵木、火、土、金、水五行能量，配合度母心咒加持，作為聚財的祝願。',
+              '也可在度母杯中種植綠色開運竹，放置於家中或辦公桌上，寓意福運聚財、生生不息、節節高升。',
+            ] },
+          ],
+          previous: null, next: null,
         },
       },
     }),
@@ -481,7 +519,7 @@
         return this.pages[this.slug] || this.pages.ghau;
       },
       displayItems() {
-        if (this.slug === 'smoke-offering') return this.smokeOfferingItems;
+        if (this.slug === 'mug') return [];
         const category = this.categories.find(item => item.name === this.detail.category);
         if (!category) return [];
         return category.items;
@@ -499,6 +537,12 @@
       window.clearInterval(this.carouselTimer);
     },
     methods: {
+      scrollToSection(id) {
+        const section = document.getElementById(id);
+        if (!section) return;
+        const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        section.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      },
       carouselIndex(item) {
         return this.activeImages[item.name] || 0;
       },
@@ -519,16 +563,21 @@
         <section class="offering-detail-hero"><img :src="detail.image" :alt="detail.title + '主題圖片'"></section>
           <header class="section-wrap offering-detail-heading"><span class="eyebrow">{{ detail.eyebrow }}</span><h1>{{ detail.title }}</h1><p v-if="detail.lead">{{ detail.lead }}</p></header>
         <article class="section-wrap offering-detail-content">
-          <nav v-if="detail.sections.length > 1 && detail.category !== '嘎屋'" class="offering-detail-toc" aria-label="本頁章節導覽"><a v-for="section in detail.sections" :key="section.id" :href="'#' + section.id">{{ section.title }}</a></nav>
+          <nav v-if="detail.sections.length > 1 && detail.category !== '嘎屋'" class="offering-detail-toc" aria-label="本頁章節導覽"><a v-for="section in detail.sections" :key="section.id" :href="'#' + section.id" @click.prevent="scrollToSection(section.id)">{{ section.title }}</a></nav>
           <section v-for="section in detail.sections" :id="section.id" :key="section.id" class="offering-detail-section">
-            <h2>{{ section.title }}</h2>
-            <img v-if="section.image" class="offering-detail-section-image" :src="section.image" :alt="section.title" loading="lazy">
-            <p v-for="(paragraph, index) in section.paragraphs || []" :key="'p' + index">{{ paragraph }}</p>
-            <ul v-if="section.bullets"><li v-for="bullet in section.bullets" :key="bullet">{{ bullet }}</li></ul>
-            <div v-if="section.subheading" class="offering-detail-subsection"><h3>{{ section.subheading }}</h3><p v-for="(paragraph, index) in section.subparagraphs" :key="'sub' + index">{{ paragraph }}</p></div>
-            <div v-for="subsection in section.subsections || []" :key="subsection.title" class="offering-detail-subsection"><h3>{{ subsection.title }}</h3><p v-for="(paragraph, index) in subsection.paragraphs" :key="'sub-' + index">{{ paragraph }}</p></div>
+            <div class="offering-detail-section-layout" :class="{ 'offering-detail-section-layout--split': slug === 'mug' && section.image, 'offering-detail-section-layout--text-center': slug === 'mug' && !section.image }">
+              <div v-if="section.image && !section.imageAfterList" class="offering-detail-section-media"><img class="offering-detail-section-image" :src="section.image" :alt="section.title" loading="lazy"></div>
+              <div class="offering-detail-section-copy">
+                <h2>{{ section.title }}</h2>
+                <p v-for="(paragraph, index) in section.paragraphs || []" :key="'p' + index">{{ paragraph }}</p>
+                <ul v-if="section.bullets"><li v-for="bullet in section.bullets" :key="bullet">{{ bullet }}</li></ul>
+                <img v-if="section.image && section.imageAfterList" class="offering-detail-section-image" :src="section.image" :alt="section.title + '照片'" loading="lazy">
+                <div v-if="section.subheading" class="offering-detail-subsection"><h3>{{ section.subheading }}</h3><p v-for="(paragraph, index) in section.subparagraphs" :key="'sub' + index">{{ paragraph }}</p></div>
+                <div v-for="subsection in section.subsections || []" :key="subsection.title" class="offering-detail-subsection"><h3>{{ subsection.title }}</h3><p v-for="(paragraph, index) in subsection.paragraphs" :key="'sub-' + index">{{ paragraph }}</p></div>
+              </div>
+            </div>
           </section>
-          <section v-if="slug !== 'mantra-diagrams'" class="offering-detail-products"><div class="offering-detail-section-heading"><span class="eyebrow">BROWSE ITEMS</span><h2>{{ detail.category === '嘎屋' ? '本尊嘎嗚' : detail.title + '品項' }}</h2></div>
+          <section v-if="slug !== 'mantra-diagrams' && displayItems.length" class="offering-detail-products"><div class="offering-detail-section-heading"><span class="eyebrow">BROWSE ITEMS</span><h2>{{ detail.category === '嘎屋' ? '本尊嘎嗚' : detail.title + '品項' }}</h2></div>
             <ul class="offering-grid">
               <li v-for="item in displayItems" :key="item.name" class="offering-item" :class="{ 'offering-item--no-image': !item.image && !(item.images && item.images.length) }">
                 <div class="offering-image" :class="{ 'offering-image-gallery': item.images && item.images.length > 1 }">
