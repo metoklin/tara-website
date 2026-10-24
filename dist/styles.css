@@ -40,6 +40,7 @@ figure, p, h1, h2 { margin-top: 0; }
 .brand { display: inline-flex; align-items: center; gap: 11px; min-width: max-content; font-size: 18px; letter-spacing: .08em; }
 .brand img { height: 54px; width: 54px; object-fit: contain; }
 .brand strong { color: var(--blue); font-family: Georgia, serif; letter-spacing: .12em; }
+.mobile-nav-toggle { display: none; }
 .main-nav { display: flex; align-items: center; justify-content: center; gap: clamp(16px, 2.25vw, 34px); }
 .main-nav a { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 14px; color: #46596d; white-space: nowrap; transition: color .2s; }
 .main-nav-zh { line-height: 1.35; }
@@ -112,10 +113,12 @@ figure, p, h1, h2 { margin-top: 0; }
 .home-center-promo-reverse .offerings-band-copy { order: 2; }
 .home-center-promo-reverse .offerings-band-gallery { order: 1; }
 
-.home-advertising { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding-block: 56px; }
+.home-advertising { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; padding-block: 56px; }
 .home-ad-placeholder { position: relative; display: grid; place-items: end stretch; overflow: hidden; aspect-ratio: 1 / 1; border: 1px solid var(--line); border-radius: 4px; background: var(--cream); color: white; font-size: 14px; font-weight: 650; letter-spacing: .12em; }
 .home-ad-placeholder > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .home-ad-placeholder > span { position: relative; z-index: 1; padding: 42px 20px 18px; background: linear-gradient(transparent, rgba(13, 32, 48, .68)); }
+.home-ad-pending { place-items: center; border-style: dashed; background: #edf2f5; color: var(--muted); }
+.home-ad-pending > span { padding: 0; background: none; }
 
 .activity-preview { min-height: 385px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 65px; padding-block: 78px; }
 .activity-copy p { max-width: 450px; margin-bottom: 22px; }
@@ -174,6 +177,69 @@ figure, p, h1, h2 { margin-top: 0; }
 .about-image img { width: 100%; height: 390px; object-fit: cover; object-position: center; }
 .about-note h2 { margin-bottom: 13px; }
 .about-note p { max-width: 480px; }
+.about-origin { padding-block: 82px 90px; }
+.about-section-heading { margin-bottom: 28px; }
+.about-section-heading .eyebrow { margin-bottom: 8px; }
+.about-section-heading h2 { margin: 0 0 11px; font-size: clamp(28px, 3.5vw, 40px); font-weight: 550; letter-spacing: .06em; }
+.about-section-heading > p { max-width: 900px; margin: 0; color: var(--muted); font-size: 15px; line-height: 2; }
+.about-origin-copy { max-width: 980px; margin-bottom: 32px; }
+.about-origin-copy p, .temple-symbol-note p, .deity-copy-card p, .prayer-mandala-info-grid p, .about-closing-notes p { color: #586777; font-size: 15px; line-height: 2.05; }
+.about-origin-copy p:last-child, .deity-copy-card p:last-child, .prayer-mandala-info-grid p:last-child, .about-closing-notes p:last-child { margin-bottom: 0; }
+.temple-symbol-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+.temple-photo-reserved { grid-row: span 2; margin: 0; }
+.temple-photo-reserved img { width: 100%; aspect-ratio: 1.5; object-fit: cover; }
+.temple-photo-reserved figcaption { margin-top: 9px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.temple-symbol-note { padding: 23px 25px; border: 1px solid var(--line); background: var(--paper); }
+.temple-symbol-note .eyebrow { margin-bottom: 9px; }
+.temple-symbol-note p { margin: 0; }
+.temple-symbol-note-human { grid-column: 2; }
+.tara-symbol-section { padding-block: 82px 92px; background: #edf2f5; }
+.tara-symbol-inner { display: grid; grid-template-columns: 1fr; gap: 28px; }
+.tara-symbol-heading { text-align: center; }
+.tara-symbol-heading .eyebrow { margin-bottom: 8px; }
+.tara-symbol-heading h2 { margin: 0 0 8px; font-size: clamp(30px, 4vw, 44px); font-weight: 550; letter-spacing: .06em; }
+.tara-symbol-heading p { margin: 0; color: var(--muted); font-size: 17px; letter-spacing: .08em; }
+.tara-logo-feature { display: grid; grid-template-columns: 240px minmax(0, 1fr); align-items: center; gap: 42px; max-width: 900px; width: 100%; margin-inline: auto; padding: 26px 36px; border: 1px solid rgba(195, 211, 224, .8); background: rgba(255, 255, 255, .68); }
+.tara-logo-feature img { width: 220px; height: 220px; object-fit: contain; }
+.tara-logo-feature p { margin: 0; color: #536476; font-size: 16px; line-height: 2.1; }
+.tara-elements-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.tara-element-card { min-width: 0; padding: 19px 13px 17px; border: 1px solid rgba(195, 211, 224, .8); background: rgba(255, 255, 255, .75); text-align: center; }
+.tara-element-card img { width: 100px; height: 100px; object-fit: contain; margin: 0 auto 10px; }
+.tara-element-card h3 { margin: 0 0 8px; color: var(--ink); font-size: 16px; font-weight: 650; }
+.tara-element-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.tara-element-card p + p { color: #947021; }
+.altar-deities { padding-block: 84px 92px; }
+.altar-shrine-photo { margin: 0 0 28px; }
+.altar-shrine-photo img { width: 100%; height: 380px; object-fit: cover; object-position: center 43%; }
+.altar-shrine-photo figcaption { padding-top: 9px; color: var(--muted); font-size: 13px; text-align: right; }
+.deity-copy-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+.deity-copy-card { padding: 24px 26px; border: 1px solid var(--line); background: #fff; }
+.deity-copy-card h3 { margin: 0 0 10px; color: var(--ink); font-size: 21px; font-weight: 600; letter-spacing: .04em; }
+.deity-copy-card p { margin: 0 0 12px; }
+.deity-tara-details { display: grid; gap: 18px; margin-top: 19px; padding-top: 19px; border-top: 1px solid var(--line); }
+.deity-tara-details h4 { margin: 0 0 7px; color: var(--ink); font-size: 17px; font-weight: 650; }
+.deity-tara-details p { margin: 0; }
+.prayer-mandala-section { padding-block: 82px 92px; background: var(--cream); }
+.prayer-mandala-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 34px; }
+.prayer-mandala-gallery figure { margin: 0; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.prayer-mandala-gallery img { width: 100%; height: 310px; object-fit: cover; }
+.prayer-mandala-main-photo { grid-column: 1 / -1; }
+.prayer-mandala-gallery .prayer-mandala-main-photo img { height: auto; max-height: 520px; object-fit: contain; background: #f5f0e4; }
+.prayer-mandala-supporting-photo { grid-column: 2; }
+.prayer-mandala-gallery figcaption { padding: 10px 14px; color: var(--muted); font-size: 13px; }
+.prayer-mandala-motto { color: #9a7221 !important; font-size: 17px !important; letter-spacing: .12em; }
+.prayer-mandala-info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.prayer-mandala-info-grid article { padding: 26px 28px; border: 1px solid var(--line); background: #fff; }
+.prayer-mandala-info-grid h3 { margin: 0 0 11px; color: var(--ink); font-size: 22px; font-weight: 600; }
+.prayer-mandala-info-grid p { margin: 0 0 12px; }
+.prayer-offering-callout { margin-top: 24px; padding: 30px 32px; border: 1px solid #d9c99f; background: #fffdf8; }
+.prayer-offering-callout .eyebrow { margin-bottom: 8px; }
+.prayer-offering-callout h3 { margin: 0 0 10px; font-size: 24px; font-weight: 600; }
+.prayer-offering-callout > p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
+.prayer-offering-link-space { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.prayer-offering-link-space span { padding: 14px 17px; border: 1px dashed #ccb77d; color: var(--blue); font-weight: 650; }
+.about-closing-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 26px; padding: 23px 26px; background: #edf2f5; }
+.about-closing-notes p { margin: 0; }
 .content-note { display: inline-flex; gap: 9px; align-items: center; padding: 12px 15px; border: 1px solid #e9ddb9; border-radius: 5px; color: #79653a; font-size: 12px; background: #fcf8ec; margin-top: 8px; }
 .content-note span { color: var(--gold); }
 .mandala-intro { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(250px, .8fr); align-items: center; gap: 52px; padding-block: 24px 76px; }
@@ -265,6 +331,7 @@ figure, p, h1, h2 { margin-top: 0; }
 .offering-detail-section-heading { margin-bottom: 20px; }
 .offering-detail-section-heading .eyebrow { margin-bottom: 7px; }
 .offering-detail-section-heading h2 { margin: 0; }
+.offering-items-intro { max-width: 760px; margin: 12px 0 0; color: var(--muted); font-size: 14px; line-height: 1.9; }
 .offering-detail-pager { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; padding-block: 20px 42px; border-top: 1px solid var(--line); }
 .offering-detail-pager .button { flex-shrink: 0; }
 .offering-detail-next { margin-left: auto; }
@@ -288,6 +355,7 @@ figure, p, h1, h2 { margin-top: 0; }
 .offering-carousel > img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .offering-image-empty { width: 100%; height: 100%; background: #f8f5ed; }
 .offering-item-copy { padding: 16px 18px 20px; }
+.offering-name-group { display: block; margin-bottom: 5px; color: #a77c25; font-size: 12px; font-weight: 750; letter-spacing: .12em; }
 .offering-name { margin: 0 0 9px; font-size: 15px; line-height: 1.65; font-weight: 650; }
 .offering-item-description { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.85; }
 .offering-detail-page .offering-item-description { display: -webkit-box; min-height: 3.7em; max-height: 3.7em; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
@@ -334,6 +402,10 @@ figure, p, h1, h2 { margin-top: 0; }
 .social-links a { display: flex; align-items: center; gap: 14px; padding: 13px 15px; border: 1px solid var(--line); background: var(--paper); color: #435467; font-size: 13px; transition: border .2s, transform .2s; }
 .social-links a:hover { border-color: var(--gold); transform: translateX(3px); }
 .social-links a span { width: 34px; height: 34px; display: grid; place-items: center; background: #edf2f5; color: var(--blue); border-radius: 50%; font-size: 10px; font-weight: 800; }
+.social-links a .social-link-icon { flex: 0 0 40px; width: 40px; height: 40px; }
+.social-link-icon .social-icon { width: 21px; height: 21px; }
+.social-icon-instagram rect, .social-icon-instagram circle { fill: none; stroke: currentColor; stroke-width: 2; }
+.social-icon-instagram circle:last-child { fill: currentColor; stroke: none; }
 .social-links a b { color: var(--gold); margin-left: auto; font-size: 17px; }
 
 @media (max-width: 920px) {
@@ -347,18 +419,23 @@ figure, p, h1, h2 { margin-top: 0; }
   .visit-strip { align-items: center; flex-direction: column; text-align: center; }
 }
 @media (max-width: 620px) {
-  .site-header { padding-inline: 16px; column-gap: 12px; }
-  .brand { font-size: 15px; }
+  .site-header { position: sticky; top: 0; height: 68px; min-height: 68px; padding: 9px 14px; column-gap: 10px; flex-wrap: nowrap; background: rgba(255, 254, 250, .98); box-shadow: 0 2px 12px rgba(24, 49, 74, .06); }
+  .mobile-nav-toggle { width: 42px; height: 42px; flex: 0 0 42px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--blue-deep); cursor: pointer; }
+  .mobile-nav-toggle span { display: block; width: 18px; height: 2px; border-radius: 2px; background: currentColor; }
+  .brand { gap: 8px; margin-right: auto; font-size: 15px; }
   .brand img { height: 43px; width: 43px; }
-  .header-contact { min-height: 44px; padding: 10px 14px; font-size: 13px; }
-  .main-nav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); justify-content: stretch; gap: 6px; overflow: visible; padding: 9px 0 4px; }
-  .main-nav a { min-width: 0; min-height: 44px; justify-content: center; font-size: 13px; text-align: center; }
+  .header-contact { min-height: 42px; padding: 10px 13px; font-size: 13px; }
+  .main-nav, .main-nav.is-open { position: absolute; top: 100%; left: 0; right: 0; z-index: 6; width: auto; padding: 7px 16px 13px; border-bottom: 1px solid var(--line); background: rgba(255, 254, 250, .99); box-shadow: 0 12px 18px rgba(24, 49, 74, .09); }
+  .main-nav { display: none; }
+  .main-nav.is-open { display: grid; grid-template-columns: 1fr; justify-content: stretch; gap: 0; overflow: visible; }
+  .main-nav a { min-width: 0; width: 100%; height: 48px; min-height: 48px; flex-direction: row; justify-content: space-between; gap: 16px; padding: 6px 8px; border-bottom: 1px solid rgba(224, 213, 194, .62); font-size: 17px; text-align: left; }
+  .main-nav a:last-child { border-bottom: 0; }
   .main-nav-zh { white-space: nowrap; }
-  .main-nav-en { font-size: 9px; letter-spacing: .07em; }
+  .main-nav-en { font-size: 10px; letter-spacing: .07em; }
   .hero { min-height: 550px; height: 78vh; max-height: 690px; }
   .hero-image { object-position: 58% center; }
   .hero-shade { background: linear-gradient(90deg, rgba(13,39,65,.77), rgba(13,39,65,.35)), linear-gradient(0deg, rgba(13,39,65,.23), transparent); }
-  .hero-content { left: 20px; right: 20px; top: 48%; }
+  .hero-content { left: 20px; right: 20px; top: 60%; }
   .hero h1 { font-size: clamp(34px, 9.5vw, 40px); letter-spacing: .025em; line-height: 1.08; }
   .hero-content p { font-size: 16px; line-height: 1.8; }
   .hero-actions { align-items: stretch; flex-direction: column; max-width: 270px; }
@@ -390,18 +467,25 @@ figure, p, h1, h2 { margin-top: 0; }
   .site-footer { font-size: 13px; }
   .footer-brand span { font-size: 13px; }
   .welcome { grid-template-columns: 1fr; gap: 20px; padding-block: 58px; }
-  .welcome-mark { width: 52px; height: 52px; }
-  .welcome-photo { grid-column: auto; margin-top: 10px; }
+  .welcome-mark { display: none; }
+  .welcome-photo { order: -1; grid-column: auto; margin-top: 0; }
+  .welcome-copy { order: 1; }
   .welcome-photo img { height: 245px; }
+  .welcome-photo figcaption { position: absolute; right: 0; bottom: 0; padding: 7px 10px; border-radius: 3px 0 0 0; background: rgba(24, 49, 74, .72); color: white; text-align: right; }
   .offerings-band-inner { min-height: 0; align-items: stretch; flex-direction: column; gap: 24px; padding-block: 42px; }
   .offerings-band-copy { flex-basis: auto; }
   .offerings-band-gallery { flex: none; width: 100%; min-height: 220px; }
+  .home-offerings .offerings-band-gallery { order: -1; }
+  .home-offerings .offerings-band-copy { order: 1; }
   .home-advertising { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding-block: 34px; }
   .home-ad-placeholder { min-height: 0; aspect-ratio: 1 / 1; font-size: 14px; letter-spacing: .06em; }
   .activity-preview { grid-template-columns: 1fr; gap: 28px; padding-block: 56px; }
+  .activity-photo { order: -1; }
+  .activity-copy { order: 1; }
   .activity-art { height: 190px; }
-  .visit-strip { padding-block: 44px; gap: 25px; }
-  .visit-actions { align-items: center; flex-direction: column; gap: 12px; }
+  .visit-strip { align-items: flex-start; padding-block: 44px; gap: 25px; text-align: left; }
+  .visit-actions { width: 100%; justify-content: flex-start; align-items: flex-start; }
+  .visit-actions { align-items: flex-start; flex-direction: column; gap: 12px; }
   .consultation-modal-backdrop { align-items: end; padding: 10px; }
   .consultation-modal { max-height: 90vh; border-radius: 8px 8px 4px 4px; }
   .consultation-modal-content { padding: 30px 20px 24px; }
@@ -409,7 +493,7 @@ figure, p, h1, h2 { margin-top: 0; }
   .consultation-modal-actions .button { justify-content: center; text-align: center; }
   .site-footer { align-items: flex-start; flex-direction: column; gap: 20px; padding-block: 28px; }
   .footer-socials { flex-wrap: wrap; gap: 20px; }
-  .footer-note { align-self: flex-end; }
+  .footer-note { align-self: flex-start; }
   .home-teacher { grid-template-columns: 1fr; gap: 24px; padding-block: 48px; }
   .home-teacher-reverse .home-teacher-photo { order: 0; }
   .home-teacher-photo img { height: 250px; }
@@ -424,6 +508,35 @@ figure, p, h1, h2 { margin-top: 0; }
   .page-intro { padding-block: 62px 50px; }
   .about-feature { grid-template-columns: 1fr; gap: 31px; padding-block: 52px; }
   .about-image img { height: 300px; }
+  .about-origin, .altar-deities { padding-block: 52px; }
+  .about-section-heading { margin-bottom: 21px; }
+  .about-origin-copy p, .temple-symbol-note p, .deity-copy-card p, .prayer-mandala-info-grid p, .about-closing-notes p { font-size: 14px; }
+  .temple-symbol-grid { grid-template-columns: 1fr; gap: 12px; }
+  .temple-photo-reserved { grid-row: auto; }
+  .temple-photo-reserved img { aspect-ratio: 1.5; }
+  .temple-symbol-note-human { grid-column: auto; }
+  .temple-symbol-note, .deity-copy-card { padding: 19px 20px; }
+  .tara-symbol-section, .prayer-mandala-section { padding-block: 54px; }
+  .tara-symbol-inner { gap: 20px; }
+  .tara-symbol-heading p { font-size: 15px; }
+  .tara-logo-feature { grid-template-columns: 1fr; gap: 12px; padding: 20px; }
+  .tara-logo-feature img { width: 180px; height: 180px; }
+  .tara-logo-feature p { font-size: 14px; text-align: center; }
+  .tara-elements-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .tara-element-card { padding: 15px 9px; }
+  .tara-element-card img { width: 82px; height: 82px; }
+  .tara-element-card h3 { font-size: 14px; }
+  .tara-element-card p { font-size: 12px; }
+  .altar-shrine-photo img { height: 250px; }
+  .deity-copy-grid, .prayer-mandala-gallery, .prayer-mandala-info-grid { grid-template-columns: 1fr; gap: 12px; }
+  .prayer-mandala-gallery .prayer-mandala-main-photo img { max-height: 260px; }
+  .prayer-mandala-gallery .prayer-mandala-supporting-photo { grid-column: 1; }
+  .prayer-mandala-gallery .prayer-mandala-supporting-photo img { height: 230px; }
+  .prayer-mandala-info-grid article { padding: 21px; }
+  .prayer-offering-callout { padding: 23px 20px; }
+  .prayer-offering-callout h3 { font-size: 21px; }
+  .prayer-offering-link-space, .about-closing-notes { grid-template-columns: 1fr; }
+  .about-closing-notes { gap: 14px; padding: 20px; }
   .mandala-intro { grid-template-columns: 1fr; gap: 25px; padding-block: 7px 52px; }
   .mandala-main-deities { padding: 22px; }
   .teacher-profiles { padding-block: 52px 16px; }

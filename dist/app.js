@@ -21,15 +21,18 @@
 
   const SiteHeader = {
     components: { RouterLink },
-    data: () => ({ config, navItems }),
+    data: () => ({ config, navItems, mobileNavOpen: false }),
     template: `
       <header class="site-header">
+        <button class="mobile-nav-toggle" type="button" :aria-expanded="mobileNavOpen" aria-controls="site-main-nav" :aria-label="mobileNavOpen ? '關閉導覽選單' : '開啟導覽選單'" @click="mobileNavOpen = !mobileNavOpen">
+          <span></span><span></span><span></span>
+        </button>
         <RouterLink class="brand" to="/" aria-label="TARA達拉 首頁">
           <img src="./images/tara-logo.png" alt="TARA 標誌">
           <span><strong>TARA</strong>達拉</span>
         </RouterLink>
-        <nav class="main-nav" aria-label="主要導覽">
-          <RouterLink v-for="item in navItems" :key="item.to" :to="item.to" exact-active-class="is-active"><span class="main-nav-zh">{{ item.label }}</span><span class="main-nav-en">{{ item.en }}</span></RouterLink>
+        <nav id="site-main-nav" class="main-nav" :class="{ 'is-open': mobileNavOpen }" aria-label="主要導覽">
+          <RouterLink v-for="item in navItems" :key="item.to" :to="item.to" exact-active-class="is-active" @click="mobileNavOpen = false"><span class="main-nav-zh">{{ item.label }}</span><span class="main-nav-en">{{ item.en }}</span></RouterLink>
         </nav>
         <a class="header-contact" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問 <span aria-hidden="true">↗</span></a>
       </header>
@@ -50,7 +53,7 @@
           <a :href="config.links.instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.7" cy="6.7" r="1.2"/></svg></a>
           <a :href="config.links.youtube" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path class="social-icon-cutout" d="m10 9 5 3-5 3z"/></svg></a>
         </nav>
-        <span class="footer-note">網站內容由佛堂提供</span>
+        <span class="footer-note">© 2026 達拉 TARA. All rights reserved.</span>
       </footer>
     `,
   };
@@ -151,13 +154,14 @@
           <div class="activity-photo"><img src="./images/buddhist-life-lecture.jpg" alt="佛堂佛化人生系列講座共修情形"></div>
         </section>
 
-        <section class="home-advertising section-wrap" aria-label="供養布施、朝聖與諮詢問事">
+        <section class="home-advertising section-wrap" aria-label="供養布施、朝聖、瑜伽頌缽與待補內容">
           <div class="home-ad-placeholder"><img src="./images/offering-donation.jpg" alt=""><span>供養布施</span></div>
           <div class="home-ad-placeholder"><img src="./images/pilgrimage.jpg" alt=""><span>朝聖</span></div>
           <div class="home-ad-placeholder"><img src="./images/yoga-singing-bowl.jpg" alt=""><span>瑜伽、頌缽、呼吸法</span></div>
+          <div class="home-ad-placeholder home-ad-pending"><span>待補</span></div>
         </section>
 
-        <section class="offerings-band">
+        <section class="offerings-band home-offerings">
           <div class="section-wrap offerings-band-inner">
             <div class="offerings-band-copy">
               <span class="eyebrow">結緣品</span>
@@ -220,17 +224,56 @@
   const AboutPage = {
     template: `
       <div>
-        <section class="page-intro"><span class="eyebrow">ABOUT TARA</span><h1>認識達拉 TARA</h1><p>佛堂沿革、理念與主尊介紹，將依佛堂提供的資料整理刊載。</p></section>
-        <section class="about-feature section-wrap">
-          <figure class="about-image"><img src="./images/guanyin-shrine.jpg" alt="佛堂主尊觀世音菩薩"><figcaption>佛堂主尊觀世音菩薩</figcaption></figure>
-          <div class="about-note"><span class="eyebrow">佛堂介紹</span><h2>關於達拉 TARA</h2><p>「達拉」是梵文 Tara 的音譯，意為度母。佛堂沿革與平日活動資訊，將依佛堂提供的資料整理刊載。</p><div class="content-note"><span aria-hidden="true">✦</span> 佛堂沿革資料待補</div></div>
+        <section class="page-intro"><span class="eyebrow">ABOUT TARA</span><h1>認識達拉 TARA</h1><p>走進達拉度母佛堂，認識佛堂理念、圖騰、壇城與諸尊。</p></section>
+
+        <section class="about-origin section-wrap">
+          <div class="about-section-heading"><span class="eyebrow">ABOUT TARA</span><h2>關於達拉 TARA</h2></div>
+          <div class="about-origin-copy">
+            <p>達拉為梵語 Tara 的譯音，意為「度母」。達拉是觀世音菩薩悲心的化現；取度母能滿足眾生一切願求之意，祈願眾生「心想事成、所求滿願」。</p>
+            <p>達拉度母佛堂是充滿殊勝法寶與聖物、諸佛菩薩加持的聖地。佛堂內各項安置皆依上師指示而設計，依照五行木、火、土、金、水相生的原理，並按東、南、西、北、中不同方位規劃；四周以白、黃、紅、藍、綠五種鮮明色彩區隔，各代表不同意義。</p>
+          </div>
+          <div class="temple-symbol-grid">
+            <figure class="temple-photo-reserved"><img src="./images/eight-auspicious-totems.png" alt="佛堂門上的八吉祥圖騰與護輪"><figcaption>門口及佛堂內皆以「八吉祥圖騰」佈置</figcaption></figure>
+            <article class="temple-symbol-note"><span class="eyebrow">八吉祥圖騰</span><p>八吉祥象徵宇宙所有奇珍異寶之總聚，以此供養三寶、累積自身資糧；也代表佛身所擁有的吉祥徵兆，以及佛的一切功德事業。</p></article>
+            <article class="temple-symbol-note"><span class="eyebrow">密咒護輪</span><p>門前印有代表平安、健康、人緣等不同意義的密咒護輪，使進入者得到防護及回遮，祈願運氣不斷增長。</p></article>
+            <article class="temple-symbol-note temple-symbol-note-human"><span class="eyebrow">人形圖</span><p>門上的人形圖安座於蓮花，並有多種五妙欲摩尼寶等供養，代表可得如同天人般的福報。四周環繞金剛結圖騰，祈願有緣進入者去除障礙、得到一切保護力。</p></article>
+          </div>
         </section>
-        <section class="mandala-intro section-wrap">
-          <div class="mandala-copy"><span class="eyebrow">THE MANDALA</span><h2>壇城配置與色彩</h2><p>佛堂壇城依五行木、火、土、金、水相生的原理，並按東、南、西、北、中方位規劃；壇城周圍以白、黃、紅、藍、綠五色區隔。</p><div class="mandala-colors" aria-label="壇城使用的五種顏色"><span><i class="color-white"></i>白</span><span><i class="color-yellow"></i>黃</span><span><i class="color-red"></i>紅</span><span><i class="color-blue"></i>藍</span><span><i class="color-green"></i>綠</span></div></div>
-          <div class="mandala-main-deities"><span class="eyebrow">主壇城供奉</span><h3>觀音度母三尊</h3><p>主尊為觀世音菩薩，左右兩側分別為綠度母與白度母。</p></div>
+
+        <section class="tara-symbol-section">
+          <div class="section-wrap tara-symbol-inner">
+            <div class="tara-symbol-heading"><span class="eyebrow">TARA MANDALA</span><h2>達拉 TARA 圖騰</h2><p>代表諸佛菩薩的息、增、懷、誅、圓滿壇城。</p></div>
+            <div class="tara-logo-feature"><img src="./images/tara-logo.png" alt="達拉 TARA 五色圖騰標誌"><p>這呈現出佛國淨土（無量宮殿）。佛菩薩的滿願壇城具足一切佛的加持力，賜予眾生祝福的吉祥能量。只要進入佛堂，就能輕易累積福德資糧、福運不斷增長。</p></div>
+            <div class="tara-elements-grid">
+              <article class="tara-element-card"><img src="./images/tara-logo-element-white.png" alt="白色息災圖騰"><h3>息災・白</h3><p>平息業障、消除災厄</p><p>平安健康</p></article>
+              <article class="tara-element-card"><img src="./images/tara-logo-element-yellow.png" alt="黃色增益圖騰"><h3>增益・黃</h3><p>增長智慧、福報、財富</p><p>財運事業</p></article>
+              <article class="tara-element-card"><img src="./images/tara-logo-element-red.png" alt="紅色懷愛圖騰"><h3>懷愛・紅</h3><p>善緣具足、人緣桃花</p><p>桃花姻緣</p></article>
+              <article class="tara-element-card"><img src="./images/tara-logo-element-blue.png" alt="藍色誅除圖騰"><h3>誅除・藍</h3><p>斷除種種違緣障礙</p><p>除障淨化</p></article>
+              <article class="tara-element-card"><img src="./images/tara-logo-element-green.png" alt="綠色圓滿圖騰"><h3>圓滿・綠</h3><p>心想事成、所求滿願</p><p>智慧圓滿</p></article>
+            </div>
+          </div>
         </section>
-        <section class="about-banner">
-          <div class="section-wrap about-banner-inner"><div><span class="eyebrow">壇城主尊</span><h2>觀音度母三尊</h2><p>主尊為觀世音菩薩，左右兩側分別為綠度母與白度母。</p></div><img src="./images/guanyin-detail.jpg" alt="觀世音菩薩聖像細節"></div>
+
+        <section class="altar-deities section-wrap">
+          <div class="about-section-heading"><span class="eyebrow">SACRED DEITIES</span><h2>壇城主尊</h2><p>主壇城供奉「觀音度母三尊」：主尊為觀世音菩薩，左右兩側分別是綠度母與白度母。</p></div>
+          <figure class="altar-shrine-photo"><img src="./images/guanyin-shrine.jpg" alt="佛堂主壇城供奉的觀世音菩薩"><figcaption>佛堂主尊觀世音菩薩</figcaption></figure>
+          <div class="deity-copy-grid">
+            <article class="deity-copy-card"><h3>觀世音菩薩</h3><p>觀音菩薩以大慈悲願力普渡一切眾生，幫助人間種種危難、聞聲救苦。因經常示現不同相貌、顯現神蹟救度眾生，廣為世人信奉。若能常瞻仰禮拜，必得觀音庇佑護持，清淨身口意三業。</p></article>
+            <article class="deity-copy-card deity-tara-card"><h3>度母</h3><p>度母是觀世音菩薩因悲憫眾生而流下眼淚的化現：左眼淚珠變化成白度母，右眼淚珠化現為綠度母。以女性菩薩像度化眾生，是「除障」與「滿願」最有力的本尊。共化現二十一尊度母，各代表不同功德利益，以輔助觀世音菩薩慈悲救渡一切苦難的眾生。</p><p>「度」表示救拔、度脫、度化眾生，迅速威猛有力，加持力廣大不可思議。虔心祈請度母加持，有如滿願寶，諸事順遂、求子得子、得福報子息增長。</p><div class="deity-tara-details"><section><h4>綠度母</h4><p>綠度母是集諸佛菩薩一切事業之功德本尊，亦為二十一度母之首。虔心祈請度母加持有如滿願寶，能滿足一切事業的圓滿，感情婚姻如意，求子嗣得子嗣、得財富權勢，凡有所求皆得如願成就。</p></section><section><h4>白度母</h4><p>白度母身潔白，面有三眼，雙手雙腳心各有一眼，也稱為「七眼度母」。主要能消除病苦災劫，增長壽命及福慧，免除一切魔障、瘟疫病厄，得一切平安、善緣具足、所求滿願。</p></section></div></article>
+          </div>
+        </section>
+
+        <section class="prayer-mandala-section">
+          <div class="section-wrap prayer-mandala-inner">
+            <div class="about-section-heading"><span class="eyebrow">PRAYER &amp; BLESSING</span><h2>祈福滿願壇城</h2><p class="prayer-mandala-motto">吉祥・福運・滿願</p></div>
+            <div class="prayer-mandala-gallery"><figure class="prayer-mandala-main-photo"><img src="./images/prayer-fulfillment-mandala.jpg" alt="祈福滿願壇城主壇城"><figcaption>祈福滿願壇城</figcaption></figure><figure class="prayer-mandala-supporting-photo"><img src="./images/prayer-altar-setup.jpg" alt="主壇城佈置照片"></figure></div>
+            <div class="prayer-mandala-info-grid">
+              <article><h3>主壇城</h3><p>壇城內供奉度母、蓮花生大士及所有本尊、空行、護法、總集朵瑪、十二生肖神獸守護菩薩與九宮八卦咒牌，以祈願化解因風水而起的沖煞、歲煞，轉為吉祥能量，並得諸佛菩薩守護。</p><p>壇城內安置由尊貴上師親自裝臟、修法加持圓滿的殊勝珍貴「吉祥福運滿願寶瓶」，與十方大德結緣，藉由寶瓶加持為大眾祈福，祈願消除眾生一切障礙。</p></article>
+              <article><h3>內密壇城</h3><p>主要供奉黃財神本尊，秘壇城內安置可增長財運福報的「財神寶瓶」與許多殊勝加持物。</p><p>特別恭請嘉察仁波切裝臟、修法、開光加持圓滿。恭敬禮拜財神，祈願諸眾財神護佑，具足世間與出世間一切資糧，令財富滿盈、受用自在、不虞匱乏。</p></article>
+            </div>
+            <div class="prayer-offering-callout"><span class="eyebrow">DEDICATION OFFERINGS</span><h3>祈福滿願壇城開放認供</h3><p>壇城開放大眾祈福、許願、認供，並依不同生肖及流年安排參贊方式。</p><div class="prayer-offering-link-space"><span>點燈祈福</span><span>年度認供介紹</span></div></div>
+            <div class="about-closing-notes"><p>只要具虔誠信心、衷心祈請，必得諸佛菩薩眾、護法神尊加持庇佑。不論祈求事業、財運、感情、桃花、人緣等，皆能所求如意、滿願順遂。</p><p>達拉並有多種殊勝法寶結緣品，每樣結緣品皆經由尊貴上師如理如法裝臟、開光、灑淨加持圓滿，且定期恭請上師不斷修法加持，其殊勝力不可思議。</p></div>
+          </div>
         </section>
       </div>
     `,
@@ -351,18 +394,18 @@
           { name: '鎮宅化煞九宮八卦圖立牌（文殊九宮八卦立牌）', description: '文殊九宮八卦圖立牌；商品名稱與規格請以佛堂提供資訊為準。' },
           { name: '九宮八卦圖（中）', description: '九宮八卦咒輪圖中款；佛堂舊站介紹可隨身攜帶或懸掛於空間中。' },
         ] },
-        { name: '其他結緣品', description: '包含西藏手工八吉祥臥香爐，以及多款本尊主題手環與項鍊。', items: [
+        { name: '其他結緣品', description: '包含息增懷誅圓滿運動手環、西藏手工八吉祥臥香爐，以及多款本尊主題手環與項鍊。', items: [
+          { name: '息災 金剛薩埵手環', image: './images/tara-p04-01.jpg', description: '迅速消除罪障，歡喜而遠離困境。', more: ['心咒：嗡 班雜 薩埵 吽'], detailsLabel: '心咒' },
+          { name: '增益 黃財神手環', image: './images/tara-p04-02.jpg', description: '增長福德、壽命、智慧，受用自在富饒。', more: ['心咒：嗡 藏巴拉 雜連 紮耶 梭哈'], detailsLabel: '心咒' },
+          { name: '懷愛 咕嚕咕咧佛母手環', image: './images/tara-p04-03.jpg', description: '淨除道障違緣、增上順緣。', more: ['心咒：嗡 咕嚕 咕咧 啥以 梭哈'], detailsLabel: '心咒' },
+          { name: '伏誅 金剛手菩薩手環', image: './images/tara-p04-04.jpg', description: '怯除疾病瘟疫、迴遮危難。', more: ['心咒：嗡 班雜 巴尼 吽呸'], detailsLabel: '心咒' },
+          { groupTitle: '吉祥圓滿', name: '綠度母運動手環', image: './images/tara-p04-05.jpg', description: '心想事成所求滿願。', more: ['心咒：嗡 達列 嘟達列 嘟列 梭哈'], detailsLabel: '心咒' },
+          { name: '健康長壽 長壽佛手環', image: './images/tara-p04-06.jpg', description: '增長壽命及福德智慧。', more: ['心咒：嗡 咕嚕 阿育 悉地 吽 啥 阿瑪 日阿尼 孜溫 諦耶 梭哈', '※長壽佛手環由尊貴的 嘉察仁波切設計，修法開光加持圓滿。'], detailsLabel: '心咒與手環介紹' },
           { name: '西藏手工八吉祥臥香爐', images: [
             { src: './images/offering-incense-burner-front.png', alt: '西藏手工八吉祥臥香爐正面' },
             { src: './images/offering-incense-burner-detail.png', alt: '西藏手工八吉祥臥香爐使用情境' },
           ], description: '西藏手工製八吉祥臥香爐，提供不同尺寸。' },
-          { name: '息 金剛薩埵運動手環', image: './images/tara-p04-01.jpg', description: '以金剛薩埵為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
-          { name: '增 黃財神運動手環', image: './images/tara-p04-02.jpg', description: '以黃財神為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
-          { name: '懷 咕嚕咕咧佛母運動手環', image: './images/tara-p04-03.jpg', description: '以咕嚕咕咧佛母為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
-          { name: '誅 金剛手菩薩運動手環', image: './images/tara-p04-04.jpg', description: '以金剛手菩薩為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
-          { name: '圓滿 綠度母運動手環', image: './images/tara-p04-05.jpg', description: '以綠度母為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
-          { name: '長壽佛運動手環', image: './images/tara-p04-06.jpg', description: '以長壽佛為主題的日常手環；佛堂舊站附有相關心咒介紹。' },
-          { name: '度母五色圓滿手環及佛卡', image: './images/tara-p05-01.jpg', description: '五色度母主題手環與佛卡組合。' },
+          { name: '度母五色圓滿手環及佛卡', image: './images/tara-p05-01.jpg', description: '特別恭請尊貴的 圖松法王 修法開光加持圓滿。', more: ['※修法加持圓滿之度母手環與佛卡乙張'], detailsLabel: '品項補充' },
           { name: '度母七色手環', description: '七色度母主題手環。' },
           { name: '度母七色項鏈', description: '七色度母主題項鍊。' },
         ] },
@@ -524,6 +567,8 @@
         other: {
           title: '其他結緣品', category: '其他結緣品', eyebrow: 'OTHER OFFERINGS', image: './images/offering-other-cover.png',
           lead: '西藏手工八吉祥臥香爐，以及多款本尊主題手環與項鍊。',
+          itemsTitle: '結緣品項目',
+          itemsIntro: '息增懷誅圓滿運動手環，由尊貴的法王穆松古千親自監督設計及修法加持圓滿，適合平日及運動時配戴。',
           sections: [],
           previous: null, next: { title: '聚財滿願杯', to: '/offerings/mug' },
         },
@@ -623,14 +668,14 @@
               </div>
             </div>
           </section>
-          <section v-if="slug !== 'mantra-diagrams' && displayItems.length" class="offering-detail-products"><div class="offering-detail-section-heading"><span class="eyebrow">BROWSE ITEMS</span><h2>{{ detail.category === '嘎屋' ? '本尊嘎嗚' : detail.title + '品項' }}</h2></div>
+          <section v-if="slug !== 'mantra-diagrams' && displayItems.length" class="offering-detail-products"><div class="offering-detail-section-heading"><span class="eyebrow">BROWSE ITEMS</span><h2>{{ detail.itemsTitle || (detail.category === '嘎屋' ? '本尊嘎嗚' : detail.title + '品項') }}</h2><p v-if="detail.itemsIntro" class="offering-items-intro">{{ detail.itemsIntro }}</p></div>
             <ul class="offering-grid">
               <li v-for="item in displayItems" :key="item.name" class="offering-item" :class="{ 'offering-item--no-image': !item.image && !(item.images && item.images.length) }">
                 <div class="offering-image" :class="{ 'offering-image-gallery': item.images && item.images.length > 1 }">
                   <img v-if="item.image" :src="item.image" :alt="item.name" loading="lazy">
                   <div v-else-if="item.images && item.images.length" class="offering-carousel" @mouseenter="pauseCarousel(item, true)" @mouseleave="pauseCarousel(item, false)" :aria-label="item.name + '照片輪播'"><img :src="item.images[carouselIndex(item)].src" :alt="item.images[carouselIndex(item)].alt || item.name" loading="lazy"></div>
                 </div>
-                <div class="offering-item-copy"><h3 class="offering-name">{{ item.name }}</h3><p v-if="item.description" class="offering-item-description">{{ item.description }}</p><div v-if="item.more && item.more.length" class="offering-item-details"><div class="offering-item-details-panel" :class="{ 'is-open': expandedDetails[item.name] }" :aria-hidden="!expandedDetails[item.name]"><div class="offering-item-details-inner"><p v-for="(paragraph, index) in item.more" :key="'more' + index">{{ paragraph }}</p></div></div><button type="button" class="offering-item-details-toggle" :aria-expanded="!!expandedDetails[item.name]" @click="toggleItemDetails(item.name)">功德利益 <span aria-hidden="true" :class="{ 'is-open': expandedDetails[item.name] }">⌄</span></button></div></div>
+                <div class="offering-item-copy"><span v-if="item.groupTitle" class="offering-name-group">{{ item.groupTitle }}</span><h3 class="offering-name">{{ item.name }}</h3><p v-if="item.description" class="offering-item-description">{{ item.description }}</p><div v-if="item.more && item.more.length" class="offering-item-details"><div class="offering-item-details-panel" :class="{ 'is-open': expandedDetails[item.name] }" :aria-hidden="!expandedDetails[item.name]"><div class="offering-item-details-inner"><p v-for="(paragraph, index) in item.more" :key="'more' + index">{{ paragraph }}</p></div></div><button type="button" class="offering-item-details-toggle" :aria-expanded="!!expandedDetails[item.name]" @click="toggleItemDetails(item.name)">{{ item.detailsLabel || '功德利益' }} <span aria-hidden="true" :class="{ 'is-open': expandedDetails[item.name] }">⌄</span></button></div></div>
               </li>
             </ul>
           </section>
@@ -670,7 +715,12 @@
           <div class="visit-details"><span class="eyebrow">佛堂位置</span><h2>歡迎蒞臨</h2><address>{{ config.address }}</address><div class="transport-info"><h3>交通資訊</h3><p><strong>捷運：</strong>板南線「忠孝敦化站」1 號出口。</p><p><strong>公車：</strong>「捷運忠孝敦化站」步行約 1 分鐘；「忠孝敦化路口」步行約 3 分鐘。</p><p>頂呱呱忠孝店旁，羅馬大廈 8 樓。</p></div><p>參訪安排與交通問題，歡迎先透過 LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問參訪方式 <span aria-hidden="true">↗</span></a><a class="map-open-link" :href="config.links.map" target="_blank" rel="noopener noreferrer">在 Google 地圖開啟 <span aria-hidden="true">↗</span></a></div>
           <div class="map-frame"><iframe :src="config.mapEmbedUrl" title="達拉 TARA 位置地圖" width="600" height="450" style="border:0" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
         </section>
-        <section class="section-wrap contact-section"><div class="contact-heading"><span class="eyebrow">OFFICIAL ACCOUNTS</span><h2>官方聯絡與社群</h2></div><nav class="social-links" aria-label="官方聯絡與社群"><a :href="config.links.line" target="_blank" rel="noopener noreferrer"><span>LINE</span> 詢問請供與參訪方式 <b aria-hidden="true">↗</b></a><a :href="config.links.facebook" target="_blank" rel="noopener noreferrer"><span>FB</span> Facebook 官方粉專 <b aria-hidden="true">↗</b></a><a :href="config.links.instagram" target="_blank" rel="noopener noreferrer"><span>IG</span> Instagram 官方帳號 <b aria-hidden="true">↗</b></a><a :href="config.links.youtube" target="_blank" rel="noopener noreferrer"><span>YT</span> YouTube 官方頻道 <b aria-hidden="true">↗</b></a></nav></section>
+        <section class="section-wrap contact-section"><div class="contact-heading"><span class="eyebrow">OFFICIAL ACCOUNTS</span><h2>官方聯絡與社群</h2></div><nav class="social-links" aria-label="官方聯絡與社群">
+          <a :href="config.links.line" target="_blank" rel="noopener noreferrer"><span class="social-link-icon" aria-hidden="true"><svg class="social-icon" viewBox="0 0 24 24"><path d="M12 3C6.7 3 2.5 6.4 2.5 10.6c0 3.7 3.3 6.7 7.8 7.4.3.1.7.2.8.5.1.2 0 .6 0 .8l-.1.8c0 .2-.2.8.7.4s5.1-3 7-5.2c1.3-1.4 2.3-3.1 2.3-4.7C21 6.4 17.1 3 12 3z"/><path class="social-icon-cutout" d="M7.2 9h1v3.4h-1zm2.1 0h1l1.5 2v-2h1v3.4h-.9l-1.6-2.1v2.1h-1zm4.4 0h2.8v.9h-1.8v.4h1.6v.8h-1.6v.5h1.8v.8h-2.8z"/></svg></span>詢問請供與參訪方式 <b aria-hidden="true">↗</b></a>
+          <a :href="config.links.facebook" target="_blank" rel="noopener noreferrer"><span class="social-link-icon" aria-hidden="true"><svg class="social-icon" viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8h3.4z"/></svg></span>Facebook 官方粉專 <b aria-hidden="true">↗</b></a>
+          <a :href="config.links.instagram" target="_blank" rel="noopener noreferrer"><span class="social-link-icon" aria-hidden="true"><svg class="social-icon social-icon-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.7" cy="6.7" r="1.2"/></svg></span>Instagram 官方帳號 <b aria-hidden="true">↗</b></a>
+          <a :href="config.links.youtube" target="_blank" rel="noopener noreferrer"><span class="social-link-icon" aria-hidden="true"><svg class="social-icon" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path class="social-icon-cutout" d="m10 9 5 3-5 3z"/></svg></span>YouTube 官方頻道 <b aria-hidden="true">↗</b></a>
+        </nav></section>
       </div>
     `,
   };
