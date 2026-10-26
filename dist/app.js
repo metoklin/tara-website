@@ -86,7 +86,6 @@
         </section>
 
         <section class="welcome section-wrap">
-          <img class="welcome-mark" src="./images/tara-logo.png" alt="TARA 標誌">
           <div class="welcome-copy">
             <span class="eyebrow">認識佛堂</span>
             <h2>一處可以慢慢認識的佛堂</h2>
@@ -154,11 +153,11 @@
           <div class="activity-photo"><img src="./images/buddhist-life-lecture.jpg" alt="佛堂佛化人生系列講座共修情形"></div>
         </section>
 
-        <section class="home-advertising section-wrap" aria-label="供養布施、朝聖、瑜伽頌缽與待補內容">
+        <section class="home-advertising section-wrap" aria-label="供養布施、朝聖、瑜伽頌缽與發心護持">
           <div class="home-ad-placeholder"><img src="./images/offering-donation.jpg" alt=""><span>供養布施</span></div>
           <div class="home-ad-placeholder"><img src="./images/pilgrimage.jpg" alt=""><span>朝聖</span></div>
           <div class="home-ad-placeholder"><img src="./images/yoga-singing-bowl.jpg" alt=""><span>瑜伽、頌缽、呼吸法</span></div>
-          <div class="home-ad-placeholder home-ad-pending"><span>待補</span></div>
+          <div class="home-ad-placeholder"><img src="./images/home-support.png" alt="達拉度母佛堂祈福滿願壇城"><span>發心護持</span></div>
         </section>
 
         <section class="offerings-band home-offerings">
@@ -573,7 +572,7 @@
           previous: null, next: { title: '聚財滿願杯', to: '/offerings/mug' },
         },
         mug: {
-          title: '聚財滿願杯', eyebrow: 'TARA MUG', image: './images/offering-mug-garden.jpg',
+          title: '聚財滿願杯', eyebrow: 'TARA MUG', image: './images/offering-mug-header.png',
           lead: '',
           sections: [
             { id: 'mug-intro', title: '達拉度母「聚財滿願杯」', image: './images/offering-mug-intro.jpg', paragraphs: [
@@ -686,13 +685,97 @@
     `,
   };
 
+  const activityEvents = [
+    {
+      slug: 'new-year-prayer', title: '新年滿願祈福大法會', eyebrow: 'NEW YEAR PRAYER', subtitle: '1/1 許願日', image: './images/activity-new-year-prayer.png',
+      description: '每年國曆一月一日舉辦新年祈願法會，於聖度母尊前虔心許願，祈願闔家平安、福慧增長、所求滿願。',
+      sections: [
+        { title: '新年的第一天・許願日', paragraphs: ['達拉度母每年 1 月 1 日舉辦新年祈願法會。在聖度母尊前親自許下新年願望，並將功德迴向一切眾生，祝福大家新年快樂、福慧善緣增長，闔家平安順心如意。', '一元復始、萬象更新。弟子們虔誠祈願觀音度母護佑，願新年心想事成、諸事順遂。'] },
+        { title: '度母指示籤', paragraphs: ['度母指示籤是度母的指引，也是給大家的方向與祝福。可將籤文牢記於心，或隨身攜帶，時時提醒自己，感受度母的加持與祝福。'] },
+        { title: '祈福滿願壇城開放新年度認供', paragraphs: ['壇城開放大眾祈福、許願與認供，可依個人願望選擇許願卡、佛菩薩祈福燈或吉祥滿願寶瓶。認供項目與年度資訊請洽佛堂確認。'] },
+      ],
+    },
+    {
+      slug: 'spring-prosperity', title: '迎春招財 納福增壽', eyebrow: 'CHINESE NEW YEAR', subtitle: '農曆大年初一・迎財源度母', image: './images/activity-spring-prosperity.png',
+      description: '大年初一開放佛堂禮佛參拜，祈願新年心想事成、所求滿願，並以布施與善行廣結善緣。',
+      sections: [
+        { title: '迎財源度母', paragraphs: ['財源天母亦稱財源度母、財寶度母，是藏傳佛教中與財富福德相關的女性本尊。修持者以恭敬心供養、禮拜與持誦，並以所得資財行布施、利益苦難眾生，廣結善緣。'] },
+        { title: '大年初一禮佛祈福', paragraphs: ['達拉 TARA 於農曆大年初一開放佛堂，敬邀十方法友前往中心禮拜觀音度母，祈願新年平安順遂、福德增長、心想事成。'] },
+        { title: '祈願與認供', paragraphs: ['祈福滿願壇城依年度開放許願、認供與祈福項目。參與方式與當年度安排請以佛堂公告為準。'] },
+      ],
+    },
+    {
+      slug: 'world-incense-day', title: '世界煙供日', eyebrow: 'TIBETAN WORLD INCENSE DAY', subtitle: '放天馬・修煙供', image: './images/activity-world-incense-day.png',
+      description: '煙供、放天馬與龍王修法是藏傳佛教重要的供養與祈願法門，祈願眾生消災除障、福慧增長。',
+      sections: [
+        { title: '世界煙供日', paragraphs: ['依蓮師經典所述，此日是地神、山神、龍王與天龍八部等因緣聚集之日，也是佛教密乘放天馬、修煙供的重要時節。法會以供養、布施與迴向，祈願累積福慧資糧、遠離障礙，並祝願身心健康、平安吉祥。'] },
+        { title: '放天馬旗', paragraphs: ['天馬旗是藏傳佛教中祈願消除業緣障礙、增長福運的方便法門。五色旗上印有佛菩薩、本尊心咒、摩尼經與四神獸；旗幟隨風飄動，象徵將經咒祝福傳送至各處，並將功德迴向一切眾生。'] },
+        { title: '煙供與供養', paragraphs: ['煙供是累積資糧、消除違緣障礙的修持。依儀軌如法供養諸佛菩薩並布施六道眾生，祈願平息病苦與障礙，增長壽命、福德與資財。法會日期與參與方式請留意佛堂公告。'] },
+      ],
+    },
+    {
+      slug: 'dedication-smoke-offering', title: '超薦度亡與下煙供', eyebrow: 'DEDICATION & SMOKE OFFERING', subtitle: '清明節・教孝月', image: './images/activity-dedication-smoke-offering.png',
+      description: '清明節與教孝月是重要的祭祖與超渡時節，以佛法功德迴向先亡親友及一切有緣眾生。',
+      sections: [
+        { title: '超薦度亡的意義', paragraphs: ['清明節與教孝月（藏曆七月）是重要的祭祖和超渡亡者的日子。透過如法修持與功德迴向，祈願先亡祖先、累世親友與一切有緣眾生離苦得樂、得到善緣，並為現世親眷祈求福慧與平安。'] },
+        { title: '煙供與功德迴向', paragraphs: ['以大悲菩提心修持煙供、水供與布施，並將功德迴向亡者及六道眾生，祈願消業除障、遠離苦厄、增長福慧。法會依佛堂安排及儀軌進行。'] },
+        { title: '參與方式', paragraphs: ['法會日期、牌位登記與參與方式，請洽佛堂或留意官方公告；相關安排以當年度公告為準。'] },
+      ],
+    },
+    {
+      slug: 'tara-birthday', title: '達拉度母感恩慶生會', eyebrow: 'THANKSGIVING FOR TARA', subtitle: '感恩還願日', image: './images/activity-tara-birthday.png',
+      description: '在感恩與還願的特別日子，獻上誠摯心意，感謝度母慈悲護佑、滿足祈請與願求。',
+      sections: [
+        { title: '感恩與還願', paragraphs: ['度母是眾生的母親，我們都是度母的小孩。於這個感恩與還願的日子，敬邀弟子們參加盛會，獻上誠摯心意，感謝度母的慈悲、護佑與加持。'] },
+        { title: '觀音度母的慈悲願力', paragraphs: ['觀世音菩薩以大慈悲願力普渡眾生、聞聲救苦。度母是觀世音菩薩悲憫眾生的化現，共有二十一尊，各代表不同功德利益，慈悲救渡一切苦難眾生。'] },
+        { title: '法會祈願', paragraphs: ['虔心祈請度母加持，祈願消除病苦災劫、增長福慧與壽命，並將功德迴向眾生，願大家平安吉祥、所求滿願。活動日期與參與方式請以佛堂公告為準。'] },
+      ],
+    },
+    {
+      slug: 'dragon-king-day', title: '龍王日供龍王寶瓶', eyebrow: 'TIBETAN DRAGON KINGS DAY', subtitle: '供龍王寶瓶・祈願風調雨順', image: './images/activity-dragon-king-day.png',
+      description: '依傳統，龍王日是龍王與眷屬出行巡視之日；透過修法與供養，祈願人間安穩、風調雨順。',
+      sections: [
+        { title: '龍王日', paragraphs: ['《出龍日》俗稱「龍王日」，傳統上認為是龍王偕同龍族眷屬出於大地、遍行各方巡視之日，也祈願善人吉祥、修行無礙。'] },
+        { title: '龍王財神寶瓶', paragraphs: ['龍王寶瓶是祈求世間福報的殊勝法物。依佛堂介紹，供養寶瓶並祈請諸佛菩薩加持，祈願龍王及眷屬離苦得樂、不作障礙，也祝願施放者與所處地域風調雨順、遠離災害，福報、智慧與資糧增長。'] },
+        { title: '放生與慈悲', paragraphs: ['放生包含財施、法施與無畏施。以慈悲心護念生命、奉行善事並迴向功德，祈願眾生離苦得樂。法會日期與寶瓶供養方式請洽佛堂確認。'] },
+      ],
+    },
+    {
+      slug: 'daily-practice', title: '日常共修', eyebrow: 'DAILY PRACTICE', subtitle: '二十一度母薈供共修', image: './images/activity-daily-practice.png',
+      description: '透過共修持誦彼此增上，累積福慧資糧；邀請法友依佛堂公告參與共修。',
+      sections: [
+        { title: '共修的功德利益', paragraphs: ['共修的功德利益可以鏡子的反射做比喻：眾人共同念誦，彼此同得共修功德。上師鼓勵弟子參與共修，以共同修持累積資糧、增長善念。'] },
+        { title: '二十一度母薈供', paragraphs: ['綠度母法門是金剛乘中殊勝的本尊法門。虔心憶念度母、持誦心咒，祈願遠離災難與恐懼，消除障礙，增長福慧、壽命，凡有所求皆得如願成就。'] },
+        { title: '共修時間', paragraphs: ['每週共修項目與時間可能依佛堂安排調整，請參閱官方公告或先透過 LINE 詢問。'] },
+      ],
+    },
+  ];
+
   const ActivitiesPage = {
-    data: () => ({ config }),
+    data: () => ({ config, events: activityEvents }),
     template: `
       <div>
         <section class="page-intro"><span class="eyebrow">WEEKLY ACTIVITIES</span><h1>法會活動</h1><p>每週日下午有不同的法會活動。最新場次與活動內容，請以 Facebook 官方粉專公告為準。</p></section>
         <section class="section-wrap activity-card"><div class="activity-card-art" aria-hidden="true"><span>週日</span><b>∞</b></div><div class="activity-card-copy"><span class="eyebrow">每週日下午</span><h2>近期法會活動</h2><p>活動內容每週不同，請前往 Facebook 官方粉專查看公告。</p><a class="button button-blue" :href="config.links.facebook" target="_blank" rel="noopener noreferrer">前往 Facebook 官方粉專 <span aria-hidden="true">↗</span></a></div></section>
         <p class="section-wrap activity-note">前往 Facebook 查看最新活動資訊；網站不會自動同步 Facebook 活動。</p>
+        <section class="section-wrap activity-events"><div class="activity-events-heading"><span class="eyebrow">PRAYER &amp; CEREMONIES</span><h2>祈福法會</h2><p>認識佛堂舉辦的法會與共修活動。</p></div><div class="activity-event-grid"><RouterLink v-for="event in events" :key="event.slug" :to="'/activities/' + event.slug" class="activity-event-card"><img :src="event.image" :alt="event.title" loading="lazy"><div class="activity-event-copy"><span class="eyebrow">{{ event.eyebrow }}</span><h3>{{ event.title }}</h3><p>{{ event.description }}</p><span class="text-link">了解更多 <b aria-hidden="true">→</b></span></div></RouterLink></div></section>
+      </div>
+    `,
+  };
+
+  const ActivityDetailPage = {
+    props: ['slug'],
+    data: () => ({ config, events: activityEvents }),
+    computed: {
+      event() { return this.events.find(item => item.slug === this.slug) || this.events[0]; },
+    },
+    template: `
+      <div class="activity-detail-page">
+        <div class="section-wrap activity-detail-breadcrumb"><RouterLink to="/activities">法會活動</RouterLink><span aria-hidden="true">／</span><span>{{ event.title }}</span></div>
+        <section class="activity-detail-hero"><img :src="event.image" :alt="event.title" fetchpriority="high"></section>
+        <header class="section-wrap activity-detail-heading"><span class="eyebrow">{{ event.eyebrow }}</span><h1>{{ event.title }}</h1><p>{{ event.description }}</p></header>
+        <article class="section-wrap activity-detail-content"><section v-for="section in event.sections" :key="section.title" class="activity-detail-section"><h2>{{ section.title }}</h2><p v-for="paragraph in section.paragraphs" :key="paragraph">{{ paragraph }}</p></section></article>
+        <section class="activity-detail-contact"><div class="section-wrap"><span class="eyebrow">JOIN &amp; ASK</span><h2>法會參與與洽詢</h2><p>場次、登記與參與方式請以佛堂最新公告為準。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問 <span aria-hidden="true">↗</span></a><RouterLink class="button button-outline" to="/activities">回到法會活動</RouterLink></div></section>
       </div>
     `,
   };
@@ -734,6 +817,7 @@
       { path: '/offerings', component: OfferingsPage },
       { path: '/offerings/:slug', component: OfferingDetailPage, props: true },
       { path: '/activities', component: ActivitiesPage },
+      { path: '/activities/:slug', component: ActivityDetailPage, props: true },
       { path: '/testimonials', component: TestimonialsPage },
       { path: '/visit', component: VisitPage },
     ],
@@ -743,4 +827,34 @@
   createApp({ components: { SiteHeader, SiteFooter, RouterView }, template: '<SiteHeader /><main><RouterView /></main><SiteFooter />' })
     .use(router)
     .mount('#app');
+
+  if ('IntersectionObserver' in window && 'MutationObserver' in window) {
+    const appRoot = document.querySelector('#app');
+    const revealSelector = 'header.site-header, main section, main article, main figure, main .center-card, main .home-ad-placeholder, main .offering-topic, main .offering-item-card, main .activity-card, main .activity-event-card, main .home-teacher-photo, main .welcome-copy, main .offerings-band-copy, main .tara-element-card, main .deity-copy-card, footer.site-footer';
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.04, rootMargin: '0px 0px -24px 0px' });
+    const observeRevealItems = () => {
+      appRoot.querySelectorAll(revealSelector).forEach((element) => {
+        if (element.classList.contains('scroll-reveal')) return;
+        element.classList.add('scroll-reveal');
+        revealObserver.observe(element);
+      });
+    };
+    let revealFrame = 0;
+    const scheduleRevealItems = () => {
+      if (revealFrame) cancelAnimationFrame(revealFrame);
+      revealFrame = requestAnimationFrame(() => {
+        revealFrame = 0;
+        observeRevealItems();
+      });
+    };
+    const revealMutationObserver = new MutationObserver(scheduleRevealItems);
+    revealMutationObserver.observe(appRoot, { childList: true, subtree: true });
+    observeRevealItems();
+  }
 })();
