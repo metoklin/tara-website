@@ -157,7 +157,7 @@
           <div class="home-ad-placeholder"><img src="./images/offering-donation.jpg" alt=""><span>供養布施</span></div>
           <div class="home-ad-placeholder"><img src="./images/pilgrimage.jpg" alt=""><span>朝聖</span></div>
           <div class="home-ad-placeholder"><img src="./images/yoga-singing-bowl.jpg" alt=""><span>瑜伽、頌缽、呼吸法</span></div>
-          <div class="home-ad-placeholder"><img src="./images/home-support.png" alt="達拉度母佛堂祈福滿願壇城"><span>發心護持</span></div>
+          <div class="home-ad-placeholder"><img src="./images/home-support.jpg" alt="達拉度母佛堂發心護持"><span>發心護持</span></div>
         </section>
 
         <section class="offerings-band home-offerings">
@@ -696,30 +696,47 @@
       ],
     },
     {
-      slug: 'spring-prosperity', title: '迎春招財 納福增壽', eyebrow: 'CHINESE NEW YEAR', subtitle: '農曆大年初一・迎財源度母', image: './images/activity-spring-prosperity.png',
+      slug: 'spring-prosperity', title: '迎春招財 納福增壽', eyebrow: 'CHINESE NEW YEAR', subtitle: '農曆大年初一・迎財源度母', image: './images/activity-spring-prosperity.png', imagePosition: 'center top',
       description: '大年初一開放佛堂禮佛參拜，祈願新年心想事成、所求滿願，並以布施與善行廣結善緣。',
       sections: [
-        { title: '迎財源度母', paragraphs: ['財源天母亦稱財源度母、財寶度母，是藏傳佛教中與財富福德相關的女性本尊。修持者以恭敬心供養、禮拜與持誦，並以所得資財行布施、利益苦難眾生，廣結善緣。'] },
-        { title: '大年初一禮佛祈福', paragraphs: ['達拉 TARA 於農曆大年初一開放佛堂，敬邀十方法友前往中心禮拜觀音度母，祈願新年平安順遂、福德增長、心想事成。'] },
+        { title: '大年初一迎財寶度母', subheading: '財寶天母是為能賜予行者財富的女性本尊。', image: './images/treasure-mother-thangka.png', imageAlt: '財寶天母唐卡', paragraphs: ['於六道之中專管人道世間之財富，並為五路財神之佛母。行者若能至誠懇切供養、禮拜、依止、修習持誦，及不是為了滿足一己的私慾，而是為了要有足夠資財，以三輪體空多行布施於苦難眾生，廣結善緣。如此財源天母當滿其心願，定可去除一切外內密之障礙，增廣無量財富與福德，得到未來的圓滿成就。'] },
+        { title: '大年初一禮佛參拜', paragraphs: ['達拉TARA於（大年初一）開放佛堂供弟子們前往禮佛參拜，敬邀十方法友共同至中心禮拜觀音度母，祈願新年心想事成、所求滿願。'] },
         { title: '祈願與認供', paragraphs: ['祈福滿願壇城依年度開放許願、認供與祈福項目。參與方式與當年度安排請以佛堂公告為準。'] },
       ],
     },
     {
-      slug: 'world-incense-day', title: '世界煙供日', eyebrow: 'TIBETAN WORLD INCENSE DAY', subtitle: '放天馬・修煙供', image: './images/activity-world-incense-day.png',
-      description: '煙供、放天馬與龍王修法是藏傳佛教重要的供養與祈願法門，祈願眾生消災除障、福慧增長。',
+      slug: 'world-incense-day', title: '世界煙供日', eyebrow: 'TIBETAN WORLD INCENSE DAY', subtitle: '放天馬・修煙供', image: './images/world-incense-day-hero.png', imagePosition: 'center bottom',
+      description: '蓮師經典提云：此日到來，地神、山神、龍王、天龍八部等將因前世因緣而聚集，是佛教密乘放天馬、修煙供非常重要的日子。',
       sections: [
-        { title: '世界煙供日', paragraphs: ['依蓮師經典所述，此日是地神、山神、龍王與天龍八部等因緣聚集之日，也是佛教密乘放天馬、修煙供的重要時節。法會以供養、布施與迴向，祈願累積福慧資糧、遠離障礙，並祝願身心健康、平安吉祥。'] },
-        { title: '放天馬旗', paragraphs: ['天馬旗是藏傳佛教中祈願消除業緣障礙、增長福運的方便法門。五色旗上印有佛菩薩、本尊心咒、摩尼經與四神獸；旗幟隨風飄動，象徵將經咒祝福傳送至各處，並將功德迴向一切眾生。'] },
-        { title: '煙供與供養', paragraphs: ['煙供是累積資糧、消除違緣障礙的修持。依儀軌如法供養諸佛菩薩並布施六道眾生，祈願平息病苦與障礙，增長壽命、福德與資財。法會日期與參與方式請留意佛堂公告。'] },
+        { title: '', paragraphs: ['全世界出家眾或在家眾皆會在這幾天進行法會儀式，不論是修煙供、放天馬、龍王修法、供養天龍八部等，除了可以幫助我們積聚往生淨土資糧，成就出世果位之外，也能對我們在此世間的生活需求、事業的成功有所助益，淨息所知煩惱障、遠離人與非人害、得健康、長壽、提升運氣，並能累積福慧資糧。'] },
+        { title: '放天馬旗', image: './images/activity-world-incense-day.png', imageAlt: '山間飄揚的五色天馬旗', imageLayout: 'stacked', imagePlain: true, paragraphs: ['天馬旗是藏傳佛教中用來對治各種業緣障礙、增加福氣運勢最善巧方便的法門。', '佛陀住世之時，有些弟子運勢低落，時常遭邪魔障礙，身心不時染患病苦，無法專心修學佛法，懇求世尊傳授善妙法門，因此佛陀傳以「天馬」法門，助弟子們修行。天馬旗上印有佛菩薩及本尊心咒、摩尼經及四神獸，當五色天馬旗隨風飄動時，書寫於上之經咒，經仁波切禪定力之加持後隨風傳送而加持整個地區，甚至整個法界。', '使十方虛空一切眾生、龍王、山神、地神等都能蒙佛法加持，令眾生歡喜，因而迴向福報給放天馬之功德主，得無盡之善業功德，消災除障，增長福運。特別能改善運勢，是惡緣障礙現前、重業輕報的善巧法門。', '可破除他人施放符咒，避難官司諍訟，除惡夢、惡想、惡作，使衰損之健康、權勢、財運得以恢復，令身心安泰、福壽增長、權勢威顯、事業昌隆。由於大悲心施無量無盡故，施放天馬之福亦無量。'] },
+        { title: '山淨煙供', image: './images/mountain-purification-smoke-offering.png', imageAlt: '信眾於山間參與煙供儀式', imageLayout: 'stacked', imagePlain: true, paragraphs: ['煙供的修持，是一種累積資糧、消除違緣障礙的殊勝法門。', '藉著供養、布施四種賓客，除了可以幫助我們積聚往生淨土資糧、成就出世果位之外，也能對我們在此世間的生活需求、事業的成功有所助益。如平息病魔、障礙；增長壽命、福德、資財；能統攝具有能力的人與非人等；消滅傷害等。', '修煙供需依照儀軌及壇城如法修持。一般信眾可以用虔誠心供養五穀、藥材、花、油、布、香及各種食物，乃至七珍八寶等，經由上師佛法的加持，將之轉化成殊勝供品，以火燃燒的方式，供養十方諸佛菩薩，下施六道眾生，能令法界一切歡喜滿足。觀想受布施者心中的煩惱與飢寒等皆得平息，眼前受用之財富亦皆圓滿。十方安樂吉祥！因此修持山淨煙供，為成就四種事業和究竟成佛之必要。'] },
       ],
     },
     {
       slug: 'dedication-smoke-offering', title: '超薦度亡與下煙供', eyebrow: 'DEDICATION & SMOKE OFFERING', subtitle: '清明節・教孝月', image: './images/activity-dedication-smoke-offering.png',
       description: '清明節與教孝月是重要的祭祖與超渡時節，以佛法功德迴向先亡親友及一切有緣眾生。',
       sections: [
-        { title: '超薦度亡的意義', paragraphs: ['清明節與教孝月（藏曆七月）是重要的祭祖和超渡亡者的日子。透過如法修持與功德迴向，祈願先亡祖先、累世親友與一切有緣眾生離苦得樂、得到善緣，並為現世親眷祈求福慧與平安。'] },
-        { title: '煙供與功德迴向', paragraphs: ['以大悲菩提心修持煙供、水供與布施，並將功德迴向亡者及六道眾生，祈願消業除障、遠離苦厄、增長福慧。法會依佛堂安排及儀軌進行。'] },
-        { title: '參與方式', paragraphs: ['法會日期、牌位登記與參與方式，請洽佛堂或留意官方公告；相關安排以當年度公告為準。'] },
+        { title: '超度的意義', items: [
+          { title: '超脫三惡道', text: '得生三善道或常住極樂淨土，免遭三世輪迴。' },
+          { title: '指引正確方向', text: '墮落於輪迴的眾生，有如行走於荒野中的瞎子，前路茫茫；超度可以指引眾生運用自己本性的智慧之光，遠離無明黑暗。' },
+          { title: '消業除障', text: '眾生罪業牽纏，釋迦牟尼佛為眾生消除罪業，傳授小乘、大乘、密乘的方便法門，再按照各乘法門修行，消除眾生業障。' },
+          { title: '消魔障', text: '由本身業力顯現的魔障會傷己害人。為魔超度、傳法、灌頂，勸其行善、發大悲菩提心，以避免墮入多生多死的輪迴漩渦。' },
+          { title: '為龍修法', text: '龍生病並會使地球遭受各種天災人禍，為龍修法可使法界平安。' },
+          { title: '神鬼的超度', text: '神鬼大都於鬼道、畜生道、人道轉世，為其超度可助其得到解脫。' },
+        ] },
+        { title: '超度的力量', paragraphs: ['猛烈勾召無邊六道眾生全部前來，能召引先亡祖先眷屬、累世冤親債主、中陰冤債深重、中陰迷惑、橫死冤魂、墮胎之嬰靈、惡鬼道、地獄道及頑劣不願受度之眾生，一律勾招前來接受超度。猶如父母教訓犯錯的小孩，悲心是渴切希望孩子能成材、棄惡從善、知過能改，故愛之深、責之切。尤其是勾招四魔：'], itemsHeading: '四魔', items: [
+          { title: '天子魔', text: '即他化自在天之天人，障礙行者之修行，帶來無常、失去、毀壞。' },
+          { title: '煩惱魔', text: '即自己內心之貪、嗔、痴、慢、疑等種種煩惱障，是眾生痛苦的來源。' },
+          { title: '死魔', text: '即突然死亡對修行造成中斷障礙，帶來所知障。' },
+          { title: '蘊魔', text: '即色、受、想、行、識五種取蘊，帶來我執、無明。' },
+        ], closingParagraphs: ['不論外魔（一般眾生認為四魔是外在的）或內魔（修行人則清楚四魔全由內心造作出來），均由自己造作。在未成佛之前，均需常供養超度；不度化則無法安樂，無法離開無常，無法成佛。'] },
+        { title: '超度的功德利益', groups: [
+          { title: '為已投胎的眾生超度', paragraphs: ['已投生於各道的眾生（先亡祖先、父母、六親眷屬），為他們超度可以使他們在所生的各道中得到福報利益、減少痛苦，種下接觸佛法的因緣。'] },
+          { title: '為中陰身的眾生超度', paragraphs: ['中陰身是指死亡後到再出生前之間的境界，一般不是大善大惡的人約為 49 天。中陰身的超度，由仁波切先勾招處在中陰身狀態下的神識，使他們先能歡喜聽聞佛法，再進一步令其心開意解而得度，往生阿彌陀佛的淨土。', '以大悲菩提心實施煙供、水供、布施血和肉及食物，奉行善事，並將功德迴向給他們，更以傳法、講經來度他們解脫。'] },
+          { title: '為累世冤親債主及三惡道眾生超度', paragraphs: ['一般三惡道眾生以大悲菩提心施煙供、水供、布施血及肉及食物，奉行一切善，並將無量功德迴向給他們，傳法、講經度他們解脫。', '厲鬼的超度，則修忿怒本尊、施火供，使厲鬼無始以來之深重業障、身體、名字皆燒掉，讓神識往生到阿彌陀佛淨土。'] },
+          { title: '為在世的人超度', paragraphs: ['目的是為現世父母及六親眷屬增加智慧及福德二資糧，清淨無始以來無明所造成的業障，去病魔、增福延壽，使法界免受天災、水災、兵災、風災、火災、瘟疫等危害。'] },
+        ] },
       ],
     },
     {
@@ -728,24 +745,35 @@
       sections: [
         { title: '感恩與還願', paragraphs: ['度母是眾生的母親，我們都是度母的小孩。於這個感恩與還願的日子，敬邀弟子們參加盛會，獻上誠摯心意，感謝度母的慈悲、護佑與加持。'] },
         { title: '觀音度母的慈悲願力', paragraphs: ['觀世音菩薩以大慈悲願力普渡眾生、聞聲救苦。度母是觀世音菩薩悲憫眾生的化現，共有二十一尊，各代表不同功德利益，慈悲救渡一切苦難眾生。'] },
-        { title: '法會祈願', paragraphs: ['虔心祈請度母加持，祈願消除病苦災劫、增長福慧與壽命，並將功德迴向眾生，願大家平安吉祥、所求滿願。活動日期與參與方式請以佛堂公告為準。'] },
+        { title: '法會祈願', image: './images/activity-tara-birthday-prayer.png', imageAlt: '信眾手持供燈虔心祈願', paragraphs: ['虔心祈請度母加持，祈願消除病苦災劫、增長福慧與壽命，並將功德迴向眾生，願大家平安吉祥、所求滿願。活動日期與參與方式請以佛堂公告為準。'] },
       ],
     },
     {
       slug: 'dragon-king-day', title: '龍王日供龍王寶瓶', eyebrow: 'TIBETAN DRAGON KINGS DAY', subtitle: '供龍王寶瓶・祈願風調雨順', image: './images/activity-dragon-king-day.png',
-      description: '依傳統，龍王日是龍王與眷屬出行巡視之日；透過修法與供養，祈願人間安穩、風調雨順。',
+      description: '《出龍日》，俗稱「龍王日」，是指潛龍出地的日子，乃龍王偕同龍族眷屬出於大地之日，遍行各方巡視，令善人吉祥並護持行者無障礙。',
       sections: [
-        { title: '龍王日', paragraphs: ['《出龍日》俗稱「龍王日」，傳統上認為是龍王偕同龍族眷屬出於大地、遍行各方巡視之日，也祈願善人吉祥、修行無礙。'] },
-        { title: '龍王財神寶瓶', paragraphs: ['龍王寶瓶是祈求世間福報的殊勝法物。依佛堂介紹，供養寶瓶並祈請諸佛菩薩加持，祈願龍王及眷屬離苦得樂、不作障礙，也祝願施放者與所處地域風調雨順、遠離災害，福報、智慧與資糧增長。'] },
-        { title: '放生與慈悲', paragraphs: ['放生包含財施、法施與無畏施。以慈悲心護念生命、奉行善事並迴向功德，祈願眾生離苦得樂。法會日期與寶瓶供養方式請洽佛堂確認。'] },
+        { title: '龍王財神寶瓶是求世間福報最為快速的方法之一', paragraphs: [
+          '可消除我們因無知冒犯龍王及其眷屬所導致感染病苦、災劫而不自覺的障礙，亦是用來降伏鬼神妖龍，讓人間風調雨順、防止飢荒瘟疫，減少海嘯、乾旱等災害，增廣受用、財源廣進等無窮利益的特殊寶瓶。',
+          '因龍族是佛法及庫藏的守護者，龍王乃統領一切水族，並掌管人類之資財。傳統上亦相信，傳染病、呼吸系統疾病、癌症及皮膚病等的起因，都是因為龍王及其眷屬不得安寧而引致的。因人們長期以來所造成的各種水污染及濫捕濫殺，令其飽受疾疫之苦，且傷害了無數的水族生命。',
+          '因此若能透過修法、祈請諸佛菩薩加持，供養龍王寶瓶可使龍王及其眷屬解脫諸苦、獲得安樂而不作障礙，進而獲得龍王賜福，使施放寶瓶者及其所處之域風調雨順，並能迅速獲得廣大福報和智慧，財富得到無限增長，遠離危險和痛苦，帶來財富及平安，願望皆能滿足。',
+        ] },
+        { title: '放生功德利益', paragraphs: ['《放生功德論》云：若欲善趣之樂，放生能得天人福報；若欲自得寂滅，放生即得聲聞羅漢果；若以菩提心所攝，放生則成佛果之因；若願上師住世，放生即能感得上師長久住世；若欲自己長壽，放生成為殊勝長壽法；此有無等之功德。', '【放生功德】放生可得無邊利益，因放生同時具足了三種布施：'], items: [
+          { title: '財施', text: '買受困和代宰的眾生。' },
+          { title: '法施', text: '放生時為他們念咒、說法和三皈依。' },
+          { title: '無畏施', text: '解救他們的生命和恐怖。' },
+        ], closingParagraphs: ['所以常行放生能積聚無量無邊的福德，亦有不可思議的善果。'] },
       ],
     },
     {
       slug: 'daily-practice', title: '日常共修', eyebrow: 'DAILY PRACTICE', subtitle: '二十一度母薈供共修', image: './images/activity-daily-practice.png',
       description: '透過共修持誦彼此增上，累積福慧資糧；邀請法友依佛堂公告參與共修。',
       sections: [
-        { title: '共修的功德利益', paragraphs: ['共修的功德利益可以鏡子的反射做比喻：眾人共同念誦，彼此同得共修功德。上師鼓勵弟子參與共修，以共同修持累積資糧、增長善念。'] },
-        { title: '二十一度母薈供', paragraphs: ['綠度母法門是金剛乘中殊勝的本尊法門。虔心憶念度母、持誦心咒，祈願遠離災難與恐懼，消除障礙，增長福慧、壽命，凡有所求皆得如願成就。'] },
+        { title: '共修', subheading: '共修的功德利益，可以鏡子的反射做比喻', boldParagraphs: true, paragraphs: ['若以二十人共同念誦咒語，總數達十萬遍，則不論自己在共修時念誦多少遍，都是得到了十萬遍的功德；不僅自己得到，其他十九人也得到十萬遍的功德，故仁波切經常鼓勵弟子參加共修，不僅功德利益大，累積資糧也迅速，希望各位金剛師兄弟能常常參與共修。'] },
+        { title: '二十一度母共修之功德利益', paragraphs: [
+          '綠度母法門為金剛乘教法中相應最迅速、成就極快的殊勝本尊法門。',
+          '「度母」為救度無量眾生，急切有力之意。諸佛加持一切眾生，凡能意念度母名號者，必得諸佛大加持力，特別是針對息、增、懷、誅的事業，能從種種的災難恐懼中解脫，免除三有的痛苦，因度母之願力。當世間越濁劣，則其救度之力越快速，摧滅魔軍之力越強。此因末法眾生修行不夠精進，發心不夠懇切，本尊感應較慢，惟有度母感應最快，因度母的智慧眼，觀察世間快如閃電。',
+          '綠度母為廿一尊度母之主，綠度母咒乃廿一度母之根本咒。如果常勤祈請或念誦，能斷輪迴之根源，免除一切魔障、瘟疫病苦，消除一切水火刀兵盜賊等災難。乃滿願及除障最深奧的法門，能阻止惡咒、自殺、瘋癲、爭鬥、惡兆、夢魘、疾病、傳染病及牲畜之病等一切損傷，破除年、月、日、時之不祥。並能增長福慧、權威、壽命。凡有所求時，皆得如願成就，圓滿吉祥。',
+        ] },
         { title: '共修時間', paragraphs: ['每週共修項目與時間可能依佛堂安排調整，請參閱官方公告或先透過 LINE 詢問。'] },
       ],
     },
@@ -772,9 +800,9 @@
     template: `
       <div class="activity-detail-page">
         <div class="section-wrap activity-detail-breadcrumb"><RouterLink to="/activities">法會活動</RouterLink><span aria-hidden="true">／</span><span>{{ event.title }}</span></div>
-        <section class="activity-detail-hero"><img :src="event.image" :alt="event.title" fetchpriority="high"></section>
+        <section class="activity-detail-hero"><img :src="event.image" :alt="event.title" :style="event.imagePosition ? { objectPosition: event.imagePosition } : null" fetchpriority="high"></section>
         <header class="section-wrap activity-detail-heading"><span class="eyebrow">{{ event.eyebrow }}</span><h1>{{ event.title }}</h1><p>{{ event.description }}</p></header>
-        <article class="section-wrap activity-detail-content"><section v-for="section in event.sections" :key="section.title" class="activity-detail-section"><h2>{{ section.title }}</h2><p v-for="paragraph in section.paragraphs" :key="paragraph">{{ paragraph }}</p></section></article>
+        <article class="section-wrap activity-detail-content"><section v-for="(section, index) in event.sections" :key="section.title || index" class="activity-detail-section"><h2 v-if="section.title">{{ section.title }}</h2><div v-if="section.image" class="activity-detail-image-copy" :class="{ 'activity-detail-image-copy-stacked': section.imageLayout === 'stacked' }"><figure class="activity-detail-figure" :class="{ 'activity-detail-figure-plain': section.imagePlain }"><img :src="section.image" :alt="section.imageAlt || section.title" loading="lazy"></figure><div class="activity-detail-copy"><h3 v-if="section.subheading">{{ section.subheading }}</h3><p v-for="paragraph in section.paragraphs" :key="paragraph"><strong v-if="section.boldParagraphs">{{ paragraph }}</strong><template v-else>{{ paragraph }}</template></p></div></div><template v-else><h3 v-if="section.subheading">{{ section.subheading }}</h3><p v-for="paragraph in section.paragraphs" :key="paragraph"><strong v-if="section.boldParagraphs">{{ paragraph }}</strong><template v-else>{{ paragraph }}</template></p><h3 v-if="section.itemsHeading">{{ section.itemsHeading }}</h3><ul v-if="section.items" class="activity-detail-list"><li v-for="item in section.items" :key="item.title"><strong v-if="item.title">{{ item.title }}：</strong>{{ item.text }}</li></ul><p v-for="paragraph in section.closingParagraphs" :key="paragraph">{{ paragraph }}</p><div v-for="group in section.groups" :key="group.title" class="activity-detail-subsection"><h3>{{ group.title }}</h3><p v-for="paragraph in group.paragraphs" :key="paragraph">{{ paragraph }}</p></div></template></section></article>
         <section class="activity-detail-contact"><div class="section-wrap"><span class="eyebrow">JOIN &amp; ASK</span><h2>法會參與與洽詢</h2><p>場次、登記與參與方式請以佛堂最新公告為準。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問 <span aria-hidden="true">↗</span></a><RouterLink class="button button-outline" to="/activities">回到法會活動</RouterLink></div></section>
       </div>
     `,

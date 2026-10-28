@@ -408,8 +408,21 @@ figure, p, h1, h2 { margin-top: 0; }
 .activity-detail-content { max-width: 920px; padding-block: 24px 58px; }
 .activity-detail-section { padding-block: 31px; border-bottom: 1px solid var(--line); }
 .activity-detail-section h2 { margin: 0 0 13px; font-size: 28px; line-height: 1.5; font-weight: 600; letter-spacing: .04em; }
+.activity-detail-section h3 { margin: 0 0 14px; color: var(--blue); font-size: 21px; line-height: 1.7; font-weight: 600; }
+.activity-detail-image-copy { display: grid; grid-template-columns: minmax(250px, .85fr) minmax(0, 1.15fr); align-items: center; gap: clamp(24px, 4vw, 52px); }
+.activity-detail-image-copy-stacked { grid-template-columns: 1fr; gap: 20px; }
+.activity-detail-figure { max-width: 460px; margin: 8px 0 0; padding: 10px; border: 1px solid var(--line); background: #fff; }
+.activity-detail-figure-plain { max-width: none; margin: 0; padding: 0; border: 0; background: transparent; }
+.activity-detail-figure img { width: 100%; height: auto; }
+.activity-detail-copy p:last-child { margin-bottom: 0; }
 .activity-detail-section p { margin: 0 0 14px; color: #526274; font-size: 18px; line-height: 2.05; }
 .activity-detail-section p:last-child { margin-bottom: 0; }
+.activity-detail-list { margin: 0; padding-left: 1.4em; color: #526274; font-size: 18px; line-height: 2.05; }
+.activity-detail-list li { padding-left: .25em; margin-bottom: 9px; }
+.activity-detail-list li:last-child { margin-bottom: 0; }
+.activity-detail-list strong { color: var(--ink); }
+.activity-detail-subsection + .activity-detail-subsection { margin-top: 26px; }
+.activity-detail-subsection h3 { margin-bottom: 10px; }
 .activity-detail-contact { padding-block: 54px 62px; background: var(--cream); text-align: center; }
 .activity-detail-contact h2 { margin: 0 0 8px; font-size: 30px; font-weight: 600; }
 .activity-detail-contact p { margin: 0 0 20px; color: var(--muted); font-size: 18px; line-height: 1.9; }
@@ -617,7 +630,12 @@ figure, p, h1, h2 { margin-top: 0; }
   .activity-detail-content { padding-block: 10px 38px; }
   .activity-detail-section { padding-block: 23px; }
   .activity-detail-section h2 { font-size: 23px; }
+  .activity-detail-section h3 { font-size: 18px; }
+  .activity-detail-image-copy { grid-template-columns: 1fr; gap: 18px; }
+  .activity-detail-image-copy-stacked { gap: 18px; }
+  .activity-detail-figure { max-width: 100%; margin: 0; padding: 7px; }
   .activity-detail-section p { font-size: 16px; }
+  .activity-detail-list { font-size: 16px; }
   .activity-detail-contact { padding-block: 40px 46px; }
   .activity-detail-contact h2 { font-size: 25px; }
   .activity-detail-contact p { font-size: 16px; }
