@@ -185,8 +185,8 @@ figure, p, h1, h2 { margin-top: 0; }
 .about-section-heading h2 { margin: 0 0 11px; font-size: calc(clamp(28px, 3.5vw, 40px) + 2px); font-weight: 550; letter-spacing: .06em; }
 .about-section-heading > p { max-width: 900px; margin: 0; color: var(--muted); font-size: calc(15px + 2px); line-height: 2; }
 .about-origin-copy { max-width: 980px; margin-bottom: 32px; }
-.about-origin-copy p, .temple-symbol-note p, .deity-copy-card p, .prayer-mandala-info-grid p, .about-closing-notes p { color: #586777; font-size: calc(15px + 2px); line-height: 2.05; }
-.about-origin-copy p:last-child, .deity-copy-card p:last-child, .prayer-mandala-info-grid p:last-child, .about-closing-notes p:last-child { margin-bottom: 0; }
+.about-origin-copy p, .temple-symbol-note p, .deity-copy-card p, .prayer-mandala-info p, .about-closing-notes p { color: #586777; font-size: calc(15px + 2px); line-height: 2.05; }
+.about-origin-copy p:last-child, .deity-copy-card p:last-child, .prayer-mandala-info p:last-child, .about-closing-notes p:last-child { margin-bottom: 0; }
 .temple-symbol-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
 .temple-photo-reserved { grid-row: span 2; margin: 0; }
 .temple-photo-reserved img { width: 100%; aspect-ratio: 1.5; object-fit: cover; }
@@ -215,32 +215,64 @@ figure, p, h1, h2 { margin-top: 0; }
 .altar-shrine-photo img { width: 100%; height: 380px; object-fit: cover; object-position: center 43%; }
 .altar-shrine-photo figcaption { padding-top: 9px; color: var(--muted); font-size: calc(13px + 2px); text-align: right; }
 .deity-copy-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+.deity-overview-grid { grid-template-columns: 1fr; }
 .deity-copy-card { padding: 24px 26px; border: 1px solid var(--line); background: #fff; }
 .deity-copy-card h3 { margin: 0 0 10px; color: var(--ink); font-size: calc(21px + 2px); font-weight: 600; letter-spacing: .04em; }
 .deity-copy-card p { margin: 0 0 12px; }
+.deity-overview-card section + section { margin-top: 22px; padding-top: 21px; border-top: 1px solid var(--line); }
+.deity-overview-card section:last-child p:last-child { margin-bottom: 0; }
 .deity-tara-details { display: grid; gap: 18px; margin-top: 19px; padding-top: 19px; border-top: 1px solid var(--line); }
 .deity-tara-details h4 { margin: 0 0 7px; color: var(--ink); font-size: calc(17px + 2px); font-weight: 650; }
 .deity-tara-details p { margin: 0; }
+.tara-circle-accordion { margin-top: 34px; }
+.tara-circle-choices { display: flex; justify-content: center; gap: clamp(34px, 8vw, 96px); }
+.tara-circle-choice { display: grid; justify-items: center; gap: 10px; padding: 0 8px 12px; border: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
+.tara-circle-image { display: block; width: 192px; aspect-ratio: 1; overflow: hidden; border: 4px solid white; border-radius: 50%; box-shadow: 0 8px 25px rgba(26, 47, 69, .16); transition: transform .35s ease, box-shadow .35s ease; }
+.tara-circle-image img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.tara-circle-choice:hover .tara-circle-image, .tara-circle-choice[aria-expanded="true"] .tara-circle-image { transform: scale(1.045); box-shadow: 0 12px 30px rgba(26, 47, 69, .22); }
+.tara-circle-choice:focus-visible { outline: 2px solid #b58835; outline-offset: 4px; border-radius: 8px; }
+.tara-circle-label { font-size: 19px; font-weight: 600; letter-spacing: .06em; }
+.tara-circle-choice[aria-expanded="true"] .tara-circle-label { color: #947021; }
+.tara-circle-indicator { display: grid; width: 25px; height: 25px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: #947021; font-size: 18px; line-height: 1; }
+.tara-info-panel { max-width: 920px; margin: 24px auto 0; padding: 26px 30px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
+.tara-info-panel h3 { margin: 0 0 10px; color: var(--ink); font-size: 23px; font-weight: 600; }
+.tara-info-panel p { margin: 0; color: #4f5e6d; line-height: 2; }
+.tara-expand-enter-active, .tara-expand-leave-active { max-height: 360px; margin-top: 24px; padding-block: 26px; opacity: 1; transition: max-height .45s ease, margin .45s ease, padding .45s ease, opacity .32s ease, transform .45s ease; }
+.tara-expand-enter-from, .tara-expand-leave-to { max-height: 0; margin-top: 0; padding-block: 0; border-color: transparent; opacity: 0; transform: translateY(-8px); }
 .prayer-mandala-section { padding-block: 82px 92px; background: var(--cream); }
-.prayer-mandala-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 34px; }
-.prayer-mandala-gallery figure { margin: 0; overflow: hidden; border: 1px solid var(--line); background: #fff; }
-.prayer-mandala-gallery img { width: 100%; height: 310px; object-fit: cover; }
-.prayer-mandala-main-photo { grid-column: 1 / -1; }
-.prayer-mandala-gallery .prayer-mandala-main-photo img { height: auto; max-height: 520px; object-fit: contain; background: #f5f0e4; }
-.prayer-mandala-supporting-photo { grid-column: 2; }
-.prayer-mandala-gallery figcaption { padding: 10px 14px; color: var(--muted); font-size: calc(13px + 2px); }
+.prayer-mandala-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 34px; }
+.prayer-mandala-gallery figure { aspect-ratio: 1.42; margin: 0; overflow: hidden; background: #fff; }
+.prayer-mandala-gallery img { width: 100%; height: 100%; object-fit: cover; }
+.prayer-mandala-main-photo, .prayer-mandala-supporting-photo { grid-column: auto; }
 .prayer-mandala-motto { color: #9a7221 !important; font-size: calc(17px + 2px) !important; letter-spacing: .12em; }
-.prayer-mandala-info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.prayer-mandala-info-grid article { padding: 26px 28px; border: 1px solid var(--line); background: #fff; }
-.prayer-mandala-info-grid h3 { margin: 0 0 11px; color: var(--ink); font-size: calc(22px + 2px); font-weight: 600; }
-.prayer-mandala-info-grid p { margin: 0 0 12px; }
-.prayer-offering-callout { margin-top: 24px; padding: 30px 32px; border: 1px solid #d9c99f; background: #fffdf8; }
-.prayer-offering-callout .eyebrow { margin-bottom: 8px; }
-.prayer-offering-callout h3 { margin: 0 0 10px; font-size: calc(24px + 2px); font-weight: 600; }
-.prayer-offering-callout > p { margin: 0; color: var(--muted); font-size: calc(15px + 2px); line-height: 1.9; }
-.prayer-offering-link-space { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
-.prayer-offering-link-space span { padding: 14px 17px; border: 1px dashed #ccb77d; color: var(--blue); font-weight: 650; }
-.about-closing-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 26px; padding: 23px 26px; background: #edf2f5; }
+.prayer-mandala-info { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px; margin-bottom: 42px; padding: 29px 32px; border: 1px solid var(--line); background: #fff; }
+.prayer-mandala-info section + section { padding-left: 25px; border-left: 1px solid var(--line); }
+.prayer-mandala-info h3 { margin: 0 0 11px; color: var(--ink); font-size: calc(22px + 2px); font-weight: 600; }
+.prayer-mandala-info p { margin: 0 0 12px; }
+.prayer-offerings { margin-top: 42px; }
+.prayer-offering-heading { margin-bottom: 22px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.prayer-offering-heading .eyebrow { margin-bottom: 8px; }
+.prayer-offering-heading h3 { margin: 0 0 9px; color: var(--ink); font-size: calc(24px + 2px); font-weight: 600; }
+.prayer-offering-heading p { margin: 0; color: var(--muted); font-size: calc(15px + 2px); line-height: 1.9; }
+.prayer-offering-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.prayer-offering-card { min-width: 0; border: 1px solid var(--line); background: #fff; transition: border-color .25s ease, box-shadow .25s ease; }
+.prayer-offering-card[open] { border-color: #c6a45a; box-shadow: 0 8px 24px rgba(39, 53, 69, .06); }
+.prayer-offering-card summary { display: flex; min-height: 350px; flex-direction: column; align-items: stretch; padding: 25px 27px; cursor: pointer; list-style: none; }
+.prayer-offering-card summary::-webkit-details-marker { display: none; }
+.prayer-offering-card summary:focus-visible { outline: 2px solid #b18a2b; outline-offset: -3px; }
+.prayer-offering-card h4 { margin: 0 0 10px; color: var(--ink); font-size: 21px; font-weight: 600; }
+.prayer-offering-preview { display: -webkit-box; min-height: calc(1.95em * 5); overflow: hidden; color: #536476; line-height: 1.95; -webkit-box-orient: vertical; -webkit-line-clamp: 5; }
+.prayer-offering-details-toggle { display: flex; min-height: 42px; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding: 9px 0 0; border-top: 1px solid var(--line); color: var(--blue); font-size: calc(14px + 2px); font-weight: 700; line-height: 1.8; transition: color .2s ease; }
+.prayer-offering-card summary:hover .prayer-offering-details-toggle { color: var(--gold); }
+.prayer-offering-details-icon { display: inline-block; transition: transform .32s ease; }
+.prayer-offering-card[open] .prayer-offering-details-icon { transform: rotate(180deg); }
+.prayer-offering-detail { padding: 0 27px 25px; }
+.prayer-offering-card h5 { margin: 13px 0 5px; color: #947021; font-size: 16px; font-weight: 650; }
+.prayer-offering-card p { margin: 0 0 12px; color: #536476; line-height: 1.95; }
+.prayer-offering-detail p:last-child { margin-bottom: 0; }
+.prayer-offering-detail ul { margin: 0 0 17px; padding-left: 1.3em; color: #536476; line-height: 1.9; }
+.prayer-offering-subsection { margin-top: 17px; padding-top: 15px; border-top: 1px solid var(--line); }
+.about-closing-notes { margin-top: 26px; padding: 23px 26px; background: #edf2f5; }
 .about-closing-notes p { margin: 0; }
 .content-note { display: inline-flex; gap: 9px; align-items: center; padding: 12px 15px; border: 1px solid #e9ddb9; border-radius: 5px; color: #79653a; font-size: calc(12px + 2px); background: #fcf8ec; margin-top: 8px; }
 .content-note span { color: var(--gold); }
@@ -270,10 +302,26 @@ figure, p, h1, h2 { margin-top: 0; }
 .teacher-profile-copy p:last-child { margin-bottom: 0; }
 .teacher-profile-secondary { padding-bottom: 48px; }
 .teacher-detail { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.2fr); gap: clamp(38px, 8vw, 105px); align-items: center; padding-block: 78px; }
+.teacher-detail-translated { grid-template-columns: 1fr; align-items: start; gap: 38px; }
+.teacher-detail-translated .teacher-detail-photo { width: min(100%, 960px); margin-inline: auto; }
+.teacher-detail-translated .teacher-detail-photo img { display: block; width: 100%; max-height: none; height: auto; aspect-ratio: auto; object-fit: contain; }
 .teacher-detail-photo img { width: 100%; max-height: 510px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%; }
 .teacher-detail-copy h2 { margin: 0 0 20px; font-size: calc(clamp(25px, 3vw, 36px) + 2px); font-weight: 550; letter-spacing: .05em; }
+.teacher-detail-copy h2:lang(bo) { font-family: "Noto Serif Tibetan", "Kailasa", serif; }
 .teacher-detail-copy p { color: #4f5e6d; font-size: calc(14px + 2px); line-height: 2.1; margin-bottom: 15px; }
 .teacher-detail-copy p:last-child { margin-bottom: 0; }
+.teacher-bio-tabs { display: flex; gap: 8px; margin: 0 0 24px; border-bottom: 1px solid var(--line); }
+.teacher-bio-tab { position: relative; padding: 12px 18px; border: 0; background: transparent; color: #657387; font: inherit; font-size: 15px; cursor: pointer; }
+.teacher-bio-tab::after { position: absolute; right: 12px; bottom: -1px; left: 12px; height: 2px; background: transparent; content: ''; }
+.teacher-bio-tab:hover, .teacher-bio-tab.is-active { color: var(--blue-deep); }
+.teacher-bio-tab.is-active { font-weight: 600; }
+.teacher-bio-tab.is-active::after { background: #b58835; }
+.teacher-bio-tab:focus-visible { outline: 2px solid #b58835; outline-offset: 2px; }
+.teacher-bio-panel { min-width: 0; }
+.teacher-bio-section + .teacher-bio-section { margin-top: 26px; padding-top: 23px; border-top: 1px solid var(--line); }
+.teacher-bio-section h3 { margin: 0 0 10px; color: var(--blue-deep); font-size: 21px; font-weight: 550; letter-spacing: .035em; }
+.teacher-bio-section p { white-space: pre-line; }
+.teacher-bio-panel[lang="bo"] { font-family: "Noto Serif Tibetan", "Kailasa", serif; }
 .teacher-page-nav { display: flex; justify-content: space-between; padding-block: 20px 48px; border-top: 1px solid var(--line); }
 .about-banner { background: var(--blue-deep); color: white; overflow: hidden; }
 .about-banner-inner { min-height: 280px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
@@ -558,12 +606,17 @@ figure, p, h1, h2 { margin-top: 0; }
   .about-image img { height: 300px; }
   .about-origin, .altar-deities { padding-block: 52px; }
   .about-section-heading { margin-bottom: 21px; }
-  .about-origin-copy p, .temple-symbol-note p, .deity-copy-card p, .prayer-mandala-info-grid p, .about-closing-notes p { font-size: 14px; }
+  .about-origin-copy p, .temple-symbol-note p, .deity-copy-card p, .prayer-mandala-info p, .about-closing-notes p { font-size: 14px; }
   .temple-symbol-grid { grid-template-columns: 1fr; gap: 12px; }
   .temple-photo-reserved { grid-row: auto; }
   .temple-photo-reserved img { aspect-ratio: 1.5; }
   .temple-symbol-note-human { grid-column: auto; }
   .temple-symbol-note, .deity-copy-card { padding: 19px 20px; }
+  .tara-circle-accordion { margin-top: 27px; }
+  .tara-circle-choices { gap: 24px; }
+  .tara-circle-image { width: min(36vw, 160px); border-width: 3px; }
+  .tara-circle-label { font-size: 16px; }
+  .tara-info-panel { padding: 21px 5px; }
   .tara-symbol-section, .prayer-mandala-section { padding-block: 54px; }
   .tara-symbol-inner { gap: 20px; }
   .tara-symbol-heading p { font-size: 15px; }
@@ -576,15 +629,13 @@ figure, p, h1, h2 { margin-top: 0; }
   .tara-element-card h3 { font-size: 14px; }
   .tara-element-card p { font-size: 12px; }
   .altar-shrine-photo img { height: 250px; }
-  .deity-copy-grid, .prayer-mandala-gallery, .prayer-mandala-info-grid { grid-template-columns: 1fr; gap: 12px; }
-  .prayer-mandala-gallery .prayer-mandala-main-photo img { max-height: 260px; }
-  .prayer-mandala-gallery .prayer-mandala-supporting-photo { grid-column: 1; }
-  .prayer-mandala-gallery .prayer-mandala-supporting-photo img { height: 230px; }
-  .prayer-mandala-info-grid article { padding: 21px; }
-  .prayer-offering-callout { padding: 23px 20px; }
-  .prayer-offering-callout h3 { font-size: 21px; }
-  .prayer-offering-link-space, .about-closing-notes { grid-template-columns: 1fr; }
-  .about-closing-notes { gap: 14px; padding: 20px; }
+  .deity-copy-grid, .prayer-mandala-gallery, .prayer-mandala-info, .prayer-offering-grid { grid-template-columns: 1fr; gap: 12px; }
+  .prayer-mandala-info { padding: 21px; }
+  .prayer-mandala-info section + section { padding: 16px 0 0; border-top: 1px solid var(--line); border-left: 0; }
+  .prayer-mandala-gallery figure { aspect-ratio: 1.5; }
+  .prayer-offering-card summary { min-height: 325px; padding: 21px; }
+  .prayer-offering-detail { padding: 0 21px 21px; }
+  .about-closing-notes { padding: 20px; }
   .mandala-intro { grid-template-columns: 1fr; gap: 25px; padding-block: 7px 52px; }
   .mandala-main-deities { padding: 22px; }
   .teacher-profiles { padding-block: 52px 16px; }

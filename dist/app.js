@@ -221,6 +221,7 @@
   };
 
   const AboutPage = {
+    data: () => ({ expandedTara: null }),
     template: `
       <div>
         <section class="page-intro"><span class="eyebrow">ABOUT TARA</span><h1>認識達拉 TARA</h1><p>走進達拉度母佛堂，認識佛堂理念、圖騰、壇城與諸尊。</p></section>
@@ -256,22 +257,33 @@
         <section class="altar-deities section-wrap">
           <div class="about-section-heading"><span class="eyebrow">SACRED DEITIES</span><h2>壇城主尊</h2><p>主壇城供奉「觀音度母三尊」：主尊為觀世音菩薩，左右兩側分別是綠度母與白度母。</p></div>
           <figure class="altar-shrine-photo"><img src="./images/guanyin-shrine.jpg" alt="佛堂主壇城供奉的觀世音菩薩"><figcaption>佛堂主尊觀世音菩薩</figcaption></figure>
-          <div class="deity-copy-grid">
-            <article class="deity-copy-card"><h3>觀世音菩薩</h3><p>觀音菩薩以大慈悲願力普渡一切眾生，幫助人間種種危難、聞聲救苦。因經常示現不同相貌、顯現神蹟救度眾生，廣為世人信奉。若能常瞻仰禮拜，必得觀音庇佑護持，清淨身口意三業。</p></article>
-            <article class="deity-copy-card deity-tara-card"><h3>度母</h3><p>度母是觀世音菩薩因悲憫眾生而流下眼淚的化現：左眼淚珠變化成白度母，右眼淚珠化現為綠度母。以女性菩薩像度化眾生，是「除障」與「滿願」最有力的本尊。共化現二十一尊度母，各代表不同功德利益，以輔助觀世音菩薩慈悲救渡一切苦難的眾生。</p><p>「度」表示救拔、度脫、度化眾生，迅速威猛有力，加持力廣大不可思議。虔心祈請度母加持，有如滿願寶，諸事順遂、求子得子、得福報子息增長。</p><div class="deity-tara-details"><section><h4>綠度母</h4><p>綠度母是集諸佛菩薩一切事業之功德本尊，亦為二十一度母之首。虔心祈請度母加持有如滿願寶，能滿足一切事業的圓滿，感情婚姻如意，求子嗣得子嗣、得財富權勢，凡有所求皆得如願成就。</p></section><section><h4>白度母</h4><p>白度母身潔白，面有三眼，雙手雙腳心各有一眼，也稱為「七眼度母」。主要能消除病苦災劫，增長壽命及福慧，免除一切魔障、瘟疫病厄，得一切平安、善緣具足、所求滿願。</p></section></div></article>
+          <div class="deity-copy-grid deity-overview-grid">
+            <article class="deity-copy-card deity-overview-card">
+              <section><h3>觀世音菩薩</h3><p>眾生悲母觀世音菩薩以其大慈悲之願力，千處祈求千處應，化現為各式各樣之化身，於六道中救護一切眾生，感應道交，利樂眾生之行，不勝枚舉，與娑婆世界的眾生特別有緣，經常示現不同相貌，顯現神蹟救度眾生，因此廣為受人禮敬供奉。</p><p>六字箴言「嗡嘛呢唄美吽」能度六道眾生，能淨化滅除惡業障礙，脫離輪迴之苦，能成大菩提，能救苦救難，能利益一切有情。</p><p>只要誠心祈請觀音菩薩賜予加持，能化解地、水、火、風、空等種種災難，凡事逢凶化吉、遇難呈祥，令所求事事如意，一切圓滿具足。</p></section>
+              <section><h3>度母</h3><p>度母是觀世音菩薩因悲憫眾生而流下眼淚的化現：左眼淚珠變化成白度母，右眼淚珠化現為綠度母。以女性菩薩像度化眾生，是「除障」與「滿願」最有力的本尊。共化現二十一尊度母，各代表不同功德利益，以輔助觀世音菩薩慈悲救渡一切苦難的眾生。</p><p>「度」表示救拔、度脫、度化眾生，迅速威猛有力，加持力廣大不可思議。虔心祈請度母加持，有如滿願寶，諸事順遂、求子得子、得福報子息增長。</p>
+                <div class="tara-circle-accordion" aria-label="綠度母與白度母介紹"><div class="tara-circle-choices"><button class="tara-circle-choice" type="button" :aria-expanded="expandedTara === 'green'" aria-controls="green-tara-panel" @click="expandedTara = expandedTara === 'green' ? null : 'green'"><span class="tara-circle-image"><img src="./images/green-tara-circle.jpg" alt="綠度母唐卡"></span><span class="tara-circle-label">綠度母</span><span class="tara-circle-indicator" aria-hidden="true">{{ expandedTara === 'green' ? '−' : '+' }}</span></button><button class="tara-circle-choice" type="button" :aria-expanded="expandedTara === 'white'" aria-controls="white-tara-panel" @click="expandedTara = expandedTara === 'white' ? null : 'white'"><span class="tara-circle-image"><img src="./images/white-tara-circle.jpg" alt="白度母唐卡"></span><span class="tara-circle-label">白度母</span><span class="tara-circle-indicator" aria-hidden="true">{{ expandedTara === 'white' ? '−' : '+' }}</span></button></div><Transition name="tara-expand"><article v-if="expandedTara === 'green'" id="green-tara-panel" class="tara-info-panel"><h3>綠度母</h3><p>綠度母是集諸佛菩薩一切事業之功德本尊，亦為二十一度母之首。虔心祈請度母加持有如滿願寶，能滿足一切事業的圓滿，感情婚姻如意，求子嗣得子嗣、得財富權勢，凡有所求皆得如願成就。</p></article></Transition><Transition name="tara-expand"><article v-if="expandedTara === 'white'" id="white-tara-panel" class="tara-info-panel"><h3>白度母</h3><p>白度母身潔白，面有三眼，雙手雙腳心各有一眼，也稱為「七眼度母」。主要能消除病苦災劫，增長壽命及福慧，免除一切魔障、瘟疫病厄，得一切平安、善緣具足、所求滿願。</p></article></Transition></div>
+              </section>
+            </article>
           </div>
         </section>
 
         <section class="prayer-mandala-section">
           <div class="section-wrap prayer-mandala-inner">
             <div class="about-section-heading"><span class="eyebrow">PRAYER &amp; BLESSING</span><h2>祈福滿願壇城</h2><p class="prayer-mandala-motto">吉祥・福運・滿願</p></div>
-            <div class="prayer-mandala-gallery"><figure class="prayer-mandala-main-photo"><img src="./images/prayer-fulfillment-mandala.jpg" alt="祈福滿願壇城主壇城"><figcaption>祈福滿願壇城</figcaption></figure><figure class="prayer-mandala-supporting-photo"><img src="./images/prayer-altar-setup.jpg" alt="主壇城佈置照片"></figure></div>
-            <div class="prayer-mandala-info-grid">
-              <article><h3>主壇城</h3><p>壇城內供奉度母、蓮花生大士及所有本尊、空行、護法、總集朵瑪、十二生肖神獸守護菩薩與九宮八卦咒牌，以祈願化解因風水而起的沖煞、歲煞，轉為吉祥能量，並得諸佛菩薩守護。</p><p>壇城內安置由尊貴上師親自裝臟、修法加持圓滿的殊勝珍貴「吉祥福運滿願寶瓶」，與十方大德結緣，藉由寶瓶加持為大眾祈福，祈願消除眾生一切障礙。</p></article>
-              <article><h3>內密壇城</h3><p>主要供奉黃財神本尊，秘壇城內安置可增長財運福報的「財神寶瓶」與許多殊勝加持物。</p><p>特別恭請嘉察仁波切裝臟、修法、開光加持圓滿。恭敬禮拜財神，祈願諸眾財神護佑，具足世間與出世間一切資糧，令財富滿盈、受用自在、不虞匱乏。</p></article>
+            <div class="prayer-mandala-gallery"><figure class="prayer-mandala-main-photo"><img src="./images/prayer-fulfillment-mandala.jpg" alt="祈福滿願壇城主壇城"></figure><figure class="prayer-mandala-supporting-photo"><img src="./images/prayer-altar-setup.jpg" alt="主壇城佈置照片"></figure></div>
+            <div class="prayer-mandala-info">
+              <section><h3>主壇城</h3><p>壇城內供奉度母、蓮花生大士及所有本尊、空行、護法、總集朵瑪、十二生肖神獸守護菩薩與九宮八卦咒牌，以祈願化解因風水而起的沖煞、歲煞，轉為吉祥能量，並得諸佛菩薩守護。</p><p>壇城內安置由尊貴上師親自裝臟、修法加持圓滿的殊勝珍貴「吉祥福運滿願寶瓶」，與十方大德結緣，藉由寶瓶加持為大眾祈福，祈願消除眾生一切障礙。</p></section>
+              <section><h3>內密壇城</h3><p>主要供奉黃財神本尊，秘壇城內安置可增長財運福報的「財神寶瓶」與許多殊勝加持物。</p><p>特別恭請嘉察仁波切裝臟、修法、開光加持圓滿。恭敬禮拜財神，祈願諸眾財神護佑，具足世間與出世間一切資糧，令財富滿盈、受用自在、不虞匱乏。</p></section>
             </div>
-            <div class="prayer-offering-callout"><span class="eyebrow">DEDICATION OFFERINGS</span><h3>祈福滿願壇城開放認供</h3><p>壇城開放大眾祈福、許願、認供，並依不同生肖及流年安排參贊方式。</p><div class="prayer-offering-link-space"><span>點燈祈福</span><span>年度認供介紹</span></div></div>
-            <div class="about-closing-notes"><p>只要具虔誠信心、衷心祈請，必得諸佛菩薩眾、護法神尊加持庇佑。不論祈求事業、財運、感情、桃花、人緣等，皆能所求如意、滿願順遂。</p><p>達拉並有多種殊勝法寶結緣品，每樣結緣品皆經由尊貴上師如理如法裝臟、開光、灑淨加持圓滿，且定期恭請上師不斷修法加持，其殊勝力不可思議。</p></div>
+            <section class="prayer-offerings"><div class="prayer-offering-heading"><span class="eyebrow">DEDICATION OFFERINGS</span><h3>祈福滿願壇城開放認供</h3><p>歡迎以祈願、供燈與護持壇城等方式，將善願迴向自身及一切有情。</p></div>
+              <div class="prayer-offering-grid">
+                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>度母許願卡</h4><span class="prayer-offering-preview">可在祈願卡寫上所祈求願望（每張寫一個主要願望），並在壇城前誠心祈請，祈願諸佛菩薩眾、護法神尊加持庇佑，所求皆能如願，心想事成、諸事順遂。</span></span><span class="prayer-offering-details-toggle"><span>展開介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><p>可在祈願卡寫上所祈求願望（每張寫一個主要願望），並在壇城前誠心祈請，必得諸佛菩薩眾、護法神尊加持庇佑，所求皆能如願，心想事成、諸事順遂。</p></div></details>
+                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>各式佛菩薩點燈</h4><span class="prayer-offering-preview">點燈兼具出世間與世間利益：可得真智慧、遠離修行障礙、去除五毒惡業牽引；亦祈願身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、心想如願、財富具足。另有十二生肖守護菩薩點燈。</span></span><span class="prayer-offering-details-toggle"><span>展開介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><p>點燈的利益有兩種：</p><h5>出世間利益</h5><p>可得真智慧，遠離修行上的障礙，去除五毒惡業的牽引，斷除輪迴。</p><h5>世間福報</h5><p>身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、不受人欺、心想如願、財富具足。如阿那律尊者「天眼第一」，乃因供燈植福而獲得。</p><div class="prayer-offering-subsection"><h5>十二生肖守護菩薩點燈｜菩薩由來</h5><p>很久以前，世間有這樣一個傳說：一個人出生時，西方極樂世界就有一位佛、菩薩迎送，並看著這孩子慢慢長大。此後孩子要獨自面對人間的誘惑和選擇，身上的佛性也越變越淡。只有極少數孩子因累積了幾世輪迴的善果、佛緣較深，才能繼續得到佛菩薩庇佑。後來經菩薩點化，人們把自己出生那一年的本尊佛菩薩雕刻在飾物上隨身佩戴，以增進自身修為，得到本尊菩薩保佑、庇護，實現發財、保健康等願望。</p></div></div></details>
+                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>各式吉祥滿願寶瓶</h4><span class="prayer-offering-preview">壇城開放認供度母寶瓶（事業滿願）、財神寶瓶（福報財富）、咕嚕咕咧寶瓶（人緣桃花）及吉祥福運寶瓶（平安運氣，適合本年沖太歲者）。吉祥福運滿願寶瓶由尊貴的穆松古千法王親自裝臟、開光。</span></span><span class="prayer-offering-details-toggle"><span>展開介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><ul><li>度母寶瓶：事業滿願</li><li>財神寶瓶：福報財富</li><li>咕嚕咕咧寶瓶：人緣桃花</li><li>吉祥福運寶瓶：平安運氣，適合本年沖太歲者</li></ul><h5>吉祥福運滿願寶瓶</h5><p>特別恭請尊貴的穆松古千法王親自裝臟、開光。裝臟物主要為法王親自從印度攜帶來臺之印度白玉南卓林寺總集甘露，以及南卻天法傳承祖師——持明珠多傑金剛法座所在聖地西康穆松寺吉祥總集甘露，精心製作，與十方大德結緣。</p><p>藉由寶瓶無上的加持，為大家祈福、消除眾生一切障礙；並願以修持寶瓶的成就與得此殊勝寶瓶的功德，幫助眾生除逆緣、脫貧苦、財富豐盈、權力威望增長、得眾人仰慕及敬愛。行者若能虔心供養，即能集聚天、人、眾生，享受其惠施衣財富，運勢轉佳、善緣早熟。因此，吉祥福運滿願寶瓶亦是平安與財富最強之殊勝不共護法。</p></div></details>
+                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>年度認供</h4><span class="prayer-offering-preview">年度認供依當年度壇城與法會規劃開放，邀請大眾隨喜護持、祈福迴向。認供項目與參與方式將依年度公告更新。</span></span><span class="prayer-offering-details-toggle"><span>展開介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><p>年度認供依當年度壇城與法會規劃開放，邀請大眾隨喜護持、祈福迴向。認供項目與參與方式將依年度公告更新。</p></div></details>
+              </div>
+            </section>
+            <div class="about-closing-notes"><p>只要具虔誠信心、衷心祈請，必得諸佛菩薩眾、護法神尊加持庇佑。不論祈求事業、財運、感情、桃花、人緣等，皆能所求如意、滿願順遂。達拉並有多種殊勝法寶結緣品，每樣結緣品皆經由尊貴上師如理如法裝臟、開光、灑淨加持圓滿，且定期恭請上師不斷修法加持，其殊勝力不可思議。</p></div>
           </div>
         </section>
       </div>
@@ -281,30 +293,74 @@
   const TeacherDetailPage = {
     props: ['slug'],
     data: () => ({
+      activeBioTab: 'zh',
       profiles: {
         'jiacha-rinpoche': {
-          eyebrow: 'VAJRAYANA MASTER', title: '尊貴上師', name: '白玉祖古嘉察仁波切', lineage: '白玉傳承', image: './images/jiacha-rinpoche.jpg', alt: '白玉祖古嘉察仁波切照片',
-          paragraphs: [
-            '尊貴的祖古嘉察徹滇多傑仁波切，出身於昆氏血脈、瓦述土司世系的巴納阿涅家族。尊貴的依怙主圖松法王認定仁波切為蓮花生大士二十五位親傳弟子之一「索波拉巴」的殊勝化身，亦為白玉傳承第二任法座持有者貝瑪倫珠嘉措之轉世。',
-            '仁波切自幼接受佛法啟蒙，後前往印度南卓林寺研習佛法，並依止貝諾法王為根本上師，領受寧瑪派教傳與伏藏法門的灌頂、口傳、教授及大圓滿甚深教法。貝諾法王並派遣仁波切來臺弘揚佛法。',
-            '仁波切長期精進實修，曾多次閉關，以寧瑪派三根本為核心持續修持；並隨順弟子的根器與意樂開展佛法事業，同時投入社會服務與慈善利生工作。',
-          ],
+          eyebrow: 'VAJRAYANA MASTER', title: '尊貴上師', name: '白玉祖古嘉察仁波切', names: { zh: '白玉祖古嘉察仁波切', en: 'Palyul Tulku Gyaltsab Rinpoche', bo: 'དཔལ་ཡུལ་སྤྲུལ་སྐུ་རྒྱལ་ཚབ་རིན་པོ་ཆེ' }, lineage: '白玉傳承', image: './images/jiacha-rinpoche.jpg', alt: '白玉祖古嘉察仁波切照片',
+          translations: {
+            zh: [
+              { heading: '', paragraphs: [
+                '尊貴的祖古嘉察徹滇多傑仁波切，誕生於源自光明天界、清淨無垢之昆氏血脈，承襲瓦述土司世系之巴納阿涅家族。',
+                '前譯寧瑪派教傳、伏藏教法、白玉傳承——尊貴的依怙主圖松法王，認定嘉察仁波切乃蓮花生大士二十五位親傳弟子之「索波拉巴」之殊勝化身，亦即白玉傳承第二任法座持有者貝瑪倫珠嘉措之轉世，並無誤認定仁波切為白玉尊貴的嘉察袞松法王之心意化現。圖松法王予以正式認證，同時祈願仁波切弘法利生的一切廣大事業，皆能任運、無礙而圓滿成就。',
+                '白玉嘉察袞松法王為白玉寺的代表、攝政國師和白玉縣長，無論是世間或出世間都擔任要職。曾依止成就自在巴千都巴與堪布阿給旺波等大德為師，諸位上師皆極為重視，並傳授龍欽寧體教法，為弘揚龍欽寧體教法成辦眾多殊勝事業。',
+                '南卓林寺住持尊貴的穆桑古千法王，亦賜予三線班智達帽、手鼓、金剛鈴杵，以及身、語、意三所依等聖物，為嘉察仁波切作吉祥祝福。',
+                '前譯寧瑪派第七任掌教——尊貴的噶陀格澤法王，亦向仁波切敬獻吉祥哈達，並親自撰寫長壽祈請文，祈願仁波切長久住世、佛行事業廣大增盛。',
+              ] },
+              { heading: '殊勝家世與傳承', paragraphs: [
+                '嘉察仁波切所屬之昆氏家族，根據史籍的記載，昆氏意為「天人的種姓」，是從光明天界（色界的極光淨天）而來。世代相傳，自古迄今不斷出現國王、大臣，以及眾多聲名遠播之大德、學者與成就者，法脈傳承從未間斷，因此被視為猶如西藏吉祥福澤之所在一般的尊貴血脈。',
+                '瓦述土司，是西藏康區歷史悠久的藏族地方領袖家族，世代承襲地方領導地位，並與當地藏傳佛教及寺院發展有密切關係。',
+                '而阿涅家族是一個擁有悠久歷史的重要家族，自古以來一直擔任西藏貢覺地區巴納部落的領袖與寺院之長老，同時也擔任白玉寺之攝政，對於白玉寺及藏傳佛教的發展與弘揚都具有重要地位。巴納阿涅家族的許多世代不僅是白玉寺的施主，與歷代的白玉結下了殊勝的師徒法緣，更是歷代貝諾法王以意攝持的施主與弟子。對於弘揚龍欽寧體教法有相當大的貢獻。',
+              ] },
+              { heading: '入佛門與依止上師', paragraphs: [
+                '嘉察仁波切從小接受佛法啟蒙，之後前往印度南卓林寺，研習佛法，並依止尊貴的貝諾法王為根本上師。',
+                '仁波切於尊貴的貝諾法王及諸多具德上師座前，廣泛聽聞並領受寧瑪派教傳與伏藏法門的「灌頂、口傳、教授」三者，以及以大圓滿口訣為主的無量甚深教法。',
+                '尊貴的貝諾法王長期對嘉察仁波切格外關愛、重視並親自攝受、悉心栽培。為了弘揚珍貴的佛陀教法，利益廣大眾生，貝諾法王更特別派遣嘉察仁波切前往臺灣弘揚佛法。',
+              ] },
+              { heading: '精進實修', paragraphs: [
+                '依照閉關修持及相關儀軌典籍，嘉察仁波切前後多次進行閉關修持，以寧瑪派「三根本」為核心，對無量本尊與殊勝尊眾持續完成「數量閉關」與「時間閉關」，長期精進不懈。其念修與實修如河流相續綿延不斷，一心專注於殊勝正法精髓的實踐。',
+                '此外，嘉察仁波切亦隨順不同弟子的根器、能力與意樂，善巧開展各類佛法事業；同時亦積極從事社會服務及慈善利生事業，致力於成辦能為有情眾生帶來利益之工作。',
+                '其心心念念皆繫於眾生的利益，而這也是他行利他佛行事業時的唯一動力。',
+                '願尊貴的嘉察仁波切法體安康、長久住世，弘法事業遍滿十方；願其一切利樂有情之宏願，無礙任運、悉皆圓滿。',
+                '扎西德咧',
+              ] },
+            ],
+            en: [
+              { heading: '', paragraphs: [
+                'Choktul Gyaltsab Tseten Dorjee Rinpoche was born into the Anye Pontsang family—a lineage originating from the pure Luminous Gods, the faultless Khon clan, and the Wal-shul chieftain lineage. He was recognized and enthroned as the unmistakable mind-emanation of the Palyul Gyaltsab, Kyabje Gonsung Rinpoche, who is renowned as the reincarnation of Pema Lhundrub Gyatso (the second throne-holder of the Eastern Palyul tradition) and an emanation of Sogpo Lhapal, one of Guru Rinpoche’s twenty-five primary disciples. This recognition was formally conferred by Kyabje Thubten Palzang Rinpoche—the great illuminator of the teachings of the Eastern Palyul tradition and the holder of the treasury of the Early Translation Kama and Terma teachings—along with prayers that his vast activities for the doctrine and sentient beings may be effortlessly and spontaneously fulfilled.',
+                'The previous Palyul Gyaltsab Gonsung Rinpoche was a direct disciple of Drubwang Palchen Dupa and Khenchen Ngagi Wangpo, and performed numerous deeds beneficial to the teachings of the Heart Essence (Nyingthig). Auspicious enthronement blessings were bestowed upon the present Rinpoche by Kyabje Mugsang Kuchen Rinpoche, the head of Namling, who presented him with a Pandita hat featuring the three-fold binding (pan-zhwa thig-gsum), a ritual drum and bell (da-dril), and representations of body, speech, and mind. Furthermore, Kyabje Kathok Getse Rinpoche, the seventh supreme head of the Early Translation Nyingma tradition, offered auspicious scarves and prayers for his long life.',
+                'From ancient times to the present day, the noble Khon lineage—to which Gyaltsab Rinpoche belongs—has continuously produced kings, ministers, and renowned scholars and Siddhas, and is widely recognized as a lineage that serves as a treasure-blessing for Tibet. In particular, regarding his paternal household and heritage: Since the nomadic Black-Tent (Sbra-nag) community has historically been a primary site and key assembly of disciples for propagating the Longchen Nyingthig teachings of Drubwang Palchen Dupa, Rinpoche himself personally served as leader and founded the dra-nag Monastery, Thegchen Samten Odsal Ling, as a sanctuary for practicing the Longchen Nyingthig tradition. Moreover, the Amyen family has continuously served as leaders of both the Dra-Nag community and monastery, as regents or representatives of Palyul Monastery, and as district administrators (Dzongpon), thus shouldering immense responsibilities in both spiritual and secular domains.',
+                'Rinpoche joined the monastic at the age of nine. He studied the sacred Dharma at Namdroling Monastery, the great Early Translation Nyingma seat in South India, and relied upon Kyabje Drubwang Pema Norbu Rinpoche as his root guru. From Kyabje Drubwang Pema Norbu Rinpoche and numerous other sublime masters, he received countless profound teachings, including the empowerments, scriptural transmissions, and oral instructions of the Nyingma Kama and Terma traditions, as well as the cycle of teachings pertaining to the Dzogchen Instruction Class (Men-ngag-de). Kyabje Drubwang Pema Norbu Rinpoche always held him in exceptionally high regard and personally dispatched him to Taiwan with specific charges to spread and flourish the precious teachings of the Buddha.',
+                'Following precisely the instructions laid down in the practice manuals for retreat and accomplishment (nyen-drub), he has repeatedly completed countless numerical and temporal retreats on the vast assemblies of yidams and supreme deities—primarily focusing on the Three Roots of the Nyingma tradition—flowing continuously like a river, and has dedicated himself single-mindedly to the practice of the heart-essence of the holy Dharma. Furthermore, Rinpoche has continuously performed—and continues to perform—numerous profoundly beneficial activities, including religious events tailored to the mental inclinations and capacities of his disciples, as well as essential social services and humanitarian efforts to benefit all living beings.',
+              ] },
+            ],
+            bo: [
+              { heading: '', paragraphs: [
+  "མཆོག་སྤྲུལ་རྒྱལ་ཚབ་ཚེ་བརྟན་རྡོ་རྗེ་རིན་པོ་ཆེ་མཆོག་ནི་འོད་གསལ་ལྷ་ལས་བྱུང་བ་དྲི་མེད་འཁོན་གྱི་གདུང་བརྒྱུད་དབལ་ཤུལ་དཔོན་གྱི་རུས་བརྒྱུད་ཨ་མྱེས་དཔོན་ཚང་གི་ཁྱིམ་དུ་སྐུ་འཁྲུངས། སྔ་འགྱུར་བཀའ་གཏེར་བསྟན་པའི་མཛོད་འཛིན་ཤར་རྒྱལ་བ་དཔལ་ཡུལ་བའི་བསྟན་པའི་གསལ་བྱེད་ཆེན་མོ་༧སྐྱབས་རྗེ་ཐུབ་བསྟན་དཔལ་བཟང་རིན་པོ་ཆེ་མཆོག་ནས་གུ་རུ་རིན་པོ་ཆེའི་དངོས་སློབ་རྗེས་འབངས་ཉེར་ལྔའི་ནང་ཚན་སོག་པོ་ལྷ་དཔལ་གྱི་རྣམ་སྤྲུལ་ཤར་རྒྱལ་བ་དཔལ་ཡུལ་བའི་གདན་རབས་གཉིས་པ་པདྨ་ལྷུན་གྲུབ་རྒྱ་མཚོའི་སྐྱེ་རྒྱུད་དུ་གྲགས་པའི་དཔལ་ཡུལ་རྒྱལ་ཚབ་༧སྐྱབས་རྗེ་མགོན་སྲུང་གི་ཐུགས་ཀྱི་རྣམ་རོལ་འཁྲུལ་མེད་དུ་ངོས་འཛིན་མངའ་གསོལ་གནང་སྟེ་བསྟན་འགྲོའི་དོན་ཆེན་འབད་མེད་ལྷུན་འགྲུབ་ཡོང་བའི་སྨོན་འདུན་བསྩལ།",
+  "དཔལ་ཡུལ་༧རྒྱལ་ཚབ་མགོན་སྲུང་ནི་གྲུབ་དབང་དཔལ་ཆེན་འདུས་པ་དང་མཁན་ཆེན་ངག་གི་དབང་པོའི་ཞལ་སློབ་ཏུ་གྱུར་ཅིང་སྙིང་ཐིག་བསྟན་པར་སྨན་པའི་མཛད་པ་དུ་མ་བསྐྱངས། རྣམ་གླིང་དབུ་འཛིན་༧སྐྱབས་རྗེ་རྨུགས་སངས་སྐུ་ཆེན་རིན་པོ་ཆེ་མཆོག་ནས་པཎ་ཞྭ་ཐིག་གསུམ་ཅན་དང་། ཌ་དྲིལ། སྐུ་གསུང་ཐུགས་རྟེན་བཅས་བསྩལ་བའི་སྒོ་ནས་རྟེན་འབྲེལ་མངའ་གསོལ་གནང་། སྔ་འགྱུར་རྙིང་མའི་དབུ་འཛིན་ཁྲི་རབས་བདུན་པ་༧སྐྱབས་རྗེ་ཀཿཐོག་དགེ་རྩེ་རིན་པོ་ཆེ་མཆོག་ནས་རྟེན་འབྲེལ་མཇལ་དར་དང་ཞབས་བརྟན་གསོལ་འདེབས་ཕུལ། རྒྱལ་ཚབ་རིན་པོ་ཆེ་ཁོང་གི་མི་རྒྱུད་འཁོན་གྱི་རིགས་དེ་ལས་གནའ་ནས་ད་བར་རྒྱལ་པོ། བློན་པོ། དེ་བཞིན་མཁས་གྲུབ་གྲགས་པ་ཅན་རྒྱུན་མ་ཆད་པར་བྱུང་བས་བོད་ཀྱི་གཡང་ལྟ་བུའི་མི་རྒྱུད་དུ་ངོས་འཛིན་གྱི་ཡོད། ལྷག་པར་དུ་རིན་པོ་ཆེ་ཁོང་གི་ཡབ་གཞིས་ཁྱིམ་བརྒྱུད་ལ་མཚོན་ན། སྤྱིར་སྦྲ་ནག་འབྲོག་སྡེ་ནི་གྲུབ་དབང་དཔལ་ཆེན་འདུས་པའི་ཀློང་ཆེན་སྙིང་ཐིག་གི་བསྟན་པ་སྤེལ་སའི་གནས་དང་གདུལ་བྱ་གལ་ཆེ་ཤོས་ཡིན་པས་རྗེ་རང་ཉིད་སྐུ་ངོ་མས་ལས་དཔོན་མཛད་དེ་ཀློང་ཆེན་སྙིང་ཐིག་གི་ཕྱག་བཞེས་ཉམས་སུ་ལེན་སའི་སྦྲ་ནག་དགོན་ཐེག་ཆེན་བསམ་གཏན་འོད་གསལ་གླིང་ཕྱག་བཏབ་པ་དང་། ཨ་མྱེས་ཚང་ནི་གནའ་ནས་ད་བར་སྦྲ་ནག་སྡེ་དགོན་གཉིས་ཀྱི་འགོ་འཛིན་དང་། དཔལ་ཡུལ་དགོན་གྱི་རྒྱལ་ཚབ་བམ་སྐུ་ཚབ། རྫོང་དཔོན་སོགས་མཛད་ནས་ཆོས་དང་འཇིག་རྟེན་གཉིས་ཀྱི་ཐད་ནས་རླབས་ཆེ་བའི་ཕྱག་ལས་དུ་མའི་འགན་འཁུར་མཛད། རྒྱལ་ཚབ་རིན་པོ་ཆེ་ཁོང་ཉིད་དགུང་གྲངས་དགུ་ནས་ཆོས་སྒོར་བཞུགས། རྒྱ་གར་ལྷོ་ཕྱོགས་སྔ་འགྱར་རྙིང་མའི་གདན་ས་ཆེན་མོ་ཐེག་མཆོག་རྣམ་གྲོལ་གླིང་དུ་ནང་ཆོས་ལ་སློབ་གཉེར་མཛད་ཅིང་༧སྐྱབས་རྗེ་གྲུབ་དབང་པདྨ་ནོར་བུ་རིན་པོ་ཆེ་རྩ་བའི་བླ་མར་བསྟེན། ༧སྐྱབས་རྗེ་གྲུབ་དབང་པདྨ་ནོར་བུ་རིན་པོ་ཆེ་གཙོས་པའི་སྐྱེས་ཆེན་དམ་པ་དུ་མའི་སྐུ་མདུན་ནས་སྔ་འགྱུར་རྙིང་མའི་བཀའ་གཏེར་གྱི་དབང་ལུང་ཁྲིད་གསུམ་དང་། རྫོགས་ཆེན་མན་ངག་སྡེའི་ཆོས་སྐོར་གྱིས་གཙོས་པའི་ཟབ་ཆོས་གྲངས་ལས་འདས་པ་གསན། ༧སྐྱབས་རྗེ་གྲུབ་དབང་པདྨ་ནོར་བུ་རིན་པོ་ཆེ་མཆོག་ནས་རྒྱུན་དུ་ཐུགས་གཙིགས་ཆེན་པོས་བདག་གཉེར་གནང་ཞིང་རྒྱལ་བསྟན་རིན་པོ་ཆེ་དར་སྤེལ་ཆེད་ཐའི་ཝེན་དུ་དམིགས་སུ་བཀར་ནས་གཏོང་གནང་མཛད། བསྙེན་སྒྲུབ་ལས་གཞུང་ནས་བཤད་པ་བཞིན་སྔ་རྗེས་ཐེངས་དུ་མར་སྔ་འགྱར་རྙིང་མའི་རྩ་གསུམ་གཙོ་བོར་འགྱུར་པའི་ཡི་དམ་ལྷག་པའི་ལྷ་རབ་འབྱམས་ཀྱི་གྲངས་བསྙེན་དང་དུས་བསྙེན་ཆུ་བོའི་རྒྱུན་བཞིན་བསྐྱལ་ཏེ་དམ་ཆོས་སྙིང་པོའི་ཉམས་ལེན་ལ་རྩེ་གཅིག་ཏུ་གཞོལ། གཞན་ཡང་རིན་པོ་ཆེ་མཆོག་ནས་གདུལ་བྱའི་ཁམས་དབང་བསམ་པ་དང་མཐུན་པའི་ཆོས་ཀྱི་བྱེད་སྒོ་ཁག་དང་། སྤྱི་ཚོགས་ཞབས་ཞུ་དང་འགྲོ་བ་སེམས་ཅན་ལ་ཕན་ཐོགས་པའི་གནད་སྨིན་ཕྱག་ལས་དུ་མ་མཛད་དང་མཛད་བཞིན་པ་བཅས་སོ།།"
+] },
+            ],
+          },
         },
         'oracle-tara': {
-          eyebrow: 'ORACLE TARA', title: '神諭度母', name: '陳敏老師', lineage: '達拉度母佛堂', image: './images/chen-min-teacher.jpg', alt: '神諭度母陳敏老師照片',
+          eyebrow: 'ORACLE TARA', title: '神諭度母', name: '陳敏老師簡介', lineage: '達拉度母佛堂', image: './images/chen-min-teacher.jpg', alt: '神諭度母陳敏老師照片',
+          lead: '陳敏老師是一位長期倡導結合「身、心、靈」的全方位老師，是許多人心目中的「心靈導師」。',
           paragraphs: [
-            '陳敏老師自幼接觸佛法，秉持慈悲利他的心，投入志工服務與慈善工作，追隨嘉察仁波切的弘法事業。',
-            '老師於 2012 年成立「達拉度母佛堂」，主尊為觀音度母三尊，以「達拉度母、滿願眾生」為理念，希望引導有緣大眾親近度母。',
-            '目前除每週帶領法會共修，也定期安排心靈成長課程。',
+            '因為自幼接觸佛法，所以凡事皆以慈悲利他的心關懷眾生。在某個因緣下認識了尊貴的嘉察仁波切，了解仁波切的佛行事業、長期關懷弱勢，行慈善志業的發願，心裡很是感動。',
+            '感念於嘉察仁波切慈悲與願力，老師在仁波切的帶領下，全心投入志工服務與慈善的工作，追隨仁波切的弘法事業。',
+            '老師在2012年成立「達拉度母佛堂」，主尊禮拜「觀音度母三尊」，希望以「達拉度母、滿願眾生」的理念與精神，發心發願希望能夠幫助引導有緣大眾，與更多和度母有緣的弟子們相遇。祈願這個專修度母的清淨聖地，能夠幫助大家心想事成、所求滿願。',
+            '陳敏老師目前除了每周法會帶領弟子們一起共修外、也定期安排「佛化人生講座」與大家充電。',
+            '老師開放諮詢問事，以佛法與命理的角度、結合靈氣方式來幫助、教導大家要如何改變突破自我，開啟邁向人生成功的密碼。',
+            '透過老師的指引，多年來幫助了許多人，使有所求者獲得心靈成長，老師就像一盞明燈為大家解惑，找到人生正確的前進方向。',
           ],
         },
       },
     }),
     computed: { teacher() { return this.profiles[this.slug] || this.profiles['jiacha-rinpoche']; } },
+    watch: { slug() { this.activeBioTab = 'zh'; } },
     template: `
       <div>
         <section class="page-intro"><span class="eyebrow">{{ teacher.eyebrow }}</span><h1>{{ teacher.title }}</h1></section>
-        <section class="section-wrap teacher-detail"><div class="teacher-detail-photo"><img :src="teacher.image" :alt="teacher.alt"></div><article class="teacher-detail-copy"><span class="eyebrow">{{ teacher.lineage }}</span><h2>{{ teacher.name }}</h2><p v-for="(paragraph, index) in teacher.paragraphs" :key="index">{{ paragraph }}</p></article></section>
+        <section class="section-wrap teacher-detail" :class="{ 'teacher-detail-translated': teacher.translations }"><div class="teacher-detail-photo"><img :src="teacher.image" :alt="teacher.alt"></div><article class="teacher-detail-copy"><span class="eyebrow">{{ teacher.lineage }}</span><h2 :lang="activeBioTab === 'zh' ? 'zh-Hant' : activeBioTab">{{ teacher.translations ? teacher.names[activeBioTab] : teacher.name }}</h2><template v-if="teacher.translations"><div class="teacher-bio-tabs" role="tablist" aria-label="傳記語言"><button v-for="tab in [{id:'zh',label:'中文'},{id:'en',label:'English'},{id:'bo',label:'藏文'}]" :key="tab.id" class="teacher-bio-tab" :class="{ 'is-active': activeBioTab === tab.id }" role="tab" :id="'bio-tab-' + tab.id" :aria-selected="activeBioTab === tab.id" :aria-controls="'bio-panel-' + tab.id" :tabindex="activeBioTab === tab.id ? 0 : -1" @click="activeBioTab = tab.id">{{ tab.label }}</button></div><div class="teacher-bio-panel" role="tabpanel" :id="'bio-panel-' + activeBioTab" :aria-labelledby="'bio-tab-' + activeBioTab" :lang="activeBioTab === 'zh' ? 'zh-Hant' : activeBioTab === 'en' ? 'en' : 'bo'"><section v-for="(section,index) in teacher.translations[activeBioTab]" :key="index" class="teacher-bio-section"><h3 v-if="section.heading">{{ section.heading }}</h3><p v-for="(paragraph,pIndex) in section.paragraphs" :key="pIndex">{{ paragraph }}</p></section></div></template><p v-if="teacher.lead" class="teacher-intro-lead"><strong>{{ teacher.lead }}</strong></p><p v-if="!teacher.translations" v-for="(paragraph, index) in teacher.paragraphs" :key="index">{{ paragraph }}</p></article></section>
         <nav class="section-wrap teacher-page-nav"><RouterLink class="button button-blue" to="/about">← 認識佛堂</RouterLink><RouterLink class="button button-blue" :to="slug === 'jiacha-rinpoche' ? '/teachers/oracle-tara' : '/teachers/jiacha-rinpoche'">{{ slug === 'jiacha-rinpoche' ? '神諭度母 →' : '尊貴上師 →' }}</RouterLink></nav>
       </div>
     `,
