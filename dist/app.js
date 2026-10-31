@@ -87,10 +87,10 @@
 
         <section class="welcome section-wrap">
           <div class="welcome-copy">
-            <span class="eyebrow">認識佛堂</span>
-            <h2>一處可以慢慢認識的佛堂</h2>
+            <span class="eyebrow">ABOUT TARA</span>
+            <h2>認識達拉TARA</h2>
             <p>佛堂沿革、理念與參訪資訊，將依佛堂提供的資料整理刊載。</p>
-            <RouterLink class="button button-outline" to="/about">閱讀佛堂介紹 <span aria-hidden="true">→</span></RouterLink>
+            <RouterLink class="button button-outline" to="/about">佛堂介紹 <span aria-hidden="true">→</span></RouterLink>
           </div>
           <figure class="welcome-photo">
             <img src="./images/guanyin-shrine.jpg" alt="佛堂供奉的主尊觀世音菩薩">
@@ -99,13 +99,13 @@
         </section>
 
         <section class="home-teacher section-wrap">
-          <div class="home-teacher-photo"><img src="./images/jiacha-rinpoche.jpg" alt="白玉祖古嘉察仁波切"></div>
-          <div class="home-teacher-copy"><span class="eyebrow">VAJRAYANA MASTER</span><h2>尊貴上師</h2><p>白玉祖古嘉察徹滇多傑仁波切，白玉傳承第二任法座持有者貝瑪倫珠嘉措之轉世。</p><RouterLink class="button button-outline" to="/teachers/jiacha-rinpoche">認識上師 <span aria-hidden="true">→</span></RouterLink></div>
+          <div class="home-teacher-photo"><img src="./images/jiacha-rinpoche.jpg" alt="白玉嘉察仁波切"></div>
+          <div class="home-teacher-copy"><span class="eyebrow">GYALTSAB RINPOCHE</span><h2>白玉嘉察仁波切</h2><p>白玉祖古嘉察徹滇多傑仁波切，白玉傳承第二任法座持有者貝瑪倫珠嘉措之轉世。</p><RouterLink class="button button-outline" to="/teachers/jiacha-rinpoche">認識上師 <span aria-hidden="true">→</span></RouterLink></div>
         </section>
 
         <section class="home-teacher home-teacher-reverse section-wrap">
           <div class="home-teacher-photo"><img src="./images/chen-min-teacher.jpg" alt="神諭度母陳敏老師"></div>
-          <div class="home-teacher-copy"><span class="eyebrow">ORACLE TARA</span><h2>神諭度母</h2><p>陳敏老師成立達拉度母佛堂，帶領法會共修並定期安排心靈成長課程。</p><RouterLink class="button button-outline" to="/teachers/oracle-tara">認識神諭度母 <span aria-hidden="true">→</span></RouterLink></div>
+          <div class="home-teacher-copy"><span class="eyebrow">LUNGTEN DOLMA</span><h2>神諭度母</h2><p>陳敏老師成立達拉度母佛堂，帶領法會共修並定期安排心靈成長課程。</p><RouterLink class="button button-outline" to="/teachers/oracle-tara">認識神諭度母 <span aria-hidden="true">→</span></RouterLink></div>
         </section>
 
         <section class="offerings-band home-center-promo home-center-promo-with-photo home-center-promo-reverse">
@@ -124,9 +124,9 @@
         <section class="home-centers">
           <div class="section-wrap"><div class="home-section-heading"><span class="eyebrow">TAIWAN CENTER</span><h2>北中南中心</h2></div>
             <div class="center-grid">
-              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taipei.jpg" alt="Taipei Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taipei Center</span><span class="center-name-zh">台北中心</span></h3></article>
-              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taichung.jpg" alt="Taichung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taichung Center</span><span class="center-name-zh">台中中心</span></h3></article>
-              <article class="center-card"><div class="center-logo-frame"><img class="center-logo" src="./images/center-kaohsiung.jpg" alt="Kaohsiung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Kaohsiung Center</span><span class="center-name-zh">高雄中心</span></h3></article>
+              <RouterLink class="center-card" to="/centers/taipei" aria-label="查看台北中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taipei.jpg" alt="Taipei Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taipei Center</span><span class="center-name-zh">台北中心</span></h3></RouterLink>
+              <RouterLink class="center-card" to="/centers/taichung" aria-label="查看台中中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taichung.jpg" alt="Taichung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taichung Center</span><span class="center-name-zh">台中中心</span></h3></RouterLink>
+              <RouterLink class="center-card" to="/centers/kaohsiung" aria-label="查看高雄中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-kaohsiung.jpg" alt="Kaohsiung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Kaohsiung Center</span><span class="center-name-zh">高雄中心</span></h3></RouterLink>
             </div>
           </div>
         </section>
@@ -220,11 +220,34 @@
     `,
   };
 
-  const AboutPage = {
-    data: () => ({ expandedTara: null }),
+  const CenterDetailPage = {
+    props: ['slug'],
+    data: () => ({
+      centers: {
+        taipei: { nameZh: '台北中心', nameEn: 'Taipei Center', image: './images/center-taipei.jpg', alt: '台北中心標誌' },
+        taichung: { nameZh: '台中中心', nameEn: 'Taichung Center', image: './images/center-taichung.jpg', alt: '台中中心標誌' },
+        kaohsiung: { nameZh: '高雄中心', nameEn: 'Kaohsiung Center', image: './images/center-kaohsiung.jpg', alt: '高雄中心標誌' },
+      },
+    }),
+    computed: { center() { return this.centers[this.slug] || this.centers.taipei; } },
     template: `
       <div>
-        <section class="page-intro"><span class="eyebrow">ABOUT TARA</span><h1>認識達拉 TARA</h1><p>走進達拉度母佛堂，認識佛堂理念、圖騰、壇城與諸尊。</p></section>
+        <section class="page-intro"><span class="eyebrow">TAIWAN CENTER</span><h1>{{ center.nameZh }}</h1><p>{{ center.nameEn }}</p></section>
+        <section class="section-wrap center-detail-main">
+          <figure class="center-detail-emblem"><div class="center-logo-frame"><img class="center-logo" :src="center.image" :alt="center.alt"></div><figcaption>{{ center.nameEn }} · {{ center.nameZh }}</figcaption></figure>
+          <article class="center-detail-copy"><span class="eyebrow">ABOUT THE CENTER</span><h2>中心介紹</h2><p>中心介紹與活動資訊將陸續刊載。</p></article>
+        </section>
+        <section class="section-wrap center-gallery-section"><div class="home-section-heading"><span class="eyebrow">CENTER GALLERY</span><h2>中心照片</h2></div><div class="center-gallery-placeholders" aria-label="中心照片展示區"><div v-for="slot in 3" :key="slot" class="center-gallery-placeholder"><span aria-hidden="true">✦</span><p>中心照片</p></div></div></section>
+        <nav class="section-wrap center-detail-nav"><RouterLink class="button button-outline" to="/">← 返回首頁</RouterLink></nav>
+      </div>
+    `,
+  };
+
+  const AboutPage = {
+    data: () => ({ expandedTara: null, showAnnualOfferingModal: false }),
+    template: `
+      <div>
+        <section class="page-intro"><span class="eyebrow">ABOUT TARA</span><h1>認識達拉TARA</h1><p>走進達拉佛堂，認識度母。</p></section>
 
         <section class="about-origin section-wrap">
           <div class="about-section-heading"><span class="eyebrow">ABOUT TARA</span><h2>關於達拉 TARA</h2></div>
@@ -277,15 +300,16 @@
             </div>
             <section class="prayer-offerings"><div class="prayer-offering-heading"><span class="eyebrow">DEDICATION OFFERINGS</span><h3>祈福滿願壇城開放認供</h3><p>歡迎以祈願、供燈與護持壇城等方式，將善願迴向自身及一切有情。</p></div>
               <div class="prayer-offering-grid">
-                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>度母許願卡</h4><span class="prayer-offering-preview">可在祈願卡寫上所祈求願望（每張寫一個主要願望），並在壇城前誠心祈請，祈願諸佛菩薩眾、護法神尊加持庇佑，所求皆能如願，心想事成、諸事順遂。</span></span><span class="prayer-offering-details-toggle"><span>展開介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><p>可在祈願卡寫上所祈求願望（每張寫一個主要願望），並在壇城前誠心祈請，必得諸佛菩薩眾、護法神尊加持庇佑，所求皆能如願，心想事成、諸事順遂。</p></div></details>
-                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>各式佛菩薩點燈</h4><span class="prayer-offering-preview">點燈兼具出世間與世間利益：可得真智慧、遠離修行障礙、去除五毒惡業牽引；亦祈願身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、心想如願、財富具足。另有十二生肖守護菩薩點燈。</span></span><span class="prayer-offering-details-toggle"><span>展開介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><p>點燈的利益有兩種：</p><h5>出世間利益</h5><p>可得真智慧，遠離修行上的障礙，去除五毒惡業的牽引，斷除輪迴。</p><h5>世間福報</h5><p>身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、不受人欺、心想如願、財富具足。如阿那律尊者「天眼第一」，乃因供燈植福而獲得。</p><div class="prayer-offering-subsection"><h5>十二生肖守護菩薩點燈｜菩薩由來</h5><p>很久以前，世間有這樣一個傳說：一個人出生時，西方極樂世界就有一位佛、菩薩迎送，並看著這孩子慢慢長大。此後孩子要獨自面對人間的誘惑和選擇，身上的佛性也越變越淡。只有極少數孩子因累積了幾世輪迴的善果、佛緣較深，才能繼續得到佛菩薩庇佑。後來經菩薩點化，人們把自己出生那一年的本尊佛菩薩雕刻在飾物上隨身佩戴，以增進自身修為，得到本尊菩薩保佑、庇護，實現發財、保健康等願望。</p></div></div></details>
-                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>各式吉祥滿願寶瓶</h4><span class="prayer-offering-preview">壇城開放認供度母寶瓶（事業滿願）、財神寶瓶（福報財富）、咕嚕咕咧寶瓶（人緣桃花）及吉祥福運寶瓶（平安運氣，適合本年沖太歲者）。吉祥福運滿願寶瓶由尊貴的穆松古千法王親自裝臟、開光。</span></span><span class="prayer-offering-details-toggle"><span>展開介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><ul><li>度母寶瓶：事業滿願</li><li>財神寶瓶：福報財富</li><li>咕嚕咕咧寶瓶：人緣桃花</li><li>吉祥福運寶瓶：平安運氣，適合本年沖太歲者</li></ul><h5>吉祥福運滿願寶瓶</h5><p>特別恭請尊貴的穆松古千法王親自裝臟、開光。裝臟物主要為法王親自從印度攜帶來臺之印度白玉南卓林寺總集甘露，以及南卻天法傳承祖師——持明珠多傑金剛法座所在聖地西康穆松寺吉祥總集甘露，精心製作，與十方大德結緣。</p><p>藉由寶瓶無上的加持，為大家祈福、消除眾生一切障礙；並願以修持寶瓶的成就與得此殊勝寶瓶的功德，幫助眾生除逆緣、脫貧苦、財富豐盈、權力威望增長、得眾人仰慕及敬愛。行者若能虔心供養，即能集聚天、人、眾生，享受其惠施衣財富，運勢轉佳、善緣早熟。因此，吉祥福運滿願寶瓶亦是平安與財富最強之殊勝不共護法。</p></div></details>
-                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>年度認供</h4><span class="prayer-offering-preview">年度認供依當年度壇城與法會規劃開放，邀請大眾隨喜護持、祈福迴向。認供項目與參與方式將依年度公告更新。</span></span><span class="prayer-offering-details-toggle"><span>展開介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><p>年度認供依當年度壇城與法會規劃開放，邀請大眾隨喜護持、祈福迴向。認供項目與參與方式將依年度公告更新。</p></div></details>
+                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>度母許願卡</h4><span class="prayer-offering-preview">可在祈願卡寫上所祈求願望（每張寫一個主要願望），並在壇城前誠心祈請，祈願諸佛菩薩眾、護法神尊加持庇佑，所求皆能如願，心想事成、諸事順遂。</span></span><span class="prayer-offering-details-toggle"><span>展開介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><p>可在祈願卡寫上所祈求願望（每張寫一個主要願望），並在壇城前誠心祈請，必得諸佛菩薩眾、護法神尊加持庇佑，所求皆能如願，心想事成、諸事順遂。</p></div><button type="button" class="prayer-offering-details-toggle prayer-offering-collapse" @click="$event.currentTarget.closest('details').open = false"><span>收合介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></button></details>
+                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>各式佛菩薩點燈</h4><span class="prayer-offering-preview">點燈兼具出世間與世間利益：可得真智慧、遠離修行障礙、去除五毒惡業牽引；亦祈願身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、心想如願、財富具足。另有十二生肖守護菩薩點燈。</span></span><span class="prayer-offering-details-toggle"><span>點燈的功德利益</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><p>點燈的利益有兩種：</p><h5>出世間利益</h5><p>可得真智慧，遠離修行上的障礙，去除五毒惡業的牽引，斷除輪迴。</p><h5>世間福報</h5><p>身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、不受人欺、心想如願、財富具足。如阿那律尊者「天眼第一」，乃因供燈植福而獲得。</p><div class="prayer-offering-subsection"><h5>十二生肖守護菩薩點燈｜菩薩由來</h5><p>很久以前，世間有這樣一個傳說：一個人出生時，西方極樂世界就有一位佛、菩薩迎送，並看著這孩子慢慢長大。此後孩子要獨自面對人間的誘惑和選擇，身上的佛性也越變越淡。只有極少數孩子因累積了幾世輪迴的善果、佛緣較深，才能繼續得到佛菩薩庇佑。後來經菩薩點化，人們把自己出生那一年的本尊佛菩薩雕刻在飾物上隨身佩戴，以增進自身修為，得到本尊菩薩保佑、庇護，實現發財、保健康等願望。</p></div></div><button type="button" class="prayer-offering-details-toggle prayer-offering-collapse" @click="$event.currentTarget.closest('details').open = false"><span>收合介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></button></details>
+                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>各式吉祥滿願寶瓶</h4><span class="prayer-offering-preview">壇城開放認供度母寶瓶（事業滿願）、財神寶瓶（福報財富）、咕嚕咕咧寶瓶（人緣桃花）及吉祥福運寶瓶（平安運氣，適合本年沖太歲者）。吉祥福運滿願寶瓶由尊貴的穆松古千法王親自裝臟、開光。</span></span><span class="prayer-offering-details-toggle"><span>寶瓶的功德利益</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><ul><li>度母寶瓶：事業滿願</li><li>財神寶瓶：福報財富</li><li>咕嚕咕咧寶瓶：人緣桃花</li><li>吉祥福運寶瓶：平安運氣，適合本年沖太歲者</li></ul><h5>吉祥福運滿願寶瓶</h5><p>特別恭請尊貴的穆松古千法王親自裝臟、開光。裝臟物主要為法王親自從印度攜帶來臺之印度白玉南卓林寺總集甘露，以及南卻天法傳承祖師——持明珠多傑金剛法座所在聖地西康穆松寺吉祥總集甘露，精心製作，與十方大德結緣。</p><p>藉由寶瓶無上的加持，為大家祈福、消除眾生一切障礙；並願以修持寶瓶的成就與得此殊勝寶瓶的功德，幫助眾生除逆緣、脫貧苦、財富豐盈、權力威望增長、得眾人仰慕及敬愛。行者若能虔心供養，即能集聚天、人、眾生，享受其惠施衣財富，運勢轉佳、善緣早熟。因此，吉祥福運滿願寶瓶亦是平安與財富最強之殊勝不共護法。</p></div><button type="button" class="prayer-offering-details-toggle prayer-offering-collapse" @click="$event.currentTarget.closest('details').open = false"><span>收合介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></button></details>
+                <article class="prayer-offering-card prayer-offering-card--annual"><div class="prayer-offering-summary-copy"><h4>年度認供</h4><span class="prayer-offering-preview">年度認供依當年度壇城與法會規劃開放，邀請大眾隨喜護持、祈福迴向。認供項目與參與方式將依年度公告更新。</span></div><button type="button" class="prayer-offering-details-toggle" @click="showAnnualOfferingModal = true"><span>查看2026年度認供</span><span class="prayer-offering-details-icon" aria-hidden="true">↗</span></button></article>
               </div>
             </section>
-            <div class="about-closing-notes"><p>只要具虔誠信心、衷心祈請，必得諸佛菩薩眾、護法神尊加持庇佑。不論祈求事業、財運、感情、桃花、人緣等，皆能所求如意、滿願順遂。達拉並有多種殊勝法寶結緣品，每樣結緣品皆經由尊貴上師如理如法裝臟、開光、灑淨加持圓滿，且定期恭請上師不斷修法加持，其殊勝力不可思議。</p></div>
+            <div class="about-closing-notes"><p>達拉有多種殊勝法寶結緣品，每樣結緣品皆經由尊貴上師如理如法裝臟、開光、灑淨加持圓滿，且定期恭請上師不斷修法加持，其殊勝力不可思議。只要具虔誠信心、衷心祈請，必得諸佛菩薩眾、護法神尊加持庇佑。不論祈求事業、財運、感情、桃花、人緣等，皆能所求如意、滿願順遂。</p></div>
           </div>
         </section>
+        <div v-if="showAnnualOfferingModal" class="annual-offering-modal-backdrop" @click.self="showAnnualOfferingModal = false" @keydown.esc.window="showAnnualOfferingModal = false"><section class="annual-offering-modal" role="dialog" aria-modal="true" aria-labelledby="annual-offering-modal-title"><header><h2 id="annual-offering-modal-title">2026 年度認供項目</h2><button type="button" class="annual-offering-modal-close" aria-label="關閉年度認供圖片" @click="showAnnualOfferingModal = false">×</button></header><img src="./images/annual-offerings-2026.jpg" alt="達拉度母佛堂 2026 年開放壇城認供項目與功德主項目說明"></section></div>
       </div>
     `,
   };
@@ -294,9 +318,17 @@
     props: ['slug'],
     data: () => ({
       activeBioTab: 'zh',
+      activeLineageSteps: [],
+      lineageObservers: [],
+      lineageSteps: [
+        { id: 'sogpo-lhapal', romanized: 'Sogpo Lhapal', titleLines: ['蓮花生大士大弟子', '「索波拉巴」'], image: './images/lineage-sogpo-lhapal.jpg', alt: '蓮花生大士大弟子索波拉巴唐卡' },
+        { id: 'pema-lhundrub-gyatso', romanized: 'Pema Lhundrub Gyatso', titleLines: ['第二任白玉寺住持', '貝瑪倫珠嘉措法王'], image: './images/lineage-pema-lhundrub-gyatso.jpg', alt: '第二任白玉寺住持貝瑪倫珠嘉措法王唐卡' },
+        { id: 'gyaltsab-gonsung', romanized: 'Palyul Gyaltsab Gonsung Rinpoche', titleLines: ['白玉嘉察袞松法王'], image: './images/lineage-gyaltsab-gonsung.jpg', alt: '白玉嘉察袞松法王唐卡' },
+        { id: 'gyaltsab-tseten-dorje', romanized: 'Gyaltsab Rinpoche', titleLines: ['嘉察徹滇多傑仁波切'], image: './images/lineage-gyaltsab-tseten-dorje.jpg', alt: '嘉察徹滇多傑仁波切照片' },
+      ],
       profiles: {
         'jiacha-rinpoche': {
-          eyebrow: 'VAJRAYANA MASTER', title: '尊貴上師', name: '白玉祖古嘉察仁波切', names: { zh: '白玉祖古嘉察仁波切', en: 'Palyul Tulku Gyaltsab Rinpoche', bo: 'དཔལ་ཡུལ་སྤྲུལ་སྐུ་རྒྱལ་ཚབ་རིན་པོ་ཆེ' }, lineage: '白玉傳承', image: './images/jiacha-rinpoche.jpg', alt: '白玉祖古嘉察仁波切照片',
+          eyebrow: 'GYALTSAB RINPOCHE', title: '白玉嘉察仁波切簡傳', name: '白玉嘉察仁波切', names: { zh: '白玉嘉察仁波切', en: 'Palyul Gyaltsab Rinpoche', bo: 'དཔལ་ཡུལ་རྒྱལ་ཚབ་རིན་པོ་ཆེ' }, lineage: '白玉傳承', image: './images/jiacha-rinpoche.jpg', alt: '白玉嘉察仁波切照片',
           translations: {
             zh: [
               { heading: '', paragraphs: [
@@ -342,7 +374,7 @@
           },
         },
         'oracle-tara': {
-          eyebrow: 'ORACLE TARA', title: '神諭度母', name: '陳敏老師簡介', lineage: '達拉度母佛堂', image: './images/chen-min-teacher.jpg', alt: '神諭度母陳敏老師照片',
+          eyebrow: 'LUNGTEN DOLMA', title: '神諭度母', name: '陳敏老師簡介', lineage: '達拉度母佛堂', image: './images/chen-min-teacher.jpg', alt: '神諭度母陳敏老師照片',
           lead: '陳敏老師是一位長期倡導結合「身、心、靈」的全方位老師，是許多人心目中的「心靈導師」。',
           paragraphs: [
             '因為自幼接觸佛法，所以凡事皆以慈悲利他的心關懷眾生。在某個因緣下認識了尊貴的嘉察仁波切，了解仁波切的佛行事業、長期關懷弱勢，行慈善志業的發願，心裡很是感動。',
@@ -356,11 +388,40 @@
       },
     }),
     computed: { teacher() { return this.profiles[this.slug] || this.profiles['jiacha-rinpoche']; } },
-    watch: { slug() { this.activeBioTab = 'zh'; } },
+    mounted() { this.observeLineageSteps(); },
+    beforeUnmount() { this.lineageObservers.forEach((observer) => observer.disconnect()); },
+    methods: {
+      observeLineageSteps() {
+        this.lineageObservers.forEach((observer) => observer.disconnect());
+        this.lineageObservers = [];
+        this.activeLineageSteps = [];
+        if (this.slug !== 'jiacha-rinpoche') return;
+        const items = this.$el.querySelectorAll('.lineage-item');
+        if (!('IntersectionObserver' in window)) {
+          this.activeLineageSteps = this.lineageSteps.map((step) => step.id);
+          return;
+        }
+        const staggerRatio = window.matchMedia('(max-width: 620px)').matches ? 0.18 : 0.1;
+        items.forEach((item, index) => {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const stepId = item.dataset.lineageId;
+              if (!this.activeLineageSteps.includes(stepId)) this.activeLineageSteps.push(stepId);
+              observer.disconnect();
+            });
+          }, { threshold: 0.2, rootMargin: `0px 0px -${Math.round(window.innerHeight * index * staggerRatio)}px 0px` });
+          this.lineageObservers.push(observer);
+          observer.observe(item.querySelector('.lineage-node'));
+        });
+      },
+    },
+    watch: { slug() { this.activeBioTab = 'zh'; this.$nextTick(() => this.observeLineageSteps()); } },
     template: `
       <div>
         <section class="page-intro"><span class="eyebrow">{{ teacher.eyebrow }}</span><h1>{{ teacher.title }}</h1></section>
         <section class="section-wrap teacher-detail" :class="{ 'teacher-detail-translated': teacher.translations }"><div class="teacher-detail-photo"><img :src="teacher.image" :alt="teacher.alt"></div><article class="teacher-detail-copy"><span class="eyebrow">{{ teacher.lineage }}</span><h2 :lang="activeBioTab === 'zh' ? 'zh-Hant' : activeBioTab">{{ teacher.translations ? teacher.names[activeBioTab] : teacher.name }}</h2><template v-if="teacher.translations"><div class="teacher-bio-tabs" role="tablist" aria-label="傳記語言"><button v-for="tab in [{id:'zh',label:'中文'},{id:'en',label:'English'},{id:'bo',label:'藏文'}]" :key="tab.id" class="teacher-bio-tab" :class="{ 'is-active': activeBioTab === tab.id }" role="tab" :id="'bio-tab-' + tab.id" :aria-selected="activeBioTab === tab.id" :aria-controls="'bio-panel-' + tab.id" :tabindex="activeBioTab === tab.id ? 0 : -1" @click="activeBioTab = tab.id">{{ tab.label }}</button></div><div class="teacher-bio-panel" role="tabpanel" :id="'bio-panel-' + activeBioTab" :aria-labelledby="'bio-tab-' + activeBioTab" :lang="activeBioTab === 'zh' ? 'zh-Hant' : activeBioTab === 'en' ? 'en' : 'bo'"><section v-for="(section,index) in teacher.translations[activeBioTab]" :key="index" class="teacher-bio-section"><h3 v-if="section.heading">{{ section.heading }}</h3><p v-for="(paragraph,pIndex) in section.paragraphs" :key="pIndex">{{ paragraph }}</p></section></div></template><p v-if="teacher.lead" class="teacher-intro-lead"><strong>{{ teacher.lead }}</strong></p><p v-if="!teacher.translations" v-for="(paragraph, index) in teacher.paragraphs" :key="index">{{ paragraph }}</p></article></section>
+        <section v-if="slug === 'jiacha-rinpoche'" class="section-wrap lineage-section" aria-labelledby="lineage-title"><div class="lineage-heading"><span class="eyebrow">PALIUL LINEAGE</span><h2 id="lineage-title">嘉察仁波切的轉世傳承</h2><p>白玉傳承，認識嘉察仁波切的轉世法脈。</p></div><ol class="lineage-timeline"><li v-for="(step, index) in lineageSteps" :key="step.id" class="lineage-item" :class="{ 'is-active': activeLineageSteps.includes(step.id) }" :data-lineage-id="step.id"><span class="lineage-node" aria-hidden="true"></span><figure class="lineage-card"><div class="lineage-image-frame" :class="{ 'lineage-image-frame-last': index === 3 }"><img :src="step.image" :alt="step.alt" loading="lazy"></div><figcaption><span class="lineage-name-en">{{ step.romanized }}</span><h3><span v-for="line in step.titleLines" :key="line">{{ line }}</span></h3></figcaption></figure></li></ol></section>
         <nav class="section-wrap teacher-page-nav"><RouterLink class="button button-blue" to="/about">← 認識佛堂</RouterLink><RouterLink class="button button-blue" :to="slug === 'jiacha-rinpoche' ? '/teachers/oracle-tara' : '/teachers/jiacha-rinpoche'">{{ slug === 'jiacha-rinpoche' ? '神諭度母 →' : '尊貴上師 →' }}</RouterLink></nav>
       </div>
     `,
@@ -897,6 +958,7 @@
     routes: [
       { path: '/', component: HomePage },
       { path: '/about', component: AboutPage },
+      { path: '/centers/:slug', component: CenterDetailPage, props: true },
       { path: '/teachers/:slug', component: TeacherDetailPage, props: true },
       { path: '/offerings', component: OfferingsPage },
       { path: '/offerings/:slug', component: OfferingDetailPage, props: true },

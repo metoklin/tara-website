@@ -65,7 +65,7 @@ figure, p, h1, h2 { margin-top: 0; }
 .button-gold { background: #e3be61; color: #293e54; }
 .button-blue { background: var(--blue); color: white; }
 .button-blue:hover, .header-contact:hover { background: var(--blue-deep); }
-.button-outline { border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--blue); }
+.button-outline { border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--blue); }
 .button-outline span { color: var(--gold); font-size: calc(18px + 2px); }
 .button-outline:hover { border-color: var(--blue); background: #edf2f5; }
 .button-ghost { color: white; border: 1px solid rgba(255,255,255,.65); background: rgba(255,255,255,.08); }
@@ -95,7 +95,9 @@ figure, p, h1, h2 { margin-top: 0; }
 .home-centers { padding-block: 68px 78px; background: var(--cream); }
 .center-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .center-logo-filter-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
-.center-card { display: grid; justify-items: center; align-content: start; gap: 18px; min-height: 255px; padding: 22px; border: 1px solid var(--line); background: var(--paper); text-align: center; }
+.center-card { display: grid; justify-items: center; align-content: start; gap: 18px; min-height: 255px; padding: 22px; border: 1px solid var(--line); background: var(--paper); text-align: center; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.center-card:hover { border-color: #c8a451; box-shadow: 0 12px 28px rgba(24, 49, 74, .1); transform: translateY(-3px); }
+.center-card:focus-visible { outline: 3px solid #dba839; outline-offset: 3px; }
 .center-logo-frame { width: min(100%, 150px); aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; border: 1px solid #285b91; border-radius: 50%; padding: 8px; background: #fffefa; }
 .center-logo { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: contain; filter: url(#center-logo-blue); }
 .center-card h3 { margin: 0; color: var(--ink); font: 500 17px Georgia, serif; letter-spacing: .04em; }
@@ -132,13 +134,30 @@ figure, p, h1, h2 { margin-top: 0; }
 .orbit-two { width: 320px; height: 320px; }
 .activity-letter { position: absolute; bottom: 26px; right: 28px; color: rgba(34,66,96,.65); font: 22px Georgia, serif; letter-spacing: .22em; }
 
-.home-visit { background: var(--cream); border-block: 1px solid var(--line); }
+.home-visit { background: #edf3e8; border-block: 1px solid #dce7d5; }
+.home-visit .button-blue { background: #3d6945; }
+.home-visit .button-blue:hover { background: #2e5236; }
 .visit-strip { padding-block: 54px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px; text-align: center; }
 .visit-strip h2 { margin-bottom: 7px; }
 .visit-strip p { margin: 0; }
 .visit-actions { display: flex; justify-content: center; align-items: center; gap: 24px; flex-wrap: wrap; }
 .button-quiet { color: var(--ink); border: 1px solid var(--line); background: var(--paper); }
 .button-quiet:hover { border-color: var(--blue); color: var(--blue); }
+.center-detail-main { display: grid; grid-template-columns: minmax(230px, .75fr) minmax(0, 1.25fr); align-items: center; gap: clamp(28px, 6vw, 72px); padding-block: 48px 62px; border-bottom: 1px solid var(--line); }
+.center-detail-emblem { margin: 0; text-align: center; }
+.center-detail-emblem .center-logo-frame { width: min(100%, 220px); margin: 0 auto 18px; }
+.center-detail-emblem figcaption { color: var(--muted); font: 500 15px Georgia, serif; letter-spacing: .06em; }
+.center-detail-copy { padding: clamp(24px, 4vw, 42px); border-left: 2px solid var(--gold); background: var(--cream); }
+.center-detail-copy .eyebrow { margin-bottom: 9px; }
+.center-detail-copy h2 { margin: 0 0 12px; color: var(--ink); font-size: clamp(24px, 3vw, 34px); font-weight: 550; }
+.center-detail-copy p { margin: 0; color: var(--muted); line-height: 1.9; }
+.center-gallery-section { padding-block: 52px 68px; }
+.center-gallery-section .home-section-heading { margin-bottom: 20px; }
+.center-gallery-placeholders { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.center-gallery-placeholder { display: grid; min-height: 190px; place-content: center; gap: 8px; border: 1px dashed #d8d0c2; background: #faf8f3; color: #9a907e; text-align: center; }
+.center-gallery-placeholder span { color: var(--gold); font-size: 23px; }
+.center-gallery-placeholder p { margin: 0; font-size: 14px; letter-spacing: .06em; }
+.center-detail-nav { display: flex; justify-content: space-between; gap: 14px; padding-block: 0 58px; }
 .consultation-modal-backdrop { position: fixed; z-index: 1000; inset: 0; display: grid; place-items: center; padding: 24px; background: rgba(27, 35, 43, .68); }
 .consultation-modal { position: relative; width: min(720px, 100%); max-height: min(86vh, 850px); overflow: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); box-shadow: 0 24px 80px rgba(13, 27, 40, .28); }
 .consultation-modal-content { padding: 38px clamp(22px, 5vw, 48px) 32px; }
@@ -257,16 +276,20 @@ figure, p, h1, h2 { margin-top: 0; }
 .prayer-offering-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
 .prayer-offering-card { min-width: 0; border: 1px solid var(--line); background: #fff; transition: border-color .25s ease, box-shadow .25s ease; }
 .prayer-offering-card[open] { border-color: #c6a45a; box-shadow: 0 8px 24px rgba(39, 53, 69, .06); }
-.prayer-offering-card summary { display: flex; min-height: 350px; flex-direction: column; align-items: stretch; padding: 25px 27px; cursor: pointer; list-style: none; }
+.prayer-offering-card summary { display: flex; min-height: 280px; flex-direction: column; align-items: stretch; padding: 25px 27px; cursor: pointer; list-style: none; }
 .prayer-offering-card summary::-webkit-details-marker { display: none; }
 .prayer-offering-card summary:focus-visible { outline: 2px solid #b18a2b; outline-offset: -3px; }
+.prayer-offering-card[open] summary .prayer-offering-details-toggle { display: none; }
 .prayer-offering-card h4 { margin: 0 0 10px; color: var(--ink); font-size: 21px; font-weight: 600; }
-.prayer-offering-preview { display: -webkit-box; min-height: calc(1.95em * 5); overflow: hidden; color: #536476; line-height: 1.95; -webkit-box-orient: vertical; -webkit-line-clamp: 5; }
-.prayer-offering-details-toggle { display: flex; min-height: 42px; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding: 9px 0 0; border-top: 1px solid var(--line); color: var(--blue); font-size: calc(14px + 2px); font-weight: 700; line-height: 1.8; transition: color .2s ease; }
+.prayer-offering-preview { display: -webkit-box; overflow: hidden; color: #536476; line-height: 1.95; -webkit-box-orient: vertical; -webkit-line-clamp: 5; }
+.prayer-offering-details-toggle { display: flex; width: 100%; min-height: 42px; align-items: center; justify-content: space-between; gap: 10px; margin-top: 13px; padding: 9px 0 0; border: 0; border-top: 1px solid var(--line); background: transparent; color: var(--blue); cursor: pointer; font: inherit; font-size: calc(14px + 2px); font-weight: 700; line-height: 1.8; text-align: left; transition: color .2s ease; }
 .prayer-offering-card summary:hover .prayer-offering-details-toggle { color: var(--gold); }
+.prayer-offering-details-toggle:hover { color: var(--gold); }
 .prayer-offering-details-icon { display: inline-block; transition: transform .32s ease; }
 .prayer-offering-card[open] .prayer-offering-details-icon { transform: rotate(180deg); }
 .prayer-offering-detail { padding: 0 27px 25px; }
+.prayer-offering-collapse { margin: 0 27px 25px; width: calc(100% - 54px); }
+.prayer-offering-card--annual { display: flex; min-height: 280px; flex-direction: column; padding: 25px 27px; }
 .prayer-offering-card h5 { margin: 13px 0 5px; color: #947021; font-size: 16px; font-weight: 650; }
 .prayer-offering-card p { margin: 0 0 12px; color: #536476; line-height: 1.95; }
 .prayer-offering-detail p:last-child { margin-bottom: 0; }
@@ -274,6 +297,13 @@ figure, p, h1, h2 { margin-top: 0; }
 .prayer-offering-subsection { margin-top: 17px; padding-top: 15px; border-top: 1px solid var(--line); }
 .about-closing-notes { margin-top: 26px; padding: 23px 26px; background: #edf2f5; }
 .about-closing-notes p { margin: 0; }
+.annual-offering-modal-backdrop { position: fixed; z-index: 1100; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(27, 35, 43, .72); }
+.annual-offering-modal { position: relative; display: flex; width: min(900px, 100%); max-height: 94vh; flex-direction: column; overflow: auto; padding: 18px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); box-shadow: 0 24px 80px rgba(13, 27, 40, .32); }
+.annual-offering-modal header { position: sticky; top: -18px; z-index: 1; display: flex; min-height: 42px; align-items: center; justify-content: space-between; gap: 16px; padding: 0 4px 12px; background: var(--paper); }
+.annual-offering-modal h2 { margin: 0; color: var(--ink); font-size: 20px; font-weight: 600; }
+.annual-offering-modal-close { display: grid; width: 38px; height: 38px; flex: 0 0 auto; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--ink); cursor: pointer; font-size: 25px; line-height: 1; }
+.annual-offering-modal-close:hover { border-color: #c6a45a; color: #947021; }
+.annual-offering-modal > img { display: block; width: 100%; max-width: 100%; height: auto; flex: 0 0 auto; }
 .content-note { display: inline-flex; gap: 9px; align-items: center; padding: 12px 15px; border: 1px solid #e9ddb9; border-radius: 5px; color: #79653a; font-size: calc(12px + 2px); background: #fcf8ec; margin-top: 8px; }
 .content-note span { color: var(--gold); }
 .mandala-intro { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(250px, .8fr); align-items: center; gap: 52px; padding-block: 24px 76px; }
@@ -302,9 +332,9 @@ figure, p, h1, h2 { margin-top: 0; }
 .teacher-profile-copy p:last-child { margin-bottom: 0; }
 .teacher-profile-secondary { padding-bottom: 48px; }
 .teacher-detail { display: grid; grid-template-columns: minmax(240px, .8fr) minmax(0, 1.2fr); gap: clamp(38px, 8vw, 105px); align-items: center; padding-block: 78px; }
-.teacher-detail-translated { grid-template-columns: 1fr; align-items: start; gap: 38px; }
-.teacher-detail-translated .teacher-detail-photo { width: min(100%, 960px); margin-inline: auto; }
-.teacher-detail-translated .teacher-detail-photo img { display: block; width: 100%; max-height: none; height: auto; aspect-ratio: auto; object-fit: contain; }
+.teacher-detail-translated { grid-template-columns: 1fr; align-items: start; gap: 22px; padding-block: 38px 48px; }
+.teacher-detail-translated .teacher-detail-photo { width: min(100%, 760px); aspect-ratio: 1 / 1; margin-inline: auto; overflow: hidden; }
+.teacher-detail-translated .teacher-detail-photo img { display: block; width: 100%; max-height: none; height: 100%; object-fit: cover; object-position: center 28%; }
 .teacher-detail-photo img { width: 100%; max-height: 510px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%; }
 .teacher-detail-copy h2 { margin: 0 0 20px; font-size: calc(clamp(25px, 3vw, 36px) + 2px); font-weight: 550; letter-spacing: .05em; }
 .teacher-detail-copy h2:lang(bo) { font-family: "Noto Serif Tibetan", "Kailasa", serif; }
@@ -322,6 +352,27 @@ figure, p, h1, h2 { margin-top: 0; }
 .teacher-bio-section h3 { margin: 0 0 10px; color: var(--blue-deep); font-size: 21px; font-weight: 550; letter-spacing: .035em; }
 .teacher-bio-section p { white-space: pre-line; }
 .teacher-bio-panel[lang="bo"] { font-family: "Noto Serif Tibetan", "Kailasa", serif; }
+.lineage-section { padding-block: 35px 80px; border-top: 1px solid var(--line); }
+.lineage-heading { margin-bottom: 42px; text-align: center; }
+.lineage-heading .eyebrow { margin-bottom: 9px; }
+.lineage-heading h2 { margin: 0 0 10px; color: var(--ink); font-size: clamp(26px, 3vw, 36px); font-weight: 550; letter-spacing: .04em; }
+.lineage-heading p { margin: 0; color: var(--muted); font-size: 16px; }
+.lineage-timeline { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 3vw, 42px); margin: 0; padding: 0; list-style: none; }
+.lineage-timeline::before { position: absolute; top: 9px; right: 10%; left: 10%; height: 2px; background: linear-gradient(90deg, transparent, #d9dfe3 12%, #d9dfe3 100%); content: ''; }
+.lineage-timeline::after { position: absolute; top: 4px; right: calc(10% - 7px); width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #bdc8d0; content: ''; }
+.lineage-item { position: relative; min-width: 0; padding-top: 37px; }
+.lineage-node { position: absolute; z-index: 1; top: 2px; left: 50%; display: block; width: 16px; height: 16px; border: 2px solid #c9d1d8; border-radius: 50%; background: var(--paper); transform: translateX(-50%); transition: background .35s ease, border-color .35s ease, box-shadow .35s ease; }
+.lineage-item.is-active .lineage-node { border-color: var(--gold); background: var(--gold); color: #fff; box-shadow: 0 0 0 6px rgba(177, 138, 43, .13); }
+.lineage-card { height: 100%; margin: 0; padding: 12px; border: 1px solid var(--line); background: #fff; transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease; }
+.lineage-item.is-active .lineage-card { border-color: #d7bd7d; box-shadow: 0 12px 34px rgba(24, 49, 74, .09); transform: translateY(-4px); }
+.lineage-image-frame { overflow: hidden; aspect-ratio: 4 / 5; background: #f5f2eb; }
+.lineage-image-frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
+.lineage-image-frame:not(.lineage-image-frame-last) img { transform: scale(1.3); }
+.lineage-image-frame-last img { object-position: 56% center; }
+.lineage-card figcaption { padding: 17px 8px 10px; text-align: center; }
+.lineage-name-en { display: block; margin: 0 0 7px; color: var(--gold); font-family: Georgia, "Times New Roman", serif; font-size: clamp(10px, 1vw, 13px); font-weight: 600; letter-spacing: .035em; line-height: 1.45; }
+.lineage-card h3 { margin: 0; color: var(--ink); font-size: clamp(15px, 1.45vw, 19px); font-weight: 600; line-height: 1.7; }
+.lineage-card h3 span { display: block; }
 .teacher-page-nav { display: flex; justify-content: space-between; padding-block: 20px 48px; border-top: 1px solid var(--line); }
 .about-banner { background: var(--blue-deep); color: white; overflow: hidden; }
 .about-banner-inner { min-height: 280px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
@@ -596,11 +647,31 @@ figure, p, h1, h2 { margin-top: 0; }
   .home-centers { padding-block: 48px; }
   .center-grid { grid-template-columns: 1fr; gap: 12px; }
   .center-card { min-height: 0; grid-template-columns: 92px 1fr; align-items: center; justify-items: start; gap: 16px; padding: 14px; text-align: left; }
+  .center-detail-main { grid-template-columns: 1fr; gap: 25px; padding-block: 32px 40px; }
+  .center-detail-emblem .center-logo-frame { width: 150px; }
+  .center-gallery-section { padding-block: 40px 48px; }
+  .center-gallery-placeholders { grid-template-columns: 1fr; gap: 10px; }
+  .center-gallery-placeholder { min-height: 150px; }
+  .center-detail-nav { padding-bottom: 42px; }
   .center-logo-frame { width: 92px; }
   .teacher-detail { grid-template-columns: 1fr; gap: 28px; padding-block: 48px; }
+  .teacher-detail-translated { gap: 16px; padding-block: 26px 38px; }
   .teacher-detail-photo img { max-height: 420px; }
+  .lineage-section { padding-block: 30px 52px; }
+  .lineage-heading { margin-bottom: 27px; text-align: left; }
+  .lineage-timeline { grid-template-columns: 1fr; gap: 23px; padding-left: 28px; }
+  .lineage-timeline::before { top: 0; right: auto; bottom: 0; left: 19px; width: 2px; height: auto; background: linear-gradient(180deg, transparent, #d9dfe3 12%, #d9dfe3 100%); }
+  .lineage-timeline::after { display: none; }
+  .lineage-item { padding: 0 0 0 20px; }
+  .lineage-node { top: 18px; left: -17px; transform: none; }
+  .lineage-card { display: grid; grid-template-columns: minmax(100px, 34%) minmax(0, 1fr); align-items: center; gap: 15px; padding: 10px; }
+  .lineage-image-frame { aspect-ratio: 4 / 5; }
+  .lineage-card figcaption { padding: 10px 5px; text-align: left; }
+  .lineage-name-en { font-size: 12px; }
+  .lineage-card h3 { font-size: 16px; }
+  .lineage-node, .lineage-card { transition-duration: .75s; }
   .teacher-page-nav { gap: 12px; }
-  .teacher-page-nav .button { flex: 1; justify-content: center; min-width: 0; padding-inline: 10px; font-size: 13px; }
+  .teacher-page-nav .button { flex: 0 1 auto; width: auto; max-width: 100%; justify-content: center; min-width: 0; padding-inline: 10px; font-size: 13px; }
   .page-intro { padding-block: 62px 50px; }
   .about-feature { grid-template-columns: 1fr; gap: 31px; padding-block: 52px; }
   .about-image img { height: 300px; }
@@ -633,8 +704,12 @@ figure, p, h1, h2 { margin-top: 0; }
   .prayer-mandala-info { padding: 21px; }
   .prayer-mandala-info section + section { padding: 16px 0 0; border-top: 1px solid var(--line); border-left: 0; }
   .prayer-mandala-gallery figure { aspect-ratio: 1.5; }
-  .prayer-offering-card summary { min-height: 325px; padding: 21px; }
+  .prayer-offering-card summary { min-height: 280px; padding: 21px; }
   .prayer-offering-detail { padding: 0 21px 21px; }
+  .prayer-offering-collapse { width: calc(100% - 42px); margin: 0 21px 21px; }
+  .prayer-offering-card--annual { min-height: 280px; padding: 21px; }
+  .annual-offering-modal-backdrop { align-items: end; padding: 10px; }
+  .annual-offering-modal { max-height: 94vh; padding: 12px; border-radius: 8px 8px 4px 4px; }
   .about-closing-notes { padding: 20px; }
   .mandala-intro { grid-template-columns: 1fr; gap: 25px; padding-block: 7px 52px; }
   .mandala-main-deities { padding: 22px; }
