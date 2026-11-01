@@ -121,7 +121,7 @@
         </section>
 
         <svg class="center-logo-filter-defs" aria-hidden="true" focusable="false"><filter id="center-logo-blue" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 0.156863 0 0 0 0 0.356863 0 0 0 0 0.568627 -1 -1 -1 0 2.9" /></filter></svg>
-        <section class="home-centers">
+        <section id="centers" class="home-centers">
           <div class="section-wrap"><div class="home-section-heading"><span class="eyebrow">TAIWAN CENTER</span><h2>北中南中心</h2></div>
             <div class="center-grid">
               <RouterLink class="center-card" to="/centers/taipei" aria-label="查看台北中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taipei.jpg" alt="Taipei Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taipei Center</span><span class="center-name-zh">台北中心</span></h3></RouterLink>
@@ -225,7 +225,20 @@
     data: () => ({
       centers: {
         taipei: { nameZh: '台北中心', nameEn: 'Taipei Center', image: './images/center-taipei.jpg', alt: '台北中心標誌' },
-        taichung: { nameZh: '台中中心', nameEn: 'Taichung Center', image: './images/center-taichung.jpg', alt: '台中中心標誌' },
+        taichung: {
+          nameZh: '台中中心', nameEn: 'Taichung Center', image: './images/center-taichung.jpg', alt: '台中中心標誌',
+          coverImage: './images/taichung-cover.jpg', coverAlt: '台中中心封面照片',
+          gallery: [
+            { image: './images/taichung-gallery-01.jpg', alt: '台中中心活動照片 1' },
+            { image: './images/taichung-gallery-02.jpg', alt: '台中中心活動照片 2' },
+            { image: './images/taichung-gallery-03.jpg', alt: '台中中心活動照片 3' },
+            { image: './images/taichung-gallery-04.jpg', alt: '台中中心活動照片 4' },
+            { image: './images/taichung-gallery-05.jpg', alt: '台中中心活動照片 5' },
+            { image: './images/taichung-gallery-06.jpg', alt: '台中中心活動照片 6' },
+            { image: './images/taichung-gallery-07.jpg', alt: '台中中心活動照片 7' },
+            { image: './images/taichung-gallery-08.jpg', alt: '台中中心活動照片 8' },
+          ],
+        },
         kaohsiung: { nameZh: '高雄中心', nameEn: 'Kaohsiung Center', image: './images/center-kaohsiung.jpg', alt: '高雄中心標誌' },
       },
     }),
@@ -234,11 +247,11 @@
       <div>
         <section class="page-intro"><span class="eyebrow">TAIWAN CENTER</span><h1>{{ center.nameZh }}</h1><p>{{ center.nameEn }}</p></section>
         <section class="section-wrap center-detail-main">
-          <figure class="center-detail-emblem"><div class="center-logo-frame"><img class="center-logo" :src="center.image" :alt="center.alt"></div><figcaption>{{ center.nameEn }} · {{ center.nameZh }}</figcaption></figure>
+          <figure class="center-detail-emblem"><div v-if="center.coverImage" class="center-cover-frame"><img :src="center.coverImage" :alt="center.coverAlt"></div><div v-else class="center-logo-frame"><img class="center-logo" :src="center.image" :alt="center.alt"></div><figcaption>{{ center.nameEn }} · {{ center.nameZh }}</figcaption></figure>
           <article class="center-detail-copy"><span class="eyebrow">ABOUT THE CENTER</span><h2>中心介紹</h2><p>中心介紹與活動資訊將陸續刊載。</p></article>
         </section>
-        <section class="section-wrap center-gallery-section"><div class="home-section-heading"><span class="eyebrow">CENTER GALLERY</span><h2>中心照片</h2></div><div class="center-gallery-placeholders" aria-label="中心照片展示區"><div v-for="slot in 3" :key="slot" class="center-gallery-placeholder"><span aria-hidden="true">✦</span><p>中心照片</p></div></div></section>
-        <nav class="section-wrap center-detail-nav"><RouterLink class="button button-outline" to="/">← 返回首頁</RouterLink></nav>
+        <section class="section-wrap center-gallery-section"><div class="home-section-heading"><span class="eyebrow">CENTER GALLERY</span><h2>中心照片</h2></div><div v-if="center.gallery" class="center-gallery-grid" aria-label="中心照片展示區"><figure v-for="photo in center.gallery" :key="photo.image" class="center-gallery-photo"><img :src="photo.image" :alt="photo.alt" loading="lazy" decoding="async"></figure></div><div v-else class="center-gallery-placeholders" aria-label="中心照片展示區"><div v-for="slot in 3" :key="slot" class="center-gallery-placeholder"><span aria-hidden="true">✦</span><p>中心照片</p></div></div></section>
+        <nav class="section-wrap center-detail-nav"><RouterLink class="button button-outline" to="/#centers">← 返回首頁</RouterLink></nav>
       </div>
     `,
   };
@@ -967,7 +980,7 @@
       { path: '/testimonials', component: TestimonialsPage },
       { path: '/visit', component: VisitPage },
     ],
-    scrollBehavior: () => ({ top: 0 }),
+    scrollBehavior: (to) => to.hash ? { el: to.hash, behavior: 'smooth' } : ({ top: 0 }),
   });
 
   createApp({ components: { SiteHeader, SiteFooter, RouterView }, template: '<SiteHeader /><main><RouterView /></main><SiteFooter />' })
