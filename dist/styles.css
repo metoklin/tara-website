@@ -147,8 +147,6 @@ figure, p, h1, h2 { margin-top: 0; }
 .center-detail-main { display: grid; grid-template-columns: minmax(230px, .75fr) minmax(0, 1.25fr); align-items: center; gap: clamp(28px, 6vw, 72px); padding-block: 48px 62px; border-bottom: 1px solid var(--line); }
 .center-detail-emblem { margin: 0; text-align: center; }
 .center-detail-emblem .center-logo-frame { width: min(100%, 220px); margin: 0 auto 18px; }
-.center-cover-frame { width: min(100%, 520px); aspect-ratio: 3 / 2; margin: 0 auto 18px; overflow: hidden; border-radius: 12px; }
-.center-cover-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .center-detail-emblem figcaption { color: var(--muted); font: 500 15px Georgia, serif; letter-spacing: .06em; }
 .center-detail-copy { padding: clamp(24px, 4vw, 42px); border-left: 2px solid var(--gold); background: var(--cream); }
 .center-detail-copy .eyebrow { margin-bottom: 9px; }
@@ -156,7 +154,7 @@ figure, p, h1, h2 { margin-top: 0; }
 .center-detail-copy p { margin: 0; color: var(--muted); line-height: 1.9; }
 .center-gallery-section { padding-block: 52px 68px; }
 .center-gallery-section .home-section-heading { margin-bottom: 20px; }
-.center-gallery-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 10px; }
+.center-gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .center-gallery-photo { overflow: hidden; aspect-ratio: 4 / 3; margin: 0; border-radius: 10px; background: var(--cream); }
 .center-gallery-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
 .center-gallery-photo:hover img { transform: scale(1.04); }
@@ -193,6 +191,12 @@ figure, p, h1, h2 { margin-top: 0; }
 .page-intro { padding: 83px 24px 70px; text-align: center; background: var(--cream); border-bottom: 1px solid var(--line); }
 .page-intro .eyebrow { margin-bottom: 13px; }
 .page-intro h1 { font-size: calc(clamp(36px, 5vw, 54px) + 2px); font-weight: 550; letter-spacing: .12em; margin-bottom: 13px; }
+.center-page-intro-with-cover { display: flex; min-height: clamp(420px, 42vw, 570px); flex-direction: column; align-items: center; justify-content: flex-end; padding: 0 24px 58px; overflow: hidden; border-bottom: 0; background-color: #34291f; background-image: linear-gradient(180deg, rgba(22, 29, 35, .04) 20%, rgba(22, 29, 35, .12) 48%, rgba(22, 29, 35, .78) 100%), var(--center-page-cover); background-position: center, center 54%; background-size: cover; }
+.center-page-intro-parallax { background-position: center, center calc(54% + var(--center-page-parallax-y, 0px)); }
+.center-page-intro-with-cover .eyebrow { color: #f0d17b; }
+.center-page-intro-with-cover h1 { margin-bottom: 7px; color: #fff; text-shadow: 0 2px 14px rgba(0, 0, 0, .35); }
+.center-page-intro-with-cover p { margin: 0; color: rgba(255, 255, 255, .94); font-size: 20px; text-shadow: 0 2px 10px rgba(0, 0, 0, .45); }
+@media (prefers-reduced-motion: reduce) { .center-page-intro-parallax { background-position: center, center 54%; } }
 .testimonials-content { padding-block: 64px 100px; }
 .testimonials-empty { min-height: 260px; display: grid; justify-items: center; align-content: center; gap: 10px; padding: 36px; border: 1px solid var(--line); border-radius: 4px; background: var(--cream); text-align: center; }
 .testimonials-empty > span { color: var(--gold); font-size: calc(27px + 2px); }
@@ -660,6 +664,9 @@ figure, p, h1, h2 { margin-top: 0; }
   .center-detail-emblem .center-logo-frame { width: 150px; }
   .center-gallery-section { padding-block: 40px 48px; }
   .center-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .page-intro.center-page-intro-with-cover { min-height: 390px; padding: 0 20px 42px; background-position: center, 44% center; }
+  .page-intro.center-page-intro-with-cover.center-page-intro-parallax { background-position: center, 44% calc(50% + var(--center-page-parallax-y, 0px)); }
+  .center-page-intro-with-cover p { font-size: 17px; }
   #centers { scroll-margin-top: 76px; }
   .center-gallery-placeholders { grid-template-columns: 1fr; gap: 10px; }
   .center-gallery-placeholder { min-height: 150px; }

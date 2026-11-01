@@ -223,11 +223,12 @@
   const CenterDetailPage = {
     props: ['slug'],
     data: () => ({
+      coverParallaxFrame: 0,
       centers: {
-        taipei: { nameZh: '台北中心', nameEn: 'Taipei Center', image: './images/center-taipei.jpg', alt: '台北中心標誌' },
+        taipei: { nameZh: '台北中心', nameEn: 'Taipei Center', image: './images/center-taipei.jpg', alt: '台北中心標誌', coverImage: './images/taipei-cover.jpg', parallax: true },
         taichung: {
           nameZh: '台中中心', nameEn: 'Taichung Center', image: './images/center-taichung.jpg', alt: '台中中心標誌',
-          coverImage: './images/taichung-cover.jpg', coverAlt: '台中中心封面照片',
+          coverImage: './images/taichung-cover.jpg', parallax: true,
           gallery: [
             { image: './images/taichung-gallery-01.jpg', alt: '台中中心活動照片 1' },
             { image: './images/taichung-gallery-02.jpg', alt: '台中中心活動照片 2' },
@@ -239,15 +240,52 @@
             { image: './images/taichung-gallery-08.jpg', alt: '台中中心活動照片 8' },
           ],
         },
-        kaohsiung: { nameZh: '高雄中心', nameEn: 'Kaohsiung Center', image: './images/center-kaohsiung.jpg', alt: '高雄中心標誌' },
+        kaohsiung: {
+          nameZh: '高雄中心', nameEn: 'Kaohsiung Center', image: './images/center-kaohsiung.jpg', alt: '高雄中心標誌',
+          coverImage: './images/kaohsiung-cover.jpg', parallax: true,
+          gallery: [
+            { image: './images/kaohsiung-gallery-01.jpg', alt: '高雄中心法會照片 1' },
+            { image: './images/kaohsiung-gallery-02.jpg', alt: '高雄中心法會照片 2' },
+            { image: './images/kaohsiung-gallery-03.jpg', alt: '高雄中心法會照片 3' },
+            { image: './images/kaohsiung-gallery-04.jpg', alt: '高雄中心法會照片 4' },
+            { image: './images/kaohsiung-gallery-05.jpg', alt: '高雄中心法會照片 5' },
+            { image: './images/kaohsiung-gallery-06.jpg', alt: '高雄中心法會照片 6' },
+            { image: './images/kaohsiung-gallery-07.jpg', alt: '高雄中心法會照片 7' },
+            { image: './images/kaohsiung-gallery-08.jpg', alt: '高雄中心法會照片 8' },
+          ],
+        },
       },
     }),
     computed: { center() { return this.centers[this.slug] || this.centers.taipei; } },
+    watch: { slug() { this.$nextTick(this.updateCoverParallax); } },
+    mounted() {
+      this.updateCoverParallax();
+      window.addEventListener('scroll', this.updateCoverParallax, { passive: true });
+      window.addEventListener('resize', this.updateCoverParallax, { passive: true });
+    },
+    beforeUnmount() {
+      window.removeEventListener('scroll', this.updateCoverParallax);
+      window.removeEventListener('resize', this.updateCoverParallax);
+      if (this.coverParallaxFrame) cancelAnimationFrame(this.coverParallaxFrame);
+    },
+    methods: {
+      updateCoverParallax() {
+        if (!this.center.parallax || !this.$refs.centerIntro || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (this.coverParallaxFrame) return;
+        this.coverParallaxFrame = requestAnimationFrame(() => {
+          this.coverParallaxFrame = 0;
+          const intro = this.$refs.centerIntro;
+          if (!intro) return;
+          const offset = Math.max(-48, Math.min(72, -intro.getBoundingClientRect().top * 0.16));
+          intro.style.setProperty('--center-page-parallax-y', `${offset}px`);
+        });
+      },
+    },
     template: `
       <div>
-        <section class="page-intro"><span class="eyebrow">TAIWAN CENTER</span><h1>{{ center.nameZh }}</h1><p>{{ center.nameEn }}</p></section>
+        <section ref="centerIntro" class="page-intro center-page-intro" :class="{ 'center-page-intro-with-cover': center.coverImage, 'center-page-intro-parallax': center.parallax }" :style="center.coverImage ? { '--center-page-cover': 'url(' + center.coverImage + ')' } : null"><h1>{{ center.nameZh }}</h1><p>{{ center.nameEn }}</p></section>
         <section class="section-wrap center-detail-main">
-          <figure class="center-detail-emblem"><div v-if="center.coverImage" class="center-cover-frame"><img :src="center.coverImage" :alt="center.coverAlt"></div><div v-else class="center-logo-frame"><img class="center-logo" :src="center.image" :alt="center.alt"></div><figcaption>{{ center.nameEn }} · {{ center.nameZh }}</figcaption></figure>
+          <figure class="center-detail-emblem"><div class="center-logo-frame"><img class="center-logo" :src="center.image" :alt="center.alt"></div><figcaption>{{ center.nameEn }} · {{ center.nameZh }}</figcaption></figure>
           <article class="center-detail-copy"><span class="eyebrow">ABOUT THE CENTER</span><h2>中心介紹</h2><p>中心介紹與活動資訊將陸續刊載。</p></article>
         </section>
         <section class="section-wrap center-gallery-section"><div class="home-section-heading"><span class="eyebrow">CENTER GALLERY</span><h2>中心照片</h2></div><div v-if="center.gallery" class="center-gallery-grid" aria-label="中心照片展示區"><figure v-for="photo in center.gallery" :key="photo.image" class="center-gallery-photo"><img :src="photo.image" :alt="photo.alt" loading="lazy" decoding="async"></figure></div><div v-else class="center-gallery-placeholders" aria-label="中心照片展示區"><div v-for="slot in 3" :key="slot" class="center-gallery-placeholder"><span aria-hidden="true">✦</span><p>中心照片</p></div></div></section>
