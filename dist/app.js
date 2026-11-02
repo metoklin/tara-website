@@ -131,6 +131,16 @@
           </div>
         </section>
 
+        <section class="activity-preview section-wrap">
+          <div class="activity-copy">
+            <span class="eyebrow">TARA EVENT</span>
+            <h2>達拉TARA佛堂活動</h2>
+            <p>佛堂每月安排祈福法會、共修、禪修、靜坐、佛化人生講座等活動。</p>
+            <RouterLink class="button button-blue" to="/activities">達拉TARA活動 <span aria-hidden="true">↗</span></RouterLink>
+          </div>
+          <div class="activity-photo"><img src="./images/buddhist-life-lecture.jpg" alt="達拉TARA佛堂活動情形"></div>
+        </section>
+
         <section class="offerings-band home-center-promo home-center-promo-reverse">
           <div class="section-wrap offerings-band-inner">
             <div class="offerings-band-copy">
@@ -141,16 +151,6 @@
             </div>
             <div class="offerings-band-gallery"><img class="home-center-promo-photo" src="./images/oracle-tara-blessing.jpg" alt="神諭度母與尼泊爾僧侶合影"></div>
           </div>
-        </section>
-
-        <section class="activity-preview section-wrap">
-          <div class="activity-copy">
-            <span class="eyebrow">心靈講座</span>
-            <h2>佛化人生 <span class="activity-title-secondary">系列講座</span></h2>
-            <p>佛堂每月一次安排佛化人生講座，參加請至官方 LINE 預先報名。</p>
-            <a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">官方 LINE 預先報名 <span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="activity-photo"><img src="./images/buddhist-life-lecture.jpg" alt="佛堂佛化人生系列講座共修情形"></div>
         </section>
 
         <section class="home-advertising section-wrap" aria-label="供養布施、朝聖、瑜伽頌缽與發心護持">
@@ -220,6 +220,8 @@
     `,
   };
 
+  const centerIntroduction = '祖古嘉察仁波切，為帶領千方大眾走向佛法正道，在北中南成立佛法中心，安排佛法開示、灌頂、消災祈福、灑淨、超渡、天馬煙供…等法會，為利益弟子們能快速累積福德資糧、清淨業障得到實修功德，安排共修活動，希望能藉聽聞、實修及法會儀式，將佛法和上師們的慈悲「如瓶灌水」般地深入弟子心中。中心亦竭誠歡迎十方法友來佛堂禮佛，也歡迎向仁波切請益佛法或修行上的問題，必能獲益良多，祈福解惑所求悉皆能迅速圓滿。誠摯的邀請您前來共結清淨法緣的殊勝行。';
+
   const CenterDetailPage = {
     props: ['slug'],
     data: () => ({
@@ -227,20 +229,29 @@
       centers: {
         taipei: {
           nameZh: '台北中心', nameEn: 'Taipei Center', image: './images/center-taipei.jpg', alt: '台北中心標誌',
+          introEyebrow: 'Amitayu', introTitle: '無量壽佛學會', introText: centerIntroduction,
+          address: '台北市大安區大安路一段 75 巷 7 號 2 樓之 2', lineUrl: 'https://lin.ee/T7TzBjX', facebookUrl: 'https://www.facebook.com/amitayu.org/',
           coverImage: './images/taipei-cover.jpg', parallax: true,
           gallery: [
             { image: './images/taipei-gallery-01.jpg', alt: '台北中心仁波切生日法會照片 1' },
-            { image: './images/taipei-gallery-02.jpg', alt: '台北中心仁波切生日法會照片 2' },
-            { image: './images/taipei-gallery-03.jpg', alt: '台北中心仁波切生日法會照片 3' },
-            { image: './images/taipei-gallery-04.jpg', alt: '台北中心仁波切生日法會照片 4' },
-            { image: './images/taipei-gallery-05.jpg', alt: '台北中心仁波切生日法會照片 5' },
-            { image: './images/taipei-gallery-06.jpg', alt: '台北中心仁波切生日法會照片 6' },
-            { image: './images/taipei-gallery-07.jpg', alt: '台北中心仁波切生日法會照片 7' },
-            { image: './images/taipei-gallery-08.jpg', alt: '台北中心仁波切生日法會照片 8' },
+            { image: './images/taipei-gallery-09.jpg', alt: '台北中心仁波切生日法會照片 2' },
+            { image: './images/taipei-gallery-10.jpg', alt: '台北中心仁波切生日法會照片 3' },
+            { image: './images/taipei-gallery-11.jpg', alt: '台北中心仁波切生日法會照片 4' },
+            { image: './images/taipei-gallery-13.jpg', alt: '台北中心仁波切生日法會照片 5' },
+            { image: './images/taipei-gallery-03.jpg', alt: '台北中心仁波切生日法會照片 6' },
+            { image: './images/taipei-gallery-04.jpg', alt: '台北中心仁波切生日法會照片 7' },
+            { image: './images/taipei-gallery-06.jpg', alt: '台北中心仁波切生日法會照片 8' },
+            { image: './images/taipei-gallery-07.jpg', alt: '台北中心仁波切生日法會照片 9' },
+            { image: './images/taipei-gallery-08.jpg', alt: '台北中心仁波切生日法會照片 10' },
+            { image: './images/taipei-gallery-12.jpg', alt: '台北中心仁波切生日法會照片 11' },
+            { image: './images/taipei-gallery-02.jpg', alt: '台北中心仁波切生日法會照片 12' },
           ],
         },
         taichung: {
           nameZh: '台中中心', nameEn: 'Taichung Center', image: './images/center-taichung.jpg', alt: '台中中心標誌',
+          introEyebrow: 'King Gesar Palace', introTitle: '給薩王', introText: centerIntroduction,
+          introAdditionalText: '【給薩王】佛堂是專修給薩戰神、財神的聖殿，具足息增懷誅一切事業的大威力本尊，其加持力量不可思議。',
+          address: '台中市南屯區向上南路一段163-2號1樓', lineUrl: 'https://lin.ee/nBzDXOM', facebookUrl: 'https://www.facebook.com/king.gesar.palace/',
           coverImage: './images/taichung-cover.jpg', parallax: true,
           gallery: [
             { image: './images/taichung-gallery-01.jpg', alt: '台中中心照片 1' },
@@ -259,6 +270,8 @@
         },
         kaohsiung: {
           nameZh: '高雄中心', nameEn: 'Kaohsiung Center', image: './images/center-kaohsiung.jpg', alt: '高雄中心標誌',
+          introEyebrow: 'Palyul Gyaltsab Ling', introTitle: '寧瑪巴白玉嘉察佛學會', introText: centerIntroduction,
+          address: '高雄市苓雅區建國一路90號8樓', lineUrl: 'https://lin.ee/23EX3wP', facebookUrl: 'https://www.facebook.com/palyul.gyaltsab/',
           coverImage: './images/kaohsiung-cover.jpg', parallax: true,
           gallery: [
             { image: './images/kaohsiung-gallery-09.jpg', alt: '高雄中心法會照片 1' },
@@ -303,7 +316,15 @@
         <section ref="centerIntro" class="page-intro center-page-intro" :class="{ 'center-page-intro-with-cover': center.coverImage, 'center-page-intro-parallax': center.parallax }" :style="center.coverImage ? { '--center-page-cover': 'url(' + center.coverImage + ')' } : null"><h1>{{ center.nameZh }}</h1><p>{{ center.nameEn }}</p></section>
         <section class="section-wrap center-detail-main">
           <figure class="center-detail-emblem"><div class="center-logo-frame"><img class="center-logo" :src="center.image" :alt="center.alt"></div><figcaption>{{ center.nameEn }} · {{ center.nameZh }}</figcaption></figure>
-          <article class="center-detail-copy"><span class="eyebrow">ABOUT THE CENTER</span><h2>中心介紹</h2><p>中心介紹與活動資訊將陸續刊載。</p></article>
+          <article class="center-detail-copy"><span class="eyebrow">{{ center.introEyebrow }}</span><h2>{{ center.introTitle }}</h2><p>{{ center.introText }}</p><p v-if="center.introAdditionalText">{{ center.introAdditionalText }}</p>
+            <div class="center-contact-block">
+              <div class="center-address"><span class="center-address-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5a7 7 0 0 0-7 7c0 5.1 7 12 7 12s7-6.9 7-12a7 7 0 0 0-7-7z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div class="center-address-copy"><span class="center-address-label">佛堂地址</span><address>{{ center.address }}</address></div></div>
+              <nav class="center-social-links" :aria-label="center.nameZh + '社群連結'">
+                <a class="center-social-link" :href="center.lineUrl" :aria-label="center.nameZh + ' LINE 官方帳號'" title="LINE 官方帳號" target="_blank" rel="noopener noreferrer"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.7 3 2.5 6.4 2.5 10.6c0 3.7 3.3 6.7 7.8 7.4.3.1.7.2.8.5.1.2 0 .6 0 .8l-.1.8c0 .2-.2.8.7.4s5.1-3 7-5.2c1.3-1.4 2.3-3.1 2.3-4.7C21 6.4 17.1 3 12 3z"/><path class="social-icon-cutout" d="M7.2 9h1v3.4h-1zm2.1 0h1l1.5 2v-2h1v3.4h-.9l-1.6-2.1v2.1h-1zm4.4 0h2.8v.9h-1.8v.4h1.6v.8h-1.6v.5h1.8v.8h-2.8z"/></svg></a>
+                <a class="center-social-link" :href="center.facebookUrl" :aria-label="center.nameZh + ' Facebook 粉絲專頁'" title="Facebook 粉絲專頁" target="_blank" rel="noopener noreferrer"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8h3.4z"/></svg></a>
+              </nav>
+            </div>
+          </article>
         </section>
         <section class="section-wrap center-gallery-section"><div class="home-section-heading"><span class="eyebrow">CENTER GALLERY</span><h2>中心照片</h2></div><div v-if="center.gallery" class="center-gallery-grid" aria-label="中心照片展示區"><figure v-for="photo in center.gallery" :key="photo.image" class="center-gallery-photo"><img :src="photo.image" :alt="photo.alt" loading="lazy" decoding="async"></figure></div><div v-else class="center-gallery-placeholders" aria-label="中心照片展示區"><div v-for="slot in 3" :key="slot" class="center-gallery-placeholder"><span aria-hidden="true">✦</span><p>中心照片</p></div></div></section>
         <nav class="section-wrap center-detail-nav"><RouterLink class="button button-outline" to="/#centers">← 返回首頁</RouterLink></nav>
