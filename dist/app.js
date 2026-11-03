@@ -134,9 +134,9 @@
         <section class="activity-preview section-wrap">
           <div class="activity-copy">
             <span class="eyebrow">TARA EVENT</span>
-            <h2>達拉TARA佛堂活動</h2>
+            <h2>達拉活動紀錄</h2>
             <p>佛堂每月安排祈福法會、共修、禪修、靜坐、佛化人生講座等活動。</p>
-            <RouterLink class="button button-blue" to="/activities">達拉TARA活動 <span aria-hidden="true">↗</span></RouterLink>
+            <RouterLink class="button button-blue" to="/activity-records">觀看活動紀錄 <span aria-hidden="true">↗</span></RouterLink>
           </div>
           <div class="activity-photo"><img src="./images/buddhist-life-lecture.jpg" alt="達拉TARA佛堂活動情形"></div>
         </section>
@@ -235,16 +235,16 @@
           gallery: [
             { image: './images/taipei-gallery-01.jpg', alt: '台北中心仁波切生日法會照片 1' },
             { image: './images/taipei-gallery-09.jpg', alt: '台北中心仁波切生日法會照片 2' },
-            { image: './images/taipei-gallery-10.jpg', alt: '台北中心仁波切生日法會照片 3' },
-            { image: './images/taipei-gallery-11.jpg', alt: '台北中心仁波切生日法會照片 4' },
-            { image: './images/taipei-gallery-13.jpg', alt: '台北中心仁波切生日法會照片 5' },
-            { image: './images/taipei-gallery-03.jpg', alt: '台北中心仁波切生日法會照片 6' },
-            { image: './images/taipei-gallery-04.jpg', alt: '台北中心仁波切生日法會照片 7' },
-            { image: './images/taipei-gallery-06.jpg', alt: '台北中心仁波切生日法會照片 8' },
-            { image: './images/taipei-gallery-07.jpg', alt: '台北中心仁波切生日法會照片 9' },
-            { image: './images/taipei-gallery-08.jpg', alt: '台北中心仁波切生日法會照片 10' },
-            { image: './images/taipei-gallery-12.jpg', alt: '台北中心仁波切生日法會照片 11' },
-            { image: './images/taipei-gallery-02.jpg', alt: '台北中心仁波切生日法會照片 12' },
+            { image: './images/taipei-gallery-14.jpg', alt: '台北中心仁波切生日法會照片 3' },
+            { image: './images/taipei-gallery-10.jpg', alt: '台北中心仁波切生日法會照片 4' },
+            { image: './images/taipei-gallery-11.jpg', alt: '台北中心仁波切生日法會照片 5' },
+            { image: './images/taipei-gallery-02.jpg', alt: '台北中心仁波切生日法會照片 6' },
+            { image: './images/taipei-gallery-13.jpg', alt: '台北中心仁波切生日法會照片 7' },
+            { image: './images/taipei-gallery-03.jpg', alt: '台北中心仁波切生日法會照片 8' },
+            { image: './images/taipei-gallery-04.jpg', alt: '台北中心仁波切生日法會照片 9' },
+            { image: './images/taipei-gallery-06.jpg', alt: '台北中心仁波切生日法會照片 10' },
+            { image: './images/taipei-gallery-07.jpg', alt: '台北中心仁波切生日法會照片 11' },
+            { image: './images/taipei-gallery-08.jpg', alt: '台北中心仁波切生日法會照片 12' },
           ],
         },
         taichung: {
@@ -277,11 +277,15 @@
             { image: './images/kaohsiung-gallery-09.jpg', alt: '高雄中心法會照片 1' },
             { image: './images/kaohsiung-gallery-03.jpg', alt: '高雄中心法會照片 2' },
             { image: './images/kaohsiung-gallery-01.jpg', alt: '高雄中心法會照片 3' },
-            { image: './images/kaohsiung-gallery-10.jpg', alt: '高雄中心法會照片 4' },
-            { image: './images/kaohsiung-gallery-11.jpg', alt: '高雄中心法會照片 5' },
-            { image: './images/kaohsiung-gallery-07.jpg', alt: '高雄中心法會照片 6' },
-            { image: './images/kaohsiung-gallery-08.jpg', alt: '高雄中心法會照片 7' },
-            { image: './images/kaohsiung-gallery-06.jpg', alt: '高雄中心法會照片 8' },
+            { image: './images/kaohsiung-gallery-13.jpg', alt: '高雄中心佛堂照片 4' },
+            { image: './images/kaohsiung-gallery-12.jpg', alt: '高雄中心供品與法會照片 5' },
+            { image: './images/kaohsiung-gallery-14.jpg', alt: '高雄中心仁波切修法照片 6' },
+            { image: './images/kaohsiung-gallery-11.jpg', alt: '高雄中心法會照片 7' },
+            { image: './images/kaohsiung-gallery-07.jpg', alt: '高雄中心法會照片 8' },
+            { image: './images/kaohsiung-gallery-10.jpg', alt: '高雄中心法會照片 9' },
+            { image: './images/kaohsiung-gallery-08.jpg', alt: '高雄中心法會照片 10' },
+            { image: './images/kaohsiung-gallery-15.jpg', alt: '高雄中心供養照片 11' },
+            { image: './images/kaohsiung-gallery-06.jpg', alt: '高雄中心法會照片 12' },
           ],
         },
       },
@@ -327,7 +331,7 @@
           </article>
         </section>
         <section class="section-wrap center-gallery-section"><div class="home-section-heading"><span class="eyebrow">CENTER GALLERY</span><h2>中心照片</h2></div><div v-if="center.gallery" class="center-gallery-grid" aria-label="中心照片展示區"><figure v-for="photo in center.gallery" :key="photo.image" class="center-gallery-photo"><img :src="photo.image" :alt="photo.alt" loading="lazy" decoding="async"></figure></div><div v-else class="center-gallery-placeholders" aria-label="中心照片展示區"><div v-for="slot in 3" :key="slot" class="center-gallery-placeholder"><span aria-hidden="true">✦</span><p>中心照片</p></div></div></section>
-        <nav class="section-wrap center-detail-nav"><RouterLink class="button button-outline" to="/#centers">← 返回首頁</RouterLink></nav>
+        <nav class="section-wrap center-detail-nav"><RouterLink class="button button-blue" to="/#centers">← 返回首頁 <span class="button-en" lang="en">BACK</span></RouterLink></nav>
       </div>
     `,
   };
@@ -511,7 +515,7 @@
         <section class="page-intro"><span class="eyebrow">{{ teacher.eyebrow }}</span><h1>{{ teacher.title }}</h1></section>
         <section class="section-wrap teacher-detail" :class="{ 'teacher-detail-translated': teacher.translations }"><div class="teacher-detail-photo"><img :src="teacher.image" :alt="teacher.alt"></div><article class="teacher-detail-copy"><span class="eyebrow">{{ teacher.lineage }}</span><h2 :lang="activeBioTab === 'zh' ? 'zh-Hant' : activeBioTab">{{ teacher.translations ? teacher.names[activeBioTab] : teacher.name }}</h2><template v-if="teacher.translations"><div class="teacher-bio-tabs" role="tablist" aria-label="傳記語言"><button v-for="tab in [{id:'zh',label:'中文'},{id:'en',label:'English'},{id:'bo',label:'藏文'}]" :key="tab.id" class="teacher-bio-tab" :class="{ 'is-active': activeBioTab === tab.id }" role="tab" :id="'bio-tab-' + tab.id" :aria-selected="activeBioTab === tab.id" :aria-controls="'bio-panel-' + tab.id" :tabindex="activeBioTab === tab.id ? 0 : -1" @click="activeBioTab = tab.id">{{ tab.label }}</button></div><div class="teacher-bio-panel" role="tabpanel" :id="'bio-panel-' + activeBioTab" :aria-labelledby="'bio-tab-' + activeBioTab" :lang="activeBioTab === 'zh' ? 'zh-Hant' : activeBioTab === 'en' ? 'en' : 'bo'"><section v-for="(section,index) in teacher.translations[activeBioTab]" :key="index" class="teacher-bio-section"><h3 v-if="section.heading">{{ section.heading }}</h3><p v-for="(paragraph,pIndex) in section.paragraphs" :key="pIndex">{{ paragraph }}</p></section></div></template><p v-if="teacher.lead" class="teacher-intro-lead"><strong>{{ teacher.lead }}</strong></p><p v-if="!teacher.translations" v-for="(paragraph, index) in teacher.paragraphs" :key="index">{{ paragraph }}</p></article></section>
         <section v-if="slug === 'jiacha-rinpoche'" class="section-wrap lineage-section" aria-label="嘉察仁波切轉世傳承"><ol class="lineage-timeline"><li v-for="(step, index) in lineageSteps" :key="step.id" class="lineage-item" :class="{ 'is-active': activeLineageSteps.includes(step.id) }" :data-lineage-id="step.id"><span class="lineage-node" aria-hidden="true"></span><figure class="lineage-card"><div class="lineage-image-frame" :class="{ 'lineage-image-frame-last': index === 3 }"><img :src="step.image" :alt="step.alt" loading="lazy"></div><figcaption><span class="lineage-name-en">{{ step.romanized }}</span><h3><span v-for="line in step.titleLines" :key="line">{{ line }}</span></h3></figcaption></figure></li></ol></section>
-        <nav class="section-wrap teacher-page-nav"><RouterLink class="button button-blue" to="/about">← 認識佛堂</RouterLink><RouterLink class="button button-blue" :to="slug === 'jiacha-rinpoche' ? '/teachers/oracle-tara' : '/teachers/jiacha-rinpoche'">{{ slug === 'jiacha-rinpoche' ? '神諭度母 →' : '尊貴上師 →' }}</RouterLink></nav>
+        <nav class="section-wrap teacher-page-nav"><RouterLink class="button button-blue" to="/about">← 認識佛堂 <span class="button-en" lang="en">BACK</span></RouterLink><RouterLink class="button button-blue" :to="slug === 'jiacha-rinpoche' ? '/teachers/oracle-tara' : '/teachers/jiacha-rinpoche'">{{ slug === 'jiacha-rinpoche' ? '神諭度母' : '尊貴上師' }} <span class="button-en" lang="en">{{ slug === 'jiacha-rinpoche' ? 'Oracle Tara' : 'Gyaltsab Rinpoche' }}</span><span aria-hidden="true">→</span></RouterLink></nav>
       </div>
     `,
   };
@@ -631,11 +635,11 @@
           <div class="offering-topic-grid">
             <RouterLink v-for="topic in topics" :key="topic.to" :to="topic.to" class="offering-topic-card" :class="{ 'offering-topic-card-mug': topic.to === '/offerings/mug' }">
               <img :src="topic.image" :alt="topic.title + '主題圖片'" loading="lazy">
-              <div class="offering-topic-copy"><span class="eyebrow">{{ topic.eyebrow }}</span><h3>{{ topic.title }}</h3><p>{{ topic.description }}</p><span class="text-link">了解更多 <b aria-hidden="true">→</b></span></div>
+              <div class="offering-topic-copy"><span class="eyebrow">{{ topic.eyebrow }}</span><h3>{{ topic.title }}</h3><p>{{ topic.description }}</p><span class="text-link">了解更多 <small lang="en">Learn more</small> <b aria-hidden="true">→</b></span></div>
             </RouterLink>
           </div>
         </section>
-        <section class="offering-footnote section-wrap"><p>品項與庫存狀態可能變動，請供前請透過官方 LINE 確認。本網站不提供線上付款或請供表單。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問請供方式 <span aria-hidden="true">↗</span></a></section>
+        <section class="offering-footnote section-wrap"><p>品項與庫存狀態可能變動，請供前請透過官方 LINE 確認。本網站不提供線上付款或請供表單。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問請供方式 <span class="button-en" lang="en">Ask on LINE</span><span aria-hidden="true">↗</span></a></section>
       </div>
     `,
   };
@@ -885,8 +889,8 @@
             </ul>
           </section>
         </article>
-        <nav class="section-wrap offering-detail-pager" aria-label="專題頁面導覽"><RouterLink class="button button-blue" to="/offerings">← 回到總覽頁</RouterLink><RouterLink v-if="detail.next" class="button button-blue offering-detail-next" :to="detail.next.to">{{ detail.next.title }} →</RouterLink></nav>
-        <section class="offering-detail-contact"><div class="section-wrap"><span class="eyebrow">QUESTIONS &amp; OFFERINGS</span><h2>請供與品項資訊</h2><p>品項與請供狀態可能更新，請先透過官方 LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問 <span aria-hidden="true">↗</span></a></div></section>
+        <nav class="section-wrap offering-detail-pager" aria-label="專題頁面導覽"><RouterLink class="button button-blue" to="/offerings">← 回到總覽頁 <span class="button-en" lang="en">BACK</span></RouterLink><RouterLink v-if="detail.next" class="button button-blue offering-detail-next" :to="detail.next.to">{{ detail.next.title }} <span class="button-en" lang="en">Next</span><span aria-hidden="true">→</span></RouterLink></nav>
+        <section class="offering-detail-contact"><div class="section-wrap"><span class="eyebrow">QUESTIONS &amp; OFFERINGS</span><h2>請供與品項資訊</h2><p>品項與請供狀態可能更新，請先透過官方 LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問 <span class="button-en" lang="en">Ask on LINE</span><span aria-hidden="true">↗</span></a></div></section>
       </div>
     `,
   };
@@ -992,7 +996,30 @@
         <section class="page-intro"><span class="eyebrow">WEEKLY ACTIVITIES</span><h1>法會活動</h1><p>每週日下午有不同的法會活動。最新場次與活動內容，請以 Facebook 官方粉專公告為準。</p></section>
         <section class="section-wrap activity-card"><div class="activity-card-art" aria-hidden="true"><span>週日</span><b>∞</b></div><div class="activity-card-copy"><span class="eyebrow">每週日下午</span><h2>近期法會活動</h2><p>活動內容每週不同，請前往 Facebook 官方粉專查看公告。</p><a class="button button-blue" :href="config.links.facebook" target="_blank" rel="noopener noreferrer">前往 Facebook 官方粉專 <span aria-hidden="true">↗</span></a></div></section>
         <p class="section-wrap activity-note">前往 Facebook 查看最新活動資訊；網站不會自動同步 Facebook 活動。</p>
-        <section class="section-wrap activity-events"><div class="activity-events-heading"><span class="eyebrow">PRAYER &amp; CEREMONIES</span><h2>祈福法會</h2><p>認識佛堂舉辦的法會與共修活動。</p></div><div class="activity-event-grid"><RouterLink v-for="event in events" :key="event.slug" :to="'/activities/' + event.slug" class="activity-event-card"><img :src="event.image" :alt="event.title" loading="lazy"><div class="activity-event-copy"><span class="eyebrow">{{ event.eyebrow }}</span><h3>{{ event.title }}</h3><p>{{ event.description }}</p><span class="text-link">了解更多 <b aria-hidden="true">→</b></span></div></RouterLink></div></section>
+        <section class="section-wrap activity-events"><div class="activity-events-heading"><span class="eyebrow">PRAYER &amp; CEREMONIES</span><h2>祈福法會</h2><p>認識佛堂舉辦的法會與共修活動。</p></div><div class="activity-event-grid"><RouterLink v-for="event in events" :key="event.slug" :to="'/activities/' + event.slug" class="activity-event-card"><img :src="event.image" :alt="event.title" loading="lazy"><div class="activity-event-copy"><span class="eyebrow">{{ event.eyebrow }}</span><h3>{{ event.title }}</h3><p>{{ event.description }}</p><span class="text-link">了解更多 <small lang="en">Learn more</small> <b aria-hidden="true">→</b></span></div></RouterLink></div></section>
+      </div>
+    `,
+  };
+
+  const ActivityRecordsPage = {
+    data: () => ({ events: activityEvents }),
+    computed: {
+      records() {
+        return this.events.map(event => ({
+          ...event,
+          photos: [event.image, ...event.sections.map(section => section.image).filter(Boolean)]
+            .filter((image, index, images) => images.indexOf(image) === index),
+        }));
+      },
+    },
+    template: `
+      <div class="activity-records-page">
+        <section class="page-intro"><span class="eyebrow">TARA ACTIVITY RECORDS</span><h1>達拉活動紀錄</h1><p>佛堂法會、共修與節慶活動照片。</p></section>
+        <nav class="section-wrap activity-detail-breadcrumb" aria-label="頁面導覽"><RouterLink to="/">首頁</RouterLink><span aria-hidden="true">／</span><span>達拉活動紀錄</span></nav>
+        <section v-for="event in records" :key="event.slug" class="section-wrap activity-record-event">
+          <header class="activity-record-heading"><div><span class="eyebrow">{{ event.eyebrow }}</span><h2>{{ event.title }}</h2><p>{{ event.description }}</p></div><RouterLink class="text-link" :to="'/activities/' + event.slug">活動介紹 <small lang="en">Details</small> <b aria-hidden="true">→</b></RouterLink></header>
+          <div class="activity-record-gallery"><figure v-for="(photo, index) in event.photos" :key="photo" class="activity-record-photo"><img :src="photo" :alt="event.title + '活動照片 ' + (index + 1)" loading="lazy"></figure></div>
+        </section>
       </div>
     `,
   };
@@ -1009,7 +1036,7 @@
         <section class="activity-detail-hero"><img :src="event.image" :alt="event.title" :style="event.imagePosition ? { objectPosition: event.imagePosition } : null" fetchpriority="high"></section>
         <header class="section-wrap activity-detail-heading"><span class="eyebrow">{{ event.eyebrow }}</span><h1>{{ event.title }}</h1><p>{{ event.description }}</p></header>
         <article class="section-wrap activity-detail-content"><section v-for="(section, index) in event.sections" :key="section.title || index" class="activity-detail-section"><h2 v-if="section.title">{{ section.title }}</h2><div v-if="section.image" class="activity-detail-image-copy" :class="{ 'activity-detail-image-copy-stacked': section.imageLayout === 'stacked' }"><figure class="activity-detail-figure" :class="{ 'activity-detail-figure-plain': section.imagePlain }"><img :src="section.image" :alt="section.imageAlt || section.title" loading="lazy"></figure><div class="activity-detail-copy"><h3 v-if="section.subheading">{{ section.subheading }}</h3><p v-for="paragraph in section.paragraphs" :key="paragraph"><strong v-if="section.boldParagraphs">{{ paragraph }}</strong><template v-else>{{ paragraph }}</template></p></div></div><template v-else><h3 v-if="section.subheading">{{ section.subheading }}</h3><p v-for="paragraph in section.paragraphs" :key="paragraph"><strong v-if="section.boldParagraphs">{{ paragraph }}</strong><template v-else>{{ paragraph }}</template></p><h3 v-if="section.itemsHeading">{{ section.itemsHeading }}</h3><ul v-if="section.items" class="activity-detail-list"><li v-for="item in section.items" :key="item.title"><strong v-if="item.title">{{ item.title }}：</strong>{{ item.text }}</li></ul><p v-for="paragraph in section.closingParagraphs" :key="paragraph">{{ paragraph }}</p><div v-for="group in section.groups" :key="group.title" class="activity-detail-subsection"><h3>{{ group.title }}</h3><p v-for="paragraph in group.paragraphs" :key="paragraph">{{ paragraph }}</p></div></template></section></article>
-        <section class="activity-detail-contact"><div class="section-wrap"><span class="eyebrow">JOIN &amp; ASK</span><h2>法會參與與洽詢</h2><p>場次、登記與參與方式請以佛堂最新公告為準。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問 <span aria-hidden="true">↗</span></a><RouterLink class="button button-outline" to="/activities">回到法會活動</RouterLink></div></section>
+        <section class="activity-detail-contact"><div class="section-wrap"><RouterLink class="button button-outline" to="/activities">回到法會活動 <span class="button-en" lang="en">BACK</span></RouterLink></div></section>
       </div>
     `,
   };
@@ -1029,7 +1056,7 @@
       <div>
         <section class="page-intro"><span class="eyebrow">VISIT &amp; CONTACT</span><h1>交通與聯絡</h1><p>參訪前可先透過官方 LINE 詢問安排。</p></section>
         <section class="section-wrap visit-layout">
-          <div class="visit-details"><span class="eyebrow">佛堂位置</span><h2>歡迎蒞臨</h2><address>{{ config.address }}</address><div class="transport-info"><h3>交通資訊</h3><p><strong>捷運：</strong>板南線「忠孝敦化站」1 號出口。</p><p><strong>公車：</strong>「捷運忠孝敦化站」步行約 1 分鐘；「忠孝敦化路口」步行約 3 分鐘。</p><p>頂呱呱忠孝店旁，羅馬大廈 8 樓。</p></div><p>參訪安排與交通問題，歡迎先透過 LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問參訪方式 <span aria-hidden="true">↗</span></a><a class="map-open-link" :href="config.links.map" target="_blank" rel="noopener noreferrer">在 Google 地圖開啟 <span aria-hidden="true">↗</span></a></div>
+          <div class="visit-details"><span class="eyebrow">佛堂位置</span><h2>歡迎蒞臨</h2><address>{{ config.address }}</address><div class="transport-info"><h3>交通資訊</h3><p><strong>捷運：</strong>板南線「忠孝敦化站」1 號出口。</p><p><strong>公車：</strong>「捷運忠孝敦化站」步行約 1 分鐘；「忠孝敦化路口」步行約 3 分鐘。</p><p>頂呱呱忠孝店旁，羅馬大廈 8 樓。</p></div><p>參訪安排與交通問題，歡迎先透過 LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問參訪方式 <span class="button-en" lang="en">Ask on LINE</span><span aria-hidden="true">↗</span></a><a class="map-open-link" :href="config.links.map" target="_blank" rel="noopener noreferrer">在 Google 地圖開啟 <span aria-hidden="true">↗</span></a></div>
           <div class="map-frame"><iframe :src="config.mapEmbedUrl" title="達拉 TARA 位置地圖" width="600" height="450" style="border:0" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
         </section>
         <section class="section-wrap contact-section"><div class="contact-heading"><span class="eyebrow">OFFICIAL ACCOUNTS</span><h2>官方聯絡與社群</h2></div><nav class="social-links" aria-label="官方聯絡與社群">
@@ -1052,6 +1079,7 @@
       { path: '/offerings', component: OfferingsPage },
       { path: '/offerings/:slug', component: OfferingDetailPage, props: true },
       { path: '/activities', component: ActivitiesPage },
+      { path: '/activity-records', component: ActivityRecordsPage },
       { path: '/activities/:slug', component: ActivityDetailPage, props: true },
       { path: '/testimonials', component: TestimonialsPage },
       { path: '/visit', component: VisitPage },
