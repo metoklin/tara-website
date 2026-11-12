@@ -89,7 +89,7 @@
           <div class="welcome-copy">
             <span class="eyebrow">ABOUT TARA</span>
             <h2>認識達拉TARA</h2>
-            <p>佛堂沿革、理念與參訪資訊，將依佛堂提供的資料整理刊載。</p>
+            <p>達拉圖騰代表諸佛菩薩的息、增、懷、誅、圓滿壇城。主壇城供奉「觀音度母三尊」：主尊為觀世音菩薩，左右兩側分別是綠度母與白度母。</p>
             <RouterLink class="button button-outline" to="/about">佛堂介紹 <span aria-hidden="true">→</span></RouterLink>
           </div>
           <figure class="welcome-photo">
@@ -104,7 +104,7 @@
         </section>
 
         <section class="home-teacher home-teacher-reverse section-wrap">
-          <div class="home-teacher-photo"><img src="./images/chen-min-teacher.jpg" alt="神諭度母陳敏老師"></div>
+          <div class="home-teacher-photo"><img src="./images/chen-min-teacher-fixed.png" alt="神諭度母陳敏老師"></div>
           <div class="home-teacher-copy"><span class="eyebrow">LUNGTEN DOLMA</span><h2>神諭度母</h2><p>陳敏老師成立達拉度母佛堂，帶領法會共修並定期安排心靈成長課程。</p><RouterLink class="button button-outline" to="/teachers/oracle-tara">認識神諭度母 <span aria-hidden="true">→</span></RouterLink></div>
         </section>
 
@@ -113,7 +113,7 @@
             <div class="offerings-band-copy">
               <span class="eyebrow">DHARMA</span>
               <h2>法會活動</h2>
-              <p>歡迎到達拉佛堂參與盛會</p>
+              <p>歡迎有緣大眾一同前來達拉佛堂，參與年度盛會，領受殊勝加持。</p>
               <RouterLink class="button button-blue" to="/activities">功德利益 <span aria-hidden="true">→</span></RouterLink>
             </div>
             <div class="offerings-band-gallery"><img class="home-center-promo-photo" src="./images/center-monks-2026.jpg" alt="上師與僧眾合影"></div>
@@ -467,7 +467,7 @@
           },
         },
         'oracle-tara': {
-          eyebrow: 'LUNGTEN DOLMA', title: '神諭度母', name: '陳敏老師簡介', lineage: '達拉度母佛堂', image: './images/chen-min-teacher.jpg', alt: '神諭度母陳敏老師照片',
+          eyebrow: 'LUNGTEN DOLMA', title: '神諭度母', name: '陳敏老師簡介', lineage: '達拉度母佛堂', image: './images/chen-min-teacher-fixed.png', alt: '神諭度母陳敏老師照片',
           lead: '陳敏老師是一位長期倡導結合「身、心、靈」的全方位老師，是許多人心目中的「心靈導師」。',
           paragraphs: [
             '因為自幼接觸佛法，所以凡事皆以慈悲利他的心關懷眾生。在某個因緣下認識了尊貴的嘉察仁波切，了解仁波切的佛行事業、長期關懷弱勢，行慈善志業的發願，心裡很是感動。',
@@ -1002,23 +1002,75 @@
   };
 
   const ActivityRecordsPage = {
-    data: () => ({ events: activityEvents }),
+    data: () => ({
+      activeCategory: 'events',
+      galleries: [
+        {
+          id: 'events', label: '法會活動',
+          photos: [
+            { image: './images/activity-record-new-01.jpg', alt: '達拉法會共修活動照片 1' },
+            { image: './images/activity-record-new-02.jpg', alt: '達拉法會共修活動照片 2' },
+            { image: './images/activity-record-new-03.jpg', alt: '達拉法會共修活動照片 3' },
+            { image: './images/activity-record-new-04.jpg', alt: '達拉法會共修活動照片 4' },
+            { image: './images/activity-record-new-05.jpg', alt: '達拉法會共修活動照片 5' },
+            { image: './images/activity-record-new-06.jpg', alt: '達拉法會共修活動照片 6' },
+            { image: './images/activity-record-2026-01.jpg', alt: '達拉法會共修活動照片 7' },
+            { image: './images/activity-record-2026-02.jpg', alt: '達拉法會共修活動照片 8' },
+            { image: './images/activity-record-2026-03.jpg', alt: '達拉法會共修活動照片 9' },
+            { image: './images/activity-record-2026-04.jpg', alt: '達拉法會共修活動照片 10' },
+            { image: './images/activity-record-2026-05.jpg', alt: '達拉法會共修活動照片 11' },
+            { image: './images/activity-record-2026-06.jpg', alt: '達拉法會共修活動照片 12' },
+          ],
+        },
+        {
+          id: 'buddhist-life', label: '佛化人生',
+          photos: [
+            { image: './images/record-buddhist-life-01.jpg', alt: '佛化人生共修活動照片 1' },
+            { image: './images/record-buddhist-life-02.jpg', alt: '佛化人生共修活動照片 2' },
+            { image: './images/record-buddhist-life-03.jpg', alt: '佛化人生共修活動照片 3' },
+            { image: './images/record-buddhist-life-04.jpg', alt: '佛化人生共修活動照片 4' },
+            { image: './images/record-buddhist-life-05.jpg', alt: '佛化人生共修活動照片 5' },
+            { image: './images/record-buddhist-life-06.jpg', alt: '佛化人生共修活動照片 6' },
+            { image: './images/record-buddhist-life-07.jpg', alt: '佛化人生共修活動照片 7' },
+            { image: './images/record-buddhist-life-08.jpg', alt: '佛化人生共修活動照片 8' },
+            { image: './images/record-buddhist-life-09.jpg', alt: '佛化人生共修活動照片 9' },
+            { image: './images/record-buddhist-life-10.jpg', alt: '佛化人生共修活動照片 10' },
+            { image: './images/record-buddhist-life-11.jpg', alt: '佛化人生共修活動照片 11' },
+            { image: './images/record-buddhist-life-12.jpg', alt: '佛化人生共修活動照片 12' },
+          ],
+        },
+        {
+          id: 'meditation', label: '禪修靜坐',
+          photos: [
+            { image: './images/record-meditation-01.jpg', alt: '禪修靜坐活動照片 1' },
+            { image: './images/record-meditation-02.jpg', alt: '禪修靜坐活動照片 2' },
+            { image: './images/record-meditation-03.jpg', alt: '禪修靜坐活動照片 3' },
+            { image: './images/record-meditation-04.jpg', alt: '禪修靜坐活動照片 4' },
+            { image: './images/record-meditation-05.jpg', alt: '禪修靜坐活動照片 5' },
+            { image: './images/record-meditation-06.jpg', alt: '禪修靜坐活動照片 6' },
+            { image: './images/record-meditation-07.jpg', alt: '禪修靜坐活動照片 7' },
+            { image: './images/record-meditation-08.jpg', alt: '禪修靜坐活動照片 8' },
+            { image: './images/record-meditation-09.jpg', alt: '禪修靜坐活動照片 9' },
+            { image: './images/record-meditation-10.jpg', alt: '禪修靜坐活動照片 10' },
+            { image: './images/record-meditation-11.jpg', alt: '禪修靜坐活動照片 11' },
+            { image: './images/record-meditation-12.jpg', alt: '禪修靜坐活動照片 12' },
+          ],
+        },
+      ],
+    }),
     computed: {
-      records() {
-        return this.events.map(event => ({
-          ...event,
-          photos: [event.image, ...event.sections.map(section => section.image).filter(Boolean)]
-            .filter((image, index, images) => images.indexOf(image) === index),
-        }));
-      },
+      activeGallery() { return this.galleries.find(gallery => gallery.id === this.activeCategory) || this.galleries[0]; },
     },
     template: `
       <div class="activity-records-page">
-        <section class="page-intro"><span class="eyebrow">TARA ACTIVITY RECORDS</span><h1>達拉活動紀錄</h1><p>佛堂法會、共修與節慶活動照片。</p></section>
-        <nav class="section-wrap activity-detail-breadcrumb" aria-label="頁面導覽"><RouterLink to="/">首頁</RouterLink><span aria-hidden="true">／</span><span>達拉活動紀錄</span></nav>
-        <section v-for="event in records" :key="event.slug" class="section-wrap activity-record-event">
-          <header class="activity-record-heading"><div><span class="eyebrow">{{ event.eyebrow }}</span><h2>{{ event.title }}</h2><p>{{ event.description }}</p></div><RouterLink class="text-link" :to="'/activities/' + event.slug">活動介紹 <small lang="en">Details</small> <b aria-hidden="true">→</b></RouterLink></header>
-          <div class="activity-record-gallery"><figure v-for="(photo, index) in event.photos" :key="photo" class="activity-record-photo"><img :src="photo" :alt="event.title + '活動照片 ' + (index + 1)" loading="lazy"></figure></div>
+        <section class="section-wrap center-gallery-section activity-records-gallery">
+          <div class="home-section-heading"><span class="eyebrow">TARA ACTIVITY RECORDS</span><h2>達拉活動紀錄</h2></div>
+          <div class="activity-record-tabs" role="tablist" aria-label="活動紀錄分類">
+            <button v-for="gallery in galleries" :key="gallery.id" class="activity-record-tab" :class="{ 'is-active': activeCategory === gallery.id }" :id="'activity-record-tab-' + gallery.id" type="button" role="tab" :aria-selected="activeCategory === gallery.id" :aria-controls="'activity-record-panel-' + gallery.id" :tabindex="activeCategory === gallery.id ? 0 : -1" @click="activeCategory = gallery.id">{{ gallery.label }}</button>
+          </div>
+          <div class="center-gallery-grid" role="tabpanel" :id="'activity-record-panel-' + activeGallery.id" :aria-labelledby="'activity-record-tab-' + activeGallery.id" :aria-label="activeGallery.label + '照片展示區'">
+            <figure v-for="photo in activeGallery.photos" :key="photo.image" class="center-gallery-photo"><img :src="photo.image" :alt="photo.alt" loading="lazy" decoding="async"></figure>
+          </div>
         </section>
       </div>
     `,
@@ -1054,12 +1106,12 @@
     data: () => ({ config }),
     template: `
       <div>
-        <section class="page-intro"><span class="eyebrow">VISIT &amp; CONTACT</span><h1>交通與聯絡</h1><p>參訪前可先透過官方 LINE 詢問安排。</p></section>
+        <section class="page-intro"><span class="eyebrow">VISIT &amp; CONTACT</span><h1>跟隨達拉度母</h1><p>參訪前可先透過官方 LINE 詢問安排。</p></section>
         <section class="section-wrap visit-layout">
-          <div class="visit-details"><span class="eyebrow">佛堂位置</span><h2>歡迎蒞臨</h2><address>{{ config.address }}</address><div class="transport-info"><h3>交通資訊</h3><p><strong>捷運：</strong>板南線「忠孝敦化站」1 號出口。</p><p><strong>公車：</strong>「捷運忠孝敦化站」步行約 1 分鐘；「忠孝敦化路口」步行約 3 分鐘。</p><p>頂呱呱忠孝店旁，羅馬大廈 8 樓。</p></div><p>參訪安排與交通問題，歡迎先透過 LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">LINE 詢問參訪方式 <span class="button-en" lang="en">Ask on LINE</span><span aria-hidden="true">↗</span></a><a class="map-open-link" :href="config.links.map" target="_blank" rel="noopener noreferrer">在 Google 地圖開啟 <span aria-hidden="true">↗</span></a></div>
+          <div class="visit-details"><span class="eyebrow">佛堂位置</span><h2>達拉地址</h2><address>{{ config.address }}</address><div class="transport-info"><h3>交通資訊</h3><p><strong>捷運：</strong>板南線「忠孝敦化站」1 號出口。</p><p><strong>公車：</strong>「捷運忠孝敦化站」步行約 1 分鐘；「忠孝敦化路口」步行約 3 分鐘。</p><p class="transport-landmark">頂呱呱忠孝店旁，羅馬大廈 8 樓。</p></div><p>佛堂非常態開放，若有來訪與交通問題，歡迎先透過官方LINE 詢問。</p><a class="button button-blue" :href="config.links.line" target="_blank" rel="noopener noreferrer">達拉TARA官方LINE <span class="button-en" lang="en">Official LINE</span><span aria-hidden="true">↗</span></a></div>
           <div class="map-frame"><iframe :src="config.mapEmbedUrl" title="達拉 TARA 位置地圖" width="600" height="450" style="border:0" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
         </section>
-        <section class="section-wrap contact-section"><div class="contact-heading"><span class="eyebrow">OFFICIAL ACCOUNTS</span><h2>官方聯絡與社群</h2></div><nav class="social-links" aria-label="官方聯絡與社群">
+        <section class="section-wrap contact-section"><div class="contact-heading"><span class="eyebrow">OFFICIAL ACCOUNTS</span><h2>官方聯絡與社群</h2><p>歡迎透過任何您方便的方式與我們聯繫</p></div><nav class="social-links" aria-label="官方聯絡與社群">
           <a :href="config.links.line" target="_blank" rel="noopener noreferrer"><span class="social-link-icon" aria-hidden="true"><svg class="social-icon" viewBox="0 0 24 24"><path d="M12 3C6.7 3 2.5 6.4 2.5 10.6c0 3.7 3.3 6.7 7.8 7.4.3.1.7.2.8.5.1.2 0 .6 0 .8l-.1.8c0 .2-.2.8.7.4s5.1-3 7-5.2c1.3-1.4 2.3-3.1 2.3-4.7C21 6.4 17.1 3 12 3z"/><path class="social-icon-cutout" d="M7.2 9h1v3.4h-1zm2.1 0h1l1.5 2v-2h1v3.4h-.9l-1.6-2.1v2.1h-1zm4.4 0h2.8v.9h-1.8v.4h1.6v.8h-1.6v.5h1.8v.8h-2.8z"/></svg></span>詢問請供與參訪方式 <b aria-hidden="true">↗</b></a>
           <a :href="config.links.facebook" target="_blank" rel="noopener noreferrer"><span class="social-link-icon" aria-hidden="true"><svg class="social-icon" viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8h3.4z"/></svg></span>Facebook 官方粉專 <b aria-hidden="true">↗</b></a>
           <a :href="config.links.instagram" target="_blank" rel="noopener noreferrer"><span class="social-link-icon" aria-hidden="true"><svg class="social-icon social-icon-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.7" cy="6.7" r="1.2"/></svg></span>Instagram 官方帳號 <b aria-hidden="true">↗</b></a>
