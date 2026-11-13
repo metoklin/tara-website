@@ -99,12 +99,11 @@ figure, p, h1, h2 { margin-top: 0; }
 .home-centers { padding-block: 68px 78px; background: var(--cream); }
 #centers { scroll-margin-top: 82px; }
 .center-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.center-logo-filter-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
 .center-card { display: grid; justify-items: center; align-content: start; gap: 18px; min-height: 255px; padding: 22px; border: 1px solid var(--line); background: var(--paper); text-align: center; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
 .center-card:hover { border-color: #c8a451; box-shadow: 0 12px 28px rgba(24, 49, 74, .1); transform: translateY(-3px); }
 .center-card:focus-visible { outline: 3px solid #dba839; outline-offset: 3px; }
-.center-logo-frame { width: min(100%, 150px); aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; border: 1px solid #285b91; border-radius: 50%; padding: 8px; background: #fffefa; }
-.center-logo { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: contain; filter: url(#center-logo-blue); }
+.center-logo-frame { width: min(100%, 150px); aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 50%; padding: 8px; background: #fffefa; }
+.center-logo { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: contain; }
 .center-card h3 { margin: 0; color: var(--ink); font: 500 17px Georgia, serif; letter-spacing: .04em; }
 .center-name-zh { display: block; margin-top: 5px; color: var(--muted); font: 500 15px "Noto Sans TC", "PingFang TC", sans-serif; letter-spacing: .08em; }
 
@@ -173,6 +172,17 @@ figure, p, h1, h2 { margin-top: 0; }
 .center-social-link:hover .social-icon-cutout { fill: var(--blue); }
 .center-gallery-section { padding-block: 52px 68px; }
 .center-gallery-section .home-section-heading { margin-bottom: 20px; }
+.activity-record-topic-heading { margin: 0 0 13px; }
+.activity-record-topic-heading .eyebrow { margin-bottom: 5px; }
+.activity-record-topic-heading h3 { margin: 0; color: var(--ink); font-size: 21px; font-weight: 600; letter-spacing: .04em; }
+.activity-record-topic-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 28px; }
+.activity-record-topic-links .home-ad-placeholder { aspect-ratio: 16 / 9; }
+.activity-record-topics-footer { margin-top: 54px; padding-top: 34px; border-top: 1px solid var(--line); }
+.activity-photo-page .home-section-heading h1 { margin: 0; color: var(--ink); font-size: clamp(28px, 3vw, 36px); font-weight: 550; letter-spacing: .06em; }
+.activity-photo-page-description { margin: 10px 0 0; color: var(--muted); font-size: 16px; line-height: 1.8; }
+.activity-photo-page-single { grid-template-columns: minmax(0, 760px); justify-content: center; }
+.activity-photo-page-actions { display: flex; justify-content: center; margin-top: 34px; }
+.activity-photo-page-actions .button { text-align: center; }
 .activity-record-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 22px; }
 .activity-record-tab { min-height: 44px; padding: 10px 22px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--muted); font: inherit; font-weight: 650; cursor: pointer; transition: background .2s, border-color .2s, color .2s, transform .2s; }
 .activity-record-tab:hover { transform: translateY(-1px); border-color: var(--gold); color: var(--blue); }
@@ -698,6 +708,10 @@ figure, p, h1, h2 { margin-top: 0; }
   .center-detail-emblem .center-logo-frame { width: 150px; }
   .center-gallery-section { padding-block: 40px 48px; }
   .center-gallery-grid { grid-template-columns: 1fr; gap: 10px; }
+  .activity-record-topic-links { grid-template-columns: 1fr; gap: 10px; }
+  .activity-record-topic-links .home-ad-placeholder { aspect-ratio: 16 / 9; }
+  .activity-record-topics-footer { margin-top: 38px; padding-top: 26px; }
+  .activity-photo-page-actions { margin-top: 26px; }
   .page-intro.center-page-intro-with-cover { min-height: 390px; padding: 0 20px 42px; background-position: center, 44% center; }
   .page-intro.center-page-intro-with-cover.center-page-intro-parallax { background-position: center, 44% calc(50% + var(--center-page-parallax-y, 0px)); }
   .center-page-intro-with-cover p { font-size: 17px; }

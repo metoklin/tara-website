@@ -120,13 +120,12 @@
           </div>
         </section>
 
-        <svg class="center-logo-filter-defs" aria-hidden="true" focusable="false"><filter id="center-logo-blue" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 0.156863 0 0 0 0 0.356863 0 0 0 0 0.568627 -1 -1 -1 0 2.9" /></filter></svg>
         <section id="centers" class="home-centers">
           <div class="section-wrap"><div class="home-section-heading"><span class="eyebrow">TAIWAN CENTER</span><h2>北中南中心</h2></div>
             <div class="center-grid">
-              <RouterLink class="center-card" to="/centers/taipei" aria-label="查看台北中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taipei.jpg" alt="Taipei Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taipei Center</span><span class="center-name-zh">台北中心</span></h3></RouterLink>
-              <RouterLink class="center-card" to="/centers/taichung" aria-label="查看台中中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taichung.jpg" alt="Taichung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taichung Center</span><span class="center-name-zh">台中中心</span></h3></RouterLink>
-              <RouterLink class="center-card" to="/centers/kaohsiung" aria-label="查看高雄中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-kaohsiung.jpg" alt="Kaohsiung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Kaohsiung Center</span><span class="center-name-zh">高雄中心</span></h3></RouterLink>
+              <RouterLink class="center-card" to="/centers/taipei" aria-label="查看台北中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taipei-logo.png" alt="Taipei Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taipei Center</span><span class="center-name-zh">台北中心</span></h3></RouterLink>
+              <RouterLink class="center-card" to="/centers/taichung" aria-label="查看台中中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taichung-logo.png" alt="Taichung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taichung Center</span><span class="center-name-zh">台中中心</span></h3></RouterLink>
+              <RouterLink class="center-card" to="/centers/kaohsiung" aria-label="查看高雄中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-kaohsiung-logo.png" alt="Kaohsiung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Kaohsiung Center</span><span class="center-name-zh">高雄中心</span></h3></RouterLink>
             </div>
           </div>
         </section>
@@ -138,7 +137,7 @@
             <p>佛堂每月安排祈福法會、共修、禪修、靜坐、佛化人生講座等活動。</p>
             <RouterLink class="button button-blue" to="/activity-records">觀看活動紀錄 <span aria-hidden="true">↗</span></RouterLink>
           </div>
-          <div class="activity-photo"><img src="./images/buddhist-life-lecture.jpg" alt="達拉TARA佛堂活動情形"></div>
+          <div class="activity-photo"><img src="./images/activity-record-2026-05.jpg" alt="達拉法會活動紀錄照片"></div>
         </section>
 
         <section class="offerings-band home-center-promo home-center-promo-reverse">
@@ -154,9 +153,9 @@
         </section>
 
         <section class="home-advertising section-wrap" aria-label="供養布施、朝聖、瑜伽頌缽與發心護持">
-          <div class="home-ad-placeholder"><img src="./images/offering-donation.jpg" alt=""><span>供養布施</span></div>
-          <div class="home-ad-placeholder"><img src="./images/pilgrimage.jpg" alt=""><span>朝聖</span></div>
-          <div class="home-ad-placeholder"><img src="./images/yoga-singing-bowl.jpg" alt=""><span>瑜伽、頌缽、呼吸法</span></div>
+          <RouterLink class="home-ad-placeholder" to="/activity-records/offering-donation" aria-label="瀏覽供養布施照片"><img src="./images/offering-donation.jpg" alt=""><span>供養布施</span></RouterLink>
+          <RouterLink class="home-ad-placeholder" to="/activity-records/pilgrimage" aria-label="瀏覽朝聖照片"><img src="./images/pilgrimage.jpg" alt=""><span>朝聖</span></RouterLink>
+          <RouterLink class="home-ad-placeholder" to="/activity-records/yoga-breath" aria-label="瀏覽瑜伽、頌缽、呼吸法照片"><img src="./images/yoga-singing-bowl.jpg" alt=""><span>瑜伽、頌缽、呼吸法</span></RouterLink>
           <div class="home-ad-placeholder"><img src="./images/home-support.jpg" alt="達拉度母佛堂發心護持"><span>發心護持</span></div>
         </section>
 
@@ -228,7 +227,7 @@
       coverParallaxFrame: 0,
       centers: {
         taipei: {
-          nameZh: '台北中心', nameEn: 'Taipei Center', image: './images/center-taipei.jpg', alt: '台北中心標誌',
+          nameZh: '台北中心', nameEn: 'Taipei Center', image: './images/center-taipei-logo.png', alt: '台北中心標誌',
           introEyebrow: 'Amitayu', introTitle: '無量壽佛學會', introText: centerIntroduction,
           address: '台北市大安區大安路一段 75 巷 7 號 2 樓之 2', lineUrl: 'https://lin.ee/T7TzBjX', facebookUrl: 'https://www.facebook.com/amitayu.org/',
           coverImage: './images/taipei-cover.jpg', parallax: true,
@@ -248,7 +247,7 @@
           ],
         },
         taichung: {
-          nameZh: '台中中心', nameEn: 'Taichung Center', image: './images/center-taichung.jpg', alt: '台中中心標誌',
+          nameZh: '台中中心', nameEn: 'Taichung Center', image: './images/center-taichung-logo.png', alt: '台中中心標誌',
           introEyebrow: 'King Gesar Palace', introTitle: '給薩王', introText: centerIntroduction,
           introAdditionalText: '【給薩王】佛堂是專修給薩戰神、財神的聖殿，具足息增懷誅一切事業的大威力本尊，其加持力量不可思議。',
           address: '台中市南屯區向上南路一段163-2號1樓', lineUrl: 'https://lin.ee/nBzDXOM', facebookUrl: 'https://www.facebook.com/king.gesar.palace/',
@@ -269,7 +268,7 @@
           ],
         },
         kaohsiung: {
-          nameZh: '高雄中心', nameEn: 'Kaohsiung Center', image: './images/center-kaohsiung.jpg', alt: '高雄中心標誌',
+          nameZh: '高雄中心', nameEn: 'Kaohsiung Center', image: './images/center-kaohsiung-logo.png', alt: '高雄中心標誌',
           introEyebrow: 'Palyul Gyaltsab Ling', introTitle: '寧瑪巴白玉嘉察佛學會', introText: centerIntroduction,
           address: '高雄市苓雅區建國一路90號8樓', lineUrl: 'https://lin.ee/23EX3wP', facebookUrl: 'https://www.facebook.com/palyul.gyaltsab/',
           coverImage: './images/kaohsiung-cover.jpg', parallax: true,
@@ -1009,11 +1008,11 @@
           id: 'events', label: '法會活動',
           photos: [
             { image: './images/activity-record-new-01.jpg', alt: '達拉法會共修活動照片 1' },
-            { image: './images/activity-record-new-02.jpg', alt: '達拉法會共修活動照片 2' },
+            { image: './images/activity-record-new-04.jpg', alt: '達拉法會共修活動照片 2' },
             { image: './images/activity-record-new-03.jpg', alt: '達拉法會共修活動照片 3' },
-            { image: './images/activity-record-new-04.jpg', alt: '達拉法會共修活動照片 4' },
-            { image: './images/activity-record-new-05.jpg', alt: '達拉法會共修活動照片 5' },
-            { image: './images/activity-record-new-06.jpg', alt: '達拉法會共修活動照片 6' },
+            { image: './images/activity-record-new-05.jpg', alt: '達拉法會共修活動照片 4' },
+            { image: './images/activity-record-new-06.jpg', alt: '達拉法會共修活動照片 5' },
+            { image: './images/activity-record-new-02.jpg', alt: '達拉法會共修活動照片 6' },
             { image: './images/activity-record-2026-01.jpg', alt: '達拉法會共修活動照片 7' },
             { image: './images/activity-record-2026-02.jpg', alt: '達拉法會共修活動照片 8' },
             { image: './images/activity-record-2026-03.jpg', alt: '達拉法會共修活動照片 9' },
@@ -1039,23 +1038,6 @@
             { image: './images/record-buddhist-life-12.jpg', alt: '佛化人生共修活動照片 12' },
           ],
         },
-        {
-          id: 'meditation', label: '禪修靜坐',
-          photos: [
-            { image: './images/record-meditation-01.jpg', alt: '禪修靜坐活動照片 1' },
-            { image: './images/record-meditation-02.jpg', alt: '禪修靜坐活動照片 2' },
-            { image: './images/record-meditation-03.jpg', alt: '禪修靜坐活動照片 3' },
-            { image: './images/record-meditation-04.jpg', alt: '禪修靜坐活動照片 4' },
-            { image: './images/record-meditation-05.jpg', alt: '禪修靜坐活動照片 5' },
-            { image: './images/record-meditation-06.jpg', alt: '禪修靜坐活動照片 6' },
-            { image: './images/record-meditation-07.jpg', alt: '禪修靜坐活動照片 7' },
-            { image: './images/record-meditation-08.jpg', alt: '禪修靜坐活動照片 8' },
-            { image: './images/record-meditation-09.jpg', alt: '禪修靜坐活動照片 9' },
-            { image: './images/record-meditation-10.jpg', alt: '禪修靜坐活動照片 10' },
-            { image: './images/record-meditation-11.jpg', alt: '禪修靜坐活動照片 11' },
-            { image: './images/record-meditation-12.jpg', alt: '禪修靜坐活動照片 12' },
-          ],
-        },
       ],
     }),
     computed: {
@@ -1071,6 +1053,55 @@
           <div class="center-gallery-grid" role="tabpanel" :id="'activity-record-panel-' + activeGallery.id" :aria-labelledby="'activity-record-tab-' + activeGallery.id" :aria-label="activeGallery.label + '照片展示區'">
             <figure v-for="photo in activeGallery.photos" :key="photo.image" class="center-gallery-photo"><img :src="photo.image" :alt="photo.alt" loading="lazy" decoding="async"></figure>
           </div>
+          <div class="activity-record-topics-footer">
+            <div class="activity-record-topic-heading"><span class="eyebrow">MORE ACTIVITIES</span><h3>其他活動專頁</h3></div>
+            <div class="activity-record-topic-links" aria-label="其他活動專頁">
+              <RouterLink class="home-ad-placeholder" to="/activity-records/yoga-breath"><img src="./images/yoga-singing-bowl.jpg" alt=""><span>瑜伽、頌缽、呼吸法</span></RouterLink>
+              <RouterLink class="home-ad-placeholder" to="/activity-records/offering-donation"><img src="./images/offering-donation.jpg" alt=""><span>供養布施</span></RouterLink>
+              <RouterLink class="home-ad-placeholder" to="/activity-records/pilgrimage"><img src="./images/pilgrimage.jpg" alt=""><span>朝聖</span></RouterLink>
+            </div>
+          </div>
+          <nav class="activity-photo-page-actions activity-records-home-action" aria-label="頁面導覽"><RouterLink class="button button-blue" to="/">回到首頁 <span class="button-en" lang="en">HOME</span></RouterLink></nav>
+        </section>
+      </div>
+    `,
+  };
+
+  const activityPhotoPages = {
+    'yoga-breath': {
+      eyebrow: 'YOGA · SINGING BOWLS · BREATHWORK',
+      title: '瑜伽、頌缽、呼吸法',
+      description: '瑜伽、頌缽與呼吸法活動照片。',
+      photos: Array.from({ length: 12 }, (_, index) => ({ image: `./images/record-meditation-${String(index + 1).padStart(2, '0')}.jpg`, alt: `瑜伽、頌缽、呼吸法活動照片 ${index + 1}` })),
+    },
+    'offering-donation': {
+      eyebrow: 'OFFERING & GENEROSITY',
+      title: '供養布施',
+      description: '供養布施活動照片。',
+      photos: [{ image: './images/offering-donation.jpg', alt: '達拉供養布施活動照片' }],
+    },
+    pilgrimage: {
+      eyebrow: 'PILGRIMAGE',
+      title: '朝聖',
+      description: '達拉朝聖活動照片。',
+      photos: [{ image: './images/pilgrimage.jpg', alt: '達拉朝聖活動照片' }],
+    },
+  };
+
+  const ActivityPhotoPage = {
+    props: ['slug'],
+    data: () => ({ pages: activityPhotoPages }),
+    computed: {
+      page() { return this.pages[this.slug] || this.pages['yoga-breath']; },
+    },
+    template: `
+      <div class="activity-photo-page">
+        <section class="section-wrap center-gallery-section activity-records-gallery">
+          <div class="home-section-heading"><span class="eyebrow">{{ page.eyebrow }}</span><h1>{{ page.title }}</h1><p class="activity-photo-page-description">{{ page.description }}</p></div>
+          <div class="center-gallery-grid" :class="{ 'activity-photo-page-single': page.photos.length === 1 }" :aria-label="page.title + '照片展示區'">
+            <figure v-for="photo in page.photos" :key="photo.image" class="center-gallery-photo"><img :src="photo.image" :alt="photo.alt" loading="lazy" decoding="async"></figure>
+          </div>
+          <nav class="activity-photo-page-actions" aria-label="頁面導覽"><RouterLink class="button button-blue" to="/">回到首頁 <span class="button-en" lang="en">HOME</span></RouterLink></nav>
         </section>
       </div>
     `,
@@ -1132,6 +1163,7 @@
       { path: '/offerings/:slug', component: OfferingDetailPage, props: true },
       { path: '/activities', component: ActivitiesPage },
       { path: '/activity-records', component: ActivityRecordsPage },
+      { path: '/activity-records/:slug', component: ActivityPhotoPage, props: true },
       { path: '/activities/:slug', component: ActivityDetailPage, props: true },
       { path: '/testimonials', component: TestimonialsPage },
       { path: '/visit', component: VisitPage },
