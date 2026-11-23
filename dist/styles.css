@@ -192,6 +192,16 @@ figure, p, h1, h2 { margin-top: 0; }
 .center-gallery-photo { overflow: hidden; aspect-ratio: 4 / 3; margin: 0; border-radius: 10px; background: var(--cream); }
 .center-gallery-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
 .center-gallery-photo:hover img { transform: scale(1.04); }
+.activity-certificates { margin-top: 54px; padding-top: 34px; border-top: 1px solid var(--line); }
+.activity-certificates .home-section-heading { margin-bottom: 20px; }
+.activity-certificates .home-section-heading h2 { margin: 0; color: var(--ink); font-size: clamp(24px, 2.6vw, 32px); font-weight: 550; letter-spacing: .06em; }
+.activity-certificate-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 16px; }
+.activity-certificate-photo { display: grid; width: 100%; aspect-ratio: 3 / 4; place-items: center; overflow: hidden; padding: 8px; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: zoom-in; }
+.activity-certificate-photo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.activity-certificate-photo:focus-visible { outline: 3px solid rgba(45, 104, 157, .35); outline-offset: 3px; }
+.activity-certificate-lightbox { position: fixed; z-index: 1100; inset: 0; display: grid; place-items: center; padding: 28px; background: rgba(17, 25, 34, .88); }
+.activity-certificate-lightbox > img { display: block; max-width: min(96vw, 1400px); max-height: 92vh; object-fit: contain; }
+.activity-certificate-lightbox-close { position: absolute; top: 18px; right: 24px; display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid rgba(255, 255, 255, .72); border-radius: 50%; background: rgba(18, 35, 51, .72); color: #fff; font-size: 32px; line-height: 1; cursor: pointer; }
 .center-gallery-placeholders { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .center-gallery-placeholder { display: grid; min-height: 190px; place-content: center; gap: 8px; border: 1px dashed #d8d0c2; background: #faf8f3; color: #9a907e; text-align: center; }
 .center-gallery-placeholder span { color: var(--gold); font-size: 23px; }
@@ -318,28 +328,36 @@ figure, p, h1, h2 { margin-top: 0; }
 .prayer-offering-heading .eyebrow { margin-bottom: 8px; }
 .prayer-offering-heading h3 { margin: 0 0 9px; color: var(--ink); font-size: calc(24px + 2px); font-weight: 600; }
 .prayer-offering-heading p { margin: 0; color: var(--muted); font-size: calc(15px + 2px); line-height: 1.9; }
-.prayer-offering-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
-.prayer-offering-card { min-width: 0; border: 1px solid var(--line); background: #fff; transition: border-color .25s ease, box-shadow .25s ease; }
-.prayer-offering-card[open] { border-color: #c6a45a; box-shadow: 0 8px 24px rgba(39, 53, 69, .06); }
-.prayer-offering-card summary { display: flex; min-height: 280px; flex-direction: column; align-items: stretch; padding: 25px 27px; cursor: pointer; list-style: none; }
-.prayer-offering-card summary::-webkit-details-marker { display: none; }
-.prayer-offering-card summary:focus-visible { outline: 2px solid #b18a2b; outline-offset: -3px; }
-.prayer-offering-card[open] summary .prayer-offering-details-toggle { display: none; }
-.prayer-offering-card h4 { margin: 0 0 10px; color: var(--ink); font-size: 21px; font-weight: 600; }
-.prayer-offering-preview { display: -webkit-box; overflow: hidden; color: #536476; line-height: 1.95; -webkit-box-orient: vertical; -webkit-line-clamp: 5; }
-.prayer-offering-details-toggle { display: flex; width: 100%; min-height: 42px; align-items: center; justify-content: space-between; gap: 10px; margin-top: 13px; padding: 9px 0 0; border: 0; border-top: 1px solid var(--line); background: transparent; color: var(--blue); cursor: pointer; font: inherit; font-size: calc(14px + 2px); font-weight: 700; line-height: 1.8; text-align: left; transition: color .2s ease; }
-.prayer-offering-card summary:hover .prayer-offering-details-toggle { color: var(--gold); }
-.prayer-offering-details-toggle:hover { color: var(--gold); }
-.prayer-offering-details-icon { display: inline-block; transition: transform .32s ease; }
-.prayer-offering-card[open] .prayer-offering-details-icon { transform: rotate(180deg); }
-.prayer-offering-detail { padding: 0 27px 25px; }
-.prayer-offering-collapse { margin: 0 27px 25px; width: calc(100% - 54px); }
-.prayer-offering-card--annual { display: flex; min-height: 280px; flex-direction: column; padding: 25px 27px; }
-.prayer-offering-card h5 { margin: 13px 0 5px; color: #947021; font-size: 16px; font-weight: 650; }
-.prayer-offering-card p { margin: 0 0 12px; color: #536476; line-height: 1.95; }
+.prayer-offering-list { display: grid; gap: 18px; }
+.prayer-offering-row { display: grid; grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr); align-items: stretch; overflow: hidden; border: 1px solid var(--line); background: #fff; }
+.prayer-offering-row-photo { display: grid; min-height: 310px; place-items: center; overflow: hidden; margin: 0; background: #f4f1eb; }
+.prayer-offering-row-photo img { display: block; width: 100%; height: 100%; min-height: 310px; object-fit: cover; }
+.prayer-offering-row-photo--contain { min-height: 400px; padding: 20px; background: #fff0f7; }
+.prayer-offering-row-photo--contain img { min-height: 0; max-height: 470px; object-fit: contain; }
+.prayer-offering-row-copy { align-self: center; padding: clamp(25px, 4vw, 46px); }
+.prayer-offering-row-copy h4 { margin: 0 0 10px; color: var(--ink); font-size: clamp(22px, 2.4vw, 29px); font-weight: 600; letter-spacing: .04em; }
+.prayer-offering-lead { margin: 0 0 18px; color: #536476; font-size: 17px; line-height: 1.9; }
+.prayer-offering-accordion { border-top: 1px solid var(--line); }
+.prayer-offering-accordion summary { display: flex; min-height: 48px; align-items: center; justify-content: space-between; gap: 12px; color: var(--blue); cursor: pointer; font-size: 16px; font-weight: 700; list-style: none; }
+.prayer-offering-accordion summary::-webkit-details-marker { display: none; }
+.prayer-offering-accordion summary::after { content: '＋'; flex: 0 0 auto; color: var(--gold); font-size: 19px; }
+.prayer-offering-accordion[open] summary::after { content: '−'; }
+.prayer-offering-accordion summary:focus-visible, .prayer-vase-info-button:focus-visible { outline: 2px solid #b18a2b; outline-offset: 3px; }
+.prayer-offering-detail { padding: 0 0 10px; }
+.prayer-offering-row-copy h5 { margin: 13px 0 5px; color: #947021; font-size: 16px; font-weight: 650; }
+.prayer-offering-row-copy p { color: #536476; line-height: 1.9; }
+.prayer-offering-row-copy .prayer-offering-detail p { margin: 0 0 12px; }
 .prayer-offering-detail p:last-child { margin-bottom: 0; }
 .prayer-offering-detail ul { margin: 0 0 17px; padding-left: 1.3em; color: #536476; line-height: 1.9; }
 .prayer-offering-subsection { margin-top: 17px; padding-top: 15px; border-top: 1px solid var(--line); }
+.prayer-vase-info-button { display: flex; width: 100%; align-items: center; gap: 16px; margin: 4px 0 20px; padding: 10px 14px; border: 1px solid var(--line); background: #fbf8f1; color: var(--blue); cursor: pointer; font: inherit; font-weight: 700; line-height: 1.7; text-align: left; }
+.prayer-vase-info-button img { display: block; width: 68px; height: 100px; flex: 0 0 auto; object-fit: cover; object-position: top; border: 1px solid var(--line); background: #fff; }
+.prayer-vase-info-button:hover { border-color: var(--gold); color: #947021; }
+.prayer-offering-annual { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-top: 26px; padding: clamp(24px, 4vw, 38px); border-left: 4px solid var(--gold); background: #edf2f5; }
+.prayer-offering-annual .eyebrow { display: block; margin-bottom: 5px; }
+.prayer-offering-annual h4 { margin: 0 0 6px; color: var(--ink); font-size: 23px; font-weight: 650; }
+.prayer-offering-annual p { max-width: 700px; margin: 0; color: #536476; line-height: 1.8; }
+.prayer-offering-annual .button { flex: 0 0 auto; text-align: center; }
 .about-closing-notes { margin-top: 26px; padding: 23px 26px; background: #edf2f5; }
 .about-closing-notes p { margin: 0; }
 .annual-offering-modal-backdrop { position: fixed; z-index: 1100; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(27, 35, 43, .72); }
@@ -712,6 +730,10 @@ figure, p, h1, h2 { margin-top: 0; }
   .activity-record-topic-links .home-ad-placeholder { aspect-ratio: 16 / 9; }
   .activity-record-topics-footer { margin-top: 38px; padding-top: 26px; }
   .activity-photo-page-actions { margin-top: 26px; }
+  .activity-certificates { margin-top: 38px; padding-top: 26px; }
+  .activity-certificate-grid { grid-template-columns: 1fr; gap: 12px; }
+  .activity-certificate-lightbox { padding: 14px; }
+  .activity-certificate-lightbox-close { top: 12px; right: 12px; }
   .page-intro.center-page-intro-with-cover { min-height: 390px; padding: 0 20px 42px; background-position: center, 44% center; }
   .page-intro.center-page-intro-with-cover.center-page-intro-parallax { background-position: center, 44% calc(50% + var(--center-page-parallax-y, 0px)); }
   .center-page-intro-with-cover p { font-size: 17px; }
@@ -766,14 +788,23 @@ figure, p, h1, h2 { margin-top: 0; }
   .tara-element-card h3 { font-size: 14px; }
   .tara-element-card p { font-size: 12px; }
   .altar-shrine-photo img { height: 250px; }
-  .deity-copy-grid, .prayer-mandala-gallery, .prayer-mandala-info, .prayer-offering-grid { grid-template-columns: 1fr; gap: 12px; }
+  .deity-copy-grid, .prayer-mandala-gallery, .prayer-mandala-info { grid-template-columns: 1fr; gap: 12px; }
   .prayer-mandala-info { padding: 21px; }
   .prayer-mandala-info section + section { padding: 16px 0 0; border-top: 1px solid var(--line); border-left: 0; }
   .prayer-mandala-gallery figure { aspect-ratio: 1.5; }
-  .prayer-offering-card summary { min-height: 280px; padding: 21px; }
-  .prayer-offering-detail { padding: 0 21px 21px; }
-  .prayer-offering-collapse { width: calc(100% - 42px); margin: 0 21px 21px; }
-  .prayer-offering-card--annual { min-height: 280px; padding: 21px; }
+  .prayer-offering-list { gap: 14px; }
+  .prayer-offering-row { grid-template-columns: minmax(0, 1fr); }
+  .prayer-offering-row-photo { min-height: 0; }
+  .prayer-offering-row-photo img { height: 240px; min-height: 0; object-fit: cover; }
+  .prayer-offering-row-photo--contain { min-height: 0; padding: 12px; }
+  .prayer-offering-row-photo--contain img { width: 100%; height: auto; max-height: 360px; object-fit: contain; }
+  .prayer-offering-row-copy { padding: 22px 20px 24px; }
+  .prayer-offering-row-copy h4 { font-size: 22px; }
+  .prayer-offering-lead { font-size: 15px; }
+  .prayer-vase-info-button { gap: 11px; padding: 10px; font-size: 13px; }
+  .prayer-vase-info-button img { width: 70px; height: 76px; }
+  .prayer-offering-annual { align-items: stretch; flex-direction: column; gap: 19px; padding: 23px 20px; }
+  .prayer-offering-annual .button { width: 100%; justify-content: center; }
   .annual-offering-modal-backdrop { align-items: end; padding: 10px; }
   .annual-offering-modal { max-height: 94vh; padding: 12px; border-radius: 8px 8px 4px 4px; }
   .about-closing-notes { padding: 20px; }

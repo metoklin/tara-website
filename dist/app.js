@@ -123,9 +123,9 @@
         <section id="centers" class="home-centers">
           <div class="section-wrap"><div class="home-section-heading"><span class="eyebrow">TAIWAN CENTER</span><h2>北中南中心</h2></div>
             <div class="center-grid">
-              <RouterLink class="center-card" to="/centers/taipei" aria-label="查看台北中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taipei-logo.png" alt="Taipei Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taipei Center</span><span class="center-name-zh">台北中心</span></h3></RouterLink>
-              <RouterLink class="center-card" to="/centers/taichung" aria-label="查看台中中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taichung-logo.png" alt="Taichung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taichung Center</span><span class="center-name-zh">台中中心</span></h3></RouterLink>
-              <RouterLink class="center-card" to="/centers/kaohsiung" aria-label="查看高雄中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-kaohsiung-logo.png" alt="Kaohsiung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Kaohsiung Center</span><span class="center-name-zh">高雄中心</span></h3></RouterLink>
+              <RouterLink class="center-card" to="/centers/taipei" aria-label="查看台北中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taipei-home-logo.png" alt="Taipei Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taipei Center</span><span class="center-name-zh">台北中心</span></h3></RouterLink>
+              <RouterLink class="center-card" to="/centers/taichung" aria-label="查看台中中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-taichung-home-logo.png" alt="Taichung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Taichung Center</span><span class="center-name-zh">台中中心</span></h3></RouterLink>
+              <RouterLink class="center-card" to="/centers/kaohsiung" aria-label="查看高雄中心介紹"><div class="center-logo-frame"><img class="center-logo" src="./images/center-kaohsiung-home-logo.png" alt="Kaohsiung Center 標誌" loading="lazy" decoding="async"></div><h3><span>Kaohsiung Center</span><span class="center-name-zh">高雄中心</span></h3></RouterLink>
             </div>
           </div>
         </section>
@@ -336,7 +336,7 @@
   };
 
   const AboutPage = {
-    data: () => ({ expandedTara: null, showAnnualOfferingModal: false }),
+    data: () => ({ expandedTara: null, showAnnualOfferingModal: false, showVaseInfoModal: false }),
     template: `
       <div>
         <section class="page-intro"><span class="eyebrow">ABOUT TARA</span><h1>認識達拉TARA</h1><p>走進達拉佛堂，認識度母。</p></section>
@@ -390,18 +390,31 @@
               <section><h3>主壇城</h3><p>壇城內供奉度母、蓮花生大士及所有本尊、空行、護法、總集朵瑪、十二生肖神獸守護菩薩與九宮八卦咒牌，以祈願化解因風水而起的沖煞、歲煞，轉為吉祥能量，並得諸佛菩薩守護。</p><p>壇城內安置由尊貴上師親自裝臟、修法加持圓滿的殊勝珍貴「吉祥福運滿願寶瓶」，與十方大德結緣，藉由寶瓶加持為大眾祈福，祈願消除眾生一切障礙。</p></section>
               <section><h3>內密壇城</h3><p>主要供奉黃財神本尊，秘壇城內安置可增長財運福報的「財神寶瓶」與許多殊勝加持物。</p><p>特別恭請嘉察仁波切裝臟、修法、開光加持圓滿。恭敬禮拜財神，祈願諸眾財神護佑，具足世間與出世間一切資糧，令財富滿盈、受用自在、不虞匱乏。</p></section>
             </div>
-            <section class="prayer-offerings"><div class="prayer-offering-heading"><span class="eyebrow">DEDICATION OFFERINGS</span><h3>祈福滿願壇城開放認供</h3><p>歡迎以祈願、供燈與護持壇城等方式，將善願迴向自身及一切有情。</p></div>
-              <div class="prayer-offering-grid">
-                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>度母許願卡</h4><span class="prayer-offering-preview">可在祈願卡寫上所祈求願望（每張寫一個主要願望），並在壇城前誠心祈請，祈願諸佛菩薩眾、護法神尊加持庇佑，所求皆能如願，心想事成、諸事順遂。</span></span><span class="prayer-offering-details-toggle"><span>展開介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><p>可在祈願卡寫上所祈求願望（每張寫一個主要願望），並在壇城前誠心祈請，必得諸佛菩薩眾、護法神尊加持庇佑，所求皆能如願，心想事成、諸事順遂。</p></div><button type="button" class="prayer-offering-details-toggle prayer-offering-collapse" @click="$event.currentTarget.closest('details').open = false"><span>收合介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></button></details>
-                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>各式佛菩薩點燈</h4><span class="prayer-offering-preview">點燈兼具出世間與世間利益：可得真智慧、遠離修行障礙、去除五毒惡業牽引；亦祈願身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、心想如願、財富具足。另有十二生肖守護菩薩點燈。</span></span><span class="prayer-offering-details-toggle"><span>點燈的功德利益</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><p>點燈的利益有兩種：</p><h5>出世間利益</h5><p>可得真智慧，遠離修行上的障礙，去除五毒惡業的牽引，斷除輪迴。</p><h5>世間福報</h5><p>身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、不受人欺、心想如願、財富具足。如阿那律尊者「天眼第一」，乃因供燈植福而獲得。</p><div class="prayer-offering-subsection"><h5>十二生肖守護菩薩點燈｜菩薩由來</h5><p>很久以前，世間有這樣一個傳說：一個人出生時，西方極樂世界就有一位佛、菩薩迎送，並看著這孩子慢慢長大。此後孩子要獨自面對人間的誘惑和選擇，身上的佛性也越變越淡。只有極少數孩子因累積了幾世輪迴的善果、佛緣較深，才能繼續得到佛菩薩庇佑。後來經菩薩點化，人們把自己出生那一年的本尊佛菩薩雕刻在飾物上隨身佩戴，以增進自身修為，得到本尊菩薩保佑、庇護，實現發財、保健康等願望。</p></div></div><button type="button" class="prayer-offering-details-toggle prayer-offering-collapse" @click="$event.currentTarget.closest('details').open = false"><span>收合介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></button></details>
-                <details class="prayer-offering-card"><summary><span class="prayer-offering-summary-copy"><h4>各式吉祥滿願寶瓶</h4><span class="prayer-offering-preview">壇城開放認供度母寶瓶（事業滿願）、財神寶瓶（福報財富）、咕嚕咕咧寶瓶（人緣桃花）及吉祥福運寶瓶（平安運氣，適合本年沖太歲者）。吉祥福運滿願寶瓶由尊貴的穆松古千法王親自裝臟、開光。</span></span><span class="prayer-offering-details-toggle"><span>寶瓶的功德利益</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></span></summary><div class="prayer-offering-detail"><ul><li>度母寶瓶：事業滿願</li><li>財神寶瓶：福報財富</li><li>咕嚕咕咧寶瓶：人緣桃花</li><li>吉祥福運寶瓶：平安運氣，適合本年沖太歲者</li></ul><h5>吉祥福運滿願寶瓶</h5><p>特別恭請尊貴的穆松古千法王親自裝臟、開光。裝臟物主要為法王親自從印度攜帶來臺之印度白玉南卓林寺總集甘露，以及南卻天法傳承祖師——持明珠多傑金剛法座所在聖地西康穆松寺吉祥總集甘露，精心製作，與十方大德結緣。</p><p>藉由寶瓶無上的加持，為大家祈福、消除眾生一切障礙；並願以修持寶瓶的成就與得此殊勝寶瓶的功德，幫助眾生除逆緣、脫貧苦、財富豐盈、權力威望增長、得眾人仰慕及敬愛。行者若能虔心供養，即能集聚天、人、眾生，享受其惠施衣財富，運勢轉佳、善緣早熟。因此，吉祥福運滿願寶瓶亦是平安與財富最強之殊勝不共護法。</p></div><button type="button" class="prayer-offering-details-toggle prayer-offering-collapse" @click="$event.currentTarget.closest('details').open = false"><span>收合介紹</span><span class="prayer-offering-details-icon" aria-hidden="true">⌄</span></button></details>
-                <article class="prayer-offering-card prayer-offering-card--annual"><div class="prayer-offering-summary-copy"><h4>年度認供</h4><span class="prayer-offering-preview">年度認供依當年度壇城與法會規劃開放，邀請大眾隨喜護持、祈福迴向。認供項目與參與方式將依年度公告更新。</span></div><button type="button" class="prayer-offering-details-toggle" @click="showAnnualOfferingModal = true"><span>查看2026年度認供</span><span class="prayer-offering-details-icon" aria-hidden="true">↗</span></button></article>
+            <section class="prayer-offerings" aria-labelledby="prayer-offering-title"><div class="prayer-offering-heading"><span class="eyebrow">DEDICATION OFFERINGS</span><h3 id="prayer-offering-title">祈福滿願壇城開放認供</h3><p>歡迎以祈願、供燈與護持壇城等方式，將善願迴向自身及一切有情。</p></div>
+              <div class="prayer-offering-list">
+                <article class="prayer-offering-row">
+                  <figure class="prayer-offering-row-photo prayer-offering-row-photo--contain"><img src="./images/offer-wish-card.jpg" alt="粉色度母許願卡"></figure>
+                  <div class="prayer-offering-row-copy"><h4>度母許願卡</h4><p class="prayer-offering-lead">寫下個人祈願，於壇城前誠心祈請度母與諸佛菩薩加持。</p><details class="prayer-offering-accordion"><summary>許願卡介紹</summary><div class="prayer-offering-detail"><p>可在祈願卡寫上所祈求願望（每張寫一個主要願望），並在壇城前誠心祈請，祈願諸佛菩薩眾、護法神尊加持庇佑，所求皆能如願，心想事成、諸事順遂。</p></div></details></div>
+                </article>
+                <article class="prayer-offering-row">
+                  <figure class="prayer-offering-row-photo"><img src="./images/offer-buddha-lamps.jpg" alt="佛堂壇城諸佛菩薩唐卡"></figure>
+                  <div class="prayer-offering-row-copy"><h4>各式佛菩薩點燈</h4><p class="prayer-offering-lead">壇城開放供燈祈福，為修行、健康與生活心願迴向。</p><details class="prayer-offering-accordion"><summary>點燈的功德利益</summary><div class="prayer-offering-detail"><p>點燈的利益有兩種：</p><h5>出世間利益</h5><p>可得真智慧，遠離修行上的障礙，去除五毒惡業的牽引，斷除輪迴。</p><h5>世間福報</h5><p>身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、不受人欺、心想如願、財富具足。如阿那律尊者「天眼第一」，乃因供燈植福而獲得。</p><div class="prayer-offering-subsection"><h5>十二生肖守護菩薩點燈｜菩薩由來</h5><p>很久以前，世間有這樣一個傳說：一個人出生時，西方極樂世界就有一位佛、菩薩迎送，並看著這孩子慢慢長大。此後孩子要獨自面對人間的誘惑和選擇，身上的佛性也越變越淡。只有極少數孩子因累積了幾世輪迴的善果、佛緣較深，才能繼續得到佛菩薩庇佑。後來經菩薩點化，人們把自己出生那一年的本尊佛菩薩雕刻在飾物上隨身佩戴，以增進自身修為，得到本尊菩薩保佑、庇護，實現發財、保健康等願望。</p></div></div></details></div>
+                </article>
+                <article class="prayer-offering-row prayer-offering-row--vases">
+                  <figure class="prayer-offering-row-photo"><img src="./images/offer-auspicious-vase.jpg" alt="吉祥福運滿願寶瓶"></figure>
+                  <div class="prayer-offering-row-copy"><h4>各式吉祥滿願寶瓶</h4><p class="prayer-offering-lead">度母、財神與咕嚕咕咧寶瓶各有祈願所向；吉祥福運寶瓶由尊貴上師裝臟、開光加持。</p>
+                    <button class="prayer-vase-info-button" type="button" @click="showVaseInfoModal = true"><img src="./images/offer-vase-details.jpg" alt="三種寶瓶介紹圖縮圖"><span>查看度母、財神、咕嚕咕咧寶瓶詳細介紹 <span aria-hidden="true">↗</span></span></button>
+                    <details class="prayer-offering-accordion"><summary>吉祥福運滿願寶瓶介紹</summary><div class="prayer-offering-detail"><ul><li>度母寶瓶：事業滿願</li><li>財神寶瓶：福報財富</li><li>咕嚕咕咧寶瓶：人緣桃花</li><li>吉祥福運寶瓶：平安運氣，適合本年沖太歲者</li></ul><h5>吉祥福運滿願寶瓶</h5><p>特別恭請尊貴的穆松古千法王親自裝臟、開光。裝臟物主要為法王親自從印度攜帶來臺之印度白玉南卓林寺總集甘露，以及南卻天法傳承祖師——持明珠多傑金剛法座所在聖地西康穆松寺吉祥總集甘露，精心製作，與十方大德結緣。</p><p>藉由寶瓶無上的加持，為大家祈福、消除眾生一切障礙；並願以修持寶瓶的成就與得此殊勝寶瓶的功德，幫助眾生除逆緣、脫貧苦、財富豐盈、權力威望增長、得眾人仰慕及敬愛。行者若能虔心供養，即能集聚天、人、眾生，享受其惠施衣財富，運勢轉佳、善緣早熟。因此，吉祥福運滿願寶瓶亦是平安與財富最強之殊勝不共護法。</p></div></details>
+                  </div>
+                </article>
               </div>
+              <aside class="prayer-offering-annual"><div><span class="eyebrow">2026 DEDICATION</span><h4>年度認供公告</h4><p>年度認供依當年度壇城與法會規劃開放，邀請大眾隨喜護持、祈福迴向。查看本年度認供項目與參與方式。</p></div><button class="button button-blue" type="button" @click="showAnnualOfferingModal = true">查看 2026 年度認供 <span aria-hidden="true">↗</span></button></aside>
             </section>
             <div class="about-closing-notes"><p>達拉有多種殊勝法寶結緣品，每樣結緣品皆經由尊貴上師如理如法裝臟、開光、灑淨加持圓滿，且定期恭請上師不斷修法加持，其殊勝力不可思議。只要具虔誠信心、衷心祈請，必得諸佛菩薩眾、護法神尊加持庇佑。不論祈求事業、財運、感情、桃花、人緣等，皆能所求如意、滿願順遂。</p></div>
           </div>
         </section>
         <div v-if="showAnnualOfferingModal" class="annual-offering-modal-backdrop" @click.self="showAnnualOfferingModal = false" @keydown.esc.window="showAnnualOfferingModal = false"><section class="annual-offering-modal" role="dialog" aria-modal="true" aria-labelledby="annual-offering-modal-title"><header><h2 id="annual-offering-modal-title">2026 年度認供項目</h2><button type="button" class="annual-offering-modal-close" aria-label="關閉年度認供圖片" @click="showAnnualOfferingModal = false">×</button></header><img src="./images/annual-offerings-2026.jpg" alt="達拉度母佛堂 2026 年開放壇城認供項目與功德主項目說明"></section></div>
+        <div v-if="showVaseInfoModal" class="annual-offering-modal-backdrop" @click.self="showVaseInfoModal = false" @keydown.esc.window="showVaseInfoModal = false"><section class="annual-offering-modal" role="dialog" aria-modal="true" aria-labelledby="vase-info-modal-title"><header><h2 id="vase-info-modal-title">度母、財神與咕嚕咕咧寶瓶</h2><button type="button" class="annual-offering-modal-close" aria-label="關閉寶瓶詳細介紹" @click="showVaseInfoModal = false">×</button></header><img src="./images/offer-vase-details.jpg" alt="度母寶瓶、財神寶瓶與咕嚕咕咧寶瓶詳細介紹"></section></div>
       </div>
     `,
   };
@@ -1078,7 +1091,27 @@
       eyebrow: 'OFFERING & GENEROSITY',
       title: '供養布施',
       description: '供養布施活動照片。',
-      photos: [{ image: './images/offering-donation.jpg', alt: '達拉供養布施活動照片' }],
+      photos: [
+        { image: './images/charity-activity-01.jpg', alt: '慈善活動照片 1' },
+        { image: './images/charity-activity-02.jpg', alt: '慈善活動照片 2' },
+        { image: './images/charity-activity-03.jpg', alt: '慈善活動照片 3' },
+        { image: './images/charity-activity-04.jpg', alt: '慈善活動照片 4' },
+        { image: './images/charity-activity-05.jpg', alt: '慈善活動照片 5' },
+        { image: './images/charity-activity-06.jpg', alt: '慈善活動照片 6' },
+        { image: './images/charity-activity-07.jpg', alt: '慈善活動照片 7' },
+        { image: './images/charity-activity-08.jpg', alt: '慈善活動照片 8' },
+        { image: './images/charity-activity-09.jpg', alt: '慈善活動照片 9' },
+        { image: './images/charity-activity-10.jpg', alt: '慈善活動照片 10' },
+        { image: './images/charity-activity-11.jpg', alt: '慈善活動照片 11' },
+        { image: './images/charity-activity-12.jpg', alt: '慈善活動照片 12' },
+        { image: './images/charity-activity-13.jpg', alt: '慈善活動照片 13' },
+        { image: './images/offering-donation.jpg', alt: '達拉供養布施活動照片' },
+      ],
+      certificates: [
+        { image: './images/charity-certificate-01.jpg', alt: '慈善活動感謝狀 1' },
+        { image: './images/charity-certificate-02.jpg', alt: '慈善活動感謝狀 2' },
+        { image: './images/charity-certificate-03.jpg', alt: '慈善活動感謝狀 3' },
+      ],
     },
     pilgrimage: {
       eyebrow: 'PILGRIMAGE',
@@ -1090,7 +1123,7 @@
 
   const ActivityPhotoPage = {
     props: ['slug'],
-    data: () => ({ pages: activityPhotoPages }),
+    data: () => ({ pages: activityPhotoPages, activeCertificate: null }),
     computed: {
       page() { return this.pages[this.slug] || this.pages['yoga-breath']; },
     },
@@ -1101,8 +1134,20 @@
           <div class="center-gallery-grid" :class="{ 'activity-photo-page-single': page.photos.length === 1 }" :aria-label="page.title + '照片展示區'">
             <figure v-for="photo in page.photos" :key="photo.image" class="center-gallery-photo"><img :src="photo.image" :alt="photo.alt" loading="lazy" decoding="async"></figure>
           </div>
+          <section v-if="page.certificates" class="activity-certificates" aria-labelledby="activity-certificates-title">
+            <div class="home-section-heading"><span class="eyebrow">CERTIFICATES</span><h2 id="activity-certificates-title">感謝狀</h2></div>
+            <div class="activity-certificate-grid">
+              <button v-for="certificate in page.certificates" :key="certificate.image" class="activity-certificate-photo" type="button" :aria-label="'放大檢視' + certificate.alt" @click="activeCertificate = certificate">
+                <img :src="certificate.image" :alt="certificate.alt" loading="lazy" decoding="async">
+              </button>
+            </div>
+          </section>
           <nav class="activity-photo-page-actions" aria-label="頁面導覽"><RouterLink class="button button-blue" to="/">回到首頁 <span class="button-en" lang="en">HOME</span></RouterLink></nav>
         </section>
+        <div v-if="activeCertificate" class="activity-certificate-lightbox" role="dialog" aria-modal="true" :aria-label="activeCertificate.alt" @click.self="activeCertificate = null" @keydown.esc.window="activeCertificate = null">
+          <button class="activity-certificate-lightbox-close" type="button" aria-label="關閉感謝狀大圖" @click="activeCertificate = null">×</button>
+          <img :src="activeCertificate.image" :alt="activeCertificate.alt">
+        </div>
       </div>
     `,
   };
