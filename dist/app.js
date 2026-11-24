@@ -175,6 +175,18 @@
           </div>
         </section>
 
+        <section class="offerings-band home-dedications">
+          <div class="section-wrap offerings-band-inner">
+            <div class="offerings-band-copy">
+              <span class="eyebrow">DEDICATION OFFERINGS</span>
+              <h2>祈福滿願壇城認供</h2>
+              <p>度母許願卡、佛菩薩點燈、吉祥滿願寶瓶與煙供香品介紹。</p>
+              <RouterLink class="button button-blue" to="/dedications">瀏覽壇城認供項目 <span aria-hidden="true">→</span></RouterLink>
+            </div>
+            <div class="offerings-band-gallery home-dedications-gallery"><img class="home-center-promo-photo" src="./images/dedication-smoke-offering.jpg" alt="山間煙供供品與裊裊煙霧" loading="lazy"></div>
+          </div>
+        </section>
+
         <section class="home-visit">
           <div class="section-wrap visit-strip">
             <div>
@@ -528,6 +540,85 @@
         <section class="section-wrap teacher-detail" :class="{ 'teacher-detail-translated': teacher.translations }"><div class="teacher-detail-photo"><img :src="teacher.image" :alt="teacher.alt"></div><article class="teacher-detail-copy"><span class="eyebrow">{{ teacher.lineage }}</span><h2 :lang="activeBioTab === 'zh' ? 'zh-Hant' : activeBioTab">{{ teacher.translations ? teacher.names[activeBioTab] : teacher.name }}</h2><template v-if="teacher.translations"><div class="teacher-bio-tabs" role="tablist" aria-label="傳記語言"><button v-for="tab in [{id:'zh',label:'中文'},{id:'en',label:'English'},{id:'bo',label:'藏文'}]" :key="tab.id" class="teacher-bio-tab" :class="{ 'is-active': activeBioTab === tab.id }" role="tab" :id="'bio-tab-' + tab.id" :aria-selected="activeBioTab === tab.id" :aria-controls="'bio-panel-' + tab.id" :tabindex="activeBioTab === tab.id ? 0 : -1" @click="activeBioTab = tab.id">{{ tab.label }}</button></div><div class="teacher-bio-panel" role="tabpanel" :id="'bio-panel-' + activeBioTab" :aria-labelledby="'bio-tab-' + activeBioTab" :lang="activeBioTab === 'zh' ? 'zh-Hant' : activeBioTab === 'en' ? 'en' : 'bo'"><section v-for="(section,index) in teacher.translations[activeBioTab]" :key="index" class="teacher-bio-section"><h3 v-if="section.heading">{{ section.heading }}</h3><p v-for="(paragraph,pIndex) in section.paragraphs" :key="pIndex">{{ paragraph }}</p></section></div></template><p v-if="teacher.lead" class="teacher-intro-lead"><strong>{{ teacher.lead }}</strong></p><p v-if="!teacher.translations" v-for="(paragraph, index) in teacher.paragraphs" :key="index">{{ paragraph }}</p></article></section>
         <section v-if="slug === 'jiacha-rinpoche'" class="section-wrap lineage-section" aria-label="嘉察仁波切轉世傳承"><ol class="lineage-timeline"><li v-for="(step, index) in lineageSteps" :key="step.id" class="lineage-item" :class="{ 'is-active': activeLineageSteps.includes(step.id) }" :data-lineage-id="step.id"><span class="lineage-node" aria-hidden="true"></span><figure class="lineage-card"><div class="lineage-image-frame" :class="{ 'lineage-image-frame-last': index === 3 }"><img :src="step.image" :alt="step.alt" loading="lazy"></div><figcaption><span class="lineage-name-en">{{ step.romanized }}</span><h3><span v-for="line in step.titleLines" :key="line">{{ line }}</span></h3></figcaption></figure></li></ol></section>
         <nav class="section-wrap teacher-page-nav"><RouterLink class="button button-blue" to="/about">← 認識佛堂 <span class="button-en" lang="en">BACK</span></RouterLink><RouterLink class="button button-blue" :to="slug === 'jiacha-rinpoche' ? '/teachers/oracle-tara' : '/teachers/jiacha-rinpoche'">{{ slug === 'jiacha-rinpoche' ? '神諭度母' : '尊貴上師' }} <span class="button-en" lang="en">{{ slug === 'jiacha-rinpoche' ? 'Oracle Tara' : 'Gyaltsab Rinpoche' }}</span><span aria-hidden="true">→</span></RouterLink></nav>
+      </div>
+    `,
+  };
+
+  const DedicationOfferingsPage = {
+    data: () => ({ showAnnualOfferingModal: false }),
+    methods: {
+      scrollToSection(id) {
+        const section = document.getElementById(id);
+        if (!section) return;
+        const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        section.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      },
+    },
+    template: `
+      <div class="dedication-offering-page">
+        <section class="page-intro"><span class="eyebrow">DEDICATION OFFERINGS</span><h1>祈福滿願壇城開放認供</h1><p>以祈願、供燈、寶瓶與煙供，將善願迴向自身及一切有情。</p></section>
+        <div class="section-wrap dedication-offering-content">
+          <nav class="dedication-offering-tabs" aria-label="壇城認供項目導覽">
+            <span>項目導覽</span>
+            <a href="#dedication-wish-card" @click.prevent="scrollToSection('dedication-wish-card')">度母許願卡</a>
+            <a href="#dedication-lamps" @click.prevent="scrollToSection('dedication-lamps')">佛菩薩點燈</a>
+            <a href="#dedication-vases" @click.prevent="scrollToSection('dedication-vases')">吉祥滿願寶瓶</a>
+            <a href="#dedication-smoke" @click.prevent="scrollToSection('dedication-smoke')">煙供香品</a>
+          </nav>
+
+          <section id="dedication-wish-card" class="dedication-offering-section">
+            <div class="dedication-offering-feature dedication-offering-feature--wish">
+              <figure class="dedication-offering-image dedication-offering-image--contain"><img src="./images/offer-wish-card.jpg" alt="粉色度母許願卡正面" loading="lazy" decoding="async"></figure>
+              <div class="dedication-offering-copy"><span class="eyebrow">TARA WISH CARD</span><h2>度母許願卡</h2><p>可在祈願卡寫上所祈求願望（每張寫一個主要願望），並在壇城前誠心祈請，祈願諸佛菩薩眾、護法神尊加持庇佑，所求皆能如願，心想事成、諸事順遂。</p><p>寫下願望，也將這份祈願安住於恭敬與善念之中，祈請度母慈悲護佑。</p></div>
+            </div>
+          </section>
+
+          <section id="dedication-lamps" class="dedication-offering-section">
+            <div class="dedication-offering-feature">
+              <figure class="dedication-offering-image"><img src="./images/offer-buddha-lamps.jpg" alt="佛堂壇城與諸佛菩薩唐卡" loading="lazy" decoding="async"></figure>
+              <div class="dedication-offering-copy"><span class="eyebrow">LIGHT OFFERING</span><h2>各式佛菩薩點燈</h2><p>點燈兼具出世間與世間利益：可得真智慧、遠離修行障礙、去除五毒惡業牽引；亦祈願身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、心想如願、財富具足。另有十二生肖守護菩薩點燈。</p></div>
+            </div>
+            <div class="dedication-offering-prose">
+              <h3>點燈的功德利益</h3>
+              <h4>出世間利益</h4><p>可得真智慧，遠離修行上的障礙，去除五毒惡業的牽引，斷除輪迴。</p>
+              <h4>世間福報</h4><p>身體健康、相貌莊嚴、眼睛明亮、眾人喜愛、不受人欺、心想如願、財富具足。如阿那律尊者「天眼第一」，乃因供燈植福而獲得。</p>
+              <h4>十二生肖守護菩薩點燈｜菩薩由來</h4><p>很久以前，世間有這樣一個傳說：一個人出生時，西方極樂世界就有一位佛、菩薩迎送，並看著這孩子慢慢長大。此後孩子要獨自面對人間的誘惑和選擇，身上的佛性也越變越淡。只有極少數孩子因累積了幾世輪迴的善果、佛緣較深，才能繼續得到佛菩薩庇佑。後來經菩薩點化，人們把自己出生那一年的本尊佛菩薩雕刻在飾物上隨身佩戴，以增進自身修為，得到本尊菩薩保佑、庇護，實現發財、保健康等願望。</p>
+            </div>
+          </section>
+
+          <section id="dedication-vases" class="dedication-offering-section">
+            <div class="dedication-offering-feature">
+              <figure class="dedication-offering-image"><img src="./images/offer-auspicious-vase.jpg" alt="吉祥福運滿願寶瓶與壇城供品" loading="lazy" decoding="async"></figure>
+              <div class="dedication-offering-copy"><span class="eyebrow">FULFILLMENT VASES</span><h2>各式吉祥滿願寶瓶</h2><p>壇城開放認供度母寶瓶（事業滿願）、財神寶瓶（福報財富）、咕嚕咕咧寶瓶（人緣桃花）及吉祥福運寶瓶（平安運氣，適合本年沖太歲者）。吉祥福運滿願寶瓶由尊貴的穆松古千法王親自裝臟、開光。</p></div>
+            </div>
+            <div class="dedication-offering-prose"><h3>吉祥福運滿願寶瓶</h3><p>特別恭請尊貴的穆松古千法王親自裝臟、開光。裝臟物主要為法王親自從印度攜帶來臺之印度白玉南卓林寺總集甘露，以及南卻天法傳承祖師——持明珠多傑金剛法座所在聖地西康穆松寺吉祥總集甘露，精心製作，與十方大德結緣。</p><p>藉由寶瓶無上的加持，為大家祈福、消除眾生一切障礙；並願以修持寶瓶的成就與得此殊勝寶瓶的功德，幫助眾生除逆緣、脫貧苦、財富豐盈、權力威望增長、得眾人仰慕及敬愛。行者若能虔心供養，即能集聚天、人、眾生，享受其惠施衣財富，運勢轉佳、善緣早熟。因此，吉祥福運滿願寶瓶亦是平安與財富最強之殊勝不共護法。</p></div>
+            <figure class="dedication-vase-guide"><figcaption><span class="eyebrow">VASE GUIDE</span><h3>度母、財神與咕嚕咕咧寶瓶詳細介紹</h3><p>以下介紹圖可直接在頁面完整瀏覽。</p></figcaption><img src="./images/offer-vase-details.jpg" alt="度母滿願寶瓶、大財神滿願寶瓶與咕嚕咕咧滿願寶瓶介紹" loading="lazy" decoding="async"></figure>
+          </section>
+
+          <section id="dedication-smoke" class="dedication-offering-section dedication-smoke-section">
+            <div class="dedication-offering-feature">
+              <figure class="dedication-offering-image"><img src="./images/dedication-smoke-offering.jpg" alt="山間煙供供品、五色旗與裊裊煙霧" loading="lazy" decoding="async"></figure>
+              <div class="dedication-offering-copy"><span class="eyebrow">SMOKE OFFERING</span><h2>煙供香品</h2><p>煙供的修持是一種最快速累積福德資糧、與消除違緣障礙的殊勝法門。</p><p>透過煙供的<strong>供養</strong>與<strong>布施</strong>不僅可以幫助所有的眾生，也能夠幫助我們快速的圓滿世間的事業、需求與願望的實現，是自立利他最好的方便法門。</p></div>
+            </div>
+            <div class="dedication-offering-prose">
+              <h3>煙供的重要</h3>
+              <p>煙供的藏文叫「桑」，其意為「將障蔽與污穢、罪障與染垢蓋障清淨」。</p>
+              <p class="dedication-emphasis-note">※由於污穢與障蔽故，致使腦筋渾沌，身體氣脈阻塞而疾病叢生。</p>
+              <p class="dedication-emphasis-note">※體內靈命污濁故，容易遭逢種種障礙，導致運氣不佳，四處碰壁。</p>
+              <p>有此狀況時就必須舉行一場煙供法會，讓阻礙和污穢盡速遠離。此外，新居落成、喬遷之喜、以及新婚誌慶的場合，都適合修一場煙供，象徵「好的開始」的緣起之意。</p>
+              <p>修煙供法需要先準備清淨的供品經由灑淨後，由上師依照儀軌修法以佛法的加持，將之轉化成殊勝供品，以火燃燒的方式，煙霧飄到無數淨土令一切法界歡喜滿足。藉著供養、布施的功德，對我們在此世間的生活需求，事業的成功有所助益。</p>
+
+              <h3>煙供的功德</h3>
+              <p>首先可以觀想裊裊煙霧上供十方三世諸佛菩薩及空行眾、財神：可得到佛菩薩的護佑加持，增長福慧資糧，現世安樂自在。供養天龍八部護法、地神、龍神等可幫助我們免於種種違緣障礙，能止息魔祟等違逆障礙，令佛行事業弘化順利，護法眾與地主神將護持修行者的所有佛法事業。</p>
+              <p>再者，藉著修煙供的功德，可淨除過去世的冤親債主罪業，而令今生錢財受用富足。有人儘管錢財受用富足，卻經常遭小偷或強盜光顧；吃食無法獲得養分；容貌神色黯淡無光；體弱多病魔祟侵擾…。這些情況都必須修煙供，將食物和飲料點火焚燒，並將煙供的善業功德迴向，則能利益到中陰身、餓鬼道，以及自己累世的冤親債主，還有尋香鬼、魑魅魍魎等鬼祟及夜叉等眾生。</p>
+              <p>如此，不僅能清淨自己的冤債，也能止息龍族與土地神的侵害，讓功德主財源廣進、豐衣足食、容光煥發，並可去除病魔障礙；平安健康、增長壽命、福德等，十方安樂吉祥！因此修持山淨煙供為成就四種事業和究竟成佛之必要。</p>
+              <p>其他如一般公司行號、店面經營、各種營利事業及各行各業皆需透過修持煙供法門來幫助快速消除障礙，運勢增長、名聲顯赫，生意興隆、心想事成。</p>
+            </div>
+          </section>
+
+          <aside id="dedication-annual" class="dedication-annual"><div><span class="eyebrow">2026 DEDICATION</span><h2>年度壇城認供公告</h2><p>年度認供項目與參與方式依當年度壇城及法會規劃公告。</p></div><button class="button button-blue" type="button" @click="showAnnualOfferingModal = true">查看 2026 年度認供 <span aria-hidden="true">↗</span></button></aside>
+        </div>
+        <div v-if="showAnnualOfferingModal" class="annual-offering-modal-backdrop" @click.self="showAnnualOfferingModal = false" @keydown.esc.window="showAnnualOfferingModal = false"><section class="annual-offering-modal" role="dialog" aria-modal="true" aria-labelledby="dedication-annual-modal-title"><header><h2 id="dedication-annual-modal-title">2026 年度認供項目</h2><button type="button" class="annual-offering-modal-close" aria-label="關閉年度認供圖片" @click="showAnnualOfferingModal = false">×</button></header><img src="./images/annual-offerings-2026.jpg" alt="達拉度母佛堂 2026 年開放壇城認供項目與功德主項目說明"></section></div>
       </div>
     `,
   };
@@ -1202,6 +1293,7 @@
     routes: [
       { path: '/', component: HomePage },
       { path: '/about', component: AboutPage },
+      { path: '/dedications', component: DedicationOfferingsPage },
       { path: '/centers/:slug', component: CenterDetailPage, props: true },
       { path: '/teachers/:slug', component: TeacherDetailPage, props: true },
       { path: '/offerings', component: OfferingsPage },
